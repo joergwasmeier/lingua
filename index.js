@@ -15,7 +15,7 @@ app.use(serve('/home/deploy/joergwasmeier_lingua/'));
 app.use(function *(next){
     yield next;
     if ('/' == this.path) {
-        this.body = 'Try `GET /package.json`';
+        this.body = 'Try `GET /package.json test Webhook`';
     }
 });
 
