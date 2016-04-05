@@ -17,6 +17,6 @@ app.use(function *(next){
     if ('/' == this.path) {
         this.body = 'Try `GET /package.json`';
     }
-})
+});
 
 app.listen(3110);
