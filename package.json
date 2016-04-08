@@ -6,7 +6,7 @@
     "deploy": "gulp --cwd config/gulp/ deploy-all",
     "deploy-frontend": "gulp --cwd config/gulp/ deploy-frontend",
     "deploy-backend": "gulp --cwd config/gulp/ deploy-backend",
-    //"test": "gulp --cwd config/gulp/test-all",
+    "test-new": "gulp --cwd config/gulp/test-all",
     "test": "echo \"Error: no test specified\" && exit 0",
     "test-frontend": "gulp --cwd config/gulp/test-all",
     "test-backend": "gulp --cwd config/gulp/test-all",
