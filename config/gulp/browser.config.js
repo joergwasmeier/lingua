@@ -4,6 +4,8 @@ var WebpackDevServer = require("webpack-dev-server");
 var path = require('path');
 
 var frontendConfig = require("./../webpack/webpack.frontend.config.js");
+var CompressionPlugin = require('compression-webpack-plugin');
+
 
 function onBuild(done) {
     return function(err, stats) {
