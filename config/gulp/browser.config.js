@@ -61,7 +61,8 @@ gulp.task('frontend-build', function(done) {
             minChunks: Infinity,
             filename: 'vendor.bundle.js'
         }),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new CompressionPlugin()
     ];
 
     webpack(myConfig).run(onBuild(done));
