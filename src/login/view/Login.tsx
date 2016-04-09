@@ -26,7 +26,7 @@ export default class Login extends React.Component<{},{}> {
           <div className="content">
 
             <TextField className="textField"
-                       floatingLabelText="Username"
+                       floatingLabelText="Username test"
                        />
 
             <TextField className="textField"
