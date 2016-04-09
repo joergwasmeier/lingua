@@ -32,6 +32,16 @@ gulp.task('frontend-build', function(done) {
     var myConfig = frontendConfig;
     myConfig.debug = false;
     myConfig.devtool = null;
+
+    myConfig.entry = {
+            vendor: [
+                'react', 'react-dom'
+            ],
+            app: [
+                './src/A_Web.ts' // Your appʼs entry point
+            ]
+        };
+
     myConfig.plugins = [
         new webpack.optimize.UglifyJsPlugin({
             compress: {
