@@ -37,7 +37,7 @@ gulp.task('frontend-build', function(done) {
 
     myConfig.entry = {
             vendor: [
-                'react', 'react-dom'
+                'react', 'react-dom','react-router','history','material-ui'
             ],
             app: [
                 './src/A_Web.ts' // Your appʼs entry point
