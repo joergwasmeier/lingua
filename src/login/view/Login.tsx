@@ -19,14 +19,14 @@ export default class Login extends React.Component<{},{}> {
     return (
       <div className={`center ${this.className}`}>
         <Paper className="loginCard">
-          <Paper className="title" zDepth={0}>
+          <Paper className="title">
             <p> </p>
           </Paper>
 
           <div className="content">
 
             <TextField className="textField"
-                       floatingLabelText="Username test"
+                       floatingLabelText="Username"
                        />
 
             <TextField className="textField"
