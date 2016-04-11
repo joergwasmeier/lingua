@@ -18,31 +18,20 @@ export default class Login extends React.Component<{},{}> {
   render() {
     return (
       <div className={`center ${this.className}`}>
-        <Paper className="loginCard">
-          <Paper className="title">
-            <p> </p>
-          </Paper>
-
-          <div className="content">
-
-            <TextField className="textField"
-                       floatingLabelText="Username"
-                       />
-
-            <TextField className="textField"
-                       floatingLabelText="Password"
-                       type="password"
-
-                       />
-
-            <Toggle className="autoLogin"
-
-                    label="Auto login?!" />
-
-            <FlatButton label={this.className}/>
+          <div className="demo">
+            <div className="pic1">
+              Hier ist dann demo Bild 1
+            </div>
+            <div className="pic1">
+              Hier ist dann demo Bild 2
+            </div>
+            <div className="pic1">
+              Hier ist dann demo Bild 3
+            </div>
           </div>
-
-        </Paper>
+          <div className="signUp">
+            <FlatButton label="SIGN UP"/>
+          </div>
       </div>
     )
   }
