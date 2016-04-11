@@ -6,3 +6,4 @@
 /// <reference path="systemjs/systemjs.d.ts" />
 /// <reference path="mongodb/mongodb.d.ts" />
 /// <reference path="node/node.d.ts" />
+/// <reference path="jasmine/jasmine.d.ts" />

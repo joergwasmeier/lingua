@@ -9,7 +9,7 @@ var nodeModules = fs.readdirSync('node_modules')
 
 module.exports = {
     entry: [
-        './src/S_Main.ts'
+        './test/T_Node.ts'
     ],
     target:'node',
     debug: true,
