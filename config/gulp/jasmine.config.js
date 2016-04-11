@@ -20,9 +20,9 @@ gulp.task('testJasmine', function() {
 });
 
 gulp.task('testNode', function() {
-    watch('**/*.ts', function(files) {
-        runSequence( 'testComp', 'testJasmine' );
-    });
+    //watch('**/*.ts', function(files) {
+    //    runSequence( 'testComp', 'testJasmine' );
+    //});
 
     runSequence( 'testComp', 'testJasmine' );
 });
