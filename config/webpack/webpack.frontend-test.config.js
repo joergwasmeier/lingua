@@ -7,7 +7,7 @@ module.exports = {
         filename: 'test.js'
     },
 
-    debug: true,
+    debug: false,
     devtool: 'source-map',
 
     resolve: {
@@ -24,7 +24,7 @@ module.exports = {
                 loader: 'style-loader!css-loader!less-loader'
             },
             {   test: /\.tsx?$/,
-                loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+CLIENT'
+                loader: 'babel?presets[]=es2015!ts-loader!preprocess?+CLIENT'
             }
         ]
     }

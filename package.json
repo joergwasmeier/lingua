@@ -81,6 +81,7 @@
     "webpack-dev-server": "^2.0.0-beta"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.7.4",
     "chai": "^3.5.0",
     "deep-merge": "^1.0.0",
     "expect": "*",

@@ -11,5 +11,7 @@ var routeMap = (
 );
 
 export function rend () {
-  ReactDOM.render(<Router>{routeMap}</Router>, document.getElementById('container'));
+    if (document.getElementById('container')) {
+        ReactDOM.render(<Router>{routeMap}</Router>, document.getElementById('container'));
+    }
 }
