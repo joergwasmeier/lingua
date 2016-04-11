@@ -72,6 +72,7 @@
     "rx-react": "^0.3.0",
     "style-loader": "^0.13.0",
     "stylus-loader": "^1.0.0",
+    "tracer": "^0.8.3",
     "ts-loader": "*",
     "typescript": "*",
     "typescript-simple-loader": "^0.3.8",

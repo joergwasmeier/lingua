@@ -23,6 +23,7 @@ module.exports = {
     },
     externals: [
         function(context, request, callback) {
+/*
             var pathStart = request.split('/')[0];
             if (pathStart == "fabalous" || pathStart == "fabalous-login"){
                 callback();
@@ -32,6 +33,8 @@ module.exports = {
             if (nodeModules.indexOf(pathStart) >= 0 && request != 'webpack/hot/signal.js') {
                 return callback(null, "commonjs " + request);
             };
+            */
+
             callback();
         }
     ],

@@ -5,6 +5,9 @@ import FabaServer from "fabalous-core/runtimes/FabaServer";
 
 class A_Server extends FabaServer{
     constructor(){
+        console.log("Start Server");
         super();
     }
 }
+
+new A_Server();
