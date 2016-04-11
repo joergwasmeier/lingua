@@ -7,7 +7,7 @@
     "deploy-frontend": "gulp --cwd config/gulp/ deploy-frontend",
     "deploy-backend": "gulp --cwd config/gulp/ deploy-backend",
     "test-new": "gulp --cwd config/gulp/test-all",
-    "test": "gulp testNode",
+    "test": "gulp test-all",
     "test-frontend": "gulp --cwd config/gulp/test-all",
     "test-backend": "gulp --cwd config/gulp/test-all",
     "wallaby-frontend": "gulp --cwd config/gulp/ wallaby-frontend",

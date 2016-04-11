@@ -5,17 +5,16 @@ var watch = require('gulp-watch');
 var webpack = require('webpack');
 
 
-var frontendConfig = require("./../webpack/webpack.frontend-test.config.js");
+var config = require("./../webpack/webpack.backend-test.config.js");
 
 gulp.task('testComp', function(done) {
-    webpack(frontendConfig, function(e, r){
+    webpack(config, function(e, r){
         done();
     });
 });
 
 gulp.task('testJasmine', function() {
-    console.log("testJasmine");
-    return gulp.src('./dist/test/test.js')
+    return gulp.src('./dist/test/node/test.js')
         .pipe(jasmine());
 });
 
