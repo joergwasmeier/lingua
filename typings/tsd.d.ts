@@ -7,3 +7,4 @@
 /// <reference path="mongodb/mongodb.d.ts" />
 /// <reference path="node/node.d.ts" />
 /// <reference path="jasmine/jasmine.d.ts" />
+/// <reference path="react-tap-event-plugin/react-tap-event-plugin.d.ts" />

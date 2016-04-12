@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Route, Router, browserHistory  } from 'react-router';
 import Layout from "./layout/Layout";
+import Login from "./login/view/Login";
 
 function loadRoute(cb) {
   return (module) => cb(null, module.default);
@@ -11,13 +12,13 @@ function errorLoading(e){
   console.log(e);
 }
 
-/*
+
 var routeMap = (
-  <Route path="/" component={getComp()} >
-    <Route path="dashboard"  />
+  <Route path="/" component={Layout} >
+    <Route path="/" component={Login}  />
   </Route>
 );
-*/
+
 
 var rootRoute = {
   path:"/",
@@ -56,6 +57,7 @@ var secondroutes = {
 
 export function rend () {
     if (document.getElementById('container')) {
-        ReactDOM.render(<Router routes={secondroutes} />, document.getElementById('container'));
+      ReactDOM.render(<Router routes={secondroutes} />, document.getElementById('container'));
+      //ReactDOM.render(<Router>{routeMap}</Router>, document.getElementById('container'));
     }
 }
