@@ -6,8 +6,8 @@ import SyntheticEvent = __React.SyntheticEvent;
 
 import {CircularProgress, Toggle, TextField, Paper, FlatButton} from 'material-ui';
 
-System.import("./Login.less");
-
+//System.import("./Login.less");
+require("./Login.less");
 export default class Login extends React.Component<{},{}> {
   className:string = "Login";
 
