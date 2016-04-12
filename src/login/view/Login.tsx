@@ -20,7 +20,7 @@ export default class Login extends React.Component<{},{}> {
       <div className={`center ${this.className}`}>
           <div className="demo">
             <div className="pic1">
-              Hier ist dann demo Bild 1
+              Hier ist dann demo Bild 1.1
             </div>
             <div className="pic1">
               Hier ist dann demo Bild 2

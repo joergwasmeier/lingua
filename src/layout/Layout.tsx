@@ -36,6 +36,7 @@ export default class Layout extends React.Component<{},{}> {
           />
         </Tabs>
 
+        {this.props.children}
       </div>
     )
   }
