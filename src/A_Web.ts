@@ -12,7 +12,10 @@ export default class A_Web extends FabaWebApplication {
     constructor() {
         super();
 
-        FabaWebApplication.addServerEndPoint(new FabaApiConnection("http://localhost:3120/api/"), "api");
+        var host = window.location.hostname;
+        var protocol = window.location.protocol;
+
+        FabaWebApplication.addServerEndPoint(new FabaApiConnection(protocol+"//"+host+":3120/"), "api");
 
         renderRoutes();
     }
