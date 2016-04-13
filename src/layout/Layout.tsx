@@ -10,69 +10,63 @@ import FlatButton from 'material-ui/lib/flat-button';
 
 
 export default class Layout extends React.Component<{},{}> {
-  className:string = "App";
-  state = {
-    open:false
-  };
+    className:string = "App";
+    state = {
+        open: false,
+        loggedIn:false
+    };
 
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  handleToggle = () => {
-    console.log("handle");
-    this.setState({open: !this.state.open});
-  };
+    handleToggle = () => {
+        console.log("handle");
+        this.setState({open: !this.state.open});
+    };
 
-  handleClose = () => this.setState({open: false});
+    handleClose = () => this.setState({open: false});
 
-  handleTouchTap() {
-    alert('onTouchTap triggered on the title component');
-  }
+    handleTouchTap() {
+        alert('onTouchTap triggered on the title component');
+    }
 
-  render() {
-    return (
-      <div className={`center ${this.className}`}>
-        <AppBar
-          title="Title"
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-          onTitleTouchTap={e => console.log("dfsdffs")}
-        />
+    renderMenu(){
+        if (!this.state.loggedIn) return;
 
-        <Tabs>
-          <Tab
-            label="RECENTS"
-          />
-          <Tab
-            label="RECENTS"
-          />
-          <Tab
-            label="RECENTS"
-          />
-          <Tab
-            label="RECENTS"
-          />
-        </Tabs>
 
-        <FlatButton label="Default"
-                    onTouchTap={e => console.log("FlatButtonClick")}/>
+        return (
+            <div>
+                <AppBar
+                    title="Title"
+                    iconClassNameRight="muidocs-icon-navigation-expand-more"
+                    onLeftIconButtonTouchTap={e => this.handleToggle()}
+                />
 
-        <button onClick={e => console.log("buttonClick")}>
-          BUTTON CLICK
-        </button>
+                <LeftNav
+                width={200}
+                docked={false}
+                open={this.state.open}
+                onRequestChange={open => this.setState({open})}
+                >
+                <p className="title">Lingua version 0.10</p>
+                <hr className="line" />
+                    <MenuItem onTouchTap={this.handleClose}>Overview</MenuItem>
+                    <hr className="line" />
+                    <p>Lektionen</p>
+                    <MenuItem onTouchTap={this.handleClose}>Menu Item 2</MenuItem>
+                </LeftNav>
+            </div>
+        )
+    }
 
-        <LeftNav
-          docked={false}
-          width={200}
-          open={this.state.open}
-          onRequestChange={open => this.setState({open})}
-        >
-          <MenuItem onTouchTap={this.handleClose}>Menu Item</MenuItem>
-          <MenuItem onTouchTap={this.handleClose}>Menu Item 2</MenuItem>
-        </LeftNav>
+    render() {
+        return (
+            <div className={`center ${this.className}`}>
+                {this.renderMenu()}
 
-        {this.props.children}
-      </div>
-    )
-  }
+                {this.props.children}
+            </div>
+        )
+    }
 }
