@@ -59,6 +59,7 @@
     "karma-mocha-reporter": "*",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sourcemap-loader": "*",
+    "karma-webpack": "^1.7.0",
     "less": "*",
     "less-loader": "^2.2.0",
     "material-ui": "^0.14.4",
