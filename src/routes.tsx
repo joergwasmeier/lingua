@@ -11,8 +11,6 @@ function loadRoute(cb) {
 }
 
 function loadRouteDash(cb) {
-  console.log(module);
-  
   return (module) => {
     var med:FabaMediator = new module.mediator.default;
     FabaCore.addMediator(med);
