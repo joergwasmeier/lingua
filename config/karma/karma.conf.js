@@ -31,8 +31,6 @@ module.exports = function(config) {
     webpack: webpackConfig,
 
     webpackMiddleware: {
-      // webpack-dev-middleware configuration
-      // i. e.
       noInfo: true
     },
 
@@ -41,12 +39,12 @@ module.exports = function(config) {
 
 
     // enable / disable colors in the output (reporters and logs)
-    //colors: true,
+    colors: true,
 
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_ERROR,
+    logLevel: config.LOG_DEBUG,
 
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -55,7 +53,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS2'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode
