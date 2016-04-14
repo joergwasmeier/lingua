@@ -9,7 +9,7 @@ import DashboardMediator from "./dashboard/control/DasboardMediator";
 
 class A_Server extends FabaServer{
     constructor(){
-        console.log("Start Server");
+        console.log("Start Server test");
         FabaCore.addMediator(new DashboardMediator());
         super();
     }

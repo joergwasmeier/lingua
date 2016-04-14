@@ -3,10 +3,10 @@ import GetDashboardDataEvent from "../event/GetDashboardDataEvent";
 
 export default class DashboardService extends FabaSerivce{
   async execute(event:GetDashboardDataEvent) {
-    console.log("dashboard service");
+    console.log("dashboard service er");
 
-    var nodeFS = require("fs");
-    console.log(nodeFS);
+    //var nodeFS = require("fs");
+    //console.log(nodeFS);
     event.test = "result";
     super.sendToClient(event);
   }

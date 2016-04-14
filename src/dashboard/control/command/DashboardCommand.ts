@@ -12,6 +12,7 @@ export default class DashboardCommand extends FabaCommand {
   }
 
   result(event:GetDashboardDataEvent) {
+    console.log("result");
     console.log(event.test);
   }
 
