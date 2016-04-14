@@ -24,7 +24,7 @@
       "commit": "ec9eb4b28c74665a602c22db3457f0a76fa0fa23"
     },
     "node/node.d.ts": {
-      "commit": "ec9eb4b28c74665a602c22db3457f0a76fa0fa23"
+      "commit": "0e139d5d4681b71d53a30408efcc64b79eed6354"
     },
     "mongodb/mongodb.d.ts": {
       "commit": "ec9eb4b28c74665a602c22db3457f0a76fa0fa23"
@@ -34,6 +34,18 @@
     },
     "react-tap-event-plugin/react-tap-event-plugin.d.ts": {
       "commit": "f5b469b012f515428f9643ef31395282481031d4"
+    },
+    "serve-static/serve-static.d.ts": {
+      "commit": "0e139d5d4681b71d53a30408efcc64b79eed6354"
+    },
+    "mime/mime.d.ts": {
+      "commit": "0e139d5d4681b71d53a30408efcc64b79eed6354"
+    },
+    "express-serve-static-core/express-serve-static-core.d.ts": {
+      "commit": "0e139d5d4681b71d53a30408efcc64b79eed6354"
+    },
+    "express/express.d.ts": {
+      "commit": "0e139d5d4681b71d53a30408efcc64b79eed6354"
     }
   }
 }

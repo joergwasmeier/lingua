@@ -8,3 +8,7 @@
 /// <reference path="node/node.d.ts" />
 /// <reference path="jasmine/jasmine.d.ts" />
 /// <reference path="react-tap-event-plugin/react-tap-event-plugin.d.ts" />
+/// <reference path="express-serve-static-core/express-serve-static-core.d.ts" />
+/// <reference path="express/express.d.ts" />
+/// <reference path="mime/mime.d.ts" />
+/// <reference path="serve-static/serve-static.d.ts" />
