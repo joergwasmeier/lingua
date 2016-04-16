@@ -13,6 +13,7 @@ export default class Dashboard extends React.Component<{},{}> {
   }
 
   componentDidMount():void {
+    console.log(this.props);
     new GetDashboardDataEvent().dispatch((result) => {
       console.log(result);
     });
