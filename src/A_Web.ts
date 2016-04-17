@@ -7,7 +7,11 @@ require('offline-plugin/runtime').install();
 let injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
-require("./reset.less");
+require("./manifest.json");
+require("./index.html");
+
+require("./assets/less/reset.less");
+require("./assets/less/font.less");
 
 export default class A_Web extends FabaWebApplication {
     constructor() {

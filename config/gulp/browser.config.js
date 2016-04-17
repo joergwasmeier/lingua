@@ -67,7 +67,7 @@ gulp.task('frontend-build', function(done) {
             },
             sourceMap: false
         }),
-        new webpack.BannerPlugin("//Copyright 2016"),
+        new webpack.BannerPlugin("Copyright 2016 - Jörg Wasmeier"),
         new CompressionPlugin()
     ];
 

@@ -31,6 +31,14 @@ module.exports = {
             },
             {   test: /\.tsx?$/,
                 loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+CLIENT'
+            },
+            {
+                test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+                loader: 'url-loader?limit=30000&name=assets/[name]-[hash].[ext]'
+            },
+            {
+                test: /\.html|json?$/,
+                loader: 'url-loader?limit=1&name=[name].[ext]'
             }
         ]
     },
