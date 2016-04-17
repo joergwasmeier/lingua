@@ -50,6 +50,5 @@ module.exports = {
             minChunks: Infinity,
             filename: 'vendor.bundle.js'
         })
-
     ]
 };
