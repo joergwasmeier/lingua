@@ -72,6 +72,7 @@
     "node-noop": "^1.0.0",
     "nodemon": "^1.8.1",
     "npm": "^3.8.6",
+    "offline-plugin": "^2.1.0",
     "phantomjs-prebuilt": "^2.1.7",
     "preprocess": "^3.0.2",
     "preprocess-loader": "^0.2.0",

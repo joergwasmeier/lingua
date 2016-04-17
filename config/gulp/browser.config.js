@@ -5,6 +5,7 @@ var path = require('path');
 
 var frontendConfig = require("./../webpack/webpack.frontend.config.js");
 var CompressionPlugin = require('compression-webpack-plugin');
+var OfflinePlugin = require('offline-plugin');
 
 
 function onBuild(done) {
@@ -45,15 +46,7 @@ gulp.task('frontend-build', function(done) {
         };
 
     myConfig.plugins = [
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-            output: {
-                comments: false
-            },
-            sourceMap: false
-        }),
+        new webpack.NoErrorsPlugin(),
         new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({
             'process.env': { NODE_ENV: JSON.stringify('production') }
@@ -63,7 +56,17 @@ gulp.task('frontend-build', function(done) {
             minChunks: Infinity,
             filename: 'vendor.bundle.js'
         }),
-        new webpack.NoErrorsPlugin(),
+        new OfflinePlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            },
+            output: {
+                comments: false
+            },
+            sourceMap: false
+        }),
+        new webpack.BannerPlugin("//Copyright 2016"),
         new CompressionPlugin()
     ];
 

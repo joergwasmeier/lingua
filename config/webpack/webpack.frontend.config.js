@@ -1,5 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
+var ManifestPlugin = require('webpack-manifest-plugin');
+
 
 module.exports = {
     output: {
@@ -37,6 +39,7 @@ module.exports = {
 
     plugins:[
         new webpack.HotModuleReplacementPlugin(),
+        new ManifestPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             minChunks: Infinity,
