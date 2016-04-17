@@ -49,7 +49,8 @@ gulp.task('frontend-build', function(done) {
         new webpack.NoErrorsPlugin(),
         new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({
-            'process.env': { NODE_ENV: JSON.stringify('production') }
+            'process.env': { NODE_ENV: JSON.stringify('production') },
+            DEBUG: false
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
