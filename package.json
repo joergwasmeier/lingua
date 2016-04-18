@@ -40,6 +40,8 @@
     "compression-webpack-plugin": "^0.3.1",
     "css-loader": "^0.23.1",
     "deep-merge": "^1.0.0",
+    "electron-packager": "^6.0.2",
+    "electron-prebuilt": "^0.37.6",
     "expect": "*",
     "fabalous-core": "*",
     "file-loader": "^0.8.4",
@@ -107,3 +109,7 @@
     "webpack-hot-middleware": "^2.10.0"
   }
 }
+
+/*
+ ./node_modules/electron-packager/cli.js ./dist/electron/ test --all --out ./dist/exec/
+*/
