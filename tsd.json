@@ -24,7 +24,7 @@
       "commit": "ec9eb4b28c74665a602c22db3457f0a76fa0fa23"
     },
     "node/node.d.ts": {
-      "commit": "0e139d5d4681b71d53a30408efcc64b79eed6354"
+      "commit": "544a35a10866b32afda9c7f029c0764558563f4f"
     },
     "mongodb/mongodb.d.ts": {
       "commit": "ec9eb4b28c74665a602c22db3457f0a76fa0fa23"
@@ -46,6 +46,9 @@
     },
     "express/express.d.ts": {
       "commit": "0e139d5d4681b71d53a30408efcc64b79eed6354"
+    },
+    "github-electron/github-electron.d.ts": {
+      "commit": "544a35a10866b32afda9c7f029c0764558563f4f"
     }
   }
 }

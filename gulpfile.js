@@ -11,6 +11,12 @@ gulp.task('test-all', ['testNode', 'testKarma']);
 
 gulp.task('complete', ['backend-watch','frontend-watch', 'testNode', 'testKarma']);
 
+var runSequence = require('run-sequence');
+
+//gulp.task('electron-watch', ['testKarma']);
+gulp.task('electron-build', runSequence('electron-app-build', 'electron-pack'));
+
+
 gulp.task('testmocha', function() {
     return gulp.src('test.js')
         .pipe(mocha())
