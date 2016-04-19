@@ -8,7 +8,10 @@ import Layout from "./layout/Layout";
 import Login from "./login/view/Login";
 import FabaCore from "fabalous-core/core/FabaCore";
 import FabaMediator from "fabalous-core/core/FabaMediator";
+
 let history = createHistory();
+
+
 function loadRoute(cb) {
   return (module) => cb(null, module.default);
 }
@@ -35,13 +38,13 @@ var rootRoute = {
 };
 
 
-
 var secondroutes = {
   path: '/',
   component: Layout,
   indexRoute: { onEnter: (nextState, replace) => {
-      location.assign("#/login/")
-    }
+     //location.assign("/login/")
+    browserHistory.push('#/login/')
+  }
   },
   childRoutes: [
     {
@@ -68,9 +71,9 @@ var secondroutes = {
 
 export function renderRoutes () {
     if (document.getElementById('container')) {
-      var routes = React.createElement(Router, {routes: secondroutes, history:history});
+      var routes = React.createElement(Router, {routes: secondroutes, history:hashHistory});
 
-      var routes = React.createElement(Router, {routes: secondroutes});
+      var routes = React.createElement(Router, {routes: secondroutes, history:hashHistory});
       ReactDOM.render(routes, document.getElementById('container'));
     }
 }

@@ -5,25 +5,21 @@ import MouseEvent = __React.MouseEvent;
 import SyntheticEvent = __React.SyntheticEvent;
 
 import {CircularProgress, Toggle, TextField, Paper, FlatButton} from 'material-ui';
-
-//System.import("./Login.less");
 require("./Login.less");
-import { browserHistory } from 'react-router'
 
 export default class Login extends React.Component<{},{}> {
   className:string = "Login";
 
+  props:any = {
+    history:History
+  };
 
   constructor() {
     super();
   }
 
   showLogin(){
-    console.log("SHOW LOGIN");
-    //this.context.router.replaceWith("/dashboard/");
-    //history.pushState({}, "page 2", "/dashboard/");
-    location.assign("/#/dashboard/");
-
+    this.props.history.push("/dashboard/");
   }
 
   render() {
@@ -42,7 +38,7 @@ export default class Login extends React.Component<{},{}> {
         </div>
         <div className="signUp">
           <FlatButton label="SIGN UP"/>
-          <FlatButton label="LOGIN" onTouchTap={this.showLogin}/>
+          <FlatButton label="LOGIN" onTouchTap={(e) => this.showLogin()}/>
         </div>
       </div>
     )
