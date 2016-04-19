@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
     output: {
-        path: path.join(__dirname,'../../dist/electron/'),
+        path: path.join(__dirname,'../../dist/cordova/app/'),
         filename: 'bundle.js'
     },
 
@@ -21,7 +21,7 @@ module.exports = {
         app: [
             'webpack-dev-server/client?http://localhost:8080/', // WebpackDevServer host and port
             'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
-            './src/A_Electron.ts' // Your appʼs entry point
+            './src/A_Cordova.ts' // Your appʼs entry point
         ]
     },
     module: {

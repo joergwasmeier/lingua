@@ -54,8 +54,6 @@ gulp.task('electron-app-build', function(done) {
 
     webpack(myConfig).run(onBuild(done));
     gulp.src('./dist/electron/release/', {read: false}).pipe(clean());
-
-    // electron-packager ~/Projects/sound-machine SoundMachine --all --version=0.30.2 --out=~/Desktop --overwrite --icon=~/Projects/sound-machine/app/img/app-icon.icns
 });
 
 
@@ -75,7 +73,8 @@ gulp.task('electron-pack', function(done) {
     version: 'v0.37.6',
     packaging: false,
     token: 'da809a6077bb1b0aa7c5623f7b2d5f1fec2faae4',
-    platforms: ['win32-ia32'],
+//  platforms: ['win32','linux','darwin-x64','linux-ia32','linux-x64','win32-ia32','win64-64'],
+    platforms: ['win64-64'],
     platformResources: {
     }
   }))
