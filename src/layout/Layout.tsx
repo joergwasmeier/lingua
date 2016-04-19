@@ -32,7 +32,7 @@ export default class Layout extends React.Component<{},{}> {
     }
 
     renderMenu(){
-        if (!this.state.loggedIn) return;
+        //if (!this.state.loggedIn) return;
 
 
         return (
@@ -44,10 +44,11 @@ export default class Layout extends React.Component<{},{}> {
                 />
 
                 <LeftNav
-                width={200}
-                docked={false}
-                open={this.state.open}
-                onRequestChange={open => this.setState({open})}
+                  swipeAreaWidth={100}
+                  width={300}
+                  docked={false}
+                  open={this.state.open}
+                  onRequestChange={open => this.setState({open})}
                 >
                 <p className="title">Lingua version 0.10</p>
                 <hr className="line" />
@@ -63,6 +64,7 @@ export default class Layout extends React.Component<{},{}> {
     render() {
         return (
             <div className={`center ${this.className}`}>
+
                 {this.renderMenu()}
 
                 {this.props.children}

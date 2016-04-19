@@ -4,9 +4,11 @@
         <meta charset="UTF-8">
         <title>Lingua</title>
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+        <!-- @ifdef WEB -->
         <link rel="manifest" href="/manifest.json">
-
         <script src="vendor.bundle.js"></script>
+        <!-- @endif -->
+
     </head>
 
     <body style="overflow-y: hidden;">
@@ -16,12 +18,6 @@
         </div>
 
         <script src="bundle.js"></script>
-
-        <!-- @ifdef CORDOVA -->
-        Cordova is Here
-        <!-- @endif -->
-
-
     </body>
 
 </html>
