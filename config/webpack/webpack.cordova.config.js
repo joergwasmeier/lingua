@@ -30,7 +30,7 @@ module.exports = {
                 loader: 'style-loader!css-loader!less-loader'
             },
             {   test: /\.tsx?$/,
-                loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+CLIENT+CORDOVA'
+                loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+CLIENT,+CORDOVA'
             },
             {
                 test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
@@ -44,11 +44,6 @@ module.exports = {
     },
 
     plugins:[
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: Infinity,
-            filename: 'vendor.bundle.js'
-        })
+        new webpack.HotModuleReplacementPlugin()
     ]
 };

@@ -19,6 +19,10 @@ gulp.task('electron-build', function(){
 });
 
 
+gulp.task('cordova-build', function(){
+  runSequence('cordova-app-build', 'cordova-copy', 'cordova-android')
+});
+
 gulp.task('testmocha', function() {
     return gulp.src('test.js')
         .pipe(mocha())
