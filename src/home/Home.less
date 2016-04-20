@@ -1,31 +1,46 @@
+html{
+  height: 100%;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+}
+
+.container{
+  height: 100%;
+}
+
+.App{
+  height: 100%;
+}
+
 .Home{
   height: 100vh;
+  min-height: 500px;
 
   background-image: url("./bg.jpg");
   background-size: cover;
   background-clip: content-box;
 
-  .headerIcon{
-    height: calc(~"100vh - 130px");
+  .header{
+    font-size: 48px;
+    text-align: center;
+    color: rgba(255,255,255,0.95);
+    line-height: 200px;
+    margin-bottom: 0px;
+  }
 
-    .header{
-      font-size: 48px;
-      text-align: center;
-      color: rgba(255,255,255,0.95);
-      line-height: 200px;
-      margin-bottom: 48px;
-    }
-
-    .textField{
-      width: calc(~"100% - 32px") !important;
-      margin-left: 16px;
-      margin-right: 16px;
-    }
+  .textField{
+    width: calc(~"100% - 32px") !important;
+    margin-left: 16px;
+    margin-right: 16px;
   }
 
   .loginButton{
     width: 100vw;
     height: 50px;
+    margin-top: 32px !important;
     background-color: #00B7FF !important;
     color: #ffffff!important;
   }

@@ -19,7 +19,6 @@ export default class Layout extends React.Component<{},{}> {
   render() {
     return (
       <div className={`center ${this.className}`}>
-        <div className="headerIcon">
 
           <p className="header">LINGUA</p>
 
@@ -36,9 +35,6 @@ export default class Layout extends React.Component<{},{}> {
             floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
             inputStyle={{color:"rgba(255,255,255,0.8)"}}
           />
-        </div>
-
-
 
         <FlatButton className="loginButton">
           LOGIN
