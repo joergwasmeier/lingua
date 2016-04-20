@@ -30,7 +30,7 @@ module.exports = {
                 loader: 'style-loader!css-loader!less-loader'
             },
             {   test: /\.tsx?$/,
-                loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+CLIENT+WEB'
+                loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+CLIENT,+WEB'
             },
             {
                 test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,

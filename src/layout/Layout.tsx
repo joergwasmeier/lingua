@@ -1,13 +1,11 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as React from "react";
+import AppBar from "material-ui/lib/app-bar";
+import LeftNav from "material-ui/lib/left-nav";
+import MenuItem from "material-ui/lib/menus/menu-item";
+import {FontIcon} from "material-ui";
+import {Link} from "react-router";
 
-import Tabs from 'material-ui/lib/tabs/tabs';
-import Tab from 'material-ui/lib/tabs/tab';
-import AppBar from 'material-ui/lib/app-bar';
-import LeftNav from 'material-ui/lib/left-nav';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-import FlatButton from 'material-ui/lib/flat-button';
-
+require('./Layout.less');
 
 export default class Layout extends React.Component<{},{}> {
     className:string = "App";
@@ -49,13 +47,36 @@ export default class Layout extends React.Component<{},{}> {
                   docked={false}
                   open={this.state.open}
                   onRequestChange={open => this.setState({open})}
+                  className="LeftNav"
                 >
-                <p className="title">Lingua version 0.10</p>
-                <hr className="line" />
-                    <MenuItem onTouchTap={this.handleClose}>Overview</MenuItem>
-                    <hr className="line" />
-                    <p>Lektionen</p>
-                    <MenuItem onTouchTap={this.handleClose}>Menu Item 2</MenuItem>
+                  <div className="header">
+                    <p>LINGUA v0.01</p>
+
+                  </div>
+
+                  <MenuItem
+                    linkButton
+                    containerElement={<Link to="/dashboard/" />}
+                    primaryText="Übersicht"
+                    leftIcon={
+                      <FontIcon className="material-icons">dashboard</FontIcon>
+                    } />
+
+                  <MenuItem
+                    linkButton
+                    containerElement={<Link to="/shop/" />}
+                    primaryText="Kurse"
+                    leftIcon={
+                      <FontIcon className="material-icons">storage</FontIcon>
+                    } />
+
+                  <MenuItem
+                    linkButton
+                    containerElement={<Link to="/shop/" />}
+                    primaryText="Shop"
+                    leftIcon={
+                      <FontIcon className="material-icons">shop</FontIcon>
+                    } />
                 </LeftNav>
             </div>
         )

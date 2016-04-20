@@ -7,6 +7,7 @@ import GetDashboardDataEvent from "../event/GetDashboardDataEvent";
 
 export default class DashboardCommand extends FabaCommand {
   execute(event:GetDashboardDataEvent) {
+    console.log("execute");
     this.sendToEndpoint(event);
   }
 

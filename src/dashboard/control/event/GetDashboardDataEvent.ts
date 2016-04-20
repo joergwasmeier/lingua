@@ -7,7 +7,7 @@ export default class GetDashboardDataEvent extends FabaEvent{
 
   constructor(){
     super();
-
+    console.log("event");
     this.test = "super";
   }
 
