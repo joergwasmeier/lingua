@@ -1,13 +1,10 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { Router, browserHistory, hashHistory  } from 'react-router';
-import BrowserHistory from 'react-router/lib/History'
-import { createHistory } from 'history'; // you need to install this package
-
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import {Router, browserHistory, hashHistory} from "react-router";
+import {createHistory} from "history";
 import Layout from "./layout/Layout";
-import Login from "./login/view/Login";
 import FabaCore from "fabalous-core/core/FabaCore";
-import FabaMediator from "fabalous-core/core/FabaMediator";
+import FabaMediator from "fabalous-core/core/FabaMediator"; // you need to install this package
 
 let history = createHistory();
 
@@ -43,7 +40,7 @@ var secondroutes = {
   component: Layout,
   indexRoute: { onEnter: (nextState, replace) => {
      //location.assign("/login/")
-    browserHistory.push('#/login/')
+    browserHistory.push('#/home/')
   }
   },
   childRoutes: [
@@ -62,7 +59,7 @@ var secondroutes = {
     {
       path: '*',
       getComponent(location, cb) {
-        System.import('./login/view/Login').then(loadRoute(cb)).catch(errorLoading);
+        System.import('./home/Home').then(loadRoute(cb)).catch(errorLoading);
       }
     }
   ]

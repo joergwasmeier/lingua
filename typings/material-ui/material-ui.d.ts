@@ -579,6 +579,7 @@ declare namespace __MaterialUI {
     interface FlatButtonProps extends SharedEnhancedButtonProps<FlatButton> {
         // <EnhancedButton/> is the element that get the 'other' properties
         backgroundColor?: string;
+        className?: string;
         disabled?: boolean;
         hoverColor?: string;
         href?: string;

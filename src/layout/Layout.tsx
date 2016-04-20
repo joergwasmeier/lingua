@@ -41,8 +41,7 @@ export default class Layout extends React.Component<{},{}> {
     }
 
     renderMenu(){
-        //if (!this.state.loggedIn) return;
-
+        if (!this.state.loggedIn) return;
 
         return (
             <div>
