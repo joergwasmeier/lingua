@@ -26,11 +26,15 @@ export default class Layout extends React.Component<{},{}> {
           <TextField
             className="textField"
             floatingLabelText="Username"
+            floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
+            inputStyle={{color:"rgba(255,255,255,0.8)"}}
           />
 
           <TextField
             className="textField"
             floatingLabelText="Password"
+            floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
+            inputStyle={{color:"rgba(255,255,255,0.8)"}}
           />
         </div>
 
