@@ -1,11 +1,15 @@
 import * as React from "react";
 import AppBar from "material-ui/lib/app-bar";
 import LeftNav from "material-ui/lib/left-nav";
-import MenuItem from "material-ui/lib/menus/menu-item";
-import {FontIcon} from "material-ui";
-import {Link} from "react-router";
+import {FontIcon, List, ListItem} from "material-ui";
+import ContentSend from "material-ui/lib/svg-icons/content/send";
 
 require('./Layout.less');
+
+interface IHistory{
+  push;
+
+}
 
 export default class Layout extends React.Component<{},{}> {
     className:string = "App";
@@ -13,6 +17,8 @@ export default class Layout extends React.Component<{},{}> {
         open: false,
         loggedIn:false
     };
+
+    props:any;
 
     constructor(props) {
         super(props);
@@ -27,6 +33,11 @@ export default class Layout extends React.Component<{},{}> {
 
     handleTouchTap() {
         alert('onTouchTap triggered on the title component');
+    }
+
+    menuClickHandler(url:string){
+      this.setState({open: false});
+      this.props.history.push(url);
     }
 
     renderMenu(){
@@ -53,30 +64,41 @@ export default class Layout extends React.Component<{},{}> {
                     <p>LINGUA v0.01</p>
 
                   </div>
+                  <List>
 
-                  <MenuItem
-                    linkButton
-                    containerElement={<Link to="/dashboard/" />}
-                    primaryText="Übersicht"
-                    leftIcon={
+                    <ListItem primaryText="Übersicht" leftIcon={
                       <FontIcon className="material-icons">dashboard</FontIcon>
-                    } />
+                    } onTouchTap={(e) => this.menuClickHandler("/dashboard/")}/>
 
-                  <MenuItem
-                    linkButton
-                    containerElement={<Link to="/shop/" />}
-                    primaryText="Kurse"
-                    leftIcon={
-                      <FontIcon className="material-icons">storage</FontIcon>
-                    } />
+                    <ListItem
+                      primaryText="Kurse"
+                      leftIcon={
+                        <FontIcon className="material-icons">storage</FontIcon>
+                      }
+                      initiallyOpen={true}
+                      primaryTogglesNestedList={true}
+                      nestedItems={[
+                        <ListItem
+                          key={1}
+                          primaryText="Italienisch 1"
+                          leftIcon={<ContentSend />}
+                        />,
+                        <ListItem
+                          key={2}
+                          primaryText="Englisch 2"
+                          leftIcon={<ContentSend />}
+                          disabled={false}
+                        />
+                      ]}
+                    />
 
-                  <MenuItem
-                    linkButton
-                    containerElement={<Link to="/shop/" />}
-                    primaryText="Shop"
-                    leftIcon={
+                    <ListItem primaryText="Shop" leftIcon={
                       <FontIcon className="material-icons">shop</FontIcon>
-                    } />
+                    }
+                      onTouchTap={(e) => this.menuClickHandler("/shop/")}
+                    />
+
+                  </List>
                 </LeftNav>
             </div>
         )
