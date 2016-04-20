@@ -40,14 +40,14 @@ var secondroutes = {
   component: Layout,
   indexRoute: { onEnter: (nextState, replace) => {
      //location.assign("/login/")
-    browserHistory.push('#/home/')
+    browserHistory.push('#/login/')
   }
   },
   childRoutes: [
     {
       path: '/login/',
       getComponent(location, cb) {
-        System.import('./login/view/Login').then(loadRoute(cb)).catch(errorLoading);
+        System.import('./login/index').then(loadRouteDash(cb)).catch(errorLoading);
       }
     },
     {
@@ -59,7 +59,7 @@ var secondroutes = {
     {
       path: '*',
       getComponent(location, cb) {
-        System.import('./home/Home').then(loadRoute(cb)).catch(errorLoading);
+        System.import('./login/index').then(loadRouteDash(cb)).catch(errorLoading);
       }
     }
   ]

@@ -1,47 +1,70 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as React from "react";
+import {FlatButton, TextField} from "material-ui";
+import LoginEvent from "../control/event/LoginEvent";
+import {AppModel_in} from "../../AppModel";
 
-import MouseEvent = __React.MouseEvent;
-import SyntheticEvent = __React.SyntheticEvent;
-
-import {CircularProgress, Toggle, TextField, Paper, FlatButton} from 'material-ui';
-require("./Login.less");
+require('./Login.less');
 
 export default class Login extends React.Component<{},{}> {
-  className:string = "Login";
-
-  props:any = {
-    history:History
+  className:string = "Home";
+  state = {
+    open: false,
+    loggedIn:false
   };
 
-  constructor() {
-    super();
+  props:any;
+
+  constructor(props) {
+    super(props);
   }
 
-  showLogin(){
+  componentWillMount():void {
+    AppModel_in.getInstance().addChangeListener( () => this.forceUpdate());
+  }
+
+  componentWillUnmount():void {
+    AppModel_in.getInstance().removeChangeListener( () => this.forceUpdate());
+  }
+
+  loginBtHandler():void{
+    console.log("loginBtHandler");
     this.props.history.push("/dashboard/");
+
+    new LoginEvent().dispatch(()=>{
+
+    });
   }
 
   render() {
     return (
       <div className={`center ${this.className}`}>
-        <div className="demo">
-          <div className="pic1">
-            Hier ist dann demo Bild 1.1
-          </div>
-          <div className="pic1">
-            Hier ist dann demo Bild 2
-          </div>
-          <div className="pic1">
-            Hier ist dann demo Bild 3
-          </div>
-        </div>
-        <div className="signUp">
-          <FlatButton label="SIGN UP"/>
-          <FlatButton label="LOGIN" onTouchTap={(e) => this.showLogin()}/>
-        </div>
+
+        <p className="header">LINGUA</p>
+
+        <TextField
+          className="textField"
+          floatingLabelText="Username"
+          floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
+          inputStyle={{color:"rgba(255,255,255,0.8)"}}
+        />
+
+        <TextField
+          className="textField"
+          floatingLabelText="Password"
+          floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
+          inputStyle={{color:"rgba(255,255,255,0.8)"}}
+          type="password"
+        />
+
+        <FlatButton className="loginButton" onTouchTap={(e) => this.loginBtHandler()}>
+          LOGIN
+        </FlatButton>
+
+        <p className="signUp">
+          Don´t have an account? Sign UP!
+        </p>
+
       </div>
     )
   }
-
 }

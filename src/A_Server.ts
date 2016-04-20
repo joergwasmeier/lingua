@@ -1,8 +1,9 @@
 import FabaCore from "fabalous-core/core/FabaCore";
-require("babel-polyfill");
-
 import FabaServer from "fabalous-core/runtimes/FabaServer";
 import DashboardMediator from "./dashboard/control/DasboardMediator";
+import LoginMediator from "./login/control/LoginMediator";
+require("babel-polyfill");
+
 /**
  * Created by joerg on 07.04.2016.
  */
@@ -11,6 +12,7 @@ class A_Server extends FabaServer{
     constructor(){
         console.log("Start Server test");
         FabaCore.addMediator(new DashboardMediator());
+        FabaCore.addMediator(new LoginMediator());
         super();
     }
 }
