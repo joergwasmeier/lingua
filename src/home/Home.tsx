@@ -16,6 +16,10 @@ export default class Layout extends React.Component<{},{}> {
     super(props);
   }
 
+  loginBtHandler():void{
+    console.log("loginBtHandler");
+  }
+
   render() {
     return (
       <div className={`center ${this.className}`}>
@@ -34,9 +38,10 @@ export default class Layout extends React.Component<{},{}> {
             floatingLabelText="Password"
             floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
             inputStyle={{color:"rgba(255,255,255,0.8)"}}
+            type="password"
           />
 
-        <FlatButton className="loginButton">
+        <FlatButton className="loginButton" onTouchTap={(e) => this.loginBtHandler()}>
           LOGIN
         </FlatButton>
 
