@@ -4,7 +4,8 @@ var webpack = require('webpack');
 module.exports = {
     output: {
         path: path.join(__dirname,'../../dist/web/'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        chunkFilename: 'bundle-[chunkhash].js'
     },
 
     debug: true,
