@@ -1,15 +1,17 @@
 import * as React from "react";
-import {FlatButton, TextField} from "material-ui";
+import {FlatButton, TextField, CircularProgress} from "material-ui";
 import LoginEvent from "../control/event/LoginEvent";
-import {AppModel_in} from "../../AppModel";
+import {AppModel} from "../../common/AppModel";
 
+var classNames = require('classnames');
 require('./Login.less');
 
 export default class Login extends React.Component<{},{}> {
   className:string = "Home";
   state = {
     open: false,
-    loggedIn:false
+    loggedIn:false,
+    progress:false
   };
 
   props:any;
@@ -19,16 +21,21 @@ export default class Login extends React.Component<{},{}> {
   }
 
   componentWillMount():void {
-    AppModel_in.getInstance().addChangeListener( () => this.forceUpdate());
+    AppModel.getInstance().addChangeListener( () => this.forceUpdate());
   }
 
   componentWillUnmount():void {
-    AppModel_in.getInstance().removeChangeListener( () => this.forceUpdate());
+    AppModel.getInstance().removeChangeListener( () => this.forceUpdate());
   }
 
   loginBtHandler():void{
     console.log("loginBtHandler");
-    this.props.history.push("/dashboard/");
+
+    this.setState({progress:true});
+
+    setTimeout(()=>{
+      this.props.history.push("/dashboard/");
+    },2000);
 
     new LoginEvent().dispatch(()=>{
 
@@ -56,8 +63,11 @@ export default class Login extends React.Component<{},{}> {
           type="password"
         />
 
-        <FlatButton className="loginButton" onTouchTap={(e) => this.loginBtHandler()}>
-          LOGIN
+        <FlatButton className={classNames('loginButton', { progress: this.state.progress })}
+                    onTouchTap={(e) => this.loginBtHandler()}>
+          <p className="content">LOGIN</p>
+
+          <div className="spinner"></div>
         </FlatButton>
 
         <p className="signUp">

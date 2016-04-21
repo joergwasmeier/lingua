@@ -3,7 +3,7 @@ import AppBar from "material-ui/lib/app-bar";
 import LeftNav from "material-ui/lib/left-nav";
 import {FontIcon, List, ListItem} from "material-ui";
 import ContentSend from "material-ui/lib/svg-icons/content/send";
-import {AppModel_in} from "../AppModel";
+import {AppModel} from "../common/AppModel";
 
 require('./Layout.less');
 
@@ -42,7 +42,7 @@ export default class Layout extends React.Component<{},{}> {
     }
 
     renderMenu(){
-        if (!AppModel_in.getInstance().busy) return;
+        if (!AppModel.getInstance().busy) return;
 
         return (
             <div>

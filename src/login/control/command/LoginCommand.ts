@@ -1,6 +1,6 @@
 import FabaCommand from "fabalous-core/core/FabaCommand";
 import LoginEvent from "./../event/LoginEvent";
-import {AppModel_in} from "./../../../AppModel";
+import {AppModel} from "./../../../common/AppModel";
 
 /**
  * Created by creativecode on 11.04.16.
@@ -11,7 +11,7 @@ export default class LoginCommand extends FabaCommand {
     console.log("execute");
     this.sendToEndpoint(event);
 
-    AppModel_in.getInstance().busy = true;
+    AppModel.getInstance().busy = true;
   }
 
   result(event:LoginEvent) {

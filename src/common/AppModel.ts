@@ -5,15 +5,16 @@ import FabaBindable from "fabalous-core/decorators/FabaBindable";
  */
 
 
-export class AppModel_in extends FabaModel {
+export class AppModel extends FabaModel {
+  private static _instance:AppModel = new AppModel();
 
-  private static _instance:AppModel_in = new AppModel_in();
+  @FabaBindable
+  userLoggedIn:boolean;
 
   @FabaBindable
   name:string;
 
   @FabaBindable
-
   busy:boolean;
 
   @FabaBindable
@@ -22,14 +23,14 @@ export class AppModel_in extends FabaModel {
   constructor( ) {
     super();
 
-    if (AppModel_in._instance) {
-      throw new Error("Error: Instantiation failed: Use LoginModel.getInstance() instead of new.");
+    if (AppModel._instance) {
+      throw new Error("Error: Instantiation failed: Use AppModel.getInstance() instead of new.");
     }
-    AppModel_in._instance = this;
+    AppModel._instance = this;
   }
 
-  public static getInstance():AppModel_in {
-    return AppModel_in._instance;
+  public static getInstance():AppModel {
+    return AppModel._instance;
   }
 
 
@@ -41,6 +42,3 @@ export class AppModel_in extends FabaModel {
     return super.removeChangeListener(cb);
   }
 }
-
-const AppModel = AppModel_in.getInstance();
-export default AppModel;

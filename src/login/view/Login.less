@@ -27,6 +27,17 @@ body{
   height: 100vh;
   min-height: 500px;
 
+  text-align: center;
+
+  @media (min-width: 440px)  {
+    max-width: 440px;
+    left: 50%;
+    position: relative;
+    margin-left: -220px;
+    -webkit-filter: drop-shadow(0px 12px 7px rgba(0,0,0,0.5));
+
+  }
+
   background-image: url("./bg.jpg");
   background-size: cover;
   background-clip: content-box;
@@ -54,6 +65,52 @@ body{
     margin-top: 32px !important;
     background-color: #00B7FF !important;
     color: #ffffff!important;
+
+    transition: all 0.2s;
+
+    .content{
+      transition: all 0.2s;
+      opacity: 1;
+    }
+
+    &.progress{
+      overflow: hidden;
+      width: 50px !important;
+      border-radius: 40px !important;
+      min-width: 50px !important;
+      .content{
+        opacity: 0;
+      }
+
+      .spinner{
+        opacity: 0;
+        width: 20px;
+        height: 20px;
+        background-color: #ffffff;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        border: #ffffff solid 5px;
+        border-radius: 30px;
+        animation-name: bgcolor, opacity;
+        animation-duration: 0.5s, 0.2s;
+        animation-delay: 0s, 0.3s;
+        animation-iteration-count: infinite, 1;
+        animation-direction: alternate, normal;
+        animation-fill-mode:forwards,forwards;
+
+        @keyframes bgcolor {
+          from {background-color: #00B7FF;}
+          to {background-color: #ffffff;}
+        }
+
+        @keyframes opacity {
+          from {opacity: 0;}
+          to {opacity: 1;}
+        }
+
+      }
+    }
   }
 
   .signUp{

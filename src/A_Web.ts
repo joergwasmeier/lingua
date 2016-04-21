@@ -1,13 +1,13 @@
 import FabaApiConnection from "fabalous-core/transport/FabaApiConnection";
 import FabaWebApplication from "fabalous-core/runtimes/FabaWebApplication";
-import {renderRoutes} from "./routes";
+import {renderRoutes} from "./common/routes";
 
 //require('offline-plugin/runtime').install();
 
 let injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
-require("./manifest.json");
+require("./common/manifest.json");
 require("./index.html");
 
 require("./assets/less/reset.less");
