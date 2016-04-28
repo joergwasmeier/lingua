@@ -172,9 +172,7 @@ declare namespace __React {
         props: P & { children?: ReactNode };
         state: S;
         context:any;
-        refs: {
-            [key: string]: ReactInstance
-        };
+        refs: any;
     }
 
     interface ClassicComponent<P, S> extends Component<P, S> {

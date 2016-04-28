@@ -2,8 +2,6 @@ import * as React from "react";
 import AppBar from "material-ui/lib/app-bar";
 import LeftNav from "material-ui/lib/left-nav";
 import {FontIcon, List, ListItem} from "material-ui";
-import ContentSend from "material-ui/lib/svg-icons/content/send";
-import {AppModel} from "../common/AppModel";
 
 require('./Layout.less');
 
@@ -42,19 +40,20 @@ export default class Layout extends React.Component<{},{}> {
     }
 
     renderMenu(){
-        if (!AppModel.getInstance().busy) return;
+        //if (!AppModel.getInstance().busy) return;
 
         return (
             <div>
                 <AppBar
-                    title="Title"
+                    title="Übersicht"
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
                     onLeftIconButtonTouchTap={e => this.handleToggle()}
+                    className="AppBar"
                 />
 
                 <LeftNav
                   swipeAreaWidth={100}
-                  width={300}
+                  width={270}
                   docked={false}
                   open={this.state.open}
                   onRequestChange={open => this.setState({open})}
@@ -75,21 +74,6 @@ export default class Layout extends React.Component<{},{}> {
                       leftIcon={
                         <FontIcon className="material-icons">storage</FontIcon>
                       }
-                      initiallyOpen={true}
-                      primaryTogglesNestedList={true}
-                      nestedItems={[
-                        <ListItem
-                          key={1}
-                          primaryText="Italienisch 1"
-                          leftIcon={<ContentSend />}
-                        />,
-                        <ListItem
-                          key={2}
-                          primaryText="Englisch 2"
-                          leftIcon={<ContentSend />}
-                          disabled={false}
-                        />
-                      ]}
                     />
 
                     <ListItem primaryText="Shop" leftIcon={
@@ -98,6 +82,13 @@ export default class Layout extends React.Component<{},{}> {
                       onTouchTap={(e) => this.menuClickHandler("/shop/")}
                     />
 
+
+                    <ListItem
+                      primaryText="Impressum"
+                      leftIcon={
+                        <FontIcon className="material-icons">info</FontIcon>
+                      }
+                    />
                   </List>
                 </LeftNav>
             </div>
