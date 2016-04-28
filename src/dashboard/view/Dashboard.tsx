@@ -3,12 +3,13 @@ import {ListItem, List, Divider} from "material-ui";
 import ActionInfo from "material-ui/lib/svg-icons/action/info";
 import Avatar from "material-ui/lib/avatar";
 import ActionAssignment from "material-ui/lib/svg-icons/action/assignment";
+import {AppModel} from "../../common/AppModel";
 var Chart =  require('chart.js/src/chart.js');
 
 require("./Dashboard.less");
 
 export default class Dashboard extends React.Component<{},{}> {
-  className:string = "Login";
+  className:string = "Dashboard";
 
   data = {
     labels: [
@@ -37,6 +38,8 @@ export default class Dashboard extends React.Component<{},{}> {
   }
 
   componentDidMount():void {
+    AppModel.getInstance().appBarTitle = "Übersicht";
+
     window.addEventListener("resize", (e) => {
       console.log("resize");
       super.forceUpdate();
@@ -79,7 +82,7 @@ export default class Dashboard extends React.Component<{},{}> {
 
   render() {
     return (
-      <div>
+      <div className={this.className}>
         <canvas id="myChart" width="400" height="400"></canvas>
         <br/>
         <Divider />

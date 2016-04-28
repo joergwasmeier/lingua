@@ -1,7 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {Router, browserHistory, hashHistory} from "react-router";
-import {createHistory} from "history";
 import Layout from "./../layout/Layout";
 import FabaCore from "fabalous-core/core/FabaCore";
 import FabaMediator from "fabalous-core/core/FabaMediator"; // you need to install this package
@@ -42,6 +41,18 @@ var secondroutes = {
       path: '/dashboard/',
       getComponent(location, cb) {
         System.import('./../dashboard/index').then(loadRouteDash(cb)).catch(errorLoading);
+      }
+    },
+    {
+      path: '/course/',
+      getComponent(location, cb) {
+        System.import('./../course/index').then(loadRouteDash(cb)).catch(errorLoading);
+      }
+    },
+    {
+      path: '/courses-overview/',
+      getComponent(location, cb) {
+        System.import('./../courses-overview/index').then(loadRouteDash(cb)).catch(errorLoading);
       }
     },
     {

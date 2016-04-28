@@ -2,6 +2,7 @@ import * as React from "react";
 import AppBar from "material-ui/lib/app-bar";
 import LeftNav from "material-ui/lib/left-nav";
 import {FontIcon, List, ListItem} from "material-ui";
+import {AppModel} from "../common/AppModel";
 
 require('./Layout.less');
 
@@ -14,7 +15,8 @@ export default class Layout extends React.Component<{},{}> {
     className:string = "App";
     state = {
         open: false,
-        loggedIn:false
+        loggedIn:false,
+        appTitle:""
     };
 
     props:any;
@@ -34,9 +36,19 @@ export default class Layout extends React.Component<{},{}> {
         alert('onTouchTap triggered on the title component');
     }
 
+    componentWillMount():void {
+      AppModel.getInstance().addChangeListener( () =>{
+        this.setState({"appTitle":AppModel.getInstance().appBarTitle});
+      } );
+    }
+
+    componentWillUnmount():void {
+      AppModel.getInstance().removeChangeListener( () => this.forceUpdate());
+    }
+
     menuClickHandler(url:string){
       this.setState({open: false});
-      this.props.history.push(url);
+      this.props.history.push("/"+url+"/");
     }
 
     renderMenu(){
@@ -45,7 +57,7 @@ export default class Layout extends React.Component<{},{}> {
         return (
             <div>
                 <AppBar
-                    title="Übersicht"
+                    title={this.state.appTitle}
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
                     onLeftIconButtonTouchTap={e => this.handleToggle()}
                     className="AppBar"
@@ -67,19 +79,25 @@ export default class Layout extends React.Component<{},{}> {
 
                     <ListItem primaryText="Übersicht" leftIcon={
                       <FontIcon className="material-icons">dashboard</FontIcon>
-                    } onTouchTap={(e) => this.menuClickHandler("/dashboard/")}/>
+                    } onTouchTap={(e) => this.menuClickHandler("dashboard")}/>
 
                     <ListItem
                       primaryText="Kurse"
                       leftIcon={
                         <FontIcon className="material-icons">storage</FontIcon>
-                      }
+                      } onTouchTap={(e) => this.menuClickHandler("courses-overview")}
+                    />
+
+                    <ListItem
+                      primaryText="Example Kurse"
+                      leftIcon={
+                        <FontIcon className="material-icons">storage</FontIcon>
+                      } onTouchTap={(e) => this.menuClickHandler("course")}
                     />
 
                     <ListItem primaryText="Shop" leftIcon={
                       <FontIcon className="material-icons">shop</FontIcon>
-                    }
-                      onTouchTap={(e) => this.menuClickHandler("/shop/")}
+                    } onTouchTap={(e) => this.menuClickHandler("shop")}
                     />
 
 

@@ -18,7 +18,10 @@ export class AppModel extends FabaModel {
   busy:boolean;
 
   @FabaBindable
-  userName:String;
+  userName:string;
+
+  @FabaBindable
+  appBarTitle:string;
 
   constructor( ) {
     super();
