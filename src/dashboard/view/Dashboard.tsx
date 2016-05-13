@@ -38,7 +38,7 @@ export default class Dashboard extends React.Component<{},{}> {
   }
 
   componentDidMount():void {
-    AppModel.getInstance().appBarTitle = "Übersicht";
+    AppModel.getInstance().appBarTitle = "Übersicht - Dash";
 
     window.addEventListener("resize", (e) => {
       console.log("resize");
