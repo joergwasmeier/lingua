@@ -7,7 +7,7 @@ gulp.task('default', ['backend-watch','frontend-watch']);
 gulp.task('watch', ['backend-watch','frontend-watch']);
 gulp.task('build', ['frontend-build', 'backend-build']);
 gulp.task('tdd', ['testNode', 'testKarma']);
-gulp.task('test-all', ['testNode', 'testKarma']);
+gulp.task('test-all', function(){runSequence('testNode', 'testKarma', 'testPhantomCss')});
 
 gulp.task('complete', ['backend-watch','frontend-watch', 'testNode', 'testKarma']);
 
@@ -23,6 +23,15 @@ gulp.task('cordova-build', function(){
   runSequence('cordova-app-build', 'cordova-copy', 'cordova-android')
 });
 
+var casperJs = require('gulp-casperjs');
+
+gulp.task('testPhantomCss', function(){
+    gulp.src('demo/testsuite.js')
+        .pipe(casperJs({command:'test'})); //run casperjs test
+
+});
+
+
 gulp.task('testmocha', function() {
     return gulp.src('test.js')
         .pipe(mocha())
@@ -33,3 +42,4 @@ gulp.task('testmocha', function() {
             process.exit();
         });
 });
+
