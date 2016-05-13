@@ -10,7 +10,7 @@ var server = require('webserver').create();
 
 var html = fs.read( fs.absolute( fs.workingDirectory + '/demo/coffeemachine.html' ));
 
-server.listen(8080,function(req,res){
+server.listen(9876,function(req,res){
 	res.statusCode = 200;
 	res.headers = {
 		'Cache': 'no-cache',
@@ -69,7 +69,7 @@ casper.test.begin( 'Coffee machine visual tests', function ( test ) {
 		The test scenario
 	*/
 
-	casper.start( 'http://localhost:8080' );
+	casper.start( 'http://127.0.0.1:9876' );
 
 	casper.viewport( 1024, 768 );
 
