@@ -38,7 +38,7 @@ var spawn = require('child_process').spawn,
     gutil = require('gulp-util');
 
 gulp.task('testPhantomCss', function () {
-    var tests = ['demo/testsuite.js'];
+    var tests = ['test/css/testsuite.js'];
 
     var casperChild = spawn('casperjs', ['test'].concat(tests));
 
