@@ -1,11 +1,13 @@
 /*
 	Require and initialise PhantomCSS module
 	Paths are relative to CasperJs directory
-*/
 
+
+*/
 var fs = require( 'fs' );
 var path = fs.absolute( fs.workingDirectory + '/phantomcss.js' );
 var phantomcss = require( path );
+/*
 var server = require('webserver').create();
 
 var html = fs.read( fs.absolute( fs.workingDirectory + '/demo/coffeemachine.html' ));
@@ -19,18 +21,18 @@ server.listen(9876,function(req,res){
 	res.write(html);
 	res.close();
 });
+ */
 
-
-casper.test.begin( 'Coffee machine visual tests', function ( test ) {
+casper.test.begin( 'Lingua online test', function ( test ) {
 
 	phantomcss.init( {
 		rebase: casper.cli.get( "rebase" ),
 		// SlimerJS needs explicit knowledge of this Casper, and lots of absolute paths
 		casper: casper,
 		libraryRoot: fs.absolute( fs.workingDirectory + '' ),
-		screenshotRoot: fs.absolute( fs.workingDirectory + '/dist/web/screenshots' ),
-		failedComparisonsRoot: fs.absolute( fs.workingDirectory + '/dis/web/failures' ),
-		addLabelToFailedImage: false,
+		screenshotRoot: fs.absolute( '/tmp' ),
+		failedComparisonsRoot: fs.absolute( fs.workingDirectory + '/dist/web/failures' ),
+		addLabelToFailedImage: true
 		/*
 		screenshotRoot: '/screenshots',
 		failedComparisonsRoot: '/failures'
@@ -69,12 +71,46 @@ casper.test.begin( 'Coffee machine visual tests', function ( test ) {
 		The test scenario
 	*/
 
-	casper.start( 'https://lingua.joergwasmeier.de' );
+	casper.on("resource.error", function(resourceError){
+		console.log('Unable to load resource (#' + resourceError.id + 'URL:' + resourceError.url + ')');
+		console.log('Error code: ' + resourceError.errorCode + '. Description: ' + resourceError.errorString);
+	});
 
-	casper.viewport( 375, 667 );
+	casper.on('http.status.404', function(resource) {
+		this.log('Hey, this one is 404: ' + resource.url, 'warning');
+	});
+
+	casper.on('complete.error', function(err) {
+		this.die("Complete callback has failed: " + err);
+	});
+
+	casper.on("page.error", function(msg, trace) {
+		this.echo("Error: " + msg, "ERROR");
+	});
+
+	casper.start( 'http://lingua.joergwasmeier.de/' );
+	casper.start( 'http://localhost:8080/#/login/?_k=d02v53' );
+
+	//casper.start( 'https://google.de' );
+
+	casper.viewport( 1024, 768 );
 
 	casper.then( function () {
-		phantomcss.screenshot( 'html', 'login' );
+
+		casper.waitForSelector( '#container > div > div.center.Home > p.header',
+			function success() {
+				phantomcss.screenshot( '#container', 'coffee machine dialog' );
+			},
+			function timeout() {
+				casper.capture('/tmp/navigation.png');
+
+				casper.test.fail( 'Should see coffee machine' );
+			});
+	} );
+
+	casper.then( function now_check_the_screenshots() {
+		// compare screenshots
+		phantomcss.compareAll();
 	} );
 
 	/*

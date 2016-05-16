@@ -1,6 +1,7 @@
 import FabaApiConnection from "fabalous-core/transport/FabaApiConnection";
 import FabaWebApplication from "fabalous-core/runtimes/FabaWebApplication";
 import {renderRoutes} from "./common/routes";
+import "babel-polyfill";
 
 //require('offline-plugin/runtime').install();
 
