@@ -28,8 +28,8 @@ casper.test.begin( 'Coffee machine visual tests', function ( test ) {
 		// SlimerJS needs explicit knowledge of this Casper, and lots of absolute paths
 		casper: casper,
 		libraryRoot: fs.absolute( fs.workingDirectory + '' ),
-		screenshotRoot: fs.absolute( fs.workingDirectory + '/screenshots' ),
-		failedComparisonsRoot: fs.absolute( fs.workingDirectory + '/demo/failures' ),
+		screenshotRoot: fs.absolute( fs.workingDirectory + '/web/screenshots' ),
+		failedComparisonsRoot: fs.absolute( fs.workingDirectory + '/web/failures' ),
 		addLabelToFailedImage: false,
 		/*
 		screenshotRoot: '/screenshots',
@@ -69,14 +69,15 @@ casper.test.begin( 'Coffee machine visual tests', function ( test ) {
 		The test scenario
 	*/
 
-	casper.start( 'http://127.0.0.1:9876' );
+	casper.start( 'https://lingua.joergwasmeier.de' );
 
-	casper.viewport( 1024, 768 );
+	casper.viewport( 375, 667 );
 
 	casper.then( function () {
-		phantomcss.screenshot( '#coffee-machine-wrapper', 'open coffee machine button' );
+		phantomcss.screenshot( 'html', 'login' );
 	} );
 
+	/*
 	casper.then( function () {
 		casper.click( '#coffee-machine-button' );
 
