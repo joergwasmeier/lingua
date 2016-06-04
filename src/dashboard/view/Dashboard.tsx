@@ -1,9 +1,8 @@
 import * as React from "react";
 import {ListItem, List, Divider} from "material-ui";
 import ActionInfo from "material-ui/lib/svg-icons/action/info";
-import Avatar from "material-ui/lib/avatar";
-import ActionAssignment from "material-ui/lib/svg-icons/action/assignment";
 import {AppModel} from "../../common/AppModel";
+//import ActionAssignment from "material-ui/lib/svg-icons/action/assignment";
 var Chart =  require('chart.js/src/chart.js');
 
 require("./Dashboard.less");
@@ -66,10 +65,21 @@ export default class Dashboard extends React.Component<{},{}> {
   renderCourses():Array<any>{
     var rows:Array<any> = [];
 
+    /*
     for (var i=0; i < 10; i++) {
       rows.push(<ListItem
         key={i}
         leftAvatar={<Avatar icon={<ActionAssignment />} />}
+        rightIcon={<ActionInfo />}
+        primaryText="Italienisch für Anfänger"
+        secondaryText="Jan 20, 2014"
+        onTouchTap={(e) => this.showCourse(e)}
+      />);
+    }
+*/
+    for (var i=0; i < 10; i++) {
+      rows.push(<ListItem
+        key={i}
         rightIcon={<ActionInfo />}
         primaryText="Italienisch für Anfänger"
         secondaryText="Jan 20, 2014"

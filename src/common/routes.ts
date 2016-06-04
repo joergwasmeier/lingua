@@ -32,32 +32,9 @@ var secondroutes = {
   },
   childRoutes: [
     {
-      path: '/login/',
-      getComponent(location, cb) {
-        System.import('./../login/index').then(loadRouteDash(cb)).catch(errorLoading);
-      }
-    },
-    {
-      path: '/dashboard/',
-      getComponent(location, cb) {
-        System.import('./../dashboard/index').then(loadRouteDash(cb)).catch(errorLoading);
-      }
-    },
-    {
-      path: '/course/',
-      getComponent(location, cb) {
-        System.import('./../course/index').then(loadRouteDash(cb)).catch(errorLoading);
-      }
-    },
-    {
-      path: '/courses-overview/',
-      getComponent(location, cb) {
-        System.import('./../courses-overview/index').then(loadRouteDash(cb)).catch(errorLoading);
-      }
-    },
-    {
       path: '*',
       getComponent(location, cb) {
+
         System.import('./../login/index').then(loadRouteDash(cb)).catch(errorLoading);
       }
     }

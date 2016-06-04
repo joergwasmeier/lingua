@@ -4,8 +4,7 @@ var webpack = require('webpack');
 module.exports = {
     output: {
         path: path.join(__dirname,'../../dist/web/'),
-        filename: 'bundle.js',
-        chunkFilename: 'bundle-[chunkhash].js'
+        filename: 'bundle.js'
     },
 
     debug: true,
@@ -15,9 +14,7 @@ module.exports = {
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.less']
     },
     entry: {
-        vendor: [
-            'react', 'react-dom','react-router','history','material-ui'
-        ],
+
 
         app: [
             'webpack-dev-server/client?http://localhost:8080/', // WebpackDevServer host and port
@@ -45,11 +42,13 @@ module.exports = {
     },
 
     plugins:[
-        new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin()
+        /*
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             minChunks: Infinity,
             filename: 'vendor.bundle.js'
         })
+        */
     ]
 };
