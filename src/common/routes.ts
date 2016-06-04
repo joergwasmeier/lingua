@@ -26,15 +26,26 @@ var secondroutes = {
   path: '/',
   component: Layout,
   indexRoute: { onEnter: (nextState, replace) => {
-     //location.assign("/login/")
+    //location.assign("/login/")
     browserHistory.push('#/login/')
   }
   },
   childRoutes: [
     {
+      path: '/login/',
+      getComponent(location, cb) {
+        System.import('./../login/index').then(loadRouteDash(cb)).catch(errorLoading);
+      }
+    },
+    {
+      path: '/dashboard/',
+      getComponent(location, cb) {
+        System.import('./../dashboard/index').then(loadRouteDash(cb)).catch(errorLoading);
+      }
+    },
+    {
       path: '*',
       getComponent(location, cb) {
-
         System.import('./../login/index').then(loadRouteDash(cb)).catch(errorLoading);
       }
     }
@@ -43,10 +54,26 @@ var secondroutes = {
 
 
 export function renderRoutes () {
-    if (document.getElementById('container')) {
-      var routes = React.createElement(Router, {routes: secondroutes, history:hashHistory});
+  if (document.getElementById('container')) {
+    var routes = React.createElement(Router, {routes: secondroutes, history:hashHistory});
 
-      var routes = React.createElement(Router, {routes: secondroutes, history:hashHistory});
-      ReactDOM.render(routes, document.getElementById('container'));
-    }
+    var routes = React.createElement(Router, {routes: secondroutes, history:hashHistory});
+    ReactDOM.render(routes, document.getElementById('container'));
+  }
 }
+
+/*
+ {
+ path: '/course/',
+ getComponent(location, cb) {
+ System.import('./../course/index').then(loadRouteDash(cb)).catch(errorLoading);
+ }
+ },
+ {
+ path: '/courses-overview/',
+ getComponent(location, cb) {
+ System.import('./../courses-overview/index').then(loadRouteDash(cb)).catch(errorLoading);
+ }
+ },
+
+ */

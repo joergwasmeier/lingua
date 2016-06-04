@@ -1,78 +1,80 @@
 import * as React from "react";
-import {AppBar} from "material-ui";
-import {AppModel} from "../common/AppModel";
-//import LeftNav from "material-ui/left-nav";
+
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+
 
 require('./Layout.less');
 
-interface IHistory{
+interface IHistory {
   push;
 
 }
 
 export default class Layout extends React.Component<{},{}> {
-    className:string = "App";
-    state = {
-        open: false,
-        loggedIn:false,
-        appTitle:""
-    };
+  className:string = "App";
+  state = {
+    open: false,
+    loggedIn: false
+  };
 
-    props:any;
+  props:any;
 
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    handleToggle = () => {
-        console.log("handle");
-        this.setState({open: !this.state.open});
-    };
+  handleToggle = () => {
+    console.log("handle");
+    this.setState({open: !this.state.open});
+  };
 
-    handleClose = () => this.setState({open: false});
+  handleClose = () => this.setState({open: false});
 
-    handleTouchTap() {
-        alert('onTouchTap triggered on the title component');
-    }
+  handleTouchTap() {
+    alert('onTouchTap triggered on the title component');
+  }
 
-    componentWillMount():void {
-      AppModel.getInstance().addChangeListener( () =>{
-        this.setState({"appTitle":AppModel.getInstance().appBarTitle});
-      } );
-    }
+  menuClickHandler(url:string) {
+    this.setState({open: false});
+    this.props.history.push(url);
+  }
 
-    componentWillUnmount():void {
-      AppModel.getInstance().removeChangeListener( () => this.forceUpdate());
-    }
+  renderMenu() {
+    //if (!AppModel.getInstance().busy) return;
 
-    menuClickHandler(url:string){
-      this.setState({open: false});
-      this.props.history.push("/"+url+"/");
-    }
+    return (
+      <div>
+        <AppBar
+          title="Title"
+          iconClassNameRight="muidocs-icon-navigation-expand-more"
+          onTitleTouchTap={this.handleToggle}
+        />
 
-    renderMenu(){
-        //if (!AppModel.getInstance().busy) return;
+        <Drawer open={this.state.open}
+                width={200}
+                docked={false}
+                onRequestChange={(open) => this.setState({open})}
+        >
+          <MenuItem>Menu Item</MenuItem>
+          <MenuItem>Menu Item 2</MenuItem>
+        </Drawer>
 
-        return (
-            <div>
-                <AppBar
-                    title={this.state.appTitle}
-                    iconClassNameRight="muidocs-icon-navigation-expand-more"
-                    onLeftIconButtonTouchTap={e => this.handleToggle()}
-                    className="AppBar"
-                />
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 
-    render() {
-        return (
-            <div className={`center ${this.className}`}>
-
-                {this.renderMenu()}
-
-                {this.props.children}
-            </div>
-        )
-    }
+  render() {
+    return (
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <div className={`center ${this.className}`}>
+        {this.renderMenu()}
+        {this.props.children}
+        </div>
+      </MuiThemeProvider>
+    )
+  }
 }

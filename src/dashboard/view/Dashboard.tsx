@@ -1,6 +1,6 @@
 import * as React from "react";
 import {ListItem, List, Divider} from "material-ui";
-import ActionInfo from "material-ui/lib/svg-icons/action/info";
+import ActionInfo from "material-ui/svg-icons/action/info";
 import {AppModel} from "../../common/AppModel";
 //import ActionAssignment from "material-ui/lib/svg-icons/action/assignment";
 var Chart =  require('chart.js/src/chart.js');

@@ -19,9 +19,12 @@
   "author": "",
   "license": "",
   "dependencies": {
+    "babel-polyfill": "^6.7.4",
+    "express": "^4.13.3",
+    "i18n-core": "^2.1.1",
     "koa": "^1.2.0",
     "object.assign": "^4.0.3",
-    "express": "^4.13.4"
+    "express": "^4.13.3"
   },
   "devDependencies": {
     "babel": "^6.5.2",

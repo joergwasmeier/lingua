@@ -63,7 +63,9 @@ export default class Login extends React.Component<{},{}> {
           type="password"
         />
 
-        <FlatButton className={classNames('loginButton', { progress: this.state.progress })}
+
+
+        <FlatButton
                     onTouchTap={(e) => this.loginBtHandler()}>
           <p className="content">LOGIN</p>
 
@@ -78,3 +80,5 @@ export default class Login extends React.Component<{},{}> {
     )
   }
 }
+
+//className={classNames('loginButton', { progress: this.state.progress })}
