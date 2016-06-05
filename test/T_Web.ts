@@ -12,7 +12,7 @@ describe("A suite", function() {
     });
 
     it("contains spec with an expectation", function() {
-        var web:A_Web = new A_Web();
+        //var web:A_Web = new A_Web();
 
        // console.log(FabaCore.mediators);
         expect(true).toBe(true);
