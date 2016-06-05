@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "deploy": "gulp --cwd config/gulp/ deploy-all",
+    "deploy": "gulp --cwd config/gulp/ develop-all",
     "deploy-frontend": "gulp --cwd config/gulp/ deploy-frontend",
     "deploy-backend": "gulp --cwd config/gulp/ deploy-backend",
     "test-new": "gulp --cwd config/gulp/test-all",
@@ -19,14 +19,13 @@
   "author": "",
   "license": "",
   "dependencies": {
-    "babel-polyfill": "^6.7.4",
     "express": "^4.13.3",
     "i18n-core": "^2.1.1",
     "koa": "^1.2.0",
-    "object.assign": "^4.0.3",
-    "express": "^4.13.3"
+    "object-assign": "^4.0.3"
   },
   "devDependencies": {
+    "object-assign": "^4.0.3",
     "babel": "^6.5.2",
     "babel-cli": "^6.9.0",
     "babel-core": "^6.9.1",
