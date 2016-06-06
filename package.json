@@ -43,8 +43,6 @@
     "compression-webpack-plugin": "^0.3.1",
     "css-loader": "^0.23.1",
     "deep-merge": "^1.0.0",
-    //"electron-packager": "^7.0.3",
-    //"electron-prebuilt": "^1.2.1",
     "expect": "*",
     "fabalous-core": "*",
     "file-loader": "^0.8.5",
