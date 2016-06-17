@@ -49,6 +49,9 @@
     },
     "material-ui/material-ui.d.ts": {
       "commit": "473232e5dbd179e9ee682fab12f796720f37b118"
+    },
+    "es6-shim/es6-shim.d.ts": {
+      "commit": "1315d46f8066eec8c197914da88e98629ebc2254"
     }
   }
 }

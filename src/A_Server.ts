@@ -2,7 +2,6 @@ import FabaCore from "fabalous-core/core/FabaCore";
 import FabaServer from "fabalous-core/runtimes/FabaServer";
 import DashboardMediator from "./dashboard/control/DasboardMediator";
 import LoginMediator from "./login/control/LoginMediator";
-require("babel-polyfill");
 
 /**
  * Created by joerg on 07.04.2016.
