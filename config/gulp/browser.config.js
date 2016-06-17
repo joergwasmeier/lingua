@@ -48,6 +48,25 @@ gulp.task('frontend-build', function(done) {
             ]
         };
 
+    myConfig.module = {
+        loaders: [
+            {   test: /\.less$/,
+                loader: 'style-loader!css-loader!less-loader'
+            },
+            {   test: /\.tsx?$/,
+                loader: 'ts-loader!preprocess?+CLIENT,+WEB'
+            },
+            {
+                test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+                loader: 'url-loader?limit=5000&name=assets/[name]-[hash].[ext]'
+            },
+            {
+                test: /\.html|json?$/,
+                loader: 'url-loader?limit=1&name=[name].[ext]!preprocess?+WEB'
+            }
+        ]
+    },
+
     myConfig.plugins = [
         new webpack.NoErrorsPlugin(),
         new webpack.optimize.DedupePlugin(),

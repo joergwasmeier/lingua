@@ -653,6 +653,7 @@ declare namespace __MaterialUI {
 
     interface FlatButtonProps extends React.DOMAttributes, SharedEnhancedButtonProps<FlatButton> {
         // <EnhancedButton/> is the element that get the 'other' properties
+        className?: string;
         backgroundColor?: string;
         disabled?: boolean;
         hoverColor?: string;
