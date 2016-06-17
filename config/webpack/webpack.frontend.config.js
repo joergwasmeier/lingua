@@ -9,7 +9,7 @@ module.exports = {
   },
 
   debug: true,
-  devtool: 'source-map',
+  devtool: 'eval',
 
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.less']
@@ -31,7 +31,7 @@ module.exports = {
         loader: 'style-loader!css-loader!less-loader'
       },
       {   test: /\.tsx?$/,
-        loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+CLIENT,+WEB'
+        loader: 'react-hot!ts-loader!preprocess?+CLIENT,+WEB'
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,

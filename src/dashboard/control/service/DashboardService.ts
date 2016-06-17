@@ -2,13 +2,17 @@ import FabaSerivce from "fabalous-core/core/FabaService";
 import GetDashboardDataEvent from "../event/GetDashboardDataEvent";
 
 export default class DashboardService extends FabaSerivce{
-  async execute(event:GetDashboardDataEvent) {
-    console.log("dashboard service er");
+    constructor() {
+        super();
+    }
 
-    //var nodeFS = require("fs");
-    //console.log(nodeFS);
-    event.test = "result";
-    super.sendToClient(event);
+    execute(event:GetDashboardDataEvent) {
+        console.log("dashboard service er");
+
+        //var nodeFS = require("fs");
+        //console.log(nodeFS);
+        event.test = "result";
+        super.sendToClient(event);
   }
   
 }

@@ -1,11 +1,17 @@
-import * as React from "react";
-import {ListItem, List, Divider} from "material-ui";
-import ActionInfo from "material-ui/svg-icons/action/info";
-import {AppModel} from "../../common/AppModel";
-//import ActionAssignment from "material-ui/lib/svg-icons/action/assignment";
-var Chart =  require('chart.js/src/chart.js');
+/*
+ * 
+ *
+ *
+ */
 
 require("./Dashboard.less");
+
+import * as React from "react";
+import {ListItem, List, Divider, Subheader} from "material-ui";
+import ActionInfo from "material-ui/svg-icons/action/info";
+import {AppModel} from "../../common/AppModel";
+
+var Chart = require('chart.js/src/chart.js');
 
 export default class Dashboard extends React.Component<{},{}> {
   className:string = "Dashboard";
@@ -51,38 +57,28 @@ export default class Dashboard extends React.Component<{},{}> {
       data: this.data,
       showInLegend: false,
       options: {
-        gridLines:{
-          display:false
+        gridLines: {
+          display: false
         }
       }
     });
   }
 
-  showCourse(e):void{
+  showCourse(e):void {
     console.log("course");
   }
 
-  renderCourses():Array<any>{
+  renderCourses():Array<any> {
     var rows:Array<any> = [];
 
-    /*
-    for (var i=0; i < 10; i++) {
-      rows.push(<ListItem
-        key={i}
-        leftAvatar={<Avatar icon={<ActionAssignment />} />}
-        rightIcon={<ActionInfo />}
-        primaryText="Italienisch für Anfänger"
-        secondaryText="Jan 20, 2014"
-        onTouchTap={(e) => this.showCourse(e)}
-      />);
-    }
-*/
-    for (var i=0; i < 10; i++) {
+    for (var i = 0; i < 10; i++) {
+      rows.push(<Divider key={"div"+i}/>);
+
       rows.push(<ListItem
         key={i}
         rightIcon={<ActionInfo />}
         primaryText="Italienisch für Anfänger"
-        secondaryText="Jan 20, 2014"
+        secondaryText="Jan 20, 2016"
         onTouchTap={(e) => this.showCourse(e)}
       />);
     }
@@ -94,13 +90,13 @@ export default class Dashboard extends React.Component<{},{}> {
     return (
       <div className={this.className}>
         <canvas id="myChart" width="400" height="400"></canvas>
+
         <br/>
-        <Divider />
-        <List subheader="Meine Kurse" insetSubheader={false}>
+
+        <List>
+          <Subheader>Recent chats</Subheader>
+
           {this.renderCourses()}
-
-
-
         </List>
       </div>
     );

@@ -7,80 +7,79 @@ var classNames = require('classnames');
 require('./Login.less');
 
 export default class Login extends React.Component<{},{}> {
-  className:string = "Home";
-  state = {
-    open: false,
-    loggedIn:false,
-    progress:false
-  };
+    className:string = "Home";
+    state = {
+        open: false,
+        loggedIn: false,
+        progress: false
+    };
 
-  props:any;
+    props:any;
 
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  componentWillMount():void {
-    AppModel.getInstance().addChangeListener( () => this.forceUpdate());
-  }
+    componentWillMount():void {
+        AppModel.getInstance().addChangeListener(() => this.forceUpdate());
+    }
 
-  componentWillUnmount():void {
-    AppModel.getInstance().removeChangeListener( () => this.forceUpdate());
-  }
+    componentWillUnmount():void {
+        AppModel.getInstance().removeChangeListener(() => this.forceUpdate());
+    }
 
-  loginBtHandler():void{
-    console.log("loginBtHandler");
+    loginBtHandler():void {
+        console.log("loginBtHandler");
 
-    this.setState({progress:true});
+        this.setState({progress: true});
 
-    setTimeout(()=>{
-      this.props.history.push("/dashboard/");
-    },2000);
+        setTimeout(()=> {
+            this.props.history.push("/dashboard/");
+        }, 2000);
 
-    new LoginEvent().dispatch(()=>{
+        new LoginEvent().dispatch(()=> {
 
-    });
-  }
+        });
+    }
 
-  render() {
-    return (
-      <div className={`center ${this.className}`}>
+    render() {
+        return (
+            <div className={`center ${this.className}`}>
 
-        <p className="header">LINGUA</p>
+                <p className="header">LINGUA</p>
 
-        <TextField
-          className="textField"
-          floatingLabelText="Username"
-          floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
-          inputStyle={{color:"rgba(255,255,255,0.8)"}}
-        />
+                <TextField
+                    className="textField"
+                    floatingLabelText="Username"
+                    floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
+                    inputStyle={{color:"rgba(255,255,255,0.8)"}}
+                />
 
-        <TextField
-          className="textField"
-          floatingLabelText="Password"
-          floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
-          inputStyle={{color:"rgba(255,255,255,0.8)"}}
-          type="password"
-        />
+                <TextField
+                    className="textField"
+                    floatingLabelText="Password"
+                    floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
+                    inputStyle={{color:"rgba(255,255,255,0.8)"}}
+                    type="password"
+                />
 
 
+                <FlatButton
+                    className="sdfsf"
+                    backgroundColor="#a4c639"
+                    onTouchTap={(e) => this.loginBtHandler()}>
+                    <p className="content">LOGIN</p>
 
-        <FlatButton
-          className="sdfsf"
-          backgroundColor="#a4c639"
-          onTouchTap={(e) => this.loginBtHandler()}>
-          <p className="content">LOGIN</p>
+                    <div className="spinner"></div>
+                </FlatButton>
 
-          <div className="spinner"></div>
-        </FlatButton>
+                <p className="signUp">
+                    Don´t have an account? Sign UP!
+                </p>
 
-        <p className="signUp">
-          Don´t have an account? Sign UP!
-        </p>
-
-      </div>
-    )
-  }
+            </div>
+        )
+    }
 }
 
 //className={classNames('loginButton', { progress: this.state.progress })}

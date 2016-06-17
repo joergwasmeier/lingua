@@ -53,6 +53,7 @@ export default class Layout extends React.Component<{},{}> {
           title="Title"
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           onTitleTouchTap={this.handleToggle}
+          style={{position:"fixed"}}
         />
 
         <Drawer open={this.state.open}
