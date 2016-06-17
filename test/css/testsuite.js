@@ -88,18 +88,17 @@ casper.test.begin( 'Lingua online test', function ( test ) {
 		this.echo("Error: " + msg, "ERROR");
 	});
 
-	casper.start( 'http://lingua.joergwasmeier.de/' );
-	casper.start( 'http://localhost:8080/#/login/?_k=d02v53' );
+	//casper.start( 'http://localhost:8080/#/login/?_k=d02v53' );
 
-	//casper.start( 'https://google.de' );
+	casper.start( 'https://google.de' );
 
 	casper.viewport( 1024, 768 );
 
 	casper.then( function () {
 
-		casper.waitForSelector( '#container > div > div.center.Home > p.header',
-			function success() {
-				phantomcss.screenshot( '#container', 'coffee machine dialog' );
+		casper.waitForSelector( 'body',
+			function then() {
+				phantomcss.screenshot( 'body', 'coffee machine dialog' );
 			},
 			function timeout() {
 				casper.capture('/tmp/navigation.png');
