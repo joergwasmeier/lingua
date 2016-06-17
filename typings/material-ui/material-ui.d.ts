@@ -670,6 +670,7 @@ declare namespace __MaterialUI {
         rippleColor?: string;
         secondary?: boolean;
         style?: React.CSSProperties;
+        className: string;
     }
     export class FlatButton extends React.Component<FlatButtonProps, {}> {
     }

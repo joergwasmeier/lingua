@@ -66,7 +66,9 @@ export default class Login extends React.Component<{},{}> {
 
 
         <FlatButton
-                    onTouchTap={(e) => this.loginBtHandler()}>
+          className="sdfsf"
+          backgroundColor="#a4c639"
+          onTouchTap={(e) => this.loginBtHandler()}>
           <p className="content">LOGIN</p>
 
           <div className="spinner"></div>

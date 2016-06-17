@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import {AppModel} from "../common/AppModel";
 
 
 require('./Layout.less');
@@ -44,7 +45,7 @@ export default class Layout extends React.Component<{},{}> {
   }
 
   renderMenu() {
-    //if (!AppModel.getInstance().busy) return;
+    if (!AppModel.getInstance().busy) return;
 
     return (
       <div>
