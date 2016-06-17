@@ -20,7 +20,7 @@ module.exports = {
         __dirname: true,
         __filename: true
     },
-    devtool: 'source-map',
+    devtool: 'eval',
     resolve: {
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
     },
@@ -28,7 +28,7 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader', exclude: /node_modules/},
-            { test: /\.tsx?$/, loader: 'babel?presets[]=es2015!ts-loader!preprocess?+SERVER'}
+            { test: /\.tsx?$/, loader: 'ts-loader!preprocess?+SERVER'}
         ]
     }
 };
