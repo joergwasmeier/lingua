@@ -18,13 +18,22 @@ module.exports = {
             './test/T_Web.ts' // Your appʼs entry point
         ]
     },
+
+    externals: {
+        'cheerio': 'window',
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
+    },
+
+
     module: {
         loaders: [
             {   test: /\.less$/,
                 loader: 'style-loader!css-loader!less-loader'
             },
             {   test: /\.tsx?$/,
-                loader: 'ts-loader!preprocess?+CLIENT,+WEB'
+                loader: 'ts-loader!preprocess?+CLIENT,+WEB,+TEST'
             },
             {
                 test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,

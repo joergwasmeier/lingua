@@ -17,15 +17,17 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'node_modules/babel-polyfill/dist/polyfill.js',
-      'test/T_Web.ts',
-      'compiled/index.html'
+      'src/**/*Spec.ts',
+      'src/**/*Spec.tsx'
+
     ],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'test/T_Web.ts': ['webpack']
+      'src/**/*Spec.ts': ['webpack'],
+      'src/**/*Spec.tsx': ['webpack']
+
     },
 
     webpack: webpackConfig,
@@ -48,7 +50,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // start these browsers
@@ -58,6 +60,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    singleRun: false
   })
 };

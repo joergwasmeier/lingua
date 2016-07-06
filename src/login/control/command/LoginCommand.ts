@@ -15,7 +15,9 @@ export default class LoginCommand extends FabaCommand {
   }
 
   result(event:LoginEvent) {
-
+    console.log("result");
+    console.log(event);
+    event.cbs();
   }
 
   timeout(event:LoginEvent) {

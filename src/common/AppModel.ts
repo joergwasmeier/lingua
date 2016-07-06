@@ -1,5 +1,6 @@
 import FabaModel from "fabalous-core/core/FabaModel";
 import FabaBindable from "fabalous-core/decorators/FabaBindable";
+import MenuVo from "../menu/vo/MenuVo";
 /**
  * Created by creativecode on 20.04.16.
  */
@@ -7,7 +8,9 @@ import FabaBindable from "fabalous-core/decorators/FabaBindable";
 
 export class AppModel extends FabaModel {
   private static _instance:AppModel = new AppModel();
-
+  
+  menuStore:MenuVo = new MenuVo();
+  
   @FabaBindable
   userLoggedIn:boolean;
 

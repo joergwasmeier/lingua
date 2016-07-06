@@ -19,21 +19,18 @@ export default class Dashboard extends React.Component<{},{}> {
   data = {
     labels: [
       "",
-      "",
       ""
     ],
     datasets: [
       {
-        data: [300, 50, 100],
+        data: [300, 50],
         backgroundColor: [
-          "#FF6384",
-          "#36A2EB",
-          "#FFCE56"
+          "#330033",
+          "#eeeeee"
         ],
         hoverBackgroundColor: [
-          "#FF6384",
-          "#36A2EB",
-          "#FFCE56"
+          "#330033",
+          "#eeeeee"
         ]
       }]
   };
@@ -45,17 +42,17 @@ export default class Dashboard extends React.Component<{},{}> {
   componentDidMount():void {
     AppModel.getInstance().appBarTitle = "Übersicht - Dash";
 
+
+    // Chart rerender
     window.addEventListener("resize", (e) => {
-      console.log("resize");
       super.forceUpdate();
     });
-
 
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
       type: 'doughnut',
       data: this.data,
-      showInLegend: false,
+      showInLegend: true,
       options: {
         gridLines: {
           display: false

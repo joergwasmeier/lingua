@@ -1,5 +1,5 @@
 import * as React from "react";
-import {FlatButton, TextField, CircularProgress} from "material-ui";
+import {FlatButton, TextField} from "material-ui";
 import LoginEvent from "../control/event/LoginEvent";
 import {AppModel} from "../../common/AppModel";
 
@@ -34,11 +34,11 @@ export default class Login extends React.Component<{},{}> {
         this.setState({progress: true});
 
         setTimeout(()=> {
-            this.props.history.push("/dashboard/");
+           // this.props.history.push("/dashboard/");
         }, 2000);
 
         new LoginEvent().dispatch(()=> {
-
+          this.props.history.push("/dashboard/");
         });
     }
 

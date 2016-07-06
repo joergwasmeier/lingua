@@ -1,8 +1,8 @@
 import FabaMediator from "fabalous-core/core/FabaMediator";
 import {IFabaMediator} from "fabalous-core/core/IFabaMediator";
-import LoginEvent from "./event/LoginEvent";
+import GetMenuDataEvent from "./event/GetMenuDataEvent";
 
-export default class LoginMediator extends FabaMediator implements IFabaMediator{
+export default class MenuMediator extends FabaMediator implements IFabaMediator{
 
   constructor() {
     super();
@@ -11,18 +11,14 @@ export default class LoginMediator extends FabaMediator implements IFabaMediator
   // @ifdef CLIENT
   registerCommands():void {
     super.registerCommands();
-    this.addCommand(LoginEvent, require("./command/LoginCommand.ts").default);
+    this.addCommand(GetMenuDataEvent, require("./commad/GetMenuDataCommand.ts").default);
   }
   // @endif
 
 
   // @ifdef SERVER
   registerServices():void {
-    console.log("register Service");
-
-
     super.registerServices();
-    this.addSerivce(LoginEvent, require("./service/LoginService.ts").default);
   }
   // @endif
 

@@ -22,6 +22,8 @@
     "express": "^4.13.3",
     "i18n-core": "^2.1.1",
     "koa": "^1.2.0",
+    "mobx": "^2.3.2",
+    "mobx-react": "^3.3.1",
     "object-assign": "^4.0.3"
   },
   "devDependencies": {
@@ -33,6 +35,7 @@
     "compression-webpack-plugin": "^0.3.1",
     "css-loader": "^0.23.1",
     "deep-merge": "^1.0.0",
+    "enzyme": "^2.3.0",
     "expect": "*",
     "fabalous-core": "*",
     "file-loader": "^0.8.5",
@@ -79,7 +82,7 @@
     "react-addons-create-fragment": "^15.1.0",
     "react-addons-css-transition-group": "^15.1.0",
     "react-addons-pure-render-mixin": "^15.1.0",
-    "react-addons-test-utils": "^15.1.0",
+    "react-addons-test-utils": "^15.2.0",
     "react-addons-transition-group": "^15.1.0",
     "react-addons-update": "^15.1.0",
     "react-dom": "^15.1.0",

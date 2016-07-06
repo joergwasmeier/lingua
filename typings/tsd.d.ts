@@ -14,3 +14,5 @@
 /// <reference path="react/react.d.ts" />
 /// <reference path="serve-static/serve-static.d.ts" />
 /// <reference path="systemjs/systemjs.d.ts" />
+/// <reference path="enzyme/enzyme.d.ts" />
+
