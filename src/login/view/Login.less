@@ -1,4 +1,4 @@
-html{
+html {
   height: 100%;
 }
 
@@ -7,113 +7,122 @@ input:-webkit-autofill {
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px rgba(100,100,100,1) inset !important;
+  -webkit-box-shadow: 0 0 0 1000px rgba(100, 100, 100, 1) inset !important;
 }
 
-body{
+body {
   width: 100%;
   height: 100%;
 }
 
-.container{
+.container {
   height: 100%;
 }
 
-.App{
+.App {
   height: 100%;
 }
 
-.Home{
+.Home {
   height: 100vh;
   min-height: 500px;
 
   text-align: center;
 
-  @media (min-width: 440px)  {
-    max-width: 440px;
-    left: 50%;
-    position: relative;
-    margin-left: -220px;
-    -webkit-filter: drop-shadow(0px 12px 7px rgba(0,0,0,0.5));
-
-  }
-
   background-image: url("./bg.jpg");
   background-size: cover;
   background-clip: content-box;
 
-  .header{
+  .header {
     font-size: 48px;
     text-align: center;
-    color: rgba(255,255,255,0.95);
+    color: rgba(255, 255, 255, 0.95);
     line-height: 200px;
     margin-bottom: 0px;
   }
 
-  .textField{
+  .textField {
     width: calc(~"100% - 32px") !important;
     margin-left: 16px;
     margin-right: 16px;
   }
 
-  >button{
-    width: calc(~"100% - 32px") !important;
-    margin-left: 16px !important;
-    margin-right: 16px !important;
+  >.content {
+    @media (min-width: 440px)  {
+      max-width: 440px;
+      left: 50%;
+      position: relative;
+      margin-left: -220px;
+    }
 
-    height: 50px;
-    margin-top: 32px !important;
-    background-color: #00B7FF !important;
-    color: #ffffff!important;
+    > button {
+      width: calc(~"100% - 32px") !important;
+      margin-left: 16px !important;
+      margin-right: 16px !important;
 
-    transition: all 0.2s;
+      height: 50px;
+      margin-top: 32px !important;
+      background-color: #00B7FF !important;
+      color: #ffffff !important;
 
-    .content{
       transition: all 0.2s;
-      opacity: 1;
-    }
 
-    &.progress{
-      overflow: hidden;
-      width: 50px !important;
-      border-radius: 40px !important;
-      min-width: 50px !important;
-      .content{
-        opacity: 0;
+      .content {
+        transition: all 0.2s;
+        opacity: 1;
       }
 
-      .spinner{
-        opacity: 0;
-        width: 20px;
-        height: 20px;
-        background-color: #ffffff;
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        border: #ffffff solid 5px;
-        border-radius: 30px;
-        animation-name: bgcolor, opacity;
-        animation-duration: 0.5s, 0.2s;
-        animation-delay: 0s, 0.3s;
-        animation-iteration-count: infinite, 1;
-        animation-direction: alternate, normal;
-        animation-fill-mode:forwards,forwards;
-
-        @keyframes bgcolor {
-          from {background-color: #00B7FF;}
-          to {background-color: #ffffff;}
+      &.progress {
+        overflow: hidden;
+        width: 50px !important;
+        border-radius: 40px !important;
+        min-width: 50px !important;
+        .content {
+          opacity: 0;
         }
 
-        @keyframes opacity {
-          from {opacity: 0;}
-          to {opacity: 1;}
-        }
+        .spinner {
+          opacity: 0;
+          width: 20px;
+          height: 20px;
+          background-color: #ffffff;
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          border: #ffffff solid 5px;
+          border-radius: 30px;
+          animation-name: bgcolor, opacity;
+          animation-duration: 0.5s, 0.2s;
+          animation-delay: 0s, 0.3s;
+          animation-iteration-count: infinite, 1;
+          animation-direction: alternate, normal;
+          animation-fill-mode: forwards, forwards;
 
+          @keyframes bgcolor {
+            from {
+              background-color: #00B7FF;
+            }
+            to {
+              background-color: #ffffff;
+            }
+          }
+
+          @keyframes opacity {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+
+        }
       }
     }
+
   }
 
-  .signUp{
+  .signUp {
     margin-top: 32px;
     text-align: center;
     font-size: 12px;

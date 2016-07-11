@@ -6,10 +6,7 @@ export default class MenuVo extends FabaValueObject {
   public profil:ProfileVo;
 
   public courses:Array<MenuItemVo>;
-
   public createdCourses:Array<MenuItemVo>;
-
-  public staticItems:Array<MenuItemVo>;
 
   constructor(){
     super();
@@ -29,11 +26,6 @@ export default class MenuVo extends FabaValueObject {
     this.createdCourses = [];
     for (var i = 0; i < 5; i++) {
       this.createdCourses.push(new MenuItemVo().createMockData(MenuItemTypesVo.CREATE_COURSE));
-    }
-
-    this.staticItems = [];
-    for (var i = 0; i < 5; i++) {
-      this.staticItems.push(new MenuItemVo().createMockData(MenuItemTypesVo.STATIC));
     }
   }
   // @endif

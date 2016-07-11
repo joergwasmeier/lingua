@@ -45,37 +45,38 @@ export default class Login extends React.Component<{},{}> {
     render() {
         return (
             <div className={`center ${this.className}`}>
+                <div className="content">
+                  <p className="header">LINGUA</p>
 
-                <p className="header">LINGUA</p>
+                  <TextField
+                      className="textField"
+                      floatingLabelText="Username"
+                      floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
+                      inputStyle={{color:"rgba(255,255,255,0.8)"}}
+                  />
 
-                <TextField
-                    className="textField"
-                    floatingLabelText="Username"
-                    floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
-                    inputStyle={{color:"rgba(255,255,255,0.8)"}}
-                />
-
-                <TextField
-                    className="textField"
-                    floatingLabelText="Password"
-                    floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
-                    inputStyle={{color:"rgba(255,255,255,0.8)"}}
-                    type="password"
-                />
+                  <TextField
+                      className="textField"
+                      floatingLabelText="Password"
+                      floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
+                      inputStyle={{color:"rgba(255,255,255,0.8)"}}
+                      type="password"
+                  />
 
 
-                <FlatButton
-                    className="sdfsf"
-                    backgroundColor="#a4c639"
-                    onTouchTap={(e) => this.loginBtHandler()}>
-                    <p className="content">LOGIN</p>
+                  <FlatButton
+                      className="sdfsf"
+                      backgroundColor="#a4c639"
+                      onTouchTap={(e) => this.loginBtHandler()}>
+                      <p className="content">LOGIN</p>
 
-                    <div className="spinner"></div>
-                </FlatButton>
+                      <div className="spinner"></div>
+                  </FlatButton>
 
-                <p className="signUp">
-                    Don´t have an account? Sign UP!
-                </p>
+                  <p className="signUp">
+                      Don´t have an account? Sign UP!
+                  </p>
+                </div>
 
             </div>
         )

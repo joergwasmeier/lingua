@@ -20,7 +20,7 @@ export default class Menu extends React.Component<{},{}> {
   }
 
   componentWillMount():void {
-    
+
   }
 
   componentWillUnmount():void {
@@ -28,7 +28,6 @@ export default class Menu extends React.Component<{},{}> {
   }
 
   handleToggle = () => {
-    console.log("handleToggle");
     this.setState({open: !this.state.open});
   };
 
@@ -39,65 +38,79 @@ export default class Menu extends React.Component<{},{}> {
     this.props.history.push(url);
   }
 
-  dockerWidth():number{
+  dockerWidth():number {
     var calcWidth:number = window.innerWidth - 80;
     return (calcWidth > 400) ? 400 : calcWidth;
   }
 
-  renderCourses(){
+  renderCourses() {
     var items:Array<any> = [];
-    
+    var id = 1;
+
     for (var course in AppModel.getInstance().menuStore.courses) {
-      items.push(<MenuItem>course.headLine</MenuItem>)
+      items.push(<MenuItem key={"course"+id}>course.headLine</MenuItem>);
+      id++;
     }
+
+    return items;
+  }
+
+  renderCreateCourses() {
+    var items:Array<any> = [];
+    var id = 1;
+
+    for (var course in AppModel.getInstance().menuStore.createdCourses) {
+      items.push(<MenuItem key={"createdCourses"+id}>course.headLine</MenuItem>);
+      id++;
+    }
+
+    return items;
   }
 
   render() {
+    if (!AppModel.getInstance().userLoggedIn) return null;
+
     return (
-        <div className={`center ${this.className}`}>
+      <div className={`center ${this.className}`}>
+        <AppBar
+          title="Title"
+          iconClassNameRight="muidocs-icon-navigation-expand-more"
+          onTitleTouchTap={this.handleToggle}
+          style={{position:"fixed"}}
+          className="appBar"
+          onLeftIconButtonTouchTap={this.handleToggle}
+        />
 
-          <AppBar
-            title="Title"
-            iconClassNameRight="muidocs-icon-navigation-expand-more"
-            onTitleTouchTap={this.handleToggle}
-            style={{position:"fixed"}}
-            className="appBar"
-            onLeftIconButtonTouchTap={this.handleToggle}
-          />
-
-          <Drawer open={this.state.open}
-                  width={this.dockerWidth()}
-                  docked={true}
-                  onRequestChange={(open) => this.setState({open})}
-                  className="drawer"
-          >
-            <div className="menuHeader">
-              <div className="profil">
-                <img className="profilPic" src={AppModel.getInstance().menuStore.profil.picture} />
-                <p>{AppModel.getInstance().menuStore.profil.fullName()}</p>
-                <p>{AppModel.getInstance().menuStore.profil.learnPoints}</p>
-              </div>
+        <Drawer open={this.state.open}
+                width={this.dockerWidth()}
+                docked={true}
+                onRequestChange={(open) => this.setState({open})}
+                className="drawer"
+        >
+          <div className="menuHeader">
+            <div className="profil">
+              <img className="profilPic" src={AppModel.getInstance().menuStore.profil.picture}/>
+              <p>{AppModel.getInstance().menuStore.profil.fullName()}</p>
+              <p>{AppModel.getInstance().menuStore.profil.learnPoints}</p>
             </div>
+          </div>
 
 
-            <MenuItem>Dashboard</MenuItem>
-            <Divider/>
-            <Subheader>Heruntergeladene Kurse</Subheader>
-            <ListItem primaryText="Italienisch für Anfänger" rightIcon={<ActionInfo />}></ListItem>
-            {this.renderCourses()}
-            <MenuItem>Kurse Store</MenuItem>
-            <MenuItem>Kurse Store</MenuItem>
-            <MenuItem>Kurse Store</MenuItem>
-            <Divider/>
-            <Subheader>Kurse erstellen</Subheader>
-            <MenuItem>Kurse Store</MenuItem>
-            <Divider/>
-            <MenuItem>Kurse Store</MenuItem>
-            <MenuItem>Einstellungen</MenuItem>
-            <MenuItem>Hilfe & Feedback</MenuItem>
-          </Drawer>
+          <MenuItem>Dashboard</MenuItem>
+          <Divider/>
+          <Subheader>Heruntergeladene Kurse</Subheader>
+          <ListItem primaryText="Italienisch für Anfänger" rightIcon={<ActionInfo />}></ListItem>
+          {this.renderCourses()}
+          <Divider/>
+          <Subheader>Kurse erstellen</Subheader>
+          {this.renderCreateCourses()}
+          <Divider/>
+          <MenuItem>Kurse Store</MenuItem>
+          <MenuItem>Einstellungen</MenuItem>
+          <MenuItem>Hilfe & Feedback</MenuItem>
+        </Drawer>
 
-        </div>
-      )
+      </div>
+    )
   }
 }

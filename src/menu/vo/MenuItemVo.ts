@@ -20,9 +20,7 @@ export class MenuItemVo extends FabaValueObject {
       case MenuItemTypesVo.COURSE:
 
       case MenuItemTypesVo.CREATE_COURSE:
-
-      case MenuItemTypesVo.STATIC:
-
+        
     }
 
     return this;
@@ -32,6 +30,5 @@ export class MenuItemVo extends FabaValueObject {
 
 export enum MenuItemTypesVo{
   COURSE,
-  CREATE_COURSE,
-  STATIC
+  CREATE_COURSE
 }

@@ -25,6 +25,8 @@ export default class Layout extends React.Component<{},{}> {
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
+
+
         <div className={`center ${this.className}`}>
           <Menu />
           <div className="content">
