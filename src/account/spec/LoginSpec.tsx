@@ -31,7 +31,7 @@ describe("Test Login Component", function() {
   it("Login should Fail // no Password", function() {
     AppModel.getInstance().loginStore.userName = "Test";
     AppModel.getInstance().loginStore.password = "";
-    var dm = ReactDOM.findDOMNode(wrapper.find('.loginBt').node);
+    var dm = ReactDOM.findDOMNode(wrapper.find('.loginButton').node);
     TestUtils.Simulate["touchTap"](dm);
 
     expect(loginIns.state.error).toBeTruthy();
@@ -40,7 +40,7 @@ describe("Test Login Component", function() {
   it("Login should Fail // no Username", function() {
     AppModel.getInstance().loginStore.userName = "";
     AppModel.getInstance().loginStore.password = "Test";
-    var dm = ReactDOM.findDOMNode(wrapper.find('.loginBt').node);
+    var dm = ReactDOM.findDOMNode(wrapper.find('.loginButton').node);
     TestUtils.Simulate["touchTap"](dm);
 
     expect(loginIns.state.error).toBeTruthy();
@@ -49,7 +49,7 @@ describe("Test Login Component", function() {
   it("Login should success", function() {
     AppModel.getInstance().loginStore.userName = "Test12345";
     AppModel.getInstance().loginStore.password = "Test$12345";
-    var dm = ReactDOM.findDOMNode(wrapper.find('.loginBt').node);
+    var dm = ReactDOM.findDOMNode(wrapper.find('.loginButton').node);
     TestUtils.Simulate["touchTap"](dm);
 
     expect(loginIns.state.progress).toBeTruthy();
