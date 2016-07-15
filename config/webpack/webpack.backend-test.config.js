@@ -28,7 +28,7 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader', exclude: /node_modules/},
-            { test: /\.tsx?$/, loader: 'ts-loader!preprocess?+SERVER'}
+            { test: /\.tsx?$/, loader: 'awesome-typescript-loader!preprocess?+SERVER'}
         ]
     }
 };

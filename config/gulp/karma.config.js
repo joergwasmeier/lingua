@@ -10,3 +10,9 @@ gulp.task('testKarma', function(done) {
         configFile: __dirname + '/../karma/karma.conf.js'
     }, done).start();
 });
+
+gulp.task('testKarma-tdd', function(done) {
+    new Server({
+        configFile: __dirname + '/../karma/karma-tdd.conf.js'
+    }, done).start();
+});

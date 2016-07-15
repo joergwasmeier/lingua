@@ -38,11 +38,11 @@ module.exports = {
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
     },
     recordsPath: path.join(__dirname, '../../dist/node/_records'),
-    quiet: true,
+    quiet: false,
     module: {
         loaders: [
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader', exclude: /node_modules/},
-            { test: /\.tsx?$/, loader: 'ts-loader!preprocess?+SERVER'}
+            { test: /\.tsx?$/, loader: 'awesome-typescript-loader!preprocess?+SERVER'}
         ]
     }
 };

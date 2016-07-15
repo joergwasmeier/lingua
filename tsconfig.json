@@ -13,25 +13,14 @@
     "suppressImplicitAnyIndexErrors": true,
     "outDir": "./build/js/",
     "rootDir": "./",
-    "moduleResolution": "node"
-
+    "moduleResolution": "node",
+    "baseUrl": "./src/",
+    "paths": {
+      "fabalous-core": ["./node_modules/fabalous-core/"],
+      "material-ui": ["./node_modules/material-ui/"]
+      }
   },
-  "path": {
-    "projectA": "/src"
-  },
-
-  "filesGlob": [
-    "./**/*.ts",
-    "./**/*.tsx",
-    "!./node_modules/**/*.ts"
-  ],
-
-  "rootDirs": [
-    "./src/"
-  ],
-
-  "paths": {
-    "*": ["*"]
+  "awesomeTypescriptLoaderOptions": {
   },
   "exclude": ["test"],
   "files": [

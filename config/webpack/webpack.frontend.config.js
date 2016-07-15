@@ -31,7 +31,7 @@ module.exports = {
         loader: 'style-loader!css-loader!less-loader'
       },
       {   test: /\.tsx?$/,
-        loader: 'react-hot!ts-loader!preprocess?+CLIENT,+WEB'
+        loader: 'react-hot!awesome-typescript-loader!preprocess?+CLIENT,+WEB'
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,

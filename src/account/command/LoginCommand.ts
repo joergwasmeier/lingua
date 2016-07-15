@@ -1,6 +1,6 @@
 import FabaCommand from "fabalous-core/core/FabaCommand";
 import LoginEvent from "./../event/LoginEvent";
-import {AppModel} from "./../../../common/AppModel";
+import {AppModel} from "./../../common/AppModel";
 
 /**
  * Created by creativecode on 11.04.16.

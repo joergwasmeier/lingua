@@ -18,9 +18,6 @@ export default class LoginMediator extends FabaMediator implements IFabaMediator
 
   // @ifdef SERVER
   registerServices():void {
-    console.log("register Service");
-
-
     super.registerServices();
     this.addSerivce(LoginEvent, require("./service/LoginService.ts").default);
   }

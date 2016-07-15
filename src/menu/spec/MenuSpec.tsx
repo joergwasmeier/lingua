@@ -19,6 +19,7 @@ describe("Test Menu Component", function() {
   beforeEach(()=> {
     AppModel.getInstance().menuStore = new MenuVo();
     AppModel.getInstance().menuStore.createMockData();
+    AppModel.getInstance().userLoggedIn = true;
 
     wrapper = mount(
       <MuiThemeProvider muiTheme={getMuiTheme()}>

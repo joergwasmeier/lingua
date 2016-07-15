@@ -1,4 +1,6 @@
-/// <reference path="es6-shim/es6-shim.d.ts" />
+/// <reference path="../node_modules/typescript/lib/lib.es2015.promise.d.ts" />
+
+
 /// <reference path="express-serve-static-core/express-serve-static-core.d.ts" />
 /// <reference path="express/express.d.ts" />
 /// <reference path="github-electron/github-electron.d.ts" />

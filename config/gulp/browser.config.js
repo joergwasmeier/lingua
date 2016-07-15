@@ -27,7 +27,7 @@ gulp.task('frontend-watch', function() {
         stats: {
             colors: true
         },
-        stats: false
+        stats: true
 
     }).listen(8080, "localhost", function(err) {
         if (err) console.error(err);
@@ -54,7 +54,7 @@ gulp.task('frontend-build', function(done) {
                 loader: 'style-loader!css-loader!less-loader'
             },
             {   test: /\.tsx?$/,
-                loader: 'ts-loader!preprocess?+CLIENT,+WEB'
+                loader: 'awesome-typescript-loader!preprocess?+CLIENT,+WEB'
             },
             {
                 test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
