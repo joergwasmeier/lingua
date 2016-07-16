@@ -46,6 +46,7 @@ describe("Test Login Component", function() {
     expect(loginIns.state.error).toBeTruthy();
   });
 
+/*
   it("Login should success", function() {
     AppModel.getInstance().loginStore.userName = "Test12345";
     AppModel.getInstance().loginStore.password = "Test$12345";
@@ -54,7 +55,7 @@ describe("Test Login Component", function() {
 
     expect(loginIns.state.progress).toBeTruthy();
   });
-
+*/
 
 });
 
