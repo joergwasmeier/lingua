@@ -1,29 +1,11 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "sourceMap": true,
-    "jsx": "react",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "declaration": false,
-    "noImplicitAny": false,
-    "removeComments": true,
-    "noLib": false,
-    "preserveConstEnums": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "outDir": "./build/js/",
-    "rootDir": "./",
-    "moduleResolution": "node",
-    "baseUrl": "./src/",
-    "paths": {
-      "fabalous-core": ["./node_modules/fabalous-core/"],
-      "material-ui": ["./node_modules/material-ui/"]
-      }
-  },
-  "awesomeTypescriptLoaderOptions": {
-  },
-  "exclude": ["test"],
-  "files": [
-    "typings/tsd.d.ts"
-  ]
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "noImplicitAny": false,
+        "sourceMap": false
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }

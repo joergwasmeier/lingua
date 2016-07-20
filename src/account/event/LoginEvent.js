@@ -12,6 +12,6 @@ var LoginEvent = (function (_super) {
         this.identifyer = "LoginEvent";
     }
     return LoginEvent;
-}(FabaEvent_1["default"]));
-exports.__esModule = true;
-exports["default"] = LoginEvent;
+}(FabaEvent_1.default));
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = LoginEvent;

@@ -1,7 +1,7 @@
 import FabaModel from "fabalous-core/core/FabaModel";
 import FabaBindable from "fabalous-core/decorators/FabaBindable";
 import MenuVo from "../menu/vo/MenuVo";
-import LoginVo from "../account/vo/LoginVo";
+import AccountStore from "../account/AccountStore";
 /**
  * Created by creativecode on 20.04.16.
  */
@@ -9,11 +9,10 @@ import LoginVo from "../account/vo/LoginVo";
 
 export class AppModel extends FabaModel {
   private static _instance:AppModel = new AppModel();
-  
+
+  accountStore:AccountStore;
+
   menuStore:MenuVo = new MenuVo();
-
-  loginStore:LoginVo = new LoginVo();
-
 
   @FabaBindable
   userLoggedIn:boolean;
@@ -42,13 +41,6 @@ export class AppModel extends FabaModel {
   public static getInstance():AppModel {
     return AppModel._instance;
   }
-
-
-  addChangeListener(cb) {
-    return super.addChangeListener(cb);
-  }
-
-  removeChangeListener(cb) {
-    return super.removeChangeListener(cb);
-  }
 }
+
+export var model = AppModel.getInstance();

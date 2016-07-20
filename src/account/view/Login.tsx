@@ -1,11 +1,13 @@
 import * as React from "react";
 import {FlatButton, TextField} from "material-ui";
-import {AppModel} from "../../common/AppModel";
+import {model} from "../../common/AppModel";
 import LoginEvent from "../event/LoginEvent";
+import {observer} from "mobx-react/index";
 import SyntheticEvent = __React.SyntheticEvent;
 var classNames = require('classnames');
 require('./Login.less');
 
+@observer
 export default class Login extends React.Component<{},{}> {
     className:string = "Home";
     state = {
@@ -24,29 +26,21 @@ export default class Login extends React.Component<{},{}> {
         this.passWordChange = this.passWordChange.bind(this);
     }
 
-    componentWillMount():void {
-        AppModel.getInstance().addChangeListener(() => this.forceUpdate());
-    }
-
-    componentWillUnmount():void {
-        AppModel.getInstance().removeChangeListener(() => this.forceUpdate());
-    }
-
     checkUserPassLength():boolean{
-      if (AppModel.getInstance().loginStore.userName.length <= 8) return false;
-      if (AppModel.getInstance().loginStore.password.length <= 6) return false;
+      if (model.accountStore.login.userName.length <= 8) return false;
+      if (model.accountStore.login.password.length <= 6) return false;
 
       return true;
     }
 
     userNameChange(e):void{
-      AppModel.getInstance().loginStore.userName = e.currentTarget.value;
+      model.accountStore.login.userName = e.currentTarget.value;
       e.preventDefault();
       this.forceUpdate();
     }
 
     passWordChange(e):void{
-      AppModel.getInstance().loginStore.password = e.currentTarget.value;
+      model.accountStore.login.password = e.currentTarget.value;
       e.preventDefault();
       this.forceUpdate();
     }
@@ -61,12 +55,8 @@ export default class Login extends React.Component<{},{}> {
 
         this.setState({progress: true});
 
-        setTimeout(()=> {
-           // this.props.history.push("/dashboard/");
-        }, 2000);
-
         new LoginEvent().dispatch(()=> {
-          //this.props.history.push("/dashboard/");
+          this.props.history.push("/dashboard/");
         });
     }
 
@@ -92,7 +82,7 @@ export default class Login extends React.Component<{},{}> {
                       floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
                       floatingLabelFixed={true}
                       inputStyle={{color:"rgba(255,255,255,0.8)"}}
-                      value={AppModel.getInstance().loginStore.userName}
+                      value={model.accountStore.login.userName}
                       onChange={this.userNameChange}
                   />
  
@@ -103,7 +93,7 @@ export default class Login extends React.Component<{},{}> {
                       floatingLabelFixed={true}
                       inputStyle={{color:"rgba(255,255,255,0.8)"}}
                       type="password"
-                      value={AppModel.getInstance().loginStore.password}
+                      value={model.accountStore.login.password}
                       onChange={this.passWordChange}
                   />
 

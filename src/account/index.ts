@@ -4,7 +4,8 @@
 
 
 module.exports = {
-  mediator: require('./LoginMediator'),
+  mediator: require('./AccountMediator'),
+  store: require('./AccountStore'),
   view: require('./view/Login'),
   signUp: require('./view/SignUp'),
   forgotPass: require('./view/ForgotPass')

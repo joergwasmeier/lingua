@@ -1,6 +1,10 @@
 var path = require('path');
 var webpack = require('webpack');
 
+function root(p) {
+  return path.join(__dirname, p);
+}
+
 module.exports = {
   output: {
     path: path.join(__dirname,'../../dist/web/'),
@@ -8,11 +12,19 @@ module.exports = {
     chunkFilename: 'bundle-[chunkhash].js'
   },
 
-  debug: true,
-  devtool: 'eval',
+  debug: false,
+  devtool: 'source-map',
 
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.less']
+    modules:[
+      'node_modules'
+    ],
+    root: root('app'),
+    modulesDirectories: ['node_modules', './src'],
+    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.less'],
+    root: [
+        path.join(__dirname, 'node_modules')
+    ]
   },
   entry: {
     vendor: [
@@ -30,8 +42,8 @@ module.exports = {
       {   test: /\.less$/,
         loader: 'style-loader!css-loader!less-loader'
       },
-      {   test: /\.tsx?$/,
-        loader: 'react-hot!awesome-typescript-loader!preprocess?+CLIENT,+WEB'
+      {   test: /\.ts?$/,
+        loader: 'react-hot!awesome-typescript-loader'
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
@@ -45,6 +57,12 @@ module.exports = {
   },
 
   plugins:[
+    new webpack.DefinePlugin({
+      VERSION: JSON.stringify("5fa3b9"),
+      BROWSER_SUPPORTS_HTML5: true,
+      TWO: "1+1",
+      "typeof window": JSON.stringify("object")
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

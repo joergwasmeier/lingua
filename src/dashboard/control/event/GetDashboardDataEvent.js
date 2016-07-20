@@ -14,6 +14,6 @@ var GetDashboardDataEvent = (function (_super) {
         this.test = "super";
     }
     return GetDashboardDataEvent;
-}(FabaEvent_1["default"]));
-exports.__esModule = true;
-exports["default"] = GetDashboardDataEvent;
+}(FabaEvent_1.default));
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = GetDashboardDataEvent;

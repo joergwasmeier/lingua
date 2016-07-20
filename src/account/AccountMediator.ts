@@ -2,7 +2,7 @@ import FabaMediator from "fabalous-core/core/FabaMediator";
 import {IFabaMediator} from "fabalous-core/core/IFabaMediator";
 import LoginEvent from "./event/LoginEvent";
 
-export default class LoginMediator extends FabaMediator implements IFabaMediator{
+export default class AccountMediator extends FabaMediator implements IFabaMediator{
 
   constructor() {
     super();
@@ -22,5 +22,4 @@ export default class LoginMediator extends FabaMediator implements IFabaMediator
     this.addSerivce(LoginEvent, require("./service/LoginService.ts").default);
   }
   // @endif
-
 }

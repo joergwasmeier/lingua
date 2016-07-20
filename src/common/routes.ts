@@ -13,6 +13,8 @@ function loadRouteDash(cb, view?:string) {
   return (module) => {
     var med:FabaMediator = new module.mediator.default;
     FabaCore.addMediator(med);
+    new module.store.default;
+
     if (view){
       cb(null, module[view].default);
     } else {
@@ -36,6 +38,7 @@ var secondroutes = {
   childRoutes: [
     {
       path: '/login/',
+
       getComponent(location, cb) {
         System.import('./../account/index').then(loadRouteDash(cb)).catch(errorLoading);
       }

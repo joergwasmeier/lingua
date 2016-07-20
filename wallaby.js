@@ -21,17 +21,12 @@ module.exports = function (wallaby) {
         ],
 
         tests: [
-            {pattern: 'test/browser/*Spec.ts'}
+            {pattern: 'src/**/*Spec.ts'},
+            {pattern: 'src/**/*Spec.tsx'}
         ],
 
         preprocessors: {
-            '**/*.js': function(file) {
-                return require("babel-core").transform(file.content, {
-                    sourceMap: false,
-                    presets: ["es2015", "react"],
-                    compact: false
-                });
-            },
+
             'src/**/*.ts': function(file) {
                 return pp.preprocess(file.content, {CLIENT:true}, {type: 'ts'});
             },
