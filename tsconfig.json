@@ -20,10 +20,6 @@
             "material-ui": ["./node_modules/material-ui/"]
         }
     },
-    "awesomeTypescriptLoaderOptions": {
-        "useBabel":true,
-        "useCache":true
-    },
     "exclude": ["node_modules"],
     "files": [
         "typings/tsd.d.ts"
