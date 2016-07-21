@@ -13,13 +13,13 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
   registerCommands():void {
     if(CLIENT){
       super.registerCommands();
-      this.addCommand(LoginEvent, new LoginCommand());
+      this.addCommand(LoginEvent, LoginCommand);
     }
   }
   registerServices():void {
     if(SERVER) {
       super.registerServices();
-      this.addSerivce(LoginEvent, new LoginService());
+      this.addSerivce(LoginEvent, LoginService);
     }
   }
 }

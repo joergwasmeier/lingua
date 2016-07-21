@@ -19,7 +19,7 @@ module.exports = {
 
 
 
-  //devtool: 'source-map',
+  devtool: 'source-map',
 
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.less'],
@@ -50,7 +50,7 @@ module.exports = {
             path.resolve(__dirname, "../../src")
           ],
         test: /\.tsx?$/,
-        loader: 'react-hot!babel?cache&presets[]=es2015!awesome-typescript-loader'
+        loader: 'react-hot!babel?presets[]=es2015!awesome-typescript-loader'
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
