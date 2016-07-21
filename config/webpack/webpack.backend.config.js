@@ -44,7 +44,7 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader', exclude: /node_modules/},
-            { test: /\.tsx?$/, loader: 'react-hot!babel?presets[]=es2015!awesome-typescript-loader'}
+            { test: /\.tsx?$/, loader: 'babel?presets[]=es2015!awesome-typescript-loader'}
         ]
     },
     plugins:[

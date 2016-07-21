@@ -1,7 +1,7 @@
 import * as React from "react";
 import {AppBar, Drawer, MenuItem, Divider, Subheader, ListItem} from "material-ui";
 import ActionInfo from "material-ui/svg-icons/action/info";
-import {AppModel} from "../../common/AppModel";
+import {model} from "../../common/AppModel";
 
 var classNames = require('classnames');
 
@@ -13,18 +13,10 @@ export default class Menu extends React.Component<{},{}> {
     loggedIn: false
   };
 
-  props:any
+  props:any;
 
   constructor(props) {
     super(props);
-  }
-
-  componentWillMount():void {
-
-  }
-
-  componentWillUnmount():void {
-
   }
 
   handleToggle = () => {
@@ -47,7 +39,7 @@ export default class Menu extends React.Component<{},{}> {
     var items:Array<any> = [];
     var id = 1;
 
-    for (var course in AppModel.getInstance().menuStore.courses) {
+    for (var course in model.menuStore.courses) {
       items.push(<MenuItem key={"course"+id}>course.headLine</MenuItem>);
       id++;
     }
@@ -59,7 +51,7 @@ export default class Menu extends React.Component<{},{}> {
     var items:Array<any> = [];
     var id = 1;
 
-    for (var course in AppModel.getInstance().menuStore.createdCourses) {
+    for (var course in model.menuStore.createdCourses) {
       items.push(<MenuItem key={"createdCourses"+id}>course.headLine</MenuItem>);
       id++;
     }
@@ -68,7 +60,7 @@ export default class Menu extends React.Component<{},{}> {
   }
 
   render() {
-    if (!AppModel.getInstance().userLoggedIn) return null;
+    if (!model.userLoggedIn) return null;
 
     return (
       <div className={`center ${this.className}`}>
@@ -89,9 +81,9 @@ export default class Menu extends React.Component<{},{}> {
         >
           <div className="menuHeader">
             <div className="profil">
-              <img className="profilPic" src={AppModel.getInstance().menuStore.profil.picture}/>
-              <p>{AppModel.getInstance().menuStore.profil.fullName()}</p>
-              <p>{AppModel.getInstance().menuStore.profil.learnPoints}</p>
+              <img className="profilPic" src={model.menuStore.profil.picture}/>
+              <p>{model.menuStore.profil.fullName()}</p>
+              <p>{model.menuStore.profil.learnPoints}</p>
             </div>
           </div>
 

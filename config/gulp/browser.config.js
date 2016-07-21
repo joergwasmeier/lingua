@@ -46,19 +46,24 @@ gulp.task('frontend-build', function(done) {
 
     myConfig.module = {
         loaders: [
-            {   test: /\.less$/,
-                loader: 'style-loader!css-loader!less-loader'
+            {
+                test: /\.less$/,
+                loader: 'style-loader!css-loader!less-loader',
+                exclude: /node_modules/
             },
-            {   test: /\.tsx?$/,
-                loader: 'awesome-typescript-loader!preprocess?+CLIENT,+WEB'
+            {
+                test: /\.tsx?$/,
+                loader: 'react-hot!babel?presets[]=es2015!awesome-typescript-loader'
             },
             {
                 test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
-                loader: 'url-loader?limit=5000&name=assets/[name]-[hash].[ext]'
+                loader: 'url-loader?limit=5000&name=assets/[name]-[hash].[ext]',
+                exclude: /node_modules/
             },
             {
                 test: /\.html|json?$/,
-                loader: 'url-loader?limit=1&name=[name].[ext]!preprocess?+WEB'
+                loader: 'url-loader?limit=1&name=[name].[ext]!preprocess?+WEB',
+                exclude: /node_modules/
             }
         ]
     },
@@ -68,7 +73,10 @@ gulp.task('frontend-build', function(done) {
         new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({
             'process.env': { NODE_ENV: JSON.stringify('production') },
-            DEBUG: false
+            DEBUG: false,
+            CLIENT: true,
+            SERVER:false,
+            TEST:false
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',

@@ -6,12 +6,13 @@ import MenuStore from "../menu/MenuStore";
  */
 
 
-export class AppModel extends FabaModel {
+class AppModel extends FabaModel {
   private static _instance:AppModel = new AppModel();
 
   accountStore:AccountStore;
-
   menuStore:MenuStore;
+
+  userLoggedIn:Boolean;
 
   constructor( ) {
     super();

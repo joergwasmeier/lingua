@@ -9,7 +9,6 @@ require("./Dashboard.less");
 import * as React from "react";
 import {ListItem, List, Divider, Subheader} from "material-ui";
 import ActionInfo from "material-ui/svg-icons/action/info";
-import {AppModel} from "../../common/AppModel";
 
 var Chart = require('chart.js/src/chart.js');
 
@@ -40,7 +39,7 @@ export default class Dashboard extends React.Component<{},{}> {
   }
 
   componentDidMount():void {
-    AppModel.getInstance().appBarTitle = "Übersicht - Dash";
+    //AppModel.getInstance().appBarTitle = "Übersicht - Dash";
 
 
     // Chart rerender
