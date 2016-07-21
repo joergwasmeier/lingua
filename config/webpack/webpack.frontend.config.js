@@ -1,6 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
 var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var extractLESS = new ExtractTextPlugin({filename:'[name].css',disable: false, allChunks: true});
 
 function root(p) {
   return path.join(__dirname, p);
@@ -20,7 +22,7 @@ module.exports = {
   },
   entry: {
     vendor: [
-      'react', 'react-dom','react-router','history','material-ui'
+      'react', 'react-dom','react-router', 'history', 'material-ui', 'mobx'
     ],
 
     app: [
@@ -34,7 +36,9 @@ module.exports = {
       {
         test: /\.less$/,
         loader: 'style-loader!css-loader!less-loader',
+        //        loader: extractLESS.extract(['css','less']),
         exclude: /node_modules/
+
       },
       {
         test: /\.tsx?$/,
@@ -67,6 +71,7 @@ module.exports = {
       minChunks: Infinity,
       filename: 'vendor.bundle.js'
     }),
+    //extractLESS
 
    // new webpack.optimize.UglifyJsPlugin()
   ]
