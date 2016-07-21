@@ -3,10 +3,10 @@ import * as ReactDOM from "react-dom";
 import {mount} from "enzyme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import {AppModel} from "../../common/AppModel";
-import MenuVo from "../vo/MenuVo";
 import Menu from "./../view/Menu";
 import {MenuItem} from "material-ui";
+import MenuStore from "../MenuStore";
+import {model} from "../../common/AppModel";
 
 var TestUtils = require("react-addons-test-utils");
 
@@ -18,9 +18,9 @@ describe("Test Menu Component", function() {
   injectTapEventPlugin();
 
   beforeEach(()=> {
-    AppModel.getInstance().menuStore = new MenuVo();
-    AppModel.getInstance().menuStore.createMockData();
-    AppModel.getInstance().userLoggedIn = true;
+    model.menuStore = new MenuStore();
+    model.menuStore.createMockData();
+    model.userLoggedIn = true;
 
     wrapper = mount(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
@@ -32,10 +32,11 @@ describe("Test Menu Component", function() {
   });
 
   it("Menu mockdata should be there", function() {
-    expect(AppModel.getInstance().menuStore).toBeDefined();
+    expect(model.menuStore).toBeDefined();
 
-    expect(AppModel.getInstance().menuStore.courses.length).toEqual(5);
-    expect(AppModel.getInstance().menuStore.createdCourses.length).toEqual(5);
+
+    expect(model.menuStore.courses.length).toEqual(5);
+    expect(model.menuStore.createdCourses.length).toEqual(5);
   });
 
   it("Menu handleToggle should be defined", function() {
