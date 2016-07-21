@@ -8,6 +8,8 @@ function root(p) {
   return path.join(__dirname, p);
 }
 
+console.log(path.resolve(__dirname, "../../node_modules/fabalous-core"));
+
 module.exports = {
   output: {
     path: path.join(__dirname,'../../dist/web/'),
@@ -15,11 +17,14 @@ module.exports = {
     chunkFilename: 'bundle-[chunkhash].js'
   },
 
+
+
   //devtool: 'source-map',
 
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.less'],
   },
+
   entry: {
     vendor: [
       'react', 'react-dom','react-router', 'history', 'material-ui', 'mobx'
@@ -36,17 +41,20 @@ module.exports = {
       {
         test: /\.less$/,
         loader: 'style-loader!css-loader!less-loader',
-        //        loader: extractLESS.extract(['css','less']),
         exclude: /node_modules/
-
       },
       {
+        //exclude: /node_modules/,
+        include:[
+            path.resolve(__dirname, "../../node_modules/fabalous-core"),
+            path.resolve(__dirname, "../../src")
+          ],
         test: /\.tsx?$/,
-        loader: 'react-hot!babel?presets[]=es2015!awesome-typescript-loader'
+        loader: 'react-hot!babel?cache&presets[]=es2015!awesome-typescript-loader'
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
-        loader: 'url-loader?limit=5000&name=assets/[name]-[hash].[ext]',
+        loader: 'url-loader?limit=10000&name=assets/[name]-[hash].[ext]',
         exclude: /node_modules/
       },
       {
@@ -68,9 +76,13 @@ module.exports = {
 
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: Infinity,
+      minChunks: 3,
+      minChunkSize: 50000,
       filename: 'vendor.bundle.js'
     }),
+    //new webpack.optimize.AggressiveMergingPlugin(),
+    new webpack.NamedModulesPlugin()
+
     //extractLESS
 
    // new webpack.optimize.UglifyJsPlugin()

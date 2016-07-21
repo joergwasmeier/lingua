@@ -41,7 +41,6 @@ export default class Dashboard extends React.Component<{},{}> {
   componentDidMount():void {
     //AppModel.getInstance().appBarTitle = "Übersicht - Dash";
 
-
     // Chart rerender
     window.addEventListener("resize", (e) => {
       super.forceUpdate();

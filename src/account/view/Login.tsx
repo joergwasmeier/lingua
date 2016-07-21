@@ -60,7 +60,7 @@ export default class Login extends React.Component<{},{}> {
         return (
             <div className={`center ${this.className}`}>
                 <div className="content">
-                  <p className="header">LINGUA</p>
+                  <p className="header">LINGUA 2</p>
 
                   <TextField
                       className="textField"

@@ -15,13 +15,13 @@ export default class LoginCommand extends FabaCommand {
       return;
     }
 
-    model.accountStore.login.errorCode = 1;
+    model.accountStore.login.errorCode = 2;
     event.cbs();
   }
 
   checkUserPassLength():boolean{
-    if (model.accountStore.login.userName.length <= 8) return false;
-    if (model.accountStore.login.password.length <= 6) return false;
+    if (model.accountStore.login.userName.length <= 2) return false;
+    if (model.accountStore.login.password.length <= 2) return false;
 
     return true;
   }
