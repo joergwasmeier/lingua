@@ -7,5 +7,4 @@ export default class LoginService extends FabaSerivce{
     console.log("Login service");
     super.sendToClient(event);
   }
-
 }

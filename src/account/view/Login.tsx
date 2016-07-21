@@ -11,13 +11,11 @@ require('./Login.less');
 export default class Login extends React.Component<{},{}> {
     className:string = "Home";
     state = {
-        open: false,
-        loggedIn: false,
         progress: false,
         error: false
     };
 
-    props:any;
+    props;
 
     constructor(props) {
         super(props);
@@ -26,38 +24,26 @@ export default class Login extends React.Component<{},{}> {
         this.passWordChange = this.passWordChange.bind(this);
     }
 
-    checkUserPassLength():boolean{
-      if (model.accountStore.login.userName.length <= 8) return false;
-      if (model.accountStore.login.password.length <= 6) return false;
-
-      return true;
-    }
-
     userNameChange(e):void{
+      this.setState({error:false});
       model.accountStore.login.userName = e.currentTarget.value;
-      e.preventDefault();
-      this.forceUpdate();
     }
 
     passWordChange(e):void{
+      this.setState({error:false});
       model.accountStore.login.password = e.currentTarget.value;
-      e.preventDefault();
-      this.forceUpdate();
     }
 
     loginBtHandler():void {
-        this.setState({error: false});
-
-        if (!this.checkUserPassLength()){
-          this.setState({error: true});
-          return;
-        }
-
-        this.setState({progress: true});
-
-        new LoginEvent().dispatch(()=> {
+      this.setState({error:false, progress:true});
+      new LoginEvent().dispatch(() =>{
+        if (model.accountStore.login.errorCode > 0){
+          this.setState({error:true, progress:false});
+        } else {
+          this.setState({error:false, progress:false});
           this.props.history.push("/dashboard/");
-        });
+        }
+      });
     }
 
     renderError(){

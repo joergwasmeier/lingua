@@ -8,18 +8,16 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
     super();
   }
 
-  // @ifdef CLIENT
   registerCommands():void {
-    super.registerCommands();
-    this.addCommand(LoginEvent, require("./command/LoginCommand.ts").default);
+    if(CLIENT){
+      super.registerCommands();
+      this.addCommand(LoginEvent, require("./command/LoginCommand.ts").default);
+    }
   }
-  // @endif
-
-
-  // @ifdef SERVER
   registerServices():void {
-    super.registerServices();
-    this.addSerivce(LoginEvent, require("./service/LoginService.ts").default);
+    if(SERVER) {
+      super.registerServices();
+      this.addSerivce(LoginEvent, require("./service/LoginService.ts").default);
+    }
   }
-  // @endif
 }

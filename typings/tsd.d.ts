@@ -1,6 +1,4 @@
 /// <reference path="../node_modules/typescript/lib/lib.es2015.promise.d.ts" />
-
-
 /// <reference path="express-serve-static-core/express-serve-static-core.d.ts" />
 /// <reference path="express/express.d.ts" />
 /// <reference path="github-electron/github-electron.d.ts" />
@@ -18,4 +16,8 @@
 /// <reference path="serve-static/serve-static.d.ts" />
 /// <reference path="systemjs/systemjs.d.ts" />
 /// <reference path="enzyme/enzyme.d.ts" />
+
+declare var CLIENT: boolean;
+declare var SERVER: boolean;
+declare var TEST: boolean;
 

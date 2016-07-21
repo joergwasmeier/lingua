@@ -4,5 +4,6 @@
 
 module.exports = {
   mediator: require('./MenuMediator.ts'),
+  store: require('./AccountStore'),
   view: require('./view/Menu.tsx')
 };

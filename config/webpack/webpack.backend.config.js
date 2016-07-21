@@ -1,5 +1,7 @@
 var path = require('path');
 var fs = require('fs');
+var webpack = require('webpack');
+var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
 var nodeModules = fs.readdirSync('node_modules')
     .filter(function(x) {
@@ -42,7 +44,16 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader', exclude: /node_modules/},
-            { test: /\.tsx?$/, loader: 'ts-loader!preprocess?+DEBUG&NODE_ENV=production'}
+            { test: /\.tsx?$/, loader: 'react-hot!babel?presets[]=es2015!awesome-typescript-loader'}
         ]
-    }
+    },
+    plugins:[
+        new ForkCheckerPlugin(),
+        new webpack.DefinePlugin({
+            CLIENT: false,
+            SERVER: true,
+            TEST:false
+        })
+        // new webpack.optimize.UglifyJsPlugin()
+    ]
 };

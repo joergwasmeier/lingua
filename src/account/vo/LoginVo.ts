@@ -9,14 +9,15 @@ export default class LoginVo extends FabaValueObject {
   @observable
   password:string = "";
 
+  errorCode:number = 0;
+
   constructor(){
     super();
   }
 
-  // @ifdef TEST
   public createMockData(){
+    if (TEST){
 
+    }
   }
-  // @endif
-
 }

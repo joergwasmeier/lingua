@@ -8,6 +8,13 @@ require('./SignUp.less');
 export default class SignUp extends React.Component<{},{}> {
   className:string = "Home";
 
+  state = {
+    progress: false,
+    error: false
+  };
+
+  props;
+
   constructor(props) {
     super(props);
 

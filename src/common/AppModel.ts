@@ -1,7 +1,6 @@
 import FabaModel from "fabalous-core/core/FabaModel";
-import FabaBindable from "fabalous-core/decorators/FabaBindable";
-import MenuVo from "../menu/vo/MenuVo";
 import AccountStore from "../account/AccountStore";
+import MenuStore from "../menu/MenuStore";
 /**
  * Created by creativecode on 20.04.16.
  */
@@ -12,22 +11,7 @@ export class AppModel extends FabaModel {
 
   accountStore:AccountStore;
 
-  menuStore:MenuVo = new MenuVo();
-
-  @FabaBindable
-  userLoggedIn:boolean;
-
-  @FabaBindable
-  name:string;
-
-  @FabaBindable
-  busy:boolean;
-
-  @FabaBindable
-  userName:string;
-
-  @FabaBindable
-  appBarTitle:string;
+  menuStore:MenuStore;
 
   constructor( ) {
     super();

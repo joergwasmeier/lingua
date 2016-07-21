@@ -25,10 +25,10 @@ export default class SignUpVo extends FabaValueObject {
     return false;
   }
 
-  // @ifdef TEST
   public createMockData(){
-    this.userName = "info@joergwasmeier.de";
-    this.password = "test12345";
+    if(TEST){
+      this.userName = "info@joergwasmeier.de";
+      this.password = "test12345";
+    }
   }
-  // @endif
 }

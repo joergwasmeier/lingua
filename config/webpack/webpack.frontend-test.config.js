@@ -29,20 +29,27 @@ module.exports = {
 
     module: {
         loaders: [
-            {   test: /\.less$/,
-                loader: 'style-loader!css-loader!less-loader'
+            {
+                test: /\.less$/,
+                loader: 'css-loader!less-loader',
+                exclude: /node_modules/
             },
-            {   test: /\.tsx?$/,
-                loader: 'awesome-typescript-loader!preprocess?+CLIENT,+WEB,+TEST'
+            {
+                test: /\.tsx?$/,
+                loader: 'babel?presets[]=es2015!awesome-typescript-loader'
             },
             {
                 test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
-                loader: 'url-loader?limit=5000&name=assets/[name]-[hash].[ext]'
-            },
-            {
-                test: /\.html|json?$/,
-                loader: 'url-loader?limit=1&name=[name].[ext]!preprocess?+WEB'
+                loader: 'url-loader?limit=5000&name=assets/[name]-[hash].[ext]',
+                exclude: /node_modules/
             }
         ]
-    }
+    },
+    plugins:[
+        new webpack.DefinePlugin({
+            CLIENT: true,
+            SERVER:false,
+            TEST:true
+        })
+    ]
 };

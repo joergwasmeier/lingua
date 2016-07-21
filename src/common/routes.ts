@@ -13,7 +13,7 @@ function loadRouteDash(cb, view?:string) {
   return (module) => {
     var med:FabaMediator = new module.mediator.default;
     FabaCore.addMediator(med);
-    new module.store.default;
+    if (module.store) new module.store.default;
 
     if (view){
       cb(null, module[view].default);

@@ -7,7 +7,8 @@ import {AppModel} from "../../common/AppModel";
 import MenuVo from "../vo/MenuVo";
 import Menu from "./../view/Menu";
 import {MenuItem} from "material-ui";
-import TestUtils = require("react-addons-test-utils");
+
+var TestUtils = require("react-addons-test-utils");
 
 describe("Test Menu Component", function() {
   var wrapper;

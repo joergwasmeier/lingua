@@ -1,9 +1,13 @@
 import * as React from "react";
 import {mount} from "enzyme";
+import {model} from "../../common/AppModel";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import ForgotPass from "../view/ForgotPass";
-import TestUtils = require("react-addons-test-utils");
+import AccountMediator from "../AccountMediator";
+import AccountStore from "../AccountStore";
+import FabaCore from "fabalous-core/core/FabaCore";
+var TestUtils = require("react-addons-test-utils");
 
 describe("ForgotPass Component", function() {
   var wrapper;
@@ -12,7 +16,11 @@ describe("ForgotPass Component", function() {
   let injectTapEventPlugin = require("react-tap-event-plugin");
   injectTapEventPlugin();
 
+  FabaCore.addMediator(new AccountMediator());
+
   beforeEach(()=> {
+    model.accountStore = new AccountStore();
+
     wrapper = mount(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <ForgotPass />

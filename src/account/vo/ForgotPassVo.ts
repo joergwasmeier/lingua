@@ -16,10 +16,9 @@ export default class ForgotPassVo extends FabaValueObject {
     return false;
   }
 
-  // @ifdef TEST
   public createMockData(){
-    this.userName = "info@joergwasmeier.de";
+    if (TEST){
+      this.userName = "info@joergwasmeier.de";
+    }
   }
-  // @endif
-
 }
