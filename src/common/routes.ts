@@ -11,14 +11,18 @@ function loadRoute(cb) {
 
 function loadRouteDash(cb, view?:string) {
   return (module) => {
-    var med:FabaMediator = new module.mediator.default;
+    var med:FabaMediator = new module.mediator;
     FabaCore.addMediator(med);
-    if (module.store) new module.store.default;
+
+    if (module.store) new module.store;
+
+    // dispatch INIT event
+    if (module.initEvent) new module.initEvent;
 
     if (view){
-      cb(null, module[view].default);
+      cb(null, module[view]);
     } else {
-      cb(null, module.view.default);
+      cb(null, module.view);
     }
   }
 }

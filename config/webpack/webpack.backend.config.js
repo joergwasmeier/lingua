@@ -44,7 +44,14 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader', exclude: /node_modules/},
-            { test: /\.tsx?$/, loader: 'babel?presets[]=es2015!awesome-typescript-loader'}
+            {
+                include:[
+                    path.resolve(__dirname, "../../node_modules/fabalous-core"),
+                    path.resolve(__dirname, "../../src")
+                ],
+                test: /\.tsx?$/,
+                loader: 'babel?presets[]=es2015!awesome-typescript-loader'
+            }
         ]
     },
     plugins:[

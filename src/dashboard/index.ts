@@ -3,7 +3,12 @@
  */
 
 
+import GetDashboardDataEvent from "./event/GetDashboardDataEvent";
+import Dashboard from "./view/Dashboard";
+import DashboardMediator from "./DasboardMediator";
+
 module.exports = {
-  mediator: require('./control/DasboardMediator.ts'),
-  view: require('./view/Dashboard.tsx')
+  mediator: DashboardMediator,
+  view: Dashboard,
+  initEvent: GetDashboardDataEvent
 };

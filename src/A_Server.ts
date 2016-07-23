@@ -1,6 +1,6 @@
 import FabaCore from "fabalous-core/core/FabaCore";
 import FabaServer from "fabalous-core/runtimes/FabaServer";
-import DashboardMediator from "./dashboard/control/DasboardMediator";
+import DashboardMediator from "./dashboard/DasboardMediator";
 import AccountMediator from "./account/AccountMediator";
 
 /**
