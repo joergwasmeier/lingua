@@ -12,14 +12,17 @@ export default class DashboardMediator extends FabaMediator implements IFabaMedi
   }
 
   registerCommands():void {
-    super.registerCommands();
-    this.addCommand(GetDashboardDataEvent, DashboardCommand);
+    if(CLIENT){
+      super.registerCommands();
+      this.addCommand(GetDashboardDataEvent, DashboardCommand);
+    }
   }
 
-
   registerServices():void {
-    super.registerServices();
-    this.addSerivce(GetDashboardDataEvent, DashboardService);
+    if(SERVER) {
+      super.registerServices();
+      this.addSerivce(GetDashboardDataEvent, DashboardService);
+    }
   }
 
 }
