@@ -1,24 +1,20 @@
 var wallabyWebpack = require('wallaby-webpack');
+var pp = require('preprocess');
+
 var webpack = require('webpack');
 
 var wallabyPostprocessor = wallabyWebpack({
-
     resolve: {
-        extensions: ['', '.ts', '.tsx', '.js', '.less']
+        extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.less'],
     },
 
     devtool: 'source-map',
-
-    externals: {
-        // Use external version of React instead of rebuilding it
-        "react": "React"
-    },
 
     module: {
         loaders: [
             {
                 test: /\.less$/,
-                loader: 'noop-loader',
+                loader: 'style-loader!css-loader!less-loader',
                 exclude: /node_modules/
             },
             {
@@ -27,24 +23,19 @@ var wallabyPostprocessor = wallabyWebpack({
             },
             {
                 test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
-                loader: 'noop-loader',
+                loader: 'url-loader?limit=10000&name=assets/[name]-[hash].[ext]',
                 exclude: /node_modules/
             },
             {
                 test: /\.html|json?$/,
-                loader: 'noop-loader',
+                loader: 'url-loader?limit=1&name=[name].[ext]!preprocess?+WEB',
                 exclude: /node_modules/
             }
         ]
     },
 
     plugins: [
-        new webpack.NormalModuleReplacementPlugin(/\.(gif|png|less|css)$/, 'node-noop'),
-        new webpack.DefinePlugin({
-            CLIENT: true,
-            SERVER:false,
-            TEST:true
-        })
+        new webpack.NormalModuleReplacementPlugin(/\.(gif|png|less|css)$/, 'node-noop')
     ]
 });
 
@@ -58,40 +49,21 @@ module.exports = function (wallaby) {
 
         files: [
             {pattern: 'src/**/*.ts*', load:false},
-            {pattern: 'src/**/*Spec.ts*', ignore:true},
-            {pattern: 'node_modules/react/dist/react-with-addons.js', instrument: false}
-
+            {pattern: 'src/**/*Spec.ts*', ignore:true}
         ],
 
         tests: [
-            {pattern: './src/**/*Spec.ts*', load:false}
+            {pattern: 'src/**/*Spec.ts*'}
         ],
 
-        /*
+        postprocessor: wallabyPostprocessor,
+
         env: {
             runner: require('phantomjs2-ext').path,
             params: { runner: '--web-security=false' }
         },
-        */
 
-        preprocessors: {
-            '**/*.js': function(file) {
-                return require("babel-core").transform(file.content, {
-                    sourceMap: true,
-                    presets: ["es2015", "react"],
-                    compact: false
-                });
-            }
-        },
-
-        compilers: {
-            '**/*.js*': wallaby.compilers.babel()
-        },
-
-        postprocessor: wallabyPostprocessor,
-
-
-        //testFramework: 'jasmine',
+        testFramework: 'jasmine',
 
         bootstrap: function () {
             window.__moduleBundler.loadTests();

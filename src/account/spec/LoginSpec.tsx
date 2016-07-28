@@ -5,12 +5,12 @@ import {model} from "../../common/AppModel";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import Login from "../view/Login";
-import AccountStore from "../AccountStore";
 import AccountMediator from "../AccountMediator";
 import FabaCore from "fabalous-core/core/FabaCore";
+import InitAccountEvent from "../event/InitAccountEvent";
 var TestUtils = require("react-addons-test-utils");
 
-describe("Test Login Component", function() {
+describe("Login View", function() {
   var wrapper;
   var loginIns:Login;
 
@@ -18,9 +18,9 @@ describe("Test Login Component", function() {
   injectTapEventPlugin();
 
   FabaCore.addMediator(new AccountMediator());
+  new InitAccountEvent().dispatch();
 
   beforeEach(()=> {
-    model.accountStore = new AccountStore();
 
     wrapper = mount(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
@@ -31,7 +31,7 @@ describe("Test Login Component", function() {
     loginIns = wrapper.find(Login).get(0) as Login;
   });
 
-  it("Login should be there", function() {
+  it("Login View should be there", function() {
     expect(loginIns).toBeDefined();
   });
 
@@ -50,7 +50,6 @@ describe("Test Login Component", function() {
       expect(loginIns.state.error).toBeTruthy();
       resolve();
     }, 100);
-
   });
 
   it("Login should Fail // no Username", function() {
@@ -70,5 +69,6 @@ describe("Test Login Component", function() {
 
    // expect(loginIns.state.progress).toBeTruthy();
   });
+
 
 });

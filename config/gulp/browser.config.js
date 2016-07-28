@@ -21,9 +21,22 @@ gulp.task('frontend-watch', function() {
         publicPath: '/',
         contentBase: path.join(__dirname,'../../dist/web/'),
         hot: true,
-        progress: false,
-        debug: false,
-        stats: true
+        stats: {
+            colors: true,
+            hash: false,
+            version: false,
+            timings: false,
+            assets: false,
+            chunks: false,
+            modules: false,
+            reasons: false,
+            children: false,
+            source: false,
+            errors: false,
+            errorDetails: false,
+            warnings: false,
+            publicPath: false
+        }
 
     }).listen(8080, "localhost", function(err) {
         if (err) console.error(err);

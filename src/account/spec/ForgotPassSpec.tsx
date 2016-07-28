@@ -9,7 +9,7 @@ import AccountStore from "../AccountStore";
 import FabaCore from "fabalous-core/core/FabaCore";
 var TestUtils = require("react-addons-test-utils");
 
-describe("ForgotPass Component", function() {
+describe("ForgotPass View", function() {
   var wrapper;
   var instance:ForgotPass;
 

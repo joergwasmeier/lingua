@@ -16,7 +16,23 @@ module.exports = {
     filename: 'bundle.js',
     chunkFilename: 'bundle-[chunkhash].js'
   },
+  /*
+  externals:{
+    "react":"react",
+    "react-router":"react-router",
+    "react-dom":"react-dom",
+    "material-ui":"material-ui",
+    "moment":"moment",
+    "mobx":"mobx",
+    "chart.js":"chart.js",
+    "history":"history",
+    "mobx-react":"mobx-react"
+  },
+  */
 
+  debug: true,
+  noInfo: false,
+  quiet: false,
 
 
   devtool: 'source-map',
@@ -44,10 +60,6 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        include:[
-            path.resolve(__dirname, "../../node_modules/fabalous-core"),
-            path.resolve(__dirname, "../../src")
-          ],
         test: /\.tsx?$/,
         loader: 'react-hot!babel?cacheDirectory=.awcache&presets[]=es2015!awesome-typescript-loader'
       },
@@ -72,18 +84,12 @@ module.exports = {
       TEST:false
     }),
     new webpack.HotModuleReplacementPlugin(),
-
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: 3,
       minChunkSize: 50000,
       filename: 'vendor.bundle.js'
     }),
-    //new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.NamedModulesPlugin()
-
-    //extractLESS
-
-   // new webpack.optimize.UglifyJsPlugin()
   ]
 };

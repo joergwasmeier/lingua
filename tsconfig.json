@@ -12,9 +12,9 @@
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
         "outDir": "./build/js/",
-        "rootDir": "./",
+        "rootDir": "/Users/creativecode/Projekte/lingua/",
         "moduleResolution": "node",
-        "baseUrl": "./src/",
+        "baseUrl": "/Users/creativecode/Projekte/lingua/",
         "paths": {
             "fabalous-core": ["./node_modules/fabalous-core/"],
             "material-ui": ["./node_modules/material-ui/"]

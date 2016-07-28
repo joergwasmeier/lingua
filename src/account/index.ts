@@ -3,11 +3,7 @@ import AccountStore from "./AccountStore";
 import Login from "./view/Login";
 import SignUp from "./view/SignUp";
 import ForgotPass from "./view/ForgotPass";
-import CheckLoginStatusEvent from "./event/CheckLoginStatusEvent";
-
-/**
- * Created by creativecode on 20.04.16.
- */
+import InitAccountEvent from "./event/InitAccountEvent";
 
 module.exports = {
   mediator: AccountMediator,
@@ -15,6 +11,6 @@ module.exports = {
   view: Login,
   signUp: SignUp,
   forgotPass: ForgotPass,
-  initEvent: CheckLoginStatusEvent
+  initEvent: InitAccountEvent
 };
 

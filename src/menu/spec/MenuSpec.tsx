@@ -7,15 +7,19 @@ import Menu from "./../view/Menu";
 import {MenuItem} from "material-ui";
 import MenuStore from "../MenuStore";
 import {model} from "../../common/AppModel";
+import MenuMediator from "../MenuMediator";
+import FabaCore from "fabalous-core/core/FabaCore";
 
 var TestUtils = require("react-addons-test-utils");
 
-describe("Test Menu Component", function() {
+describe("Menu View", function() {
   var wrapper;
   var menuIns:Menu;
 
   let injectTapEventPlugin = require("react-tap-event-plugin");
   injectTapEventPlugin();
+
+  FabaCore.addMediator(new MenuMediator());
 
   beforeEach(()=> {
     model.menuStore = new MenuStore();
@@ -31,10 +35,12 @@ describe("Test Menu Component", function() {
     menuIns = wrapper.find(Menu).get(0) as Menu;
   });
 
+  it("TEST should be defined", function() {
+    expect(TEST).toBeTruthy();
+  });
+
   it("Menu mockdata should be there", function() {
     expect(model.menuStore).toBeDefined();
-
-
     expect(model.menuStore.courses.length).toEqual(5);
     expect(model.menuStore.createdCourses.length).toEqual(5);
   });

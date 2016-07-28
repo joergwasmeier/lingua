@@ -11,6 +11,9 @@ export default class LoginVo extends FabaValueObject {
 
   errorCode:number = 0;
 
+  @observable
+  loggedIn:boolean = false;
+
   constructor(){
     super();
   }

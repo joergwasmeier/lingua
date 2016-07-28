@@ -1,10 +1,10 @@
 import FabaModel from "fabalous-core/core/FabaModel";
 import AccountStore from "../account/AccountStore";
 import MenuStore from "../menu/MenuStore";
+
 /**
  * Created by creativecode on 20.04.16.
  */
-
 
 class AppModel extends FabaModel {
   private static _instance:AppModel = new AppModel();

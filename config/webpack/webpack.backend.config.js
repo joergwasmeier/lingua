@@ -43,7 +43,7 @@ module.exports = {
     quiet: false,
     module: {
         loaders: [
-            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader', exclude: /node_modules/},
+            { test: /\.less$/, loader: 'noop-loader', exclude: /node_modules/},
             {
                 include:[
                     path.resolve(__dirname, "../../node_modules/fabalous-core"),
@@ -55,6 +55,8 @@ module.exports = {
         ]
     },
     plugins:[
+        new webpack.NormalModuleReplacementPlugin(/\.(gif|png|less|css)$/, 'node-noop'),
+
         new ForkCheckerPlugin(),
         new webpack.DefinePlugin({
             CLIENT: false,

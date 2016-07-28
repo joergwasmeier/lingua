@@ -16,7 +16,7 @@ export default class LoginCommand extends FabaCommand {
     }
 
     model.accountStore.login.errorCode = 2;
-    event.cbs();
+    event.callBack();
   }
 
   checkUserPassLength():boolean{
@@ -28,7 +28,7 @@ export default class LoginCommand extends FabaCommand {
 
 
   result(event:LoginEvent) {
-    event.cbs();
+    event.callBack();
   }
 
   timeout(event:LoginEvent) {

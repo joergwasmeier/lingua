@@ -10,7 +10,7 @@ import {model} from "../../common/AppModel";
 import AccountStore from "../AccountStore";
 var TestUtils = require("react-addons-test-utils");
 
-describe("SignUp Component", function() {
+describe("SignUp View", function() {
   var wrapper;
   var instance:SignUp;
 

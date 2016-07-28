@@ -46,6 +46,8 @@ module.exports = {
         ]
     },
     plugins:[
+        new webpack.NormalModuleReplacementPlugin(/\.(gif|png|less|css)$/, 'node-noop'),
+
         new webpack.DefinePlugin({
             CLIENT: true,
             SERVER:false,

@@ -10,16 +10,10 @@ module.exports = function(config) {
     basePath: './../../',
 
 
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    //frameworks: ['jasmine'],
-
-
     // list of files / patterns to load in the browser
     files: [
       'src/**/*Spec.ts',
       'src/**/*Spec.tsx'
-
     ],
 
     // preprocess matching files before serving them to the browser
@@ -27,7 +21,6 @@ module.exports = function(config) {
     preprocessors: {
       'src/**/*Spec.ts': ['webpack'],
       'src/**/*Spec.tsx': ['webpack']
-
     },
 
     webpack: webpackConfig,

@@ -1,5 +1,6 @@
 var path = require('path');
 var fs = require('fs');
+var webpack = require('webpack');
 
 var nodeModules = fs.readdirSync('node_modules')
     .filter(function(x) {
@@ -28,7 +29,14 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader', exclude: /node_modules/},
-            { test: /\.tsx?$/, loader: 'awesome-typescript-loader!preprocess?+SERVER'}
+            { test: /\.tsx?$/, loader: 'awesome-typescript-loader'}
         ]
-    }
+    },
+    plugins:[
+        new webpack.DefinePlugin({
+            CLIENT: false,
+            SERVER:true,
+            TEST:true
+        })
+    ]
 };

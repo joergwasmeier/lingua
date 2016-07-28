@@ -36,6 +36,7 @@ export default class Login extends React.Component<{},{}> {
 
     loginBtHandler():void {
       this.setState({error:false, progress:true});
+
       new LoginEvent().dispatch(() =>{
         if (model.accountStore.login.errorCode > 0){
           this.setState({error:true, progress:false});
@@ -60,13 +61,12 @@ export default class Login extends React.Component<{},{}> {
         return (
             <div className={`center ${this.className}`}>
                 <div className="content">
-                  <p className="header">LINGUA</p>
+                  <p className="header">LINGUA 3</p>
 
                   <TextField
                       className="textField"
                       floatingLabelText="Username"
                       floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
-                      floatingLabelFixed={true}
                       inputStyle={{color:"rgba(255,255,255,0.8)"}}
                       value={model.accountStore.login.userName}
                       onChange={this.userNameChange}
@@ -76,7 +76,6 @@ export default class Login extends React.Component<{},{}> {
                       className="textField"
                       floatingLabelText="Password"
                       floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
-                      floatingLabelFixed={true}
                       inputStyle={{color:"rgba(255,255,255,0.8)"}}
                       type="password"
                       value={model.accountStore.login.password}
@@ -105,5 +104,3 @@ export default class Login extends React.Component<{},{}> {
         )
     }
 }
-
-//

@@ -5,6 +5,9 @@ import LoginCommand from "./command/LoginCommand";
 import LoginService from "./service/LoginService";
 import CheckLoginStatusEvent from "./event/CheckLoginStatusEvent";
 import CheckLoginCommand from "./command/CheckLoginCommand";
+import InitAccountEvent from "./event/InitAccountEvent";
+import InitAccountCommand from "./command/InitAccountCommand";
+import CheckLoginService from "./service/CheckLoginService";
 
 export default class AccountMediator extends FabaMediator implements IFabaMediator{
 
@@ -15,6 +18,7 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
   registerCommands():void {
     if(CLIENT){
       super.registerCommands();
+      this.addCommand(InitAccountEvent, InitAccountCommand);
       this.addCommand(LoginEvent, LoginCommand);
       this.addCommand(CheckLoginStatusEvent, CheckLoginCommand);
     }
@@ -23,7 +27,8 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
     if(SERVER) {
       super.registerServices();
       this.addSerivce(LoginEvent, LoginService);
-      this.addCommand(CheckLoginStatusEvent, CheckLoginCommand);
+      this.addSerivce(CheckLoginStatusEvent, CheckLoginService);
+
     }
   }
 }

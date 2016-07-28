@@ -27,7 +27,7 @@ module.exports = {
     quiet: true,
     module: {
         loaders: [
-            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader', exclude: /node_modules/},
+            { test: /\.less$/, loader: 'noop-loader', exclude: /node_modules/},
             { test: /\.tsx?$/, loader: 'ts-loader!preprocess?+SERVER'}
         ]
     }

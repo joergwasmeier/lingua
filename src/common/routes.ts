@@ -17,7 +17,10 @@ function loadRouteDash(cb, view?:string) {
     if (module.store) new module.store;
 
     // dispatch INIT event
-    if (module.initEvent) new module.initEvent;
+    if (module.initEvent){
+      console.log("initEvent");
+      new module.initEvent().dispatch();
+    }
 
     if (view){
       cb(null, module[view]);
