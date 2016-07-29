@@ -20,6 +20,12 @@
             "material-ui": ["./node_modules/material-ui/"]
         }
     },
+    "awesomeTypescriptLoaderOptions": {
+        "forkChecker":true,
+        "forkCheckerSilent":true,
+        "useBabel":false,
+        "useCache":true
+    },
     "exclude": ["node_modules"],
     "files": [
         "typings/tsd.d.ts"

@@ -68,8 +68,9 @@ module.exports = {
         loader: 'url-loader?limit=10000&name=assets/[name]-[hash].[ext]',
         exclude: /node_modules/
       },
+      { test: /\.json$/, loader: 'json'},
       {
-        test: /\.html|json?$/,
+        test: /index.html/,
         loader: 'url-loader?limit=1&name=[name].[ext]!preprocess?+WEB',
         exclude: /node_modules/
       }
