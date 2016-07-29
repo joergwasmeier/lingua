@@ -39,8 +39,26 @@ module.exports = {
         // Add `.ts` and `.tsx` as a resolvable extension.
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
     },
+
     recordsPath: path.join(__dirname, '../../dist/node/_records'),
-    quiet: false,
+
+    stats: {
+        colors: true,
+        hash: false,
+        version: true,
+        timings: true,
+        assets: false,
+        chunks: false,
+        modules: false,
+        reasons: false,
+        children: false,
+        source: false,
+        errors: true,
+        errorDetails: true,
+        warnings: false,
+        publicPath: false
+    },
+
     module: {
         loaders: [
             { test: /\.less$/, loader: 'noop-loader', exclude: /node_modules/},

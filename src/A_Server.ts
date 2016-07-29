@@ -9,7 +9,7 @@ import AccountMediator from "./account/AccountMediator";
 
 class A_Server extends FabaServer{
     constructor(){
-        console.log("Start Server test");
+        console.log("Start Server");
         FabaCore.addMediator(new DashboardMediator());
         FabaCore.addMediator(new AccountMediator());
         super();
