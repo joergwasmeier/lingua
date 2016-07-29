@@ -24,7 +24,9 @@
     "koa": "^1.2.0",
     "mobx": "^2.3.2",
     "mobx-react": "^3.3.1",
-    "object-assign": "^4.0.3"
+    "object-assign": "^4.0.3",
+    "object.assign": "*"
+
   },
   "devDependencies": {
     "awesome-typescript-loader": "^2.0.1",
