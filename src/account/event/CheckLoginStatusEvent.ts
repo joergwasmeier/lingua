@@ -4,6 +4,6 @@ export default class CheckLoginStatusEvent extends FabaEvent{
     loggedIn:boolean;
     
     constructor(){
-        super();
+        super("CheckLoginStatusEvent");
     }
 }

@@ -6,10 +6,8 @@
 import FabaEvent from "fabalous-core/core/FabaEvent";
 
 export default class GetMenuDataEvent extends FabaEvent{
-
-  identifyer:string = "GetMenuDataEvent";
-
+  
   constructor(){
-    super();
+    super("GetMenuDataEvent");
   }
 }

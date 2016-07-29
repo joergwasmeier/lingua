@@ -97,7 +97,7 @@ gulp.task('frontend-build', function(done) {
             filename: 'vendor.bundle.js'
         }),
         new OfflinePlugin(),
-        /*
+
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
@@ -107,7 +107,7 @@ gulp.task('frontend-build', function(done) {
             },
             sourceMap: false
         }),
-        */
+
         new webpack.BannerPlugin("Copyright 2016 - Jörg Wasmeier"),
         new CompressionPlugin()
     ];
