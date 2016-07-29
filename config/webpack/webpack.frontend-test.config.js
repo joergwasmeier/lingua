@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
 module.exports = {
     output: {
@@ -46,6 +47,7 @@ module.exports = {
         ]
     },
     plugins:[
+        new ForkCheckerPlugin(),
         new webpack.NormalModuleReplacementPlugin(/\.(gif|png|less|css)$/, 'node-noop'),
 
         new webpack.DefinePlugin({

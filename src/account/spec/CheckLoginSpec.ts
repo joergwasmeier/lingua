@@ -9,6 +9,7 @@ if(CLIENT){
     FabaCore.addMediator(new AccountMediator());
     new InitAccountEvent().dispatch();
 
+
     it("CheckLogin should be there", function() {
       expect(new CheckLoginStatusEvent()).toBeDefined();
     });
