@@ -24,16 +24,16 @@ gulp.task('frontend-watch', function() {
         stats: {
             colors: true,
             hash: false,
-            version: false,
-            timings: false,
+            version: true,
+            timings: true,
             assets: false,
             chunks: false,
             modules: false,
             reasons: false,
             children: false,
             source: false,
-            errors: false,
-            errorDetails: false,
+            errors: true,
+            errorDetails: true,
             warnings: false,
             publicPath: false
         }

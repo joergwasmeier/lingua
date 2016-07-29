@@ -36,7 +36,8 @@ module.exports = {
             },
             {
                 test: /\.tsx?$/,
-                loader: 'babel?presets[]=es2015!awesome-typescript-loader'
+                loader: 'babel?presets[]=es2015!awesome-typescript-loader',
+                exclude: /node_modules/
             },
             {
                 test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
