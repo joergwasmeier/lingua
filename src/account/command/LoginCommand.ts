@@ -1,6 +1,6 @@
 import FabaCommand from "fabalous-core/core/FabaCommand";
 import LoginEvent from "./../event/LoginEvent";
-import {model} from "./../../common/AppModel";
+import {model, AppModel} from "./../../common/AppModel";
 
 /**
  * Created by creativecode on 11.04.16.
@@ -9,7 +9,9 @@ import {model} from "./../../common/AppModel";
 export default class LoginCommand extends FabaCommand {
 
   execute(event:LoginEvent) {
-    model.accountStore.login.errorCode = 0;
+    AppModel.getInstance().accountStore.login.errorCode = 0;
+
+
     if(this.checkUserPassLength()){
       this.sendToEndpoint(event);
       return;

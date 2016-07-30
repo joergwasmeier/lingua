@@ -69,6 +69,7 @@
     "js-md5": "^0.4.1",
     "json-loader": "^0.5.4",
     "karma": "^1.1.2",
+    "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.0.2",
     "karma-mocha": "*",
     "karma-mocha-reporter": "*",

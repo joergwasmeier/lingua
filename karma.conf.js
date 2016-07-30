@@ -35,7 +35,7 @@ module.exports = function(config) {
     },
 
     frameworks: ['jasmine'],
-    reporters: ['progress'],
+    reporters: ['progress','coverage'],
 
     // enable / disable colors in the output (reporters and logs)
     colors: true,

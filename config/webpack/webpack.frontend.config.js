@@ -8,13 +8,10 @@ function root(p) {
   return path.join(__dirname, p);
 }
 
-console.log(path.resolve(__dirname, "../../node_modules/fabalous-core"));
-
 module.exports = {
   output: {
     path: path.join(__dirname,'../../dist/web/'),
-    filename: 'bundle.js',
-    chunkFilename: 'bundle-[chunkhash].js'
+    filename: 'bundle.js'
   },
   /*
   externals:{
@@ -42,10 +39,6 @@ module.exports = {
   },
 
   entry: {
-    vendor: [
-      'react', 'react-dom','react-router', 'history', 'material-ui', 'mobx'
-    ],
-
     app: [
       'webpack-dev-server/client?http://localhost:8080/', // WebpackDevServer host and port
       'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
@@ -61,7 +54,7 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        loader: 'react-hot!babel?cacheDirectory=.awcache&presets[]=es2015!awesome-typescript-loader'
+        loader: 'babel?cacheDirectory=.awcache&presets[]=es2015!awesome-typescript-loader'
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
@@ -86,11 +79,7 @@ module.exports = {
       TEST:false
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity,
-      filename: 'vendor.bundle.js'
-    }),
+
     new webpack.NamedModulesPlugin()
   ]
 };

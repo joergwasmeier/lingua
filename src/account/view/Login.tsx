@@ -1,6 +1,6 @@
 import * as React from "react";
 import {FlatButton, TextField} from "material-ui";
-import {model} from "../../common/AppModel";
+import {model, AppModel} from "../../common/AppModel";
 import LoginEvent from "../event/LoginEvent";
 import {observer} from "mobx-react/index";
 import SyntheticEvent = __React.SyntheticEvent;
@@ -36,12 +36,14 @@ export default class Login extends React.Component<{},{}> {
 
     loginBtHandler():void {
       this.setState({error:false, progress:true});
-
+        var h = window.model;
+        var to = AppModel.getInstance();
       new LoginEvent().dispatch(() =>{
           console.log(model.accountStore.login);
         if (model.accountStore.login.errorCode > 0){
           this.setState({error:true, progress:false});
         } else {
+            console.log(AppModel.getInstance());
           this.setState({error:false, progress:false});
           this.props.history.push("/dashboard/");
         }
@@ -62,7 +64,7 @@ export default class Login extends React.Component<{},{}> {
         return (
             <div className={`center ${this.className}`}>
                 <div className="content">
-                  <p className="header">LINGUA 2</p>
+                  <p className="header">LINGUA</p>
 
                   <TextField
                       className="textField"

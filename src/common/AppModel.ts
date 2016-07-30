@@ -6,7 +6,7 @@ import MenuStore from "../menu/MenuStore";
  * Created by creativecode on 20.04.16.
  */
 
-class AppModel extends FabaModel {
+export class AppModel extends FabaModel {
   private static _instance:AppModel = new AppModel();
 
   accountStore:AccountStore;
@@ -29,3 +29,5 @@ class AppModel extends FabaModel {
 }
 
 export var model = AppModel.getInstance();
+
+window.model = model;

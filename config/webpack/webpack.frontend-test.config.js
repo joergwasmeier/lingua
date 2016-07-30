@@ -47,9 +47,7 @@ module.exports = {
         ]
     },
     plugins:[
-        new ForkCheckerPlugin(),
         new webpack.NormalModuleReplacementPlugin(/\.(gif|png|less|css)$/, 'node-noop'),
-
         new webpack.DefinePlugin({
             'process.env': { NODE_ENV: JSON.stringify('production') },
             CLIENT: true,
