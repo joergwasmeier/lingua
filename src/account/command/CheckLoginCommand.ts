@@ -6,8 +6,6 @@ import CheckLoginStatusEvent from "../event/CheckLoginStatusEvent";
 export default class CheckLoginCommand extends FabaCommand {
 
     execute(event:CheckLoginStatusEvent) {
-        console.log("CheckLoginStatusEvent");
-
         if (model.accountStore && model.accountStore.login && model.accountStore.login.loggedIn){
             event.loggedIn = true;
             event.callBack();
