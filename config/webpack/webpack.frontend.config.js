@@ -80,6 +80,7 @@ module.exports = {
   plugins:[
     new ForkCheckerPlugin(),
     new webpack.DefinePlugin({
+      'process.env': { NODE_ENV: JSON.stringify('production') },
       CLIENT: true,
       SERVER:false,
       TEST:false
@@ -87,8 +88,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: 3,
-      minChunkSize: 50000,
+      minChunks: Infinity,
       filename: 'vendor.bundle.js'
     }),
     new webpack.NamedModulesPlugin()
