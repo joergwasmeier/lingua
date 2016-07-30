@@ -38,6 +38,7 @@ export default class Login extends React.Component<{},{}> {
       this.setState({error:false, progress:true});
 
       new LoginEvent().dispatch(() =>{
+          console.log(model.accountStore.login);
         if (model.accountStore.login.errorCode > 0){
           this.setState({error:true, progress:false});
         } else {
@@ -61,7 +62,7 @@ export default class Login extends React.Component<{},{}> {
         return (
             <div className={`center ${this.className}`}>
                 <div className="content">
-                  <p className="header">LINGUA</p>
+                  <p className="header">LINGUA 2</p>
 
                   <TextField
                       className="textField"

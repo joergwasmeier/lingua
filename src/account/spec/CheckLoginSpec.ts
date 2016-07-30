@@ -29,6 +29,7 @@ if (SERVER){
       expect(new CheckLoginStatusEvent()).toBeDefined();
     });
 
+
     it("CheckLogin should be false", function() {
       expect(new CheckLoginStatusEvent().dispatch()).toBeFalsy();
     });

@@ -1,18 +1,18 @@
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');
+var runSequence = require('run-sequence');
+
 require("./config/gulp/gulp.config.js");
 
 gulp.task('default', ['backend-watch','frontend-watch']);
 
 gulp.task('watch', ['backend-watch','frontend-watch']);
 gulp.task('build', ['frontend-build', 'backend-build']);
-gulp.task('tdd', ['testNode', 'testKarma']);
-//gulp.task('test-all', function(){runSequence('testNode', 'testKarma', 'testPhantomCss')});
 gulp.task('test-all', function(){runSequence('testNode', 'testKarma')});
 
-gulp.task('complete', ['backend-watch','frontend-watch', 'testNode', 'testKarma']);
-
-var runSequence = require('run-sequence');
+gulp.task('tdd', function(){
+    runSequence(['backend-watch','frontend-watch', 'testKarma-tdd'])
+});
 
 //gulp.task('electron-watch', ['testKarma']);
 gulp.task('electron-build', function(){

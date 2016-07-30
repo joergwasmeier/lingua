@@ -3,6 +3,7 @@ var jasmine = require('gulp-jasmine');
 var runSequence = require('run-sequence');
 var watch = require('gulp-watch');
 var webpack = require('webpack');
+var reporters = require('jasmine-reporters');
 
 
 var config = require("./../webpack/webpack.backend-test.config.js");
@@ -15,7 +16,9 @@ gulp.task('testComp', function(done) {
 
 gulp.task('testJasmine', function() {
     return gulp.src('./dist/test/node/test.js')
-        .pipe(jasmine());
+        .pipe(jasmine({
+            reporter: new reporters.TerminalReporter()
+        }));
 });
 
 gulp.task('testNode', function() {

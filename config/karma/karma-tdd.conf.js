@@ -1,6 +1,6 @@
 // Karma configuration
 // Generated on Fri Feb 26 2016 11:21:50 GMT+0100 (CET)
-var webpackConfig = require('./../webpack/webpack.frontend-test.config.js');
+var webpackConfig = require('./../webpack/webpack.frontend-test-tdd.config.js');
 webpackConfig.entry = {};
 
 module.exports = function(config) {

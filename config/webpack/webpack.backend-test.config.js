@@ -1,6 +1,8 @@
 var path = require('path');
 var fs = require('fs');
 var webpack = require('webpack');
+var glob = require("glob");
+var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
 var nodeModules = fs.readdirSync('node_modules')
     .filter(function(x) {
@@ -8,9 +10,8 @@ var nodeModules = fs.readdirSync('node_modules')
     });
 
 module.exports = {
-    entry: [
-        './test/T_Node.ts'
-    ],
+    entry: glob.sync("./**/*Spec.ts"),
+
     target:'node',
     debug: true,
     output: {
@@ -33,6 +34,8 @@ module.exports = {
         ]
     },
     plugins:[
+        new ForkCheckerPlugin(),
+        new webpack.NormalModuleReplacementPlugin(/\.(gif|png|less|css)$/, 'node-noop'),
         new webpack.DefinePlugin({
             CLIENT: false,
             SERVER:true,
