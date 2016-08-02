@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var mocha = require('gulp-mocha');
 var runSequence = require('run-sequence');
 
 require("./config/gulp/gulp.config.js");
@@ -53,16 +52,3 @@ gulp.task('testPhantomCss', function () {
         // Do something with success here
     });
 });
-
-
-gulp.task('testmocha', function() {
-    return gulp.src('test.js')
-        .pipe(mocha())
-        .once('error', function() {
-            process.exit(1);
-        })
-        .once('end', function() {
-            process.exit();
-        });
-});
-

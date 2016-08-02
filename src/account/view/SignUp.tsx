@@ -1,10 +1,8 @@
 import * as React from "react";
 import {FlatButton, TextField} from "material-ui";
 import {model} from "../../common/AppModel";
-import {observer} from "mobx-react/index";
 require('./SignUp.less');
 
-@observer
 export default class SignUp extends React.Component<{},{}> {
   className:string = "Home";
 

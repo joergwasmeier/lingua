@@ -22,8 +22,6 @@
     "express": "^4.13.3",
     "i18n-core": "^2.1.1",
     "koa": "^1.2.0",
-    "mobx": "^2.3.2",
-    "mobx-react": "^3.3.1",
     "object-assign": "^4.0.3",
     "object.assign": "*"
   },
@@ -81,7 +79,6 @@
     "material-ui": "^0.15.2",
     "mime": "^1.3.4",
     "mime-db": "^1.23.0",
-    "mocha": "^2.5.3",
     "mongodb": "^2.1.21",
     "msgpack-lite": "^0.1.20",
     "msgpack5": "^3.3.0",

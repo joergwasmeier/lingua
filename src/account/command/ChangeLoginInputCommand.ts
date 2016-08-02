@@ -12,8 +12,6 @@ export default class ChangeLoginInputCommand extends FabaCommand {
 
         model.accountStore.login.errorCode = 0;
 
-        console.log(model.accountStore.login);
-
         renderRoutes();
     }
 }

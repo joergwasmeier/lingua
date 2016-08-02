@@ -1,9 +1,7 @@
 import FabaValueObject from "fabalous-core/core/FabaValueObject";
-import {observable} from "mobx/lib/mobx";
 
 export default class ForgotPassVo extends FabaValueObject {
 
-  @observable
   userName:string = "";
 
   constructor(){
