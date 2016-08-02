@@ -20,13 +20,17 @@ export default class Layout extends React.Component<{},{}> {
 
   constructor(props) {
     super(props);
+
+
+    // Perf check
+    setInterval(() => {
+     // this.render();
+    }, 10000);
   }
 
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-
-
         <div className={`center ${this.className}`}>
           <Menu />
           <div className="content">

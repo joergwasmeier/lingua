@@ -1,6 +1,7 @@
 import FabaCommand from "fabalous-core/core/FabaCommand";
 import LoginEvent from "./../event/LoginEvent";
 import {model, AppModel} from "./../../common/AppModel";
+import {renderRoutes} from "../../common/routes";
 
 /**
  * Created by creativecode on 11.04.16.
@@ -18,7 +19,9 @@ export default class LoginCommand extends FabaCommand {
     }
 
     model.accountStore.login.errorCode = 2;
+
     event.callBack();
+    renderRoutes();
   }
 
   checkUserPassLength():boolean{

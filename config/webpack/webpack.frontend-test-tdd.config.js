@@ -9,7 +9,7 @@ module.exports = {
     },
 
     debug: false,
-    devtool: 'source-map',
+    devtool: 'inline',
 
     resolve: {
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.less']

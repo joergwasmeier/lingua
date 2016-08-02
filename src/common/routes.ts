@@ -14,18 +14,19 @@ function loadRouteDash(cb, view?:string) {
     var med:FabaMediator = new module.mediator;
     FabaCore.addMediator(med);
 
-    if (module.store) new module.store;
+    var model:any = (module.store) ? new module.store : null;
 
     // dispatch INIT event
     if (module.initEvent){
-      console.log("initEvent");
       new module.initEvent().dispatch();
     }
 
     if (view){
       cb(null, module[view]);
     } else {
-      cb(null, module.view);
+      cb(null, function(){
+        return React.createElement(module.view, {"model":model});
+      });
     }
   }
 }
@@ -48,6 +49,9 @@ var secondroutes = {
 
       getComponent(location, cb) {
         System.import('./../account/index').then(loadRouteDash(cb)).catch(errorLoading);
+      },
+      routerParams:{
+        "test":"test"
       }
     },
     {
