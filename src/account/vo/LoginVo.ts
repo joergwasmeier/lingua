@@ -1,6 +1,7 @@
+import FabaValueObject from "fabalous-core/core/FabaValueObject";
 import {observable} from "mobx/lib/mobx";
 
-export default class LoginVo{
+export default class LoginVo extends FabaValueObject {
 
   @observable
   userName:string = "";
@@ -8,15 +9,14 @@ export default class LoginVo{
   @observable
   password:string = "";
 
-  @observable
   errorCode:number = 0;
-
-  @observable
-  progress:boolean = false;
 
   @observable
   loggedIn:boolean = false;
 
+  constructor(){
+    super();
+  }
 
   public createMockData(){
     if (TEST){

@@ -14,15 +14,24 @@ function loadRouteDash(cb, view?:string) {
     var med:FabaMediator = new module.mediator;
     FabaCore.addMediator(med);
 
-    new module.initEvent().dispatch((event)=>{
-      cb(null, ()=>{return event.view});
-    });
+    if (module.store) new module.store;
 
+    // dispatch INIT event
+    if (module.initEvent){
+      console.log("initEvent");
+      new module.initEvent().dispatch();
+    }
+
+    if (view){
+      cb(null, module[view]);
+    } else {
+      cb(null, module.view);
+    }
   }
 }
 
 function errorLoading(e) {
-  throw e;
+  console.log(e);
 }
 
 var secondroutes = {

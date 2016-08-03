@@ -1,49 +1,57 @@
 import * as React from "react";
 import {FlatButton, TextField} from "material-ui";
+import {model, AppModel} from "../../common/AppModel";
 import LoginEvent from "../event/LoginEvent";
 import {observer} from "mobx-react/index";
-import ChangeLoginInputEvent, {ChangeLoginInputEventTypes} from "../event/ChangeLoginInputEvent";
-import AccountStore from "../AccountStore";
-import LoginVo from "../vo/LoginVo";
 import SyntheticEvent = __React.SyntheticEvent;
-
 var classNames = require('classnames');
 require('./Login.less');
 
-interface ILoginProps{
-  model:AccountStore;
-  history:any;
-}
-
 @observer
-export default class Login extends React.Component<ILoginProps,{}> {
+export default class Login extends React.Component<{},{}> {
     className:string = "Home";
-    vo:LoginVo;
+    state = {
+        progress: false,
+        error: false
+    };
+
+    props;
 
     constructor(props) {
         super(props);
-        this.vo = props.model.login;
         this.loginBtHandler = this.loginBtHandler.bind(this);
         this.userNameChange = this.userNameChange.bind(this);
         this.passWordChange = this.passWordChange.bind(this);
     }
 
     userNameChange(e):void{
-      new ChangeLoginInputEvent(ChangeLoginInputEventTypes.USERNAME, e.currentTarget.value).dispatch();
+      this.setState({error:false});
+      model.accountStore.login.userName = e.currentTarget.value;
     }
 
     passWordChange(e):void{
-      new ChangeLoginInputEvent(ChangeLoginInputEventTypes.PASSWORD, e.currentTarget.value).dispatch();
+      this.setState({error:false});
+      model.accountStore.login.password = e.currentTarget.value;
     }
 
     loginBtHandler():void {
+      this.setState({error:false, progress:true});
+        var h = window.model;
+        var to = AppModel.getInstance();
       new LoginEvent().dispatch(() =>{
+          console.log(model.accountStore.login);
+        if (model.accountStore.login.errorCode > 0){
+          this.setState({error:true, progress:false});
+        } else {
+            console.log(AppModel.getInstance());
+          this.setState({error:false, progress:false});
           this.props.history.push("/dashboard/");
+        }
       });
     }
 
     renderError(){
-      //if (!this.props.model.error) return null;
+      if (!this.state.error) return null;
 
       return (
         <div className="error">
@@ -63,7 +71,7 @@ export default class Login extends React.Component<ILoginProps,{}> {
                       floatingLabelText="Username"
                       floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
                       inputStyle={{color:"rgba(255,255,255,0.8)"}}
-                      value={this.vo.userName}
+                      value={model.accountStore.login.userName}
                       onChange={this.userNameChange}
                   />
  
@@ -73,14 +81,14 @@ export default class Login extends React.Component<ILoginProps,{}> {
                       floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
                       inputStyle={{color:"rgba(255,255,255,0.8)"}}
                       type="password"
-                      value={this.vo.password}
+                      value={model.accountStore.login.password}
                       onChange={this.passWordChange}
                   />
 
                   {this.renderError()}
 
                   <FlatButton
-                      className={classNames('loginButton', { progress: this.vo.progress })}
+                      className={classNames('loginButton', { progress: this.state.progress })}
                       backgroundColor="#a4c639"
                       onTouchTap={this.loginBtHandler}>
                       <p className="content">LOGIN</p>

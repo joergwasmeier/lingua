@@ -3,20 +3,15 @@ import LoginEvent from "./../event/LoginEvent";
 import {model} from "./../../common/AppModel";
 import InitAccountEvent from "../event/InitAccountEvent";
 import AccountStore from "../AccountStore";
-import * as React from "react";
-import Login from "../view/Login";
+
 
 export default class InitAccountCommand extends FabaCommand {
     execute(event:InitAccountEvent) {
-        console.log("bacl");
-
         if (!model.accountStore) model.accountStore = new AccountStore();
+        if (model.accountStore.moduleInit) return;
 
-        event.view = React.createElement(Login, {model: model.accountStore});
-
-        console.log("bacl2");
-
-        event.callBack();
+        model.accountStore = new AccountStore();
+        model.accountStore.moduleInit = true;
     }
 
     result(event:LoginEvent) {
