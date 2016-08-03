@@ -54,7 +54,7 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        loader: 'babel?cacheDirectory=.awcache&presets[]=es2015!awesome-typescript-loader'
+        loader: 'react-hot!babel?cacheDirectory=.awcache&presets[]=es2015!awesome-typescript-loader'
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
