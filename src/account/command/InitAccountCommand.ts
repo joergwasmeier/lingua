@@ -7,11 +7,11 @@ import AccountStore from "../AccountStore";
 
 export default class InitAccountCommand extends FabaCommand {
     execute(event:InitAccountEvent) {
-        if (!model.accountStore) model.accountStore = new AccountStore();
-        if (model.accountStore.moduleInit) return;
+        if (model.accountStore){
+            return;
+        }
 
-        model.accountStore = new AccountStore();
-        model.accountStore.moduleInit = true;
+        model.accountStore = new AccountStore({});
     }
 
     result(event:LoginEvent) {

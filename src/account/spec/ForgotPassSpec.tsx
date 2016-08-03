@@ -7,6 +7,7 @@ import ForgotPass from "../view/ForgotPass";
 import AccountMediator from "../AccountMediator";
 import AccountStore from "../AccountStore";
 import FabaCore from "fabalous-core/core/FabaCore";
+import InitAccountEvent from "../event/InitAccountEvent";
 var TestUtils = require("react-addons-test-utils");
 
 describe("ForgotPass View", function() {
@@ -27,12 +28,23 @@ describe("ForgotPass View", function() {
       </MuiThemeProvider>
     );
 
+    new InitAccountEvent().dispatch();
+
     instance = wrapper.find(ForgotPass).get(0) as ForgotPass;
   });
 
-  it("ForgotPass should be there", function() {
-    expect(instance).toBeDefined();
-  });
+  if(CLIENT){
+    it("ForgotPass should be there", function() {
+      expect(instance).toBeDefined();
+    });
+
+    it("ForgotPass should be there 2", function() {
+      expect(instance).toBeDefined();
+    });
+
+  }
+
+
 });
 
 

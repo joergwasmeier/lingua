@@ -5,15 +5,21 @@ import ForgotPassVo from "../account/vo/ForgotPassVo";
  * Created by creativecode on 20.04.16.
  */
 
-export default class AccountStore {
-  moduleInit:boolean = false;
+var Immutable = require('immutable');
 
-  login:LoginVo = new LoginVo();
 
-  signUp:SignUpVo = new SignUpVo();
+const AccountStoreRecord = Immutable.Record({
+  login : new LoginVo({}),
+  signUp : new SignUpVo(),
+  forgotPass : new ForgotPassVo()
+});
 
-  forgotPass:ForgotPassVo = new ForgotPassVo();
+export default class AccountStore extends AccountStoreRecord {
+  login:LoginVo;
+  signUp:SignUpVo;
+  forgotPass:ForgotPassVo;
 
-  constructor() {
+  constructor(props:any) {
+    super(props);
   }
 }

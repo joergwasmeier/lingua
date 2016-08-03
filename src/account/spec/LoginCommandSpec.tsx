@@ -13,6 +13,7 @@ describe("LoginCommand Spec", function() {
 
   FabaCore.addMediator(new AccountMediator());
 
+
   beforeEach(()=> {
     model.accountStore = new AccountStore();
     command = new LoginCommand();

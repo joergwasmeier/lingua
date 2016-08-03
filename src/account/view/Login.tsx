@@ -1,57 +1,57 @@
 import * as React from "react";
 import {FlatButton, TextField} from "material-ui";
-import {model, AppModel} from "../../common/AppModel";
 import LoginEvent from "../event/LoginEvent";
-import {observer} from "mobx-react/index";
+import ChangeLoginInputEvent from "../event/ChangeLoginInputEvent";
+import AccountStore from "../AccountStore";
 import SyntheticEvent = __React.SyntheticEvent;
+
 var classNames = require('classnames');
+var shallowCompare = require('react-addons-shallow-compare');
+
 require('./Login.less');
 
-@observer
+interface ILoginProps{
+  model:AccountStore;
+  history:any;
+}
+
 export default class Login extends React.Component<{},{}> {
     className:string = "Home";
-    state = {
-        progress: false,
-        error: false
-    };
 
-    props;
+    props:ILoginProps;
 
     constructor(props) {
         super(props);
+
         this.loginBtHandler = this.loginBtHandler.bind(this);
         this.userNameChange = this.userNameChange.bind(this);
         this.passWordChange = this.passWordChange.bind(this);
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+      console.log(nextProps.model);
+      console.log(this.props.model);
+      return shallowCompare(this, nextProps, nextState)
+    }
+
     userNameChange(e):void{
-      this.setState({error:false});
-      model.accountStore.login.userName = e.currentTarget.value;
+      new ChangeLoginInputEvent(e.currentTarget.value, "").dispatch();
     }
 
     passWordChange(e):void{
-      this.setState({error:false});
-      model.accountStore.login.password = e.currentTarget.value;
+      new ChangeLoginInputEvent("", e.currentTarget.value).dispatch();
     }
 
     loginBtHandler():void {
-      this.setState({error:false, progress:true});
-        var h = window.model;
-        var to = AppModel.getInstance();
-      new LoginEvent().dispatch(() =>{
-          console.log(model.accountStore.login);
-        if (model.accountStore.login.errorCode > 0){
-          this.setState({error:true, progress:false});
-        } else {
-            console.log(AppModel.getInstance());
-          this.setState({error:false, progress:false});
+      new LoginEvent().dispatch((event:LoginEvent) =>{
+        if (this.props.model.login.errorCode == 0){
           this.props.history.push("/dashboard/");
         }
       });
     }
 
     renderError(){
-      if (!this.state.error) return null;
+      if (this.props.model.login.errorCode == 0) return null;
 
       return (
         <div className="error">
@@ -66,29 +66,21 @@ export default class Login extends React.Component<{},{}> {
                 <div className="content">
                   <p className="header">LINGUA</p>
 
+
+
                   <TextField
                       className="textField"
-                      floatingLabelText="Username"
-                      floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
-                      inputStyle={{color:"rgba(255,255,255,0.8)"}}
-                      value={model.accountStore.login.userName}
-                      onChange={this.userNameChange}
-                  />
- 
-                  <TextField
-                      className="textField"
-                      floatingLabelText="Password"
+                      floatingLabelText="sdfsdfsdf"
                       floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
                       inputStyle={{color:"rgba(255,255,255,0.8)"}}
-                      type="password"
-                      value={model.accountStore.login.password}
+                      value={this.props.model.login.password}
                       onChange={this.passWordChange}
                   />
 
                   {this.renderError()}
 
                   <FlatButton
-                      className={classNames('loginButton', { progress: this.state.progress })}
+                      className={classNames('loginButton', { progress: this.props.model.login.progress })}
                       backgroundColor="#a4c639"
                       onTouchTap={this.loginBtHandler}>
                       <p className="content">LOGIN</p>

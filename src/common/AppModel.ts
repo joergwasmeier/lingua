@@ -29,5 +29,3 @@ export class AppModel extends FabaModel {
 }
 
 export var model = AppModel.getInstance();
-
-window.model = model;

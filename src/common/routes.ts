@@ -3,7 +3,8 @@ import * as ReactDOM from "react-dom";
 import {Router, browserHistory, hashHistory} from "react-router";
 import Layout from "./../layout/Layout";
 import FabaCore from "fabalous-core/core/FabaCore";
-import FabaMediator from "fabalous-core/core/FabaMediator"; // you need to install this package
+import FabaMediator from "fabalous-core/core/FabaMediator";
+import {AppModel} from "./AppModel"; // you need to install this package
 
 function loadRoute(cb) {
   return (module) => cb(null, module.default);
@@ -14,24 +15,23 @@ function loadRouteDash(cb, view?:string) {
     var med:FabaMediator = new module.mediator;
     FabaCore.addMediator(med);
 
-    if (module.store) new module.store;
-
     // dispatch INIT event
     if (module.initEvent){
-      console.log("initEvent");
       new module.initEvent().dispatch();
     }
 
     if (view){
       cb(null, module[view]);
     } else {
-      cb(null, module.view);
+      cb(null, function(){
+        return React.createElement(module.view, {"model":AppModel.getInstance()[module.storeName]});
+      });
     }
   }
 }
 
 function errorLoading(e) {
-  console.log(e);
+  throw e;
 }
 
 var secondroutes = {
@@ -48,6 +48,9 @@ var secondroutes = {
 
       getComponent(location, cb) {
         System.import('./../account/index').then(loadRouteDash(cb)).catch(errorLoading);
+      },
+      routerParams:{
+        "test":"test"
       }
     },
     {
@@ -77,6 +80,7 @@ var secondroutes = {
   ]
 };
 
+declare var module:any;
 
 export function renderRoutes() {
   if (document.getElementById('container')) {

@@ -1,21 +1,24 @@
-import FabaValueObject from "fabalous-core/core/FabaValueObject";
-import {observable} from "mobx/lib/mobx";
+var Immutable = require('immutable');
 
-export default class LoginVo extends FabaValueObject {
+const LoginVoRecord = Immutable.Record({
+  userName : "",
+  password : "",
+  errorCode : 0,
+  loggedIn : false,
+  progress : false
+});
 
-  @observable
-  userName:string = "";
+export default class LoginVo extends LoginVoRecord {
+  userName:string;
+  password:string;
 
-  @observable
-  password:string = "";
+  errorCode:number;
+  loggedIn:boolean;
 
-  errorCode:number = 0;
+  progress:boolean;
 
-  @observable
-  loggedIn:boolean = false;
-
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
   }
 
   public createMockData(){

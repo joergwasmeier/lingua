@@ -1,30 +1,29 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {mount} from "enzyme";
-import {model} from "../../common/AppModel";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import Login from "../view/Login";
 import AccountMediator from "../AccountMediator";
 import FabaCore from "fabalous-core/core/FabaCore";
-import InitAccountEvent from "../event/InitAccountEvent";
+import AccountStore from "../AccountStore";
 var TestUtils = require("react-addons-test-utils");
 
 describe("Login View", function() {
   var wrapper;
   var loginIns:Login;
+  var model:AccountStore;
 
   let injectTapEventPlugin = require("react-tap-event-plugin");
   injectTapEventPlugin();
 
   FabaCore.addMediator(new AccountMediator());
-  new InitAccountEvent().dispatch();
-
   beforeEach(()=> {
+    model = new AccountStore();
 
     wrapper = mount(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <Login />
+        <Login model={model} />
       </MuiThemeProvider>
     );
 
@@ -35,39 +34,33 @@ describe("Login View", function() {
     expect(loginIns).toBeDefined();
   });
 
-  it("Login should Fail // no Password", function(resolve) {
-    model.accountStore.login.userName = "Test";
-    model.accountStore.login.password = "";
+  it("Login should Fail // no Password", function() {
+    model.login.userName = "Test";
+    model.login.password = "";
+
     var dm = ReactDOM.findDOMNode(wrapper.find('.loginButton').node);
     TestUtils.Simulate["touchTap"](dm);
 
-    // SPY
-    jasmine.createSpy("loginIns.state.error",function(){
-      console.log("spy");
-    });
+    expect(model.login.errorCode).toBe(2);
 
-    setTimeout(()=>{
-      expect(loginIns.state.error).toBeTruthy();
-      resolve();
-    }, 100);
   });
 
   it("Login should Fail // no Username", function() {
-    model.accountStore.login.userName = "";
-    model.accountStore.login.password = "Test";
+    model.login.userName = "";
+    model.login.password = "Test";
     var dm = ReactDOM.findDOMNode(wrapper.find('.loginButton').node);
     TestUtils.Simulate["touchTap"](dm);
 
-    expect(loginIns.state.error).toBeTruthy();
+    expect(model.login.errorCode).toBe(2);
   });
 
-  it("Login should success", function() {
-    model.accountStore.login.userName = "Test12345";
-    model.accountStore.login.password = "Test$12345";
+  xit("Login should success", function() {
+    model.login.userName = "Test12345";
+    model.login.password = "Test$12345";
     var dm = ReactDOM.findDOMNode(wrapper.find('.loginButton').node);
-   // TestUtils.Simulate["touchTap"](dm);
+    TestUtils.Simulate["touchTap"](dm);
 
-   // expect(loginIns.state.progress).toBeTruthy();
+    expect(model.login.errorCode).toBe(0);
   });
 
 

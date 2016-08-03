@@ -8,6 +8,7 @@ import InitAccountEvent from "./event/InitAccountEvent";
 module.exports = {
   mediator: AccountMediator,
   store: AccountStore,
+  storeName: "accountStore",
   view: Login,
   signUp: SignUp,
   forgotPass: ForgotPass,
