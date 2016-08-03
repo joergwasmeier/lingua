@@ -66,15 +66,8 @@ export default class Login extends React.Component<{},{}> {
                 <div className="content">
                   <p className="header">LINGUA</p>
 
-                  <TextField
-                      className="textField"
-                      floatingLabelText="sdfsddsf"
-                      floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
-                      inputStyle={{color:"rgba(255,255,255,0.8)"}}
-                      value={this.props.model.login.userName}
-                      onChange={this.userNameChange}
-                  />
- 
+
+
                   <TextField
                       className="textField"
                       floatingLabelText="sdfsdfsdf"
