@@ -3,7 +3,8 @@ import * as ReactDOM from "react-dom";
 import {Router, browserHistory, hashHistory} from "react-router";
 import Layout from "./../layout/Layout";
 import FabaCore from "fabalous-core/core/FabaCore";
-import FabaMediator from "fabalous-core/core/FabaMediator"; // you need to install this package
+import FabaMediator from "fabalous-core/core/FabaMediator";
+import {AppModel} from "./AppModel"; // you need to install this package
 
 function loadRoute(cb) {
   return (module) => cb(null, module.default);
@@ -14,8 +15,6 @@ function loadRouteDash(cb, view?:string) {
     var med:FabaMediator = new module.mediator;
     FabaCore.addMediator(med);
 
-    var model:any = (module.store) ? new module.store : null;
-
     // dispatch INIT event
     if (module.initEvent){
       new module.initEvent().dispatch();
@@ -25,14 +24,14 @@ function loadRouteDash(cb, view?:string) {
       cb(null, module[view]);
     } else {
       cb(null, function(){
-        return React.createElement(module.view, {"model":model});
+        return React.createElement(module.view, {"model":AppModel.getInstance()[module.storeName]});
       });
     }
   }
 }
 
 function errorLoading(e) {
-  console.log(e);
+  throw e;
 }
 
 var secondroutes = {
@@ -81,6 +80,7 @@ var secondroutes = {
   ]
 };
 
+declare var module:any;
 
 export function renderRoutes() {
   if (document.getElementById('container')) {

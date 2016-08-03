@@ -6,6 +6,8 @@ import AccountStore from "../AccountStore";
 import SyntheticEvent = __React.SyntheticEvent;
 
 var classNames = require('classnames');
+var shallowCompare = require('react-addons-shallow-compare');
+
 require('./Login.less');
 
 interface ILoginProps{
@@ -24,6 +26,12 @@ export default class Login extends React.Component<{},{}> {
         this.loginBtHandler = this.loginBtHandler.bind(this);
         this.userNameChange = this.userNameChange.bind(this);
         this.passWordChange = this.passWordChange.bind(this);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+      console.log(nextProps.model);
+      console.log(this.props.model);
+      return shallowCompare(this, nextProps, nextState)
     }
 
     userNameChange(e):void{

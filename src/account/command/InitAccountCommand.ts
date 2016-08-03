@@ -2,13 +2,16 @@ import FabaCommand from "fabalous-core/core/FabaCommand";
 import LoginEvent from "./../event/LoginEvent";
 import {model} from "./../../common/AppModel";
 import InitAccountEvent from "../event/InitAccountEvent";
+import AccountStore from "../AccountStore";
 
 
 export default class InitAccountCommand extends FabaCommand {
     execute(event:InitAccountEvent) {
-        if (model.accountStore.moduleInit) return;
+        if (model.accountStore){
+            return;
+        }
 
-        model.accountStore.moduleInit = true;
+        model.accountStore = new AccountStore({});
     }
 
     result(event:LoginEvent) {

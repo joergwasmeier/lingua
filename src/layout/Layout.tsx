@@ -20,12 +20,6 @@ export default class Layout extends React.Component<{},{}> {
 
   constructor(props) {
     super(props);
-
-
-    // Perf check
-    setInterval(() => {
-     // this.render();
-    }, 10000);
   }
 
   render() {
@@ -40,4 +34,6 @@ export default class Layout extends React.Component<{},{}> {
       </MuiThemeProvider>
     )
   }
+
+
 }
