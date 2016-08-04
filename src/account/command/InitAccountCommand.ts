@@ -1,21 +1,14 @@
+import * as React from "react";
 import FabaCommand from "fabalous-core/core/FabaCommand";
 import LoginEvent from "./../event/LoginEvent";
-import {model} from "./../../common/AppModel";
 import InitAccountEvent from "../event/InitAccountEvent";
-import AccountStore from "../AccountStore";
-import * as React from "react";
 import Login from "../view/Login";
+import {accountStore} from "../AccountStore";
 
 export default class InitAccountCommand extends FabaCommand {
     execute(event:InitAccountEvent) {
-        console.log("bacl");
 
-        if (!model.accountStore) model.accountStore = new AccountStore();
-
-        event.view = React.createElement(Login, {model: model.accountStore});
-
-        console.log("bacl2");
-
+        event.view = React.createElement(Login, {model: accountStore});
         event.callBack();
     }
 

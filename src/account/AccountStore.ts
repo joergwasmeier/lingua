@@ -1,7 +1,8 @@
 import SignUpVo from "../account/vo/SignUpVo";
 import ForgotPassVo from "../account/vo/ForgotPassVo";
-import {model} from "../common/AppModel";
 import LoginVo from "./vo/LoginVo";
+import FabaModel from "fabalous-core/core/FabaModel";
+
 /**
  * Created by creativecode on 20.04.16.
  */
@@ -15,8 +16,6 @@ export default class AccountStore {
 
   forgotPass:ForgotPassVo = new ForgotPassVo();
 
-  constructor() {
-    if (!model.accountStore) model.accountStore = this;
-    return model.accountStore;
-  }
 }
+
+export var accountStore:AccountStore = FabaModel.getStore('accountStore', AccountStore);

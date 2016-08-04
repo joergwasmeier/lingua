@@ -10,6 +10,10 @@ import InitAccountCommand from "./command/InitAccountCommand";
 import CheckLoginService from "./service/CheckLoginService";
 import ChangeLoginInputEvent from "./event/ChangeLoginInputEvent";
 import ChangeLoginInputCommand from "./command/ChangeLoginInputCommand";
+import SignUpEvent from "./event/SignUpEvent";
+import SignUpCommand from "./command/SignUpCommand";
+import ChangeSignupInputEvent from "./event/ChangeSignupInputEvent";
+import ChangeSignUpInputCommand from "./command/ChangeSignUpInputCommand";
 
 export default class AccountMediator extends FabaMediator implements IFabaMediator{
 
@@ -23,7 +27,13 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
       this.addCommand(InitAccountEvent, InitAccountCommand);
       this.addCommand(LoginEvent, LoginCommand);
       this.addCommand(CheckLoginStatusEvent, CheckLoginCommand);
+
       this.addCommand(ChangeLoginInputEvent, ChangeLoginInputCommand);
+      this.addCommand(ChangeSignupInputEvent, ChangeSignUpInputCommand);
+
+      this.addCommand(SignUpEvent, SignUpCommand);
+
+
     }
   }
   registerServices():void {

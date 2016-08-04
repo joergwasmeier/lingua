@@ -6,8 +6,8 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import SignUp from "../view/SignUp";
 import FabaCore from "fabalous-core/core/FabaCore";
 import AccountMediator from "../AccountMediator";
-import {model} from "../../common/AppModel";
-import AccountStore from "../AccountStore";
+import {accountStore} from "../AccountStore";
+
 var TestUtils = require("react-addons-test-utils");
 
 describe("SignUp View", function() {
@@ -19,13 +19,11 @@ describe("SignUp View", function() {
 
   FabaCore.addMediator(new AccountMediator());
 
-
   beforeEach(()=> {
-    model.accountStore = new AccountStore();
 
     wrapper = mount(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <SignUp />
+        <SignUp model={accountStore} />
       </MuiThemeProvider>
     );
 
@@ -43,21 +41,21 @@ describe("SignUp View", function() {
   it("SignUp should Fail // no Email", function() {
     var dm = ReactDOM.findDOMNode(wrapper.find('.signUpButton').node);
     TestUtils.Simulate["touchTap"](dm);
-    expect(instance.state.error).toBeTruthy();
+    expect(accountStore.signUp.error).toBeTruthy();
   });
 
   it("SignUp should Fail // no Password", function() {
     var dm = ReactDOM.findDOMNode(wrapper.find('.signUpButton').node);
     TestUtils.Simulate["touchTap"](dm);
-    expect(instance.state.error).toBeTruthy();
+    expect(accountStore.signUp.error).toBeTruthy();
   });
 
   it("SignUp should be possible", function() {
-    model.accountStore.signUp.userName = "test@joergwasmeier.de";
-    model.accountStore.signUp.password = "Test$12345";
+    accountStore.signUp.userName = "test@joergwasmeier.de";
+    accountStore.signUp.password = "Test$12345";
 
     var dm = ReactDOM.findDOMNode(wrapper.find('.signUpButton').node);
     TestUtils.Simulate["touchTap"](dm);
-    expect(instance.state.error).toBeFalsy();
+    expect(accountStore.signUp.error).toBeFalsy();
   });
 });

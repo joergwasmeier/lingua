@@ -1,34 +1,30 @@
 import * as React from "react";
 import {FlatButton, TextField} from "material-ui";
-import {model} from "../../common/AppModel";
+import AccountStore from "../AccountStore";
+import ForgotPassVo from "../vo/ForgotPassVo";
 
 var classNames = require('classnames');
 require('./ForgotPass.less');
 
+interface IForgotPass{
+  model:AccountStore;
+  history:any;
+}
+
 export default class ForgotPass extends React.Component<{},{}> {
   className:string = "SignUp";
 
-  state = {
-    error: false
-  };
-
-  props:any;
+  vo:ForgotPassVo;
+  props:IForgotPass;
 
   constructor(props) {
     super(props);
+    this.vo = this.props.model.forgotPass;
     this.forgotPassBtHandler = this.forgotPassBtHandler.bind(this);
   }
 
-  componentWillMount():void {
-    //model.addChangeListener(() => this.forceUpdate());
-  }
-
-  componentWillUnmount():void {
-    //model.removeChangeListener(() => this.forceUpdate());
-  }
-
   forgotPassBtHandler(){
-    this.state.error = true;
+
   }
 
   render() {
@@ -42,7 +38,7 @@ export default class ForgotPass extends React.Component<{},{}> {
             floatingLabelText="E-Mail"
             floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
             inputStyle={{color:"rgba(255,255,255,0.8)"}}
-            value={model.accountStore.signUp.userName}
+            value={this.vo.userName}
           />
 
           <FlatButton

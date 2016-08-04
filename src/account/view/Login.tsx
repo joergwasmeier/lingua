@@ -38,12 +38,12 @@ export default class Login extends React.Component<ILoginProps,{}> {
 
     loginBtHandler():void {
       new LoginEvent().dispatch(() =>{
-          this.props.history.push("/dashboard/");
+          //this.props.history.push("/dashboard/");
       });
     }
 
     renderError(){
-      //if (!this.props.model.error) return null;
+      if (!this.vo.errorCode <= 0) return null;
 
       return (
         <div className="error">

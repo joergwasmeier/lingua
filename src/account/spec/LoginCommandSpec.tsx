@@ -1,10 +1,9 @@
 import * as React from "react";
-import {model} from "../../common/AppModel";
-import AccountStore from "../AccountStore";
 import AccountMediator from "../AccountMediator";
 import FabaCore from "fabalous-core/core/FabaCore";
 import LoginCommand from "../command/LoginCommand";
 import LoginEvent from "../event/LoginEvent";
+import {accountStore} from "../AccountStore";
 var TestUtils = require("react-addons-test-utils");
 
 describe("LoginCommand Spec", function() {
@@ -14,14 +13,13 @@ describe("LoginCommand Spec", function() {
   FabaCore.addMediator(new AccountMediator());
 
   beforeEach(()=> {
-    model.accountStore = new AccountStore();
     command = new LoginCommand();
     event = new LoginEvent();
   });
 
   it("Should set Errorcode", function(resolve) {
     event.cbs = () =>{
-      expect(model.accountStore.login.errorCode == 2).toBeTruthy();
+      expect(accountStore.login.errorCode == 2).toBeTruthy();
       resolve();
     };
 

@@ -1,12 +1,11 @@
 import * as React from "react";
 import {mount} from "enzyme";
-import {model} from "../../common/AppModel";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import ForgotPass from "../view/ForgotPass";
-import AccountMediator from "../AccountMediator";
-import AccountStore from "../AccountStore";
 import FabaCore from "fabalous-core/core/FabaCore";
+import AccountMediator from "../AccountMediator";
+import {accountStore} from "../AccountStore";
+import ForgotPass from "../view/ForgotPass";
 var TestUtils = require("react-addons-test-utils");
 
 describe("ForgotPass View", function() {
@@ -19,11 +18,11 @@ describe("ForgotPass View", function() {
   FabaCore.addMediator(new AccountMediator());
 
   beforeEach(()=> {
-    model.accountStore = new AccountStore();
+    console.log(accountStore);
 
     wrapper = mount(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <ForgotPass />
+        <ForgotPass model={accountStore} />
       </MuiThemeProvider>
     );
 
@@ -34,5 +33,3 @@ describe("ForgotPass View", function() {
     expect(instance).toBeDefined();
   });
 });
-
-

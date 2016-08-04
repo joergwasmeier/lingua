@@ -1,6 +1,5 @@
-import {model} from "../common/AppModel";
 import ProfileVo from "./vo/ProfileVo";
-import {MenuItemVo,MenuItemTypesVo} from "./vo/MenuItemVo";
+import {MenuItemVo, MenuItemTypesVo} from "./vo/MenuItemVo";
 /**
  * Created by creativecode on 20.04.16.
  */
@@ -13,7 +12,7 @@ export default class MenuStore {
   public createdCourses:Array<MenuItemVo>;
 
   constructor( ) {
-    if (!model.menuStore) model.menuStore = this;
+    //if (!model.menuStore) model.menuStore = this;
   }
 
   public createMockData(){

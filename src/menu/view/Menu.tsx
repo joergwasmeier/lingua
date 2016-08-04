@@ -1,26 +1,25 @@
 import * as React from "react";
 import {AppBar, Drawer, MenuItem, Divider, Subheader, ListItem} from "material-ui";
 import ActionInfo from "material-ui/svg-icons/action/info";
-import {model} from "../../common/AppModel";
+import MenuStore from "../MenuStore";
 
 var classNames = require('classnames');
 
-export default class Menu extends React.Component<{},{}> {
+interface IMenuProps{
+  model:MenuStore;
+  history:any;
+}
+
+export default class Menu extends React.Component<IMenuProps,{}> {
   className:string = "Menu";
-
-  state = {
-    open: false,
-    loggedIn: false
-  };
-
-  props:any;
+  props:IMenuProps;
 
   constructor(props) {
     super(props);
   }
 
   handleToggle = () => {
-    this.setState({open: !this.state.open});
+    //this.setState({open: !this.state.open});
   };
 
   handleClose = () => this.setState({open: false});
@@ -39,7 +38,7 @@ export default class Menu extends React.Component<{},{}> {
     var items:Array<any> = [];
     var id = 1;
 
-    for (var course in model.menuStore.courses) {
+    for (var course in this.props.model.courses) {
       items.push(<MenuItem key={"course"+id}>course.headLine</MenuItem>);
       id++;
     }
@@ -51,7 +50,7 @@ export default class Menu extends React.Component<{},{}> {
     var items:Array<any> = [];
     var id = 1;
 
-    for (var course in model.menuStore.createdCourses) {
+    for (var course in this.props.model.createdCourses) {
       items.push(<MenuItem key={"createdCourses"+id}>course.headLine</MenuItem>);
       id++;
     }
@@ -60,7 +59,7 @@ export default class Menu extends React.Component<{},{}> {
   }
 
   render() {
-    if (!model.userLoggedIn) return null;
+    //if (!model.userLoggedIn) return null;
 
     return (
       <div className={`center ${this.className}`}>
@@ -73,7 +72,7 @@ export default class Menu extends React.Component<{},{}> {
           onLeftIconButtonTouchTap={this.handleToggle}
         />
 
-        <Drawer open={this.state.open}
+        <Drawer open={true}
                 width={this.dockerWidth()}
                 docked={true}
                 onRequestChange={(open) => this.setState({open})}
@@ -81,9 +80,9 @@ export default class Menu extends React.Component<{},{}> {
         >
           <div className="menuHeader">
             <div className="profil">
-              <img className="profilPic" src={model.menuStore.profil.picture}/>
-              <p>{model.menuStore.profil.fullName()}</p>
-              <p>{model.menuStore.profil.learnPoints}</p>
+              <img className="profilPic" src={this.props.model.profil.picture}/>
+              <p>{this.props.model.profil.fullName()}</p>
+              <p>{this.props.model.profil.learnPoints}</p>
             </div>
           </div>
 
@@ -99,7 +98,7 @@ export default class Menu extends React.Component<{},{}> {
           <Divider/>
           <MenuItem>Kurse Store</MenuItem>
           <MenuItem>Einstellungen</MenuItem>
-          <MenuItem>Hilfe & Feedback</MenuItem>
+          <MenuItem>Hilfe und Feedback</MenuItem>
         </Drawer>
 
       </div>

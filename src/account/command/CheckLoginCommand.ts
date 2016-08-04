@@ -1,12 +1,12 @@
 import FabaCommand from "fabalous-core/core/FabaCommand";
 import LoginEvent from "./../event/LoginEvent";
-import {model} from "./../../common/AppModel";
 import CheckLoginStatusEvent from "../event/CheckLoginStatusEvent";
+import {accountStore} from "../AccountStore";
 
 export default class CheckLoginCommand extends FabaCommand {
 
     execute(event:CheckLoginStatusEvent) {
-        if (model.accountStore && model.accountStore.login && model.accountStore.login.loggedIn){
+        if (accountStore && accountStore.login && accountStore.login.loggedIn){
             event.loggedIn = true;
             event.callBack();
         } else {

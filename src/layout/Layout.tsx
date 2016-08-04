@@ -2,6 +2,7 @@ import * as React from "react";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Menu from "./../menu/view/Menu";
+import FabaModel from "fabalous-core/core/FabaModel";
 
 require('./Layout.less');
 
@@ -12,10 +13,6 @@ interface IHistory {
 
 export default class Layout extends React.Component<{},{}> {
   className:string = "App";
-
-  state = {
-  };
-
   props:any;
 
   constructor(props) {
@@ -28,7 +25,7 @@ export default class Layout extends React.Component<{},{}> {
 
 
         <div className={`center ${this.className}`}>
-          <Menu />
+          <Menu model={FabaModel.getStore("menuStore")} history={this.props.history} />
           <div className="content">
             {this.props.children}
           </div>

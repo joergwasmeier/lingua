@@ -1,41 +1,40 @@
 import * as React from "react";
 import {FlatButton, TextField} from "material-ui";
-import {model} from "../../common/AppModel";
 import {observer} from "mobx-react/index";
+import AccountStore from "../AccountStore";
+import SignUpVo from "../vo/SignUpVo";
+import SignUpEvent from "../event/SignUpEvent";
 require('./SignUp.less');
+
+interface ISignUpProps{
+  model:AccountStore;
+  history:any;
+}
 
 @observer
 export default class SignUp extends React.Component<{},{}> {
-  className:string = "Home";
-
-  state = {
-    progress: false,
-    error: false
-  };
-
-  props;
+  className:string = "SignUp";
+  props:ISignUpProps;
+  vo:SignUpVo;
 
   constructor(props) {
     super(props);
+    this.vo = this.props.model.signUp;
 
     this.signUpBtHandler = this.signUpBtHandler.bind(this);
     this.userNameChange = this.userNameChange.bind(this);
   }
 
   userNameChange(e):void{
-    model.accountStore.signUp.userName = e.currentTarget.value;
+    this.vo.userName = e.currentTarget.value;
   }
 
   passWordChange(e):void{
-    model.accountStore.signUp.password = e.currentTarget.value;
+    this.vo.password = e.currentTarget.value;
   }
 
   signUpBtHandler():void{
-    if (!model.accountStore.signUp.userNameIsValid() ||
-        !model.accountStore.signUp.passWordIsValid()){
-      this.setState({error:true});
-      return;
-    }
+    new SignUpEvent(this.vo.userName, this.vo.password).dispatch();
   }
 
   render() {
@@ -49,7 +48,7 @@ export default class SignUp extends React.Component<{},{}> {
             floatingLabelText="E-Mailsdfsf"
             floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
             inputStyle={{color:"rgba(255,255,255,0.8)"}}
-            value={model.accountStore.signUp.userName}
+            value={this.vo.userName}
             onChange={this.userNameChange}
           />
 
@@ -59,7 +58,7 @@ export default class SignUp extends React.Component<{},{}> {
             floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
             inputStyle={{color:"rgba(255,255,255,0.8)"}}
             type="password"
-            value={model.accountStore.signUp.password}
+            value={this.vo.password}
             onChange={this.passWordChange}
 
           />

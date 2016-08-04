@@ -9,6 +9,10 @@ export default class SignUpVo extends FabaValueObject {
   @observable
   password:string = "";
 
+  @observable
+  error:boolean = false;
+
+
   constructor(){
     super();
   }
