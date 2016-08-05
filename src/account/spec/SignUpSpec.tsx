@@ -17,7 +17,7 @@ describe("SignUp View", function() {
   let injectTapEventPlugin = require("react-tap-event-plugin");
   injectTapEventPlugin();
 
-  FabaCore.addMediator(new AccountMediator());
+  FabaCore.addMediator(AccountMediator);
 
   beforeEach(()=> {
 

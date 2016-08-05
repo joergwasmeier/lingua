@@ -15,11 +15,9 @@ describe("ForgotPass View", function() {
   let injectTapEventPlugin = require("react-tap-event-plugin");
   injectTapEventPlugin();
 
-  FabaCore.addMediator(new AccountMediator());
+  FabaCore.addMediator(AccountMediator);
 
   beforeEach(()=> {
-    console.log(accountStore);
-
     wrapper = mount(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <ForgotPass model={accountStore} />

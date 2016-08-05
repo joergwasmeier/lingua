@@ -10,7 +10,7 @@ describe("LoginCommand Spec", function() {
   var command:LoginCommand;
   var event:LoginEvent;
 
-  FabaCore.addMediator(new AccountMediator());
+  FabaCore.addMediator(AccountMediator);
 
   beforeEach(()=> {
     command = new LoginCommand();

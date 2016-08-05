@@ -9,7 +9,6 @@ require('./SignUp.less');
 
 interface ISignUpProps{
   model:AccountStore;
-  history:any;
 }
 
 @observer

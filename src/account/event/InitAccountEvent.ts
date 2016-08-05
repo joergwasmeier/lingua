@@ -7,7 +7,7 @@ export default class InitAccountEvent extends FabaEvent{
   model:AccountStore;
   view:any;
 
-  constructor(name:string){
+  constructor(name:string = "default"){
     super("InitAccountEvent");
     this.viewName = name;
   }

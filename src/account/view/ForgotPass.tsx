@@ -8,7 +8,6 @@ require('./ForgotPass.less');
 
 interface IForgotPass{
   model:AccountStore;
-  history:any;
 }
 
 export default class ForgotPass extends React.Component<{},{}> {
@@ -20,7 +19,6 @@ export default class ForgotPass extends React.Component<{},{}> {
   constructor(props) {
     super(props);
     this.vo = this.props.model.forgotPass;
-    this.forgotPassBtHandler = this.forgotPassBtHandler.bind(this);
   }
 
   forgotPassBtHandler(){

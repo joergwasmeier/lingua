@@ -12,7 +12,6 @@ require('./Login.less');
 
 interface ILoginProps{
   model:AccountStore;
-  history:any;
 }
 
 @observer

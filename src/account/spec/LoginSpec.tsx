@@ -18,7 +18,7 @@ describe("Login View", function() {
   let injectTapEventPlugin = require("react-tap-event-plugin");
   injectTapEventPlugin();
 
-  FabaCore.addMediator(new AccountMediator());
+  FabaCore.addMediator(AccountMediator);
 
   beforeEach(()=> {
     FabaModel.setStore('accountStore', AccountStore);
@@ -54,27 +54,21 @@ describe("Login View", function() {
   });
 
   it("Login should Fail // no Username", function() {
-
-
     accountStore.login.userName = "";
     accountStore.login.password = "Test";
-
-    console.log(accountStore);
 
     var dm = ReactDOM.findDOMNode(wrapper.find('.loginButton').node);
     TestUtils.Simulate["touchTap"](dm);
 
-    //expect(loginIns.state.error).toBeTruthy();
+    expect(accountStore.login.errorCode).toBeGreaterThan(0);
   });
 
-  it("Login should success", function() {
+  xit("Login should success", function() {
     accountStore.login.userName = "Test12345";
     accountStore.login.password = "Test$12345";
     var dm = ReactDOM.findDOMNode(wrapper.find('.loginButton').node);
-   // TestUtils.Simulate["touchTap"](dm);
+    TestUtils.Simulate["touchTap"](dm);
 
-   // expect(loginIns.state.progress).toBeTruthy();
+    expect(accountStore.login.errorCode).toEqual(0);
   });
-
-
 });
