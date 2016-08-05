@@ -23,9 +23,6 @@ export default class Login extends React.Component<ILoginProps,{}> {
     constructor(props) {
         super(props);
         this.vo = props.model.login;
-        this.loginBtHandler = this.loginBtHandler.bind(this);
-        this.userNameChange = this.userNameChange.bind(this);
-        this.passWordChange = this.passWordChange.bind(this);
     }
 
     userNameChange(e):void{
@@ -37,13 +34,11 @@ export default class Login extends React.Component<ILoginProps,{}> {
     }
 
     loginBtHandler():void {
-      new LoginEvent().dispatch(() =>{
-          //this.props.history.push("/dashboard/");
-      });
+      new LoginEvent().dispatch();
     }
 
     renderError(){
-      if (!this.vo.errorCode <= 0) return null;
+      if (this.vo.errorCode <= 0) return null;
 
       return (
         <div className="error">

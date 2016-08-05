@@ -1,8 +1,6 @@
 import * as React from "react";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import Menu from "./../menu/view/Menu";
-import FabaModel from "fabalous-core/core/FabaModel";
 
 require('./Layout.less');
 
@@ -25,7 +23,7 @@ export default class Layout extends React.Component<{},{}> {
 
 
         <div className={`center ${this.className}`}>
-          <Menu model={FabaModel.getStore("menuStore")} history={this.props.history} />
+
           <div className="content">
             {this.props.children}
           </div>
@@ -34,3 +32,5 @@ export default class Layout extends React.Component<{},{}> {
     )
   }
 }
+
+//          <Menu model={FabaModel.getStore("menuStore")} history={this.props.history} />

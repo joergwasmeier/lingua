@@ -68,19 +68,18 @@ module.exports = {
                     path.resolve(__dirname, "../../src")
                 ],
                 test: /\.tsx?$/,
-                loader: 'babel?presets[]=es2015!awesome-typescript-loader'
+                loader: 'babel!awesome-typescript-loader'
             }
         ]
     },
+
     plugins:[
         new webpack.NormalModuleReplacementPlugin(/\.(gif|png|less|css)$/, 'node-noop'),
-
         new ForkCheckerPlugin(),
         new webpack.DefinePlugin({
             CLIENT: false,
             SERVER: true,
             TEST:false
         })
-        // new webpack.optimize.UglifyJsPlugin()
     ]
 };

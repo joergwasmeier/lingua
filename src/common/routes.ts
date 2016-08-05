@@ -2,8 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {Router, browserHistory, hashHistory} from "react-router";
 import Layout from "./../layout/Layout";
-import FabaCore from "fabalous-core/core/FabaCore";
-import FabaMediator from "fabalous-core/core/FabaMediator"; // you need to install this package
+import FabaCore from "fabalous-core/core/FabaCore"; // you need to install this package
 
 function loadRoute(cb) {
   return (module) => cb(null, module.default);
@@ -11,10 +10,9 @@ function loadRoute(cb) {
 
 function loadRouteDash(cb, view?:string) {
   return (module) => {
-    var med:FabaMediator = new module.mediator;
-    FabaCore.addMediator(med);
+    FabaCore.addMediator(module.mediator);
 
-    new module.initEvent().dispatch((event)=>{
+    new module.initEvent(view).dispatch((event)=>{
       cb(null, ()=>{return event.view});
     });
 

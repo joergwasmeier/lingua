@@ -11,7 +11,8 @@ function root(p) {
 module.exports = {
   output: {
     path: path.join(__dirname,'../../dist/web/'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    chunkFilename: 'bundle-[chunkhash].js'
   },
   /*
   externals:{
@@ -39,6 +40,10 @@ module.exports = {
   },
 
   entry: {
+    vendor: [
+      'react', 'react-dom','react-router', 'history', 'material-ui', 'mobx'
+    ],
+
     app: [
       'webpack-dev-server/client?http://localhost:8080/', // WebpackDevServer host and port
       'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
@@ -54,7 +59,7 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        loader: 'react-hot!babel?cacheDirectory=.awcache&presets[]=es2015!awesome-typescript-loader'
+        loader: 'react-hot!babel!awesome-typescript-loader'
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
@@ -64,7 +69,7 @@ module.exports = {
       { test: /\.json$/, loader: 'json'},
       {
         test: /index.html/,
-        loader: 'url-loader?limit=1&name=[name].[ext]!preprocess?+WEB',
+        loader: 'url-loader?limit=1&name=[name].[ext]',
         exclude: /node_modules/
       }
     ]
@@ -79,7 +84,12 @@ module.exports = {
       TEST:false
     }),
     new webpack.HotModuleReplacementPlugin(),
-
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: infinity,
+      minChunkSize: 50000,
+      filename: 'vendor.bundle.js'
+    }),
     new webpack.NamedModulesPlugin()
   ]
 };

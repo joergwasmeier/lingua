@@ -1,7 +1,6 @@
-import FabaValueObject from "fabalous-core/core/FabaValueObject";
 import {observable} from "mobx/lib/mobx";
 
-export default class SignUpVo extends FabaValueObject {
+export default class SignUpVo {
 
   @observable
   userName:string = "";
@@ -11,11 +10,6 @@ export default class SignUpVo extends FabaValueObject {
 
   @observable
   error:boolean = false;
-
-
-  constructor(){
-    super();
-  }
 
   userNameIsValid():boolean{
     if (this.userName.length >= 8) return true;

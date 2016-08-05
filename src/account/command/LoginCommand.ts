@@ -1,6 +1,7 @@
 import FabaCommand from "fabalous-core/core/FabaCommand";
 import LoginEvent from "./../event/LoginEvent";
 import {accountStore} from "../AccountStore";
+import {hashHistory} from "react-router";
 
 /**
  * Created by creativecode on 11.04.16.
@@ -29,6 +30,9 @@ export default class LoginCommand extends FabaCommand {
 
 
   result(event:LoginEvent) {
+    console.log("result");
+    hashHistory.push('/signUp/');
+
     event.callBack();
   }
 

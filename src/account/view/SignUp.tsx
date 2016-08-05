@@ -4,6 +4,7 @@ import {observer} from "mobx-react/index";
 import AccountStore from "../AccountStore";
 import SignUpVo from "../vo/SignUpVo";
 import SignUpEvent from "../event/SignUpEvent";
+import ChangeSignupInputEvent, {ChangeSignupInputEventTypes} from "../event/ChangeSignupInputEvent";
 require('./SignUp.less');
 
 interface ISignUpProps{
@@ -23,6 +24,7 @@ export default class SignUp extends React.Component<{},{}> {
 
     this.signUpBtHandler = this.signUpBtHandler.bind(this);
     this.userNameChange = this.userNameChange.bind(this);
+    //this.passWordChange = this.userNameChange.bind(this);
   }
 
   userNameChange(e):void{
@@ -30,7 +32,7 @@ export default class SignUp extends React.Component<{},{}> {
   }
 
   passWordChange(e):void{
-    this.vo.password = e.currentTarget.value;
+    new ChangeSignupInputEvent(ChangeSignupInputEventTypes.PASSWORD, e.currentTarget.value).dispatch();
   }
 
   signUpBtHandler():void{

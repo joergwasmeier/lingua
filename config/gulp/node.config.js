@@ -35,8 +35,7 @@ gulp.task('backend-watch', ['backend-wbp'], function() {
 
 gulp.task('backend-wbp', function(done) {
     var firedDone = false;
-    webpack(backendConfig).watch(100, function(err, stats) {
-
+    webpack(backendConfig).watch(500, function(err, stats) {
         if(!firedDone) {
             firedDone = true;
             done();

@@ -1,3 +1,11 @@
-/**
- * Created by creativecode on 04.08.16.
- */
+import FabaSerivce from "fabalous-core/core/FabaService";
+import SignUpEvent from "../event/SignUpEvent";
+
+export default class SignUpService extends FabaSerivce{
+
+  async execute(event:SignUpEvent) {
+    console.log("SignUpService");
+    super.sendToClient(event);
+
+  }
+}
