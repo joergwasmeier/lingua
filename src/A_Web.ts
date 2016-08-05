@@ -1,7 +1,6 @@
 import FabaApiConnection from "fabalous-core/transport/FabaApiConnection";
 import FabaWebApplication from "fabalous-core/runtimes/FabaWebApplication";
 import {renderRoutes} from "./common/routes";
-import FabaModel from "fabalous-core/core/FabaModel";
 
 //require('offline-plugin/runtime').install();
 
@@ -18,13 +17,11 @@ export default class A_Web extends FabaWebApplication {
     constructor() {
         super();
 
-        new FabaModel();
-
         var host:string = window.location.host+"/api/";
         if (host == "localhost:8080/api/") host = "localhost:3120/";
-      
+
         console.log(host);
-      
+
         var protocol = window.location.protocol;
 
         FabaWebApplication.addServerEndPoint(new FabaApiConnection(protocol+"//"+host), "api");

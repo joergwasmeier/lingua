@@ -66,16 +66,17 @@ gulp.task('frontend-build', function(done) {
             },
             {
                 test: /\.tsx?$/,
-                loader: 'react-hot!babel?presets[]=es2015!awesome-typescript-loader'
+                loader: 'babel!awesome-typescript-loader'
             },
             {
                 test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
                 loader: 'url-loader?limit=5000&name=assets/[name]-[hash].[ext]',
                 exclude: /node_modules/
             },
+            { test: /\.json$/, loader: 'json'},
             {
-                test: /\.html|json?$/,
-                loader: 'url-loader?limit=1&name=[name].[ext]!preprocess?+WEB',
+                test: /index.html/,
+                loader: 'url-loader?limit=1&name=[name].[ext]',
                 exclude: /node_modules/
             }
         ]
