@@ -12,10 +12,6 @@ require("babel-polyfill");
 class A_Server extends FabaServer{
     constructor(){
         console.log("Start Server");
-
-        FabaCore.addMediator(DashboardMediator);
-        //FabaCore.addMediator(new AccountMediator());
-        FabaCore.addMediator(DashboardMediator);
         FabaCore.addMediator(DashboardMediator);
         FabaCore.addMediator(AccountMediator);
         super();

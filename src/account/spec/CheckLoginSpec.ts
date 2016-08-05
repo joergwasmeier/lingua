@@ -21,7 +21,7 @@ if(CLIENT){
 
 if (SERVER){
   describe("CheckLogin Spec", function() {
-    FabaCore.addMediator(new AccountMediator());
+    FabaCore.addMediator(AccountMediator);
     new InitAccountEvent().dispatch();
 
     it("CheckLogin should be there", function() {
