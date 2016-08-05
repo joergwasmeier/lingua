@@ -86,7 +86,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: infinity,
+      minChunks: Infinity,
       minChunkSize: 50000,
       filename: 'vendor.bundle.js'
     }),
