@@ -4,7 +4,7 @@ import LoginEvent from "../event/LoginEvent";
 export default class LoginService extends FabaSerivce{
   
   async execute(event:LoginEvent) {
-    console.log("Login service");
+    console.log("Login service 2");
     super.sendToClient(event);
 
   }

@@ -2,7 +2,7 @@ import * as React from "react";
 import {FlatButton, TextField} from "material-ui";
 import LoginEvent from "../event/LoginEvent";
 import {observer} from "mobx-react/index";
-import ChangeLoginInputEvent, {ChangeLoginInputEventTypes} from "../event/ChangeLoginInputEvent";
+import  {ChangeLoginInputEventTypes, default as ChangeLoginInputEvent} from "../event/ChangeLoginInputEvent";
 import AccountStore from "../AccountStore";
 import LoginVo from "../vo/LoginVo";
 import SyntheticEvent = __React.SyntheticEvent;

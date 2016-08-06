@@ -7,7 +7,7 @@ export default class DashboardService extends FabaSerivce{
     }
 
     execute(event:GetDashboardDataEvent) {
-        console.log("dashboard service er");
+        console.log("dashboard service");
 
         //var nodeFS = require("fs");
         //console.log(nodeFS);

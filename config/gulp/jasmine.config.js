@@ -28,3 +28,11 @@ gulp.task('testNode', function() {
 
     runSequence( 'testComp', 'testJasmine' );
 });
+
+gulp.task('testNode-tdd', function() {
+    watch('**/*.ts', function(files) {
+        runSequence( 'testComp', 'testJasmine' );
+    });
+
+    runSequence( 'testComp', 'testJasmine' );
+});

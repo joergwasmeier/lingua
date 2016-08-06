@@ -18,6 +18,8 @@ module.exports = {
         path: path.join(__dirname, '../../dist/test/node/'),
         filename: 'test.js'
     },
+    recordsPath: path.join(__dirname, '../../dist/test/_records'),
+
     node: {
         __dirname: true,
         __filename: true
@@ -29,8 +31,15 @@ module.exports = {
     quiet: true,
     module: {
         loaders: [
-            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader', exclude: /node_modules/},
-            { test: /\.tsx?$/, loader: 'awesome-typescript-loader'}
+            { test: /\.less$/, loader: 'noop-loader', exclude: /node_modules/},
+            {
+                include:[
+                    path.resolve(__dirname, "../../node_modules/fabalous-core"),
+                    path.resolve(__dirname, "../../src")
+                ],
+                test: /\.tsx?$/,
+                loader: 'awesome-typescript-loader'
+            }
         ]
     },
     plugins:[
