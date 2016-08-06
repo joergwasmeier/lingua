@@ -1,8 +1,6 @@
 import FabaMediator from "fabalous-core/core/FabaMediator";
 import {IFabaMediator} from "fabalous-core/core/IFabaMediator";
 import GetDashboardDataEvent from "./event/GetDashboardDataEvent";
-
-import DashboardCommand from "./command/DashboardCommand";
 import DashboardService from "./service/DashboardService";
 
 export default class DashboardMediator extends FabaMediator implements IFabaMediator{
@@ -14,7 +12,7 @@ export default class DashboardMediator extends FabaMediator implements IFabaMedi
   registerCommands():void {
     if(CLIENT){
       super.registerCommands();
-      this.addCommand(GetDashboardDataEvent, DashboardCommand);
+      this.addCommand(require("./event/GetDashboardDataEvent"), require("./command/DashboardCommand"));
     }
   }
 
