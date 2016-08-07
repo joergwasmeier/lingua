@@ -5,19 +5,23 @@ import {IFabaMediator} from "fabalous-core/core/IFabaMediator";
 declare var module:any;
 
 export default class AccountMediator extends FabaMediator implements IFabaMediator{
-
-
   constructor() {
     super();
 
     if (module.hot) {
-      module.hot.accept(["./command/LoginCommand","./command/ChangeLoginInputCommand"], () => {
+      module.hot.accept([
+        "./command/InitAccountCommand",
+        "./command/CheckLoginCommand",
+        "./command/ChangeLoginInputCommand",
+        "./command/ChangeSignUpInputCommand",
+        "./command/SignUpCommand",
+        "./command/LoginCommand"
+      ], () => {
           this.cmdList = new Array<Object>();
           this.registerCommands();
       });
     }
   }
-
 
   registerCommands():void {
     if(CLIENT) {

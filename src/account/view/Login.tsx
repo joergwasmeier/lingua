@@ -50,7 +50,7 @@ export default class Login extends React.Component<ILoginProps,{}> {
         return (
             <div className={`center ${this.className}`}>
                 <div className="content">
-                  <p className="header">LINGUA 2</p>
+                  <p className="header">LINGUA</p>
 
                   <TextField
                       className="textField"

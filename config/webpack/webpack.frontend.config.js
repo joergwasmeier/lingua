@@ -47,7 +47,6 @@ module.exports = {
     */
 
     app: [
-      'react-hot-loader/patch',
       'webpack-dev-server/client?http://localhost:8080/', // WebpackDevServer host and port
       'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
       './src/A_Web.ts' // Your appʼs entry point
@@ -62,7 +61,7 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        loader: 'babel?cacheDirectory=true!awesome-typescript-loader'
+        loader: 'react-hot!babel?cacheDirectory=true!awesome-typescript-loader'
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
