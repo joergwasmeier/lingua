@@ -1,6 +1,8 @@
 import FabaApiConnection from "fabalous-core/transport/FabaApiConnection";
 import FabaWebApplication from "fabalous-core/runtimes/FabaWebApplication";
 import {renderRoutes} from "./common/routes";
+import FabaCore from "fabalous-core/core/FabaCore";
+import {IFabaMediatorList} from "fabalous-core/core/FabaCore";
 
 //require('offline-plugin/runtime').install();
 
@@ -12,6 +14,8 @@ require("./index.html");
 
 require("./assets/less/reset.less");
 require("./assets/less/font.less");
+
+declare var module;
 
 export default class A_Web extends FabaWebApplication {
     constructor() {

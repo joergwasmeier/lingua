@@ -2,6 +2,7 @@ import FabaCommand from "fabalous-core/core/FabaCommand";
 import LoginEvent from "./../event/LoginEvent";
 import {accountStore} from "../AccountStore";
 import {hashHistory} from "react-router";
+import FabaMediator from "fabalous-core/core/FabaMediator";
 
 /**
  * Created by creativecode on 11.04.16.
@@ -9,9 +10,8 @@ import {hashHistory} from "react-router";
 declare var module:any;
 
 export default class LoginCommand extends FabaCommand {
-  execute(event:LoginEvent) {
-    accountStore.login.errorCode = 2;
 
+  execute(event:LoginEvent) {
     if(this.checkUserPassLength()){
       this.sendToEndpoint(event);
       return;

@@ -6,18 +6,18 @@ declare var module:any;
 
 export default class AccountMediator extends FabaMediator implements IFabaMediator{
 
+
   constructor() {
     super();
 
     if (module.hot) {
-      module.hot.accept();
-      module.hot.dispose(() => {
-        if(CLIENT) {
+      module.hot.accept(["./command/LoginCommand","./command/ChangeLoginInputCommand"], () => {
+          this.cmdList = new Array<Object>();
           this.registerCommands();
-        }
       });
     }
   }
+
 
   registerCommands():void {
     if(CLIENT) {
@@ -31,6 +31,7 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
       this.addCommand(require("./event/LoginEvent"), require("./command/LoginCommand"));
     }
   }
+
   registerServices():void {
     if(SERVER) {
       super.registerServices();
