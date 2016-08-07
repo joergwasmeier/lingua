@@ -2,7 +2,7 @@ import * as React from "react";
 import {FlatButton, TextField} from "material-ui";
 import LoginEvent from "../event/LoginEvent";
 import {observer} from "mobx-react/index";
-import  {ChangeLoginInputEventTypes, default as ChangeLoginInputEvent} from "../event/ChangeLoginInputEvent";
+import {ChangeLoginInputEventTypes, default as ChangeLoginInputEvent} from "../event/ChangeLoginInputEvent";
 import AccountStore from "../AccountStore";
 import LoginVo from "../vo/LoginVo";
 import SyntheticEvent = __React.SyntheticEvent;
@@ -50,7 +50,7 @@ export default class Login extends React.Component<ILoginProps,{}> {
         return (
             <div className={`center ${this.className}`}>
                 <div className="content">
-                  <p className="header">LINGUA</p>
+                  <p className="header">LINGUA 2</p>
 
                   <TextField
                       className="textField"

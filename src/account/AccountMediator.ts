@@ -1,14 +1,26 @@
 import FabaMediator from "fabalous-core/core/FabaMediator";
 import {IFabaMediator} from "fabalous-core/core/IFabaMediator";
 
+
+declare var module:any;
+
 export default class AccountMediator extends FabaMediator implements IFabaMediator{
 
   constructor() {
     super();
+
+    if (module.hot) {
+      module.hot.accept();
+      module.hot.dispose(() => {
+        if(CLIENT) {
+          this.registerCommands();
+        }
+      });
+    }
   }
 
   registerCommands():void {
-    if(CLIENT){
+    if(CLIENT) {
       super.registerCommands();
 
       this.addCommand(require("./event/InitAccountEvent"), require("./command/InitAccountCommand"));

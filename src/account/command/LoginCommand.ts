@@ -6,17 +6,17 @@ import {hashHistory} from "react-router";
 /**
  * Created by creativecode on 11.04.16.
  */
+declare var module:any;
 
 export default class LoginCommand extends FabaCommand {
-
   execute(event:LoginEvent) {
-    accountStore.login.errorCode = 0;
+    accountStore.login.errorCode = 2;
 
     if(this.checkUserPassLength()){
       this.sendToEndpoint(event);
       return;
     }
-
+    accountStore.login.progress = false;
     accountStore.login.errorCode = 2;
     event.callBack();
   }
