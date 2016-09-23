@@ -1,4 +1,0 @@
-
-/*
- ./node_modules/electron-packager/cli.js ./dist/electron/ test --all --out ./dist/exec/
-*/

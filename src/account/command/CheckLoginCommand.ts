@@ -1,7 +1,7 @@
-import FabaCommand from "fabalous-core/core/FabaCommand";
 import LoginEvent from "./../event/LoginEvent";
 import CheckLoginStatusEvent from "../event/CheckLoginStatusEvent";
 import {accountStore} from "../AccountStore";
+import FabaCommand from "@fabalous/core/FabaCommand";
 
 export default class CheckLoginCommand extends FabaCommand {
 

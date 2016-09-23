@@ -5,7 +5,6 @@ import {observer} from "mobx-react/index";
 import {ChangeLoginInputEventTypes, default as ChangeLoginInputEvent} from "../event/ChangeLoginInputEvent";
 import AccountStore from "../AccountStore";
 import LoginVo from "../vo/LoginVo";
-import SyntheticEvent = __React.SyntheticEvent;
 
 var classNames = require('classnames');
 require('./Login.less');

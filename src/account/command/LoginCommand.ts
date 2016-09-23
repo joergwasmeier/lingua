@@ -1,19 +1,20 @@
-import FabaCommand from "fabalous-core/core/FabaCommand";
 import LoginEvent from "./../event/LoginEvent";
 import {accountStore} from "../AccountStore";
 import {hashHistory} from "react-router";
-import FabaMediator from "fabalous-core/core/FabaMediator";
+import FabaCommand from "@fabalous/core/FabaCommand";
+import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 
 /**
  * Created by creativecode on 11.04.16.
  */
-declare var module:any;
 
 export default class LoginCommand extends FabaCommand {
 
   execute(event:LoginEvent) {
     if(this.checkUserPassLength()){
-      this.sendToEndpoint(event);
+      //this.sendToEndpoint(event);
+      FabaRuntimeWeb.sendToEndpoint(event, "");
+
       return;
     }
     accountStore.login.progress = false;

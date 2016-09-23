@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {Router, browserHistory, hashHistory} from "react-router";
 import Layout from "./../layout/Layout";
-import FabaCore from "fabalous-core/core/FabaCore"; // you need to install this package
+import FabaCore from "@fabalous/core/FabaCore";
 
 function loadRoute(cb) {
   return (module) => cb(null, module.default);

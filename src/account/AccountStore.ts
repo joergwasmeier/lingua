@@ -1,7 +1,7 @@
 import SignUpVo from "../account/vo/SignUpVo";
 import ForgotPassVo from "../account/vo/ForgotPassVo";
 import LoginVo from "./vo/LoginVo";
-import FabaModel from "fabalous-core/core/FabaModel";
+import FabaModel from "@fabalous/core/FabaModel";
 
 /**
  * Created by creativecode on 20.04.16.

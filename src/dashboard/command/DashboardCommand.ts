@@ -1,5 +1,5 @@
-import FabaCommand from "fabalous-core/core/FabaCommand";
 import GetDashboardDataEvent from "../event/GetDashboardDataEvent";
+import FabaCommand from "@fabalous/core/FabaCommand";
 
 /**
  * Created by creativecode on 11.04.16.

@@ -1,6 +1,6 @@
-import FabaCommand from "fabalous-core/core/FabaCommand";
 import {accountStore} from "../AccountStore";
 import ChangeSignupInputEvent, {ChangeSignupInputEventTypes} from "../event/ChangeSignupInputEvent";
+import FabaCommand from "@fabalous/core/FabaCommand";
 
 export default class ChangeSignUpInputCommand extends FabaCommand {
     execute(event:ChangeSignupInputEvent) {

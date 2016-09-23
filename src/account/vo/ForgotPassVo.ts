@@ -1,5 +1,5 @@
-import FabaValueObject from "fabalous-core/core/FabaValueObject";
 import {observable} from "mobx/lib/mobx";
+import FabaValueObject from "@fabalous/core/FabaValueObject";
 
 export default class ForgotPassVo extends FabaValueObject {
 

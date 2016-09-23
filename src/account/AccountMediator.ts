@@ -1,7 +1,6 @@
-import FabaMediator from "fabalous-core/core/FabaMediator";
-import {IFabaMediator} from "fabalous-core/core/IFabaMediator";
 
-
+import FabaMediator from "@fabalous/core/FabaMediator";
+import {IFabaMediator} from "@fabalous/core/IFabaMediator";
 declare var module:any;
 
 export default class AccountMediator extends FabaMediator implements IFabaMediator{
@@ -17,7 +16,7 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
         "./command/SignUpCommand",
         "./command/LoginCommand"
       ], () => {
-          this.cmdList = new Array<Object>();
+          this.cmdList = new Array<any>();
           this.registerCommands();
       });
     }

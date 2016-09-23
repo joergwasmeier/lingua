@@ -1,7 +1,7 @@
-import FabaCore from "fabalous-core/core/FabaCore";
-import FabaServer from "fabalous-core/runtimes/FabaServer";
 import AccountMediator from "./account/AccountMediator";
 import DashboardMediator from "./dashboard/DasboardMediator";
+import FabaServer from "@fabalous/core/FabaServer";
+import FabaCore from "@fabalous/core/FabaCore";
 
 require("babel-polyfill");
 

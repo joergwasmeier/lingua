@@ -1,6 +1,6 @@
-import FabaMediator from "fabalous-core/core/FabaMediator";
-import {IFabaMediator} from "fabalous-core/core/IFabaMediator";
 
+import {IFabaMediator} from "@fabalous/core/IFabaMediator";
+import FabaMediator from "@fabalous/core/FabaMediator";
 export default class DashboardMediator extends FabaMediator implements IFabaMediator{
 
   constructor() {

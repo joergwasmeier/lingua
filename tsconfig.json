@@ -7,27 +7,22 @@
         "emitDecoratorMetadata": true,
         "declaration": false,
         "noImplicitAny": false,
-        "removeComments": true,
+        "removeComments": false,
         "noLib": false,
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
-        "outDir": "./build/js/",
-        "rootDir": "./",
         "moduleResolution": "node",
-        "baseUrl": "./",
-        "paths": {
-            "fabalous-core": ["./node_modules/fabalous-core/"],
-            "material-ui": ["./node_modules/material-ui/"]
-        }
+        "outDir": "./dist/",
+        "rootDir": "./"
     },
     "awesomeTypescriptLoaderOptions": {
         "forkChecker":true,
         "forkCheckerSilent":true,
         "useBabel":false,
-        "useCache":true
+        "useCache":true,
+        "skipDeclarationFilesCheck":false
     },
-    "exclude": ["node_modules"],
-    "files": [
-        "typings/tsd.d.ts"
+    "exclude": ["test",
+        "node_modules"
     ]
 }

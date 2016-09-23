@@ -1,5 +1,5 @@
-import FabaSerivce from "fabalous-core/core/FabaService";
 import LoginEvent from "../event/LoginEvent";
+import FabaSerivce from "@fabalous/core/FabaService";
 
 export default class LoginService extends FabaSerivce{
   

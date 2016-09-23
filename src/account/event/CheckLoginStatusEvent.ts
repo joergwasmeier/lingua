@@ -1,5 +1,5 @@
-import FabaEvent from "fabalous-core/core/FabaEvent";
 
+import FabaEvent from "@fabalous/core/FabaEvent";
 export default class CheckLoginStatusEvent extends FabaEvent{
     loggedIn:boolean;
     

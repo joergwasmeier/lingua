@@ -1,10 +1,10 @@
 import * as React from "react";
-import FabaCommand from "fabalous-core/core/FabaCommand";
 import InitAccountEvent from "../event/InitAccountEvent";
 import Login from "../view/Login";
 import {accountStore} from "../AccountStore";
 import ForgotPass from "../view/ForgotPass";
 import SignUp from "../view/SignUp";
+import FabaCommand from "@fabalous/core/FabaCommand";
 
 export default class InitAccountCommand extends FabaCommand {
     execute(event:InitAccountEvent) {

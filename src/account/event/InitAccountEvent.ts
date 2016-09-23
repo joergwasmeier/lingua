@@ -1,5 +1,5 @@
-import FabaEvent from "fabalous-core/core/FabaEvent";
 import AccountStore from "../AccountStore";
+import FabaEvent from "@fabalous/core/FabaEvent";
 
 export default class InitAccountEvent extends FabaEvent{
   viewName:string;
