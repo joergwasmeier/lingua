@@ -1,6 +1,5 @@
-import FabaMediator from "fabalous-core/core/FabaMediator";
-import {IFabaMediator} from "fabalous-core/core/IFabaMediator";
-import GetMenuDataEvent from "./event/GetMenuDataEvent";
+import FabaMediator from "@fabalous/core/FabaMediator";
+import {IFabaMediator} from "@fabalous/core/IFabaMediator";
 
 export default class MenuMediator extends FabaMediator implements IFabaMediator{
   constructor() {
@@ -10,7 +9,9 @@ export default class MenuMediator extends FabaMediator implements IFabaMediator{
   registerCommands():void {
     if (CLIENT){
       super.registerCommands();
-      this.addCommand(GetMenuDataEvent, require("./commad/GetMenuDataCommand.ts").default);
+      this.addCommand(require("./event/GetMenuDataEvent"), require("./commad/GetMenuDataCommand"));
+      this.addCommand(require("./event/ToggleMenuEvent"), require("./commad/ToggleMenuCommand"));
+
     }
   }
 

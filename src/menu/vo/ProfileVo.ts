@@ -1,7 +1,7 @@
+import FabaValueObject from "@fabalous/core/FabaValueObject";
 /**
  * Created by creativecode on 30.06.16.
  */
-import FabaValueObject from "fabalous-core/core/FabaValueObject";
 
 export default class ProfileVo extends FabaValueObject {
 

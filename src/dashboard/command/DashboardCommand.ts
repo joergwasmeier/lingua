@@ -1,5 +1,6 @@
 import GetDashboardDataEvent from "../event/GetDashboardDataEvent";
 import FabaCommand from "@fabalous/core/FabaCommand";
+import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 
 /**
  * Created by creativecode on 11.04.16.
@@ -8,7 +9,7 @@ import FabaCommand from "@fabalous/core/FabaCommand";
 export default class DashboardCommand extends FabaCommand {
   execute(event:GetDashboardDataEvent) {
     console.log("execute");
-    this.sendToEndpoint(event);
+    FabaRuntimeWeb.sendToEndpoint(event, "");
   }
 
   result(event:GetDashboardDataEvent) {

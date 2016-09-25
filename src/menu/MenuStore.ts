@@ -1,19 +1,19 @@
 import ProfileVo from "./vo/ProfileVo";
 import {MenuItemVo, MenuItemTypesVo} from "./vo/MenuItemVo";
+import FabaModel from "@fabalous/core/FabaModel";
+import {observable} from "mobx";
 /**
  * Created by creativecode on 20.04.16.
  */
 
 export default class MenuStore {
-
   public profil:ProfileVo = new ProfileVo();
 
   public courses:Array<MenuItemVo>;
   public createdCourses:Array<MenuItemVo>;
 
-  constructor( ) {
-    //if (!model.menuStore) model.menuStore = this;
-  }
+  @observable
+  public menuOpen:Boolean = false;
 
   public createMockData(){
     if (TEST){
@@ -31,3 +31,5 @@ export default class MenuStore {
     }
   }
 }
+
+export var menuStore:MenuStore = FabaModel.getStore('menuStore', MenuStore);

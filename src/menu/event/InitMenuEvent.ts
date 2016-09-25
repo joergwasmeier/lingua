@@ -1,4 +1,4 @@
-import FabaEvent from "fabalous-core/core/FabaEvent";
+import FabaEvent from "@fabalous/core/FabaEvent";
 
 export default class InitMenuEvent extends FabaEvent{
   constructor(){

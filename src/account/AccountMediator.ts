@@ -16,7 +16,7 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
         "./command/SignUpCommand",
         "./command/LoginCommand"
       ], () => {
-          this.cmdList = new Array<any>();
+          this.cmdList = [];
           this.registerCommands();
       });
     }

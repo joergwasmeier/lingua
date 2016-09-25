@@ -1,6 +1,8 @@
 import {renderRoutes} from "./common/routes";
 import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 import FabaApiConnection from "@fabalous/runtime-web/transport/FabaApiConnection";
+import FabaCore from "@fabalous/core/FabaCore";
+import MenuMediator from "./menu/MenuMediator";
 
 //require('offline-plugin/runtime').install();
 
@@ -24,9 +26,8 @@ export default class A_Web extends FabaRuntimeWeb {
 
         var protocol = window.location.protocol;
 
-        console.log("add");
+        FabaCore.addMediator(MenuMediator);
 
-        console.log();
         FabaRuntimeWeb.addServerEndPoint(new FabaApiConnection(protocol+"//"+host), "api");
 
         renderRoutes();

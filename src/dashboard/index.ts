@@ -1,14 +1,7 @@
-/**
- * Created by joerg on 13.04.2016.
- */
-
-
-import GetDashboardDataEvent from "./event/GetDashboardDataEvent";
-import Dashboard from "./view/Dashboard";
 import DashboardMediator from "./DasboardMediator";
+import InitDashboardEvent from "./event/InitDashboardEvent";
 
 module.exports = {
   mediator: DashboardMediator,
-  view: Dashboard,
-  initEvent: GetDashboardDataEvent
+  initEvent: InitDashboardEvent
 };

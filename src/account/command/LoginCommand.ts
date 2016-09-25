@@ -3,6 +3,7 @@ import {accountStore} from "../AccountStore";
 import {hashHistory} from "react-router";
 import FabaCommand from "@fabalous/core/FabaCommand";
 import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
+import GetMenuDataEvent from "../../menu/event/GetMenuDataEvent";
 
 /**
  * Created by creativecode on 11.04.16.
@@ -31,8 +32,8 @@ export default class LoginCommand extends FabaCommand {
 
 
   result(event:LoginEvent) {
-    console.log("result");
-    hashHistory.push('/signUp/');
+    new GetMenuDataEvent().dispatch();
+    hashHistory.push('/dashboard/');
 
     event.callBack();
   }

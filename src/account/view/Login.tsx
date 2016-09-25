@@ -76,7 +76,7 @@ export default class Login extends React.Component<ILoginProps,{}> {
                       className={classNames('loginButton', { progress: this.vo.progress })}
                       backgroundColor="#a4c639"
                       onTouchTap={this.loginBtHandler}>
-                      <p className="content">LOGIN</p>
+                      <p className="content">LOGIN 2</p>
 
                       <div className="spinner"></div>
                   </FlatButton>

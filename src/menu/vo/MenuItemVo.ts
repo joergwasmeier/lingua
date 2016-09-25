@@ -1,5 +1,5 @@
-import FabaValueObject from "fabalous-core/core/FabaValueObject";
 
+import FabaValueObject from "@fabalous/core/FabaValueObject";
 export class MenuItemVo extends FabaValueObject {
   
   id:string;
