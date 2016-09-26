@@ -1,23 +1,20 @@
-/*
- * 
- *
- *
- */
-
-import ChangeAppBarTitleEvent from "../../menu/event/ChangeAppBarTitleEvent";
-require("./Dashboard.less");
-
 import * as React from "react";
 import {ListItem, List, Divider, Subheader} from "material-ui";
 import ActionInfo from "material-ui/svg-icons/action/info";
-import {ChangeAppBarTitles} from "../../menu/event/ChangeAppBarTitleEvent";
-
+import LinguaAppBar from "../../menu/view/AppBar";
+import GetDashboardDataEvent from "../event/GetDashboardDataEvent";
+import InsertDashboardDataEvent from "../event/InsertDashboardDataEvent";
+import DashboardVo from "../vo/DashboardVo";
+import {dashboardStore} from "../DashboardStore";
+import {observer} from "mobx-react";
 var Chart = require('chart.js/src/chart.js');
+
+require("./Dashboard.less");
 
 interface IDashboardProps {
 
 }
-
+@observer
 export default class Dashboard extends React.Component<{},{}> {
     className: string = "Dashboard";
 
@@ -46,7 +43,7 @@ export default class Dashboard extends React.Component<{},{}> {
     }
 
     componentDidMount(): void {
-        new ChangeAppBarTitleEvent(ChangeAppBarTitles.DASHBOARD).dispatch();
+       // new ChangeAppBarTitleEvent(ChangeAppBarTitles.DASHBOARD).dispatch();
 
         // Chart rerender
         window.addEventListener("resize", (e) => {
@@ -90,7 +87,28 @@ export default class Dashboard extends React.Component<{},{}> {
 
     render() {
         return (
+
             <div className={this.className}>
+
+
+                <p>{dashboardStore.data.pointsToday}</p>
+                <p>{dashboardStore.data.userName}</p>
+                <p>{dashboardStore.data.getFullName()}</p>
+
+                <button onClick={()=>{
+                    new GetDashboardDataEvent().dispatch()
+                }}>GetDashbOarData</button>
+
+                <button onClick={()=>{
+                    var dash:DashboardVo = new DashboardVo();
+                    dash.userName = "test";
+                    dash.pointsToday = 2000;
+
+                    new InsertDashboardDataEvent(dash).dispatch()
+                }}>InsertDashboardData</button>
+
+                <LinguaAppBar />
+
                 <canvas id="myChart" width="400" height="400"></canvas>
 
                 <br/>

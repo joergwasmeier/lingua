@@ -1,5 +1,5 @@
-import FabaEvent from "fabalous-core/core/FabaEvent";
 
+import FabaEvent from "@fabalous/core/FabaEvent";
 export default class GetCourseDataEvent extends FabaEvent{
 
   constructor(){

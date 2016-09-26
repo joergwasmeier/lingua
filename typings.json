@@ -1,0 +1,11 @@
+{
+  "globalDependencies": {
+    "@fabalous/core": "npm:@fabalous/core/index.d.ts",
+    "systemjs": "registry:dt/systemjs#0.19.29+20160702105636"
+  },
+  "dependencies": {
+    "express": "registry:npm/express#4.14.0+20160922175659",
+    "material-ui": "registry:npm/material-ui#0.15.1+20160817172421",
+    "rethinkdb": "registry:npm/rethinkdb#2.3.0+20160912203226"
+  }
+}

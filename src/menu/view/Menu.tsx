@@ -21,15 +21,7 @@ export default class Menu extends React.Component<IMenuProps,{}> {
         super(props);
     }
 
-    handleToggle(e): void {
-        console.log(e);
-        new ToggleMenuEvent().dispatch();
-    }
-
-    handleClose = () => this.setState({open: false});
-
     menuClickHandler(url: string) {
-        this.setState({open: false});
         this.props.history.push(url);
     }
 
@@ -67,19 +59,10 @@ export default class Menu extends React.Component<IMenuProps,{}> {
 
         return (
             <div className={`center ${this.className}`}>
-                <AppBar
-                    title="Title"
-                    iconClassNameRight="muidocs-icon-navigation-expand-more"
-                    onTitleTouchTap={() => this.handleToggle(true)}
-                    style={{position:"fixed"}}
-                    className="appBar"
-                    onLeftIconButtonTouchTap={() => this.handleToggle(true)}
-                />
-
                 <Drawer open={this.props.model.menuOpen}
                         width={this.dockerWidth()}
                         docked={false}
-                        onRequestChange={(open) => this.handleToggle(open)}
+                        onRequestChange={(open:boolean) => new ToggleMenuEvent(open).dispatch()}
                         className="drawer"
                 >
                     <div className="menuHeader">
