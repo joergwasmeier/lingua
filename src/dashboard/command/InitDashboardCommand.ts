@@ -11,10 +11,10 @@ export default class InitDashboardCommand extends FabaCommand implements IFabaCo
     }
 
    execute(event: InitDashboardEvent): any {
-       new GetDashboardDataEvent().dispatch(()=>{
-           event.view = React.createElement(Dashboard, {});
-           event.callBack();
-       });
+       new GetDashboardDataEvent().dispatch();
+
+       event.view = React.createElement(Dashboard, {});
+       event.callBack();
     }
 
     result(event: InitDashboardEvent): any {

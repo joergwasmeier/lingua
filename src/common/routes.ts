@@ -10,6 +10,7 @@ function loadRoute(cb) {
 
 function loadRouteDash(cb, view?:string) {
   return (module) => {
+
     FabaCore.addMediator(module.mediator);
 
     new module.initEvent(view).dispatch((event)=>{
@@ -58,6 +59,18 @@ var secondroutes = {
       }
     },
     {
+      path: '/course/',
+      getComponent(location, cb) {
+        System.import('./../course/index').then(loadRouteDash(cb)).catch(errorLoading);
+      }
+    },
+    {
+      path: '/course/:id',
+      getComponent(location, cb) {
+        System.import('./../course/index').then(loadRouteDash(cb)).catch(errorLoading);
+      }
+    },
+    {
       path: '*',
       getComponent(location, cb) {
         System.import('./../account/index').then(loadRouteDash(cb)).catch(errorLoading);
@@ -75,12 +88,7 @@ export function renderRoutes() {
 }
 
 /*
- {
- path: '/course/',
- getComponent(location, cb) {
- System.import('./../course/index').then(loadRouteDash(cb)).catch(errorLoading);
- }
- },
+
  {
  path: '/courses-overview/',
  getComponent(location, cb) {

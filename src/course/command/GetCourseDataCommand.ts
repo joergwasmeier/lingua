@@ -1,4 +1,4 @@
-import FabaCommand from "fabalous-core/core/FabaCommand";
+import FabaCommand from "@fabalous/core/FabaCommand";
 import GetCourseDataEvent from "../event/GetCourseDataEvent";
 
 export default class GetCourseDataCommand extends FabaCommand {

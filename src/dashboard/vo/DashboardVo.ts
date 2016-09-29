@@ -1,4 +1,5 @@
 import {observable} from "mobx";
+import CourseVO from "../../course/vo/CourseVO";
 /**
  * Created by creativecode on 26.09.16.
  */
@@ -14,6 +15,9 @@ export default class DashboardVo{
 
     @observable
     test:number;
+
+    @observable
+    recentCourses:Array<CourseVO>;
 
     constructor(){
         this.test = 666;

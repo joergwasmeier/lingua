@@ -9,14 +9,16 @@ import {dashboardStore} from "../DashboardStore";
 
 export default class GetDashboardDataCommand extends FabaCommand {
     execute(event: GetDashboardDataEvent) {
-        console.log("execute");
         FabaRuntimeWeb.sendToEndpoint(event, "");
     }
 
     result(event: GetDashboardDataEvent) {
+        console.log(event);
         dashboardStore.data.pointsToday = event.data.pointsToday;
         dashboardStore.data.userName = event.data.userName;
-
+        dashboardStore.data.recentCourses = event.data.recentCourses;
+        
+        console.log(event);
         event.callBack();
     }
 

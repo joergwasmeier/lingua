@@ -1,26 +1,21 @@
-import FabaMediator from "fabalous-core/core/FabaMediator";
-import {IFabaMediator} from "fabalous-core/core/IFabaMediator";
-import GetCourseDataEvent from "./event/GetCourseDataEvent";
+import FabaMediator from "@fabalous/core/FabaMediator";
+import {IFabaMediator} from "@fabalous/core/IFabaMediator";
 
-export default class CourseMediator extends FabaMediator implements IFabaMediator{
+export default class CourseMediator extends FabaMediator implements IFabaMediator {
 
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+    }
 
-  // @ifdef CLIENT
-  registerCommands():void {
-    super.registerCommands();
-    this.addCommand(GetCourseDataEvent, require("./command/GetCourseDataCommand.ts").default);
-  }
-  // @endif
+    registerCommands(): void {
+        super.registerCommands();
 
+        this.addCommand(require("./event/InitCourseEvent"), require("./command/InitCourseCommand.ts"));
+        this.addCommand(require("./event/GetCourseDataEvent"), require("./command/GetCourseDataCommand.ts"));
+    }
 
-  // @ifdef SERVER
-  registerServices():void {
-    super.registerServices();
-    this.addSerivce(GetCourseDataEvent, require("./service/GetCourseDataService.ts").default);
-  }
-  // @endif
-
+    registerServices(): void {
+        super.registerServices();
+        this.addSerivce(require("./event/GetCourseDataEvent"), require("./service/GetCourseDataService.ts"));
+    }
 }

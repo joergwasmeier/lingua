@@ -23,6 +23,7 @@ export default class Menu extends React.Component<IMenuProps,{}> {
 
     menuClickHandler(url: string) {
         this.props.history.push(url);
+        new ToggleMenuEvent(false).dispatch();
     }
 
     dockerWidth(): number {
@@ -74,7 +75,7 @@ export default class Menu extends React.Component<IMenuProps,{}> {
                     </div>
 
 
-                    <MenuItem>Dashboard</MenuItem>
+                    <MenuItem onClick={() => this.menuClickHandler('/dashboard/')}>Dashboard</MenuItem>
                     <Divider/>
                     <Subheader>Heruntergeladene Kurse</Subheader>
                     <ListItem primaryText="Italienisch für Anfänger" rightIcon={<ActionInfo />}></ListItem>

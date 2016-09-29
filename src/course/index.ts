@@ -1,8 +1,7 @@
-/**
- * Created by creativecode on 28.04.16.
- */
+import CourseMediator from "./CourseMediator";
+import InitCourseEvent from "./event/InitCourseEvent";
 
 module.exports = {
-  mediator: require('./CourseMediator.ts'),
-  view: require('./view/Course.tsx')
+  mediator: CourseMediator,
+  initEvent: InitCourseEvent
 };

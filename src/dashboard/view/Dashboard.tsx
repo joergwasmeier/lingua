@@ -7,6 +7,9 @@ import InsertDashboardDataEvent from "../event/InsertDashboardDataEvent";
 import DashboardVo from "../vo/DashboardVo";
 import {dashboardStore} from "../DashboardStore";
 import {observer} from "mobx-react";
+import CourseVO from "../../course/vo/CourseVO";
+import ChangeUrlEvent from "../../common/event/ChangeUrlEvent";
+import {commonStore} from "../../common/CommonStore";
 var Chart = require('chart.js/src/chart.js');
 
 require("./Dashboard.less");
@@ -14,6 +17,7 @@ require("./Dashboard.less");
 interface IDashboardProps {
 
 }
+
 @observer
 export default class Dashboard extends React.Component<{},{}> {
     className: string = "Dashboard";
@@ -34,7 +38,8 @@ export default class Dashboard extends React.Component<{},{}> {
                     "#330033",
                     "#eeeeee"
                 ],
-                borderWidth:[2,2]
+                borderWidth:[0,0]
+
             }]
     };
 
@@ -43,14 +48,13 @@ export default class Dashboard extends React.Component<{},{}> {
     }
 
     componentDidMount(): void {
-       // new ChangeAppBarTitleEvent(ChangeAppBarTitles.DASHBOARD).dispatch();
-
         // Chart rerender
         window.addEventListener("resize", (e) => {
             super.forceUpdate();
         });
 
         var ctx = document.getElementById("myChart");
+        /*
         var myChart = new Chart(ctx, {
             type: 'doughnut',
             data: this.data,
@@ -61,43 +65,42 @@ export default class Dashboard extends React.Component<{},{}> {
                 }
             }
         });
+        */
     }
 
-    showCourse(e): void {
+    showCourse(e:CourseVO): void {
         console.log("course");
+        console.log(e.id);
+        commonStore.history.push("/course/"+e.id);
+        new ChangeUrlEvent("/course/"+e.id).dispatch();
     }
 
     renderCourses(): Array<any> {
         var rows: Array<any> = [];
 
-        for (var i = 0; i < 10; i++) {
-            rows.push(<Divider key={"div"+i}/>);
+        if (dashboardStore.data.recentCourses){
+            for (var item of dashboardStore.data.recentCourses) {
+                rows.push(<Divider key={"div"+item.id}/>);
 
-            rows.push(<ListItem
-                key={i}
-                rightIcon={<ActionInfo />}
-                primaryText="Italienisch für Anfänger"
-                secondaryText="Jan 20, 2016"
-                onTouchTap={(e) => this.showCourse(e)}
-            />);
+                rows.push(<ListItem
+                    key={item.id}
+                    rightIcon={<ActionInfo />}
+                    primaryText={item.title}
+                    secondaryText={item.createDate}
+                    onTouchTap={(e) => this.showCourse(item)}
+                />);
+            }
         }
-
         return rows;
     }
 
+
     render() {
         return (
-
             <div className={this.className}>
+                <LinguaAppBar />
 
-
-                <p>{dashboardStore.data.pointsToday}</p>
-                <p>{dashboardStore.data.userName}</p>
-                <p>{dashboardStore.data.getFullName()}</p>
-
-                <button onClick={()=>{
-                    new GetDashboardDataEvent().dispatch()
-                }}>GetDashbOarData</button>
+                {this.renderContent()}
 
                 <button onClick={()=>{
                     var dash:DashboardVo = new DashboardVo();
@@ -106,19 +109,38 @@ export default class Dashboard extends React.Component<{},{}> {
 
                     new InsertDashboardDataEvent(dash).dispatch()
                 }}>InsertDashboardData</button>
+            </div>
+        );
+    }
 
-                <LinguaAppBar />
+    renderContent(){
+        console.log(dashboardStore.data.pointsToday);
+        if (dashboardStore.data.pointsToday >= 2000) return this.renderDashboard();
+        else return this.renderEmptyDashBoard();
+    }
 
-                <canvas id="myChart" width="400" height="400"></canvas>
+    renderEmptyDashBoard(){
+        return(
+            <div>
+                <h1> WHOOOT?! Noch keine Daten? Na dann wirds aber zeit starte jetzt mit deinem Kurs und lerne eien Sprache.</h1>
+            </div>
+        );
+    }
 
-                <br/>
+    renderDashboard(){
+        return(
+            <div>
+                <div className="chartContainer">
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                </div>
 
-                <List>
-                    <Subheader>Recent chats</Subheader>
+                <List className="list">
+                    <Subheader>Deine aktuellen Kurse</Subheader>
 
                     {this.renderCourses()}
                 </List>
             </div>
         );
     }
+
 }

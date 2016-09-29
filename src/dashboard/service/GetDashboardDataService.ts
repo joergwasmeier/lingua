@@ -4,6 +4,7 @@ import {RTable} from "rethinkdb";
 import {table} from "rethinkdb";
 import {db, dbConnection} from "../../A_Server";
 import DashboardVo from "../vo/DashboardVo";
+import CourseVO from "../../course/vo/CourseVO";
 
 export default class GetDashboardDataService extends FabaSerivce{
 
@@ -30,6 +31,8 @@ export default class GetDashboardDataService extends FabaSerivce{
         } catch (e){
             console.log(e);
         }
+
+
         
         console.log(result);
         
@@ -39,6 +42,14 @@ export default class GetDashboardDataService extends FabaSerivce{
 
 
         event.data = result[0];
+
+        event.data.recentCourses = new Array<CourseVO>();
+        event.data.recentCourses.push(new CourseVO().createMocKData());
+        event.data.recentCourses.push(new CourseVO().createMocKData());
+        event.data.recentCourses.push(new CourseVO().createMocKData());
+        event.data.recentCourses.push(new CourseVO().createMocKData());
+
+
         event.test = "result";
         super.sendToClient(event);
   }
