@@ -19,6 +19,11 @@ export default class GetDashboardDataService extends FabaSerivce{
     }
     
     async execute(event:GetDashboardDataEvent) {
+        console.log("execute");
+
+        super.sendToClient(event);
+        return;
+
         await this.getTable();
         // Check if table exist
         var query:DashboardVo = new DashboardVo();
@@ -33,9 +38,11 @@ export default class GetDashboardDataService extends FabaSerivce{
         }
 
 
-        
-        console.log(result);
-        
+        if (result.length == 0){
+            console.log("sendtoclient");
+            super.sendToClient(event);
+            return;
+        }
         // check if user has any data
 
 

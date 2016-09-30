@@ -13,12 +13,12 @@ export default class GetDashboardDataCommand extends FabaCommand {
     }
 
     result(event: GetDashboardDataEvent) {
-        console.log(event);
-        dashboardStore.data.pointsToday = event.data.pointsToday;
-        dashboardStore.data.userName = event.data.userName;
-        dashboardStore.data.recentCourses = event.data.recentCourses;
-        
-        console.log(event);
+        if (event.data){
+            dashboardStore.data.pointsToday = event.data.pointsToday;
+            dashboardStore.data.userName = event.data.userName;
+            dashboardStore.data.recentCourses = event.data.recentCourses;
+        }
+
         event.callBack();
     }
 

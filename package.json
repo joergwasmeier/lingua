@@ -22,7 +22,8 @@
   "dependencies": {
     "@fabalous/core": "*",
     "@fabalous/runtime-web": "*",
-    "chart.js": "^2.3.0"
+    "chart.js": "^2.3.0",
+    "rethinkdb": "^2.3.3"
   },
   "devDependencies": {
     "material-ui": "^0.15.4",

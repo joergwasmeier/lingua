@@ -4,17 +4,26 @@ import {IFabaCommand} from "@fabalous/core/IFabaCommand";
 import InitDashboardEvent from "../event/InitDashboardEvent";
 import Dashboard from "../view/Dashboard";
 import GetDashboardDataEvent from "../event/GetDashboardDataEvent";
+import {dashboardStore} from "../DashboardStore";
 
 export default class InitDashboardCommand extends FabaCommand implements IFabaCommand{
     constructor(){
         super();
     }
 
-   execute(event: InitDashboardEvent): any {
-       new GetDashboardDataEvent().dispatch();
+   async execute(event: InitDashboardEvent) {
+       // TODO BUGGY refs
+       dashboardStore.initEvent = event;
+
+       var t = await new GetDashboardDataEvent().dispatch();
 
        event.view = React.createElement(Dashboard, {});
        event.callBack();
+    }
+
+    showDashBoard(event:InitDashboardEvent){
+        event.view = React.createElement(Dashboard, {});
+        event.callBack();
     }
 
     result(event: InitDashboardEvent): any {

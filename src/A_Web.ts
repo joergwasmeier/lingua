@@ -3,6 +3,7 @@ import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 import FabaApiConnection from "@fabalous/runtime-web/transport/FabaApiConnection";
 import FabaCore from "@fabalous/core/FabaCore";
 import MenuMediator from "./menu/MenuMediator";
+require("babel-polyfill");
 
 //require('offline-plugin/runtime').install();
 
