@@ -84,7 +84,7 @@ export default class Menu extends React.Component<IMenuProps,{}> {
                     <Subheader>Kurse erstellen</Subheader>
                     {this.renderCreateCourses()}
                     <Divider/>
-                    <MenuItem>Kurse Store</MenuItem>
+                    <MenuItem onClick={() => this.menuClickHandler('/shop/')}>Kurse Store</MenuItem>
                     <MenuItem>Einstellungen</MenuItem>
                     <MenuItem>Hilfe und Feedback</MenuItem>
                 </Drawer>

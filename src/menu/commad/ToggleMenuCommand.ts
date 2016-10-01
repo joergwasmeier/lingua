@@ -7,8 +7,7 @@ import {menuStore} from "../MenuStore";
  */
 
 export default class ToggleMenuCommand extends FabaCommand {
-  execute(event:GetMenuDataEvent) {
-    console.log("ToggleMenuCommand");
-    menuStore.menuOpen = !menuStore.menuOpen;
-  }
+    execute(event: GetMenuDataEvent) {
+        menuStore.menuOpen = !menuStore.menuOpen;
+    }
 }

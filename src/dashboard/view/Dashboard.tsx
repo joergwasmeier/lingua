@@ -1,8 +1,7 @@
 import * as React from "react";
-import {ListItem, List, Divider, Subheader} from "material-ui";
+import {ListItem, List, Divider, Subheader, RaisedButton} from "material-ui";
 import ActionInfo from "material-ui/svg-icons/action/info";
 import LinguaAppBar from "../../menu/view/AppBar";
-import GetDashboardDataEvent from "../event/GetDashboardDataEvent";
 import InsertDashboardDataEvent from "../event/InsertDashboardDataEvent";
 import DashboardVo from "../vo/DashboardVo";
 import {dashboardStore} from "../DashboardStore";
@@ -68,14 +67,18 @@ export default class Dashboard extends React.Component<{},{}> {
         */
     }
 
-    showCourse(e:CourseVO): void {
-        console.log("course");
-        console.log(e.id);
+    private showCourse(e:CourseVO): void {
         commonStore.history.push("/course/"+e.id);
         new ChangeUrlEvent("/course/"+e.id).dispatch();
     }
 
-    renderCourses(): Array<any> {
+    private showShop():void{
+        commonStore.history.push("/shop/");
+
+        new ChangeUrlEvent("/shop/").dispatch();
+    }
+
+    private renderCourses(): Array<any> {
         var rows: Array<any> = [];
 
         if (dashboardStore.data.recentCourses){
@@ -98,36 +101,37 @@ export default class Dashboard extends React.Component<{},{}> {
     render() {
         return (
             <div className={this.className}>
-                <LinguaAppBar />
+                <LinguaAppBar title="Dashboard" />
 
                 {this.renderContent()}
-
-                <button onClick={()=>{
-                    var dash:DashboardVo = new DashboardVo();
-                    dash.userName = "test";
-                    dash.pointsToday = 2000;
-
-                    new InsertDashboardDataEvent(dash).dispatch()
-                }}>InsertDashboardData</button>
             </div>
         );
     }
 
-    renderContent(){
-        console.log(dashboardStore.data.pointsToday);
+    private createCourses(){
+        console.log("createCourse");
+    }
+
+    private renderContent(){
         if (dashboardStore.data.pointsToday >= 2000) return this.renderDashboard();
         else return this.renderEmptyDashBoard();
     }
 
-    renderEmptyDashBoard(){
+    private renderEmptyDashBoard(){
         return(
-            <div>
-                <h1> WHOOOT?! Noch keine Daten? Na dann wirds aber zeit starte jetzt mit deinem Kurs und lerne eien Sprache.</h1>
+            <div className="dashboardContainer">
+                <h1>WHOOOT?!</h1>
+                <h2>Noch keine Daten? Na dann wirds aber zeit starte jetzt mit deinem Kurs und lerne eine Sprache.</h2>
+
+                <RaisedButton className="loadCourse" label="Kurs Herunterladen"
+                              secondary={false} onClick={this.showShop}/>
+                <RaisedButton className="createCourse" label="Kurs erstellen"
+                              secondary={true} onClick={this.createCourses}/>
             </div>
         );
     }
 
-    renderDashboard(){
+    private renderDashboard(){
         return(
             <div>
                 <div className="chartContainer">

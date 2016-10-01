@@ -7,21 +7,21 @@ import AppBar from "material-ui/AppBar";
  * Created by creativecode on 26.09.16.
  */
 
-interface IAppBar{
-
+interface IAppBarProps{
+    title;
 }
 
-export default class LinguaAppBar extends Component<IAppBar, {}>{
+export default class LinguaAppBar extends Component<IAppBarProps, {}>{
 
     constructor(){
         super();
     }
 
-    handleToggle(value:boolean){
+    private handleToggle(value:boolean){
         new ToggleMenuEvent().dispatch();
     }
 
-    dockerWidth(): number {
+    private dockerWidth(): number {
         var calcWidth: number = window.innerWidth - 80;
         return (calcWidth > 400) ? 400 : calcWidth;
     }
@@ -29,7 +29,7 @@ export default class LinguaAppBar extends Component<IAppBar, {}>{
     render(){
         return (
             <AppBar
-                title="Title"
+                title={this.props.title}
                 iconClassNameRight="muidocs-icon-navigation-expand-more"
                 onTitleTouchTap={() => this.handleToggle(true)}
                 style={{position:"fixed"}}
