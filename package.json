@@ -22,6 +22,7 @@
   "dependencies": {
     "@fabalous/core": "*",
     "@fabalous/runtime-web": "*",
+    "babel-preset-es2015": "^6.16.0",
     "chart.js": "^2.3.0",
     "rethinkdb": "^2.3.3"
   },
