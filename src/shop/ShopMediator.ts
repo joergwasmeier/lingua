@@ -10,13 +10,15 @@ export default class ShopMediator extends FabaMediator implements IFabaMediator 
         if (CLIENT) {
             super.registerCommands();
             this.addCommand(require("./event/InitShopEvent"), require("./command/InitShopCommand"));
+            this.addCommand(require("./event/GetShopItemsEvent"), require("./command/GetShopItemsCommand"));
         }
     }
 
     registerServices(): void {
         if (SERVER) {
             super.registerServices();
-            //this.addSerivce(require("./event/InsertDashboardDataEvent"), require("./service/InsertDashboardDataService"));
+            this.addSerivce(require("./event/GetShopItemsEvent"), require("./service/GetShopItemsService"));
+            this.addSerivce(require("./../common/event/PrepareTablesEvent"), require("./service/PrepareTablesService"));
         }
     }
 
