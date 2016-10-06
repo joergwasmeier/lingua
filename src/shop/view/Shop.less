@@ -1,5 +1,22 @@
 .Shop{
-  .list{
+
+  &.fixedheight{
+    .itemList {
+      //height: ~"calc(100vh - 64px)";
+      //overflow: hidden;
+      //transform: translate(0,-200px);
+    }
+  }
+
+  .itemList{
+    overflow: scroll;
+    height: ~"calc(100vh - 64px)";
     padding-top: 64px;
+  }
+
+  .floatingActionButton{
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
   }
 }

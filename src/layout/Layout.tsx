@@ -37,5 +37,3 @@ export default class Layout extends React.Component<{},{}> {
         )
     }
 }
-
-//          <Menu model={FabaModel.getStore("menuStore")} history={this.props.history} />

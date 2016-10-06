@@ -8,9 +8,13 @@ export default class ShopItemVo{
     name:string;
     publishedData:Date;
 
+    imgSrc:string;
+
     leadText:string;
     description:string;
 
+    publisherName:string;
+    publisherId:string;
 
     constructor(){
 

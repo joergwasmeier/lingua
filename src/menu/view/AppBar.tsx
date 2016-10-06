@@ -3,21 +3,23 @@ import {Component} from "react";
 
 import ToggleMenuEvent from "../event/ToggleMenuEvent";
 import AppBar from "material-ui/AppBar";
-/**
- * Created by creativecode on 26.09.16.
- */
+
 
 interface IAppBarProps{
-    title;
+    title:string;
+    clickEvent?:any;
+    leftIcon?:string;
 }
 
 export default class LinguaAppBar extends Component<IAppBarProps, {}>{
 
-    constructor(){
-        super();
-    }
-
     private handleToggle(value:boolean){
+        console.log("handleToggle");
+        if (this.props.clickEvent){
+            this.props.clickEvent.dispatch();
+            return;
+        }
+
         new ToggleMenuEvent().dispatch();
     }
 
@@ -30,7 +32,7 @@ export default class LinguaAppBar extends Component<IAppBarProps, {}>{
         return (
             <AppBar
                 title={this.props.title}
-                iconClassNameRight="muidocs-icon-navigation-expand-more"
+                iconElementLeft={this.props.leftIcon}
                 onTitleTouchTap={() => this.handleToggle(true)}
                 style={{position:"fixed"}}
                 className="appBar"

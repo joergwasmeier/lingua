@@ -10,6 +10,14 @@ export default class ShopStore {
     @observable
     items:Array<ShopItemVo>;
 
+    @observable
+    selectedItem:ShopItemVo;
+
+    @observable
+    shopItemVisible:boolean;
+
+
+
     viewInit:boolean = false;
     view:any;
 }

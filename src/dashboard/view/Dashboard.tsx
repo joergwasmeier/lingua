@@ -2,8 +2,6 @@ import * as React from "react";
 import {ListItem, List, Divider, Subheader, RaisedButton} from "material-ui";
 import ActionInfo from "material-ui/svg-icons/action/info";
 import LinguaAppBar from "../../menu/view/AppBar";
-import InsertDashboardDataEvent from "../event/InsertDashboardDataEvent";
-import DashboardVo from "../vo/DashboardVo";
 import {dashboardStore} from "../DashboardStore";
 import {observer} from "mobx-react";
 import CourseVO from "../../course/vo/CourseVO";

@@ -68,6 +68,12 @@ var secondroutes = {
             }
         },
         {
+            path: '/shop/:id',
+            getComponent(location, cb) {
+                System.import('./../shop/').then(loadRouteDash(cb)).catch(errorLoading);
+            }
+        },
+        {
             path: '/course/',
             getComponent(location, cb) {
                 System.import('./../course/index').then(loadRouteDash(cb)).catch(errorLoading);
