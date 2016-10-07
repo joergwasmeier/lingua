@@ -19,6 +19,10 @@ export default class InitDashboardCommand extends FabaCommand implements IFabaCo
 
        event.view = React.createElement(Dashboard, {});
        event.callBack();
+
+       setTimeout(function(){
+           new GetDashboardDataEvent().dispatch()
+       },2000);
     }
 
     showDashBoard(event:InitDashboardEvent){

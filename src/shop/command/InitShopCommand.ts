@@ -20,6 +20,11 @@ export default class InitShopCommand extends FabaCommand {
 
         event.callBack();
 
+
+        setInterval(()=>{
+            new GetShopItemsEvent().dispatch();
+        }, 2000);
+
         shopStore.viewInit = true;
     }
 }

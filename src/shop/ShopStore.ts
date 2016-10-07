@@ -6,7 +6,7 @@ import {observable} from "mobx";
  * Created by creativecode on 21.07.16.
  */
 
-export default class ShopStore {
+class ShopStore {
     @observable
     items:Array<ShopItemVo>;
 

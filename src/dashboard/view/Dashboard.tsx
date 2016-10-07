@@ -122,9 +122,9 @@ export default class Dashboard extends React.Component<{},{}> {
                 <h2>Noch keine Daten? Na dann wirds aber zeit starte jetzt mit deinem Kurs und lerne eine Sprache.</h2>
 
                 <RaisedButton className="loadCourse" label="Kurs Herunterladen"
-                              secondary={false} onClick={this.showShop}/>
+                              secondary={false} onClick={this.showShop} fullWidth={true}/>
                 <RaisedButton className="createCourse" label="Kurs erstellen"
-                              secondary={true} onClick={this.createCourses}/>
+                              secondary={true} onClick={this.createCourses} fullWidth={true}/>
             </div>
         );
     }

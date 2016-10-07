@@ -1,4 +1,19 @@
 {
-  "plugins": ["transform-async-to-generator"],
-  "presets": ["react", "es2015"]
+  "plugins": ["transform-async-to-generator",
+    ["react-transform",
+      {
+        "transforms": [
+          {
+            "transform": "react-transform-hmr",
+            "imports": [
+              "react"
+            ],
+            "locals": [
+              "module"
+            ]
+          }
+        ]
+      }]
+  ],
+  "presets": ["react", ["es2015", { "loose" : true }]]
 }

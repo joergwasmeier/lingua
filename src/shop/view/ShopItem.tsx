@@ -3,7 +3,7 @@ import LinguaAppBar from "../../menu/view/AppBar";
 import ShopItemVo from "../vo/ShopItemVo";
 import {observer} from "mobx-react";
 import {shopStore} from "../ShopStore";
-import {Tabs, Tab} from "material-ui";
+import {Tabs, Tab, RaisedButton} from "material-ui";
 
 import ArrowBack from "material-ui/svg-icons/navigation/arrow-back";
 import IconButton from "material-ui/IconButton";
@@ -36,6 +36,10 @@ export default class ShopItem extends React.Component<IShopItemProps,null> {
         );
     }
 
+    private buy(){
+        console.log("buy");
+    }
+
     renderContent() {
         if (!shopStore.selectedItem) return null;
 
@@ -53,9 +57,6 @@ export default class ShopItem extends React.Component<IShopItemProps,null> {
                     </Tab>
                     <Tab label="Lektionen" >
                         {this.renderChapters()}
-                    </Tab>
-                    <Tab label="Bewertung" >
-                        {this.renderScores()}
                     </Tab>
                 </Tabs>
             </div>
@@ -76,22 +77,16 @@ export default class ShopItem extends React.Component<IShopItemProps,null> {
                     <p>Veröffentlicht durch: {shopStore.selectedItem.publisherName}</p>
                 </div>
 
-                <div>
-                    lektionen:
+                <RaisedButton className="loadCourse" label="Kurs Herunterladen"
+                              secondary={false} onClick={this.buy} fullWidth={true}/>
 
-                    1
-                    2
-                    3
-                    4
-                    5
-                </div>
             </div>
         );
     }
 
     private renderChapters(){
         return (
-            <div>
+            <div className="chaptersContainer">
                 <ItemList items={shopStore.items} ></ItemList>
             </div>
         )

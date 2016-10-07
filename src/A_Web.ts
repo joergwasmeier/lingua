@@ -17,6 +17,22 @@ require("./assets/less/reset.less");
 require("./assets/less/font.less");
 
 declare var module;
+/*
+module.hot.accept();
+module.hot.dispose(function(){
+    console.log("dispose");
+
+    /*FabaRuntimeWeb.servers = [];
+
+    for (var obj of FabaCore.mediators) {
+        console.log(obj);
+        obj.mediator = new obj.cls();
+    }
+
+    new A_Web();
+
+});
+*/
 
 export default class A_Web extends FabaRuntimeWeb {
     constructor() {
@@ -32,6 +48,14 @@ export default class A_Web extends FabaRuntimeWeb {
         FabaRuntimeWeb.addServerEndPoint(new FabaApiConnection(protocol+"//"+host), "api");
 
         renderRoutes();
+
+        if (module.hot) {
+            module.hot.accept('./A_Web.ts', () => {
+                console.log("test");
+                renderRoutes();
+            });
+        }
+
     }
 }
 

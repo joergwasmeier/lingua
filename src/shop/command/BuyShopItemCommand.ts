@@ -2,21 +2,32 @@ import FabaCommand from "@fabalous/core/FabaCommand";
 import {IFabaCommand} from "@fabalous/core/IFabaCommand";
 import GetShopItemsEvent from "../event/GetShopItemsEvent";
 import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
+import BuyShopItemEvent from "../event/BuyShopItemEvent";
 import {shopStore} from "../ShopStore";
+import {BuyShopItemEventResult} from "../event/BuyShopItemEvent";
 
-declare var module;
-export default class GetShopItemsCommand extends FabaCommand implements IFabaCommand{
+export default class BuyShopItemCommand extends FabaCommand implements IFabaCommand{
     constructor(){
         super();
     }
 
-    execute(event: GetShopItemsEvent): any {
+    execute(event: BuyShopItemEvent): any {
+        // Show PopUp // Modal
+
         FabaRuntimeWeb.sendToEndpoint(event, "");
     }
 
-    result(event: GetShopItemsEvent): any {
-        console.log("r2d sf");
-        shopStore.items = event.result;
+    result(event: BuyShopItemEvent): any {
+        switch (event.result){
+            case BuyShopItemEventResult.ERROR:
+
+
+            case BuyShopItemEventResult.ALREADY_BOUGHT:
+
+            case BuyShopItemEventResult.BOUGHT:
+
+        }
+
 
         event.callBack();
     }
