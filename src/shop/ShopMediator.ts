@@ -8,14 +8,12 @@ export default class ShopMediator extends FabaMediator implements IFabaMediator 
         super();
 
         if (CLIENT) {
-
             if (module.hot) {
                 module.hot.accept([
                     "./command/InitShopCommand",
                     "./command/SelectShopItemCommand",
                     "./command/GetShopItemsCommand",
                     "./command/HideShopItemCommand"
-
                 ], () => {
                     this.cmdList = [];
                     this.registerCommands();

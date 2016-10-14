@@ -3,6 +3,7 @@ import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 import FabaApiConnection from "@fabalous/runtime-web/transport/FabaApiConnection";
 import FabaCore from "@fabalous/core/FabaCore";
 import MenuMediator from "./menu/MenuMediator";
+import AccountMediator from "./account/AccountMediator";
 require("babel-polyfill");
 
 //require('offline-plugin/runtime').install();
@@ -17,22 +18,6 @@ require("./assets/less/reset.less");
 require("./assets/less/font.less");
 
 declare var module;
-/*
-module.hot.accept();
-module.hot.dispose(function(){
-    console.log("dispose");
-
-    /*FabaRuntimeWeb.servers = [];
-
-    for (var obj of FabaCore.mediators) {
-        console.log(obj);
-        obj.mediator = new obj.cls();
-    }
-
-    new A_Web();
-
-});
-*/
 
 export default class A_Web extends FabaRuntimeWeb {
     constructor() {
@@ -44,6 +29,8 @@ export default class A_Web extends FabaRuntimeWeb {
         var protocol = window.location.protocol;
 
         FabaCore.addMediator(MenuMediator);
+        FabaCore.addMediator(AccountMediator);
+
 
         FabaRuntimeWeb.addServerEndPoint(new FabaApiConnection(protocol+"//"+host), "api");
 

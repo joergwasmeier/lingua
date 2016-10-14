@@ -5,27 +5,34 @@ import InitDashboardEvent from "../event/InitDashboardEvent";
 import Dashboard from "../view/Dashboard";
 import GetDashboardDataEvent from "../event/GetDashboardDataEvent";
 import {dashboardStore} from "../DashboardStore";
+import CheckLoginStatusEvent from "../../account/event/CheckLoginStatusEvent";
+import LoginEvent from "../../account/event/LoginEvent";
 
-export default class InitDashboardCommand extends FabaCommand implements IFabaCommand{
-    constructor(){
+export default class InitDashboardCommand extends FabaCommand implements IFabaCommand {
+    constructor() {
         super();
     }
 
-   async execute(event: InitDashboardEvent) {
-       // TODO BUGGY refs
-       dashboardStore.initEvent = event;
+    async execute(event: InitDashboardEvent) {
+        event.view = React.createElement(Dashboard, {model:dashboardStore});
+        event.callBack();
 
-       var t = await new GetDashboardDataEvent().dispatch();
+        var loginStatus:CheckLoginStatusEvent = await new CheckLoginStatusEvent().dispatch();
+        if (loginStatus.loggedIn === false){
+            await new LoginEvent(
+                window.localStorage.getItem("username"),
+                window.localStorage.getItem("password")
+            ).dispatch();
 
-       event.view = React.createElement(Dashboard, {});
-       event.callBack();
+            return;
+        }
+        
+        dashboardStore.initEvent = event;
 
-       setTimeout(function(){
-           new GetDashboardDataEvent().dispatch()
-       },2000);
+        await new GetDashboardDataEvent().dispatch();
     }
 
-    showDashBoard(event:InitDashboardEvent){
+    showDashBoard(event: InitDashboardEvent) {
         event.view = React.createElement(Dashboard, {});
         event.callBack();
     }

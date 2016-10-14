@@ -7,8 +7,6 @@ export default class DashboardService extends FabaSerivce{
     }
 
     execute(event:GetDashboardDataEvent) {
-        console.log("dashboard service");
-
         event.test = "result";
         super.sendToClient(event);
   }

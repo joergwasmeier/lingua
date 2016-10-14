@@ -3,14 +3,14 @@ import {FlatButton, TextField} from "material-ui";
 import LoginEvent from "../event/LoginEvent";
 import {observer} from "mobx-react/index";
 import {ChangeLoginInputEventTypes, default as ChangeLoginInputEvent} from "../event/ChangeLoginInputEvent";
-import AccountStore from "../AccountStore";
 import LoginVo from "../vo/LoginVo";
+import AccountStore from "../AccountStore";
 
 var classNames = require('classnames');
 require('./Login.less');
 
 interface ILoginProps{
-  model:AccountStore;
+    model:AccountStore;
 }
 
 @observer
@@ -21,21 +21,24 @@ export default class Login extends React.Component<ILoginProps,{}> {
     constructor(props) {
         super(props);
         this.vo = props.model.login;
+        this.loginBtHandler = this.loginBtHandler.bind(this);
+        this.userNameChange = this.userNameChange.bind(this);
+        this.passWordChange = this.passWordChange.bind(this);
     }
 
-    userNameChange(e):void{
+    private userNameChange(e):void{
       new ChangeLoginInputEvent(ChangeLoginInputEventTypes.USERNAME, e.currentTarget.value).dispatch();
     }
 
-    passWordChange(e):void{
+    private passWordChange(e):void{
       new ChangeLoginInputEvent(ChangeLoginInputEventTypes.PASSWORD, e.currentTarget.value).dispatch();
     }
 
-    loginBtHandler():void {
-      new LoginEvent().dispatch();
+    private loginBtHandler():void {
+      new LoginEvent(this.vo.userName, this.vo.password).dispatch();
     }
 
-    renderError(){
+    private renderError(){
       if (this.vo.errorCode <= 0) return null;
 
       return (
@@ -76,7 +79,7 @@ export default class Login extends React.Component<ILoginProps,{}> {
                       className={classNames('loginButton', { progress: this.vo.progress })}
                       backgroundColor="#a4c639"
                       onTouchTap={this.loginBtHandler}>
-                      <p className="content">LOGIN 2</p>
+                      <p className="content">LOGIN</p>
 
                       <div className="spinner"></div>
                   </FlatButton>

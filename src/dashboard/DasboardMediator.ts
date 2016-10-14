@@ -1,11 +1,6 @@
 import {IFabaMediator} from "@fabalous/core/IFabaMediator";
 import FabaMediator from "@fabalous/core/FabaMediator";
 export default class DashboardMediator extends FabaMediator implements IFabaMediator {
-
-    constructor() {
-        super();
-    }
-
     registerCommands(): void {
         if (CLIENT) {
             super.registerCommands();
@@ -23,5 +18,4 @@ export default class DashboardMediator extends FabaMediator implements IFabaMedi
             this.addSerivce(require("../common/event/PrepareTablesEvent"), require("./service/PrepareTablesService"));
         }
     }
-
 }

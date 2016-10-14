@@ -2,46 +2,27 @@ import * as React from "react";
 import {ListItem, List, Divider, Subheader, RaisedButton} from "material-ui";
 import ActionInfo from "material-ui/svg-icons/action/info";
 import LinguaAppBar from "../../menu/view/AppBar";
-import {dashboardStore} from "../DashboardStore";
 import {observer} from "mobx-react";
 import CourseVO from "../../course/vo/CourseVO";
 import ChangeUrlEvent from "../../common/event/ChangeUrlEvent";
-import {commonStore} from "../../common/CommonStore";
+import DashboardStore from "../DashboardStore";
 var Chart = require('chart.js/src/chart.js');
-
 require("./Dashboard.less");
 
 interface IDashboardProps {
-
+    model:DashboardStore
 }
 
 @observer
-export default class Dashboard extends React.Component<{},{}> {
+export default class Dashboard extends React.Component<IDashboardProps,{}> {
     className: string = "Dashboard";
 
-    data = {
-        labels: [
-            "",
-            ""
-        ],
-        datasets: [
-            {
-                data: [300, 50],
-                backgroundColor: [
-                    "#330033",
-                    "#eeeeee"
-                ],
-                hoverBackgroundColor: [
-                    "#330033",
-                    "#eeeeee"
-                ],
-                borderWidth:[0,0]
-
-            }]
-    };
+    vo:DashboardStore;
 
     constructor() {
         super();
+        this.vo = this.props.model;
+
     }
 
     componentDidMount(): void {
@@ -66,21 +47,18 @@ export default class Dashboard extends React.Component<{},{}> {
     }
 
     private showCourse(e:CourseVO): void {
-        commonStore.history.push("/course/"+e.id);
         new ChangeUrlEvent("/course/"+e.id).dispatch();
     }
 
     private showShop():void{
-        commonStore.history.push("/shop/");
-
         new ChangeUrlEvent("/shop/").dispatch();
     }
 
     private renderCourses(): Array<any> {
         var rows: Array<any> = [];
 
-        if (dashboardStore.data.recentCourses){
-            for (var item of dashboardStore.data.recentCourses) {
+        if (this.vo.data.recentCourses){
+            for (var item of this.vo.data.recentCourses) {
                 rows.push(<Divider key={"div"+item.id}/>);
 
                 rows.push(<ListItem
@@ -99,6 +77,8 @@ export default class Dashboard extends React.Component<{},{}> {
     render() {
         return (
             <div className={this.className}>
+                {this.renderLoading()}
+
                 <LinguaAppBar title="Dashboard" />
 
                 {this.renderContent()}
@@ -111,8 +91,20 @@ export default class Dashboard extends React.Component<{},{}> {
     }
 
     private renderContent(){
-        if (dashboardStore.data.pointsToday >= 2000) return this.renderDashboard();
+        if (this.vo.data.pointsToday >= 2000) return this.renderDashboard();
         else return this.renderEmptyDashBoard();
+    }
+
+    private renderLoading() {
+        console.log('renderLoading');
+
+        this.vo.data.loading
+
+        return(
+            <div className="dashboardContainer">
+                Loading
+            </div>
+        )
     }
 
     private renderEmptyDashBoard(){

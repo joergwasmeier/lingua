@@ -11,6 +11,9 @@ export default class DashboardVo{
     userName:string;
 
     @observable
+    loading:boolean;
+
+    @observable
     pointsToday:number;
 
     @observable

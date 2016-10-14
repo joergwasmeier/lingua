@@ -29,7 +29,7 @@ export default class Shop extends React.Component<null,null> {
 
         return (
             <div className={this.className}>
-                <LinguaAppBar title="Shop 2"/>
+                <LinguaAppBar title="Shops"/>
 
                 <ItemList className="itemList" items={shopStore.items} clickEvent={new SelectShopItemEvent}/>
                 <FloatingActionButton
