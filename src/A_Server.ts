@@ -19,11 +19,11 @@ export var db:RDb;
 
 class A_Server extends FabaServer{
     constructor(){
-        console.log("Server start at: " + new Date(Date.now()).toLocaleString());
         FabaCore.addMediator(DashboardMediator);
         FabaCore.addMediator(AccountMediator);
         FabaCore.addMediator(ShopMediator);
         super();
+        console.log("Server start at: " + new Date(Date.now()).toLocaleString());
 
         this.createDbConnection();
     }

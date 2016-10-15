@@ -22,7 +22,7 @@ export default class ForgotPass extends React.Component<{},{}> {
   }
 
   forgotPassBtHandler(){
-
+    
   }
 
   render() {

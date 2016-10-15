@@ -24,7 +24,7 @@ export default class A_Web extends FabaRuntimeWeb {
         super();
 
         var host:string = window.location.host+"/api/";
-        if (host == "localhost:8080/api/") host = "localhost:3120/";
+        if (host == "192.168.0.31:8080/api/") host = "192.168.0.31:3120/";
 
         var protocol = window.location.protocol;
 

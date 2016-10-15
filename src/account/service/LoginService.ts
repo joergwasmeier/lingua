@@ -14,12 +14,12 @@ export default class LoginService extends FabaSerivce {
     }
 
     async execute(event: LoginEvent) {
-        await this.delay(2);
-
         if (await this.errorCheck(event) === true) return;
 
         event.status = LoginEventStatus.LOGGED_IN;
         event.sessionId = "sid" + Math.random();
+
+        console.log(event);
         return super.sendToClient(event);
     }
 
@@ -34,6 +34,9 @@ export default class LoginService extends FabaSerivce {
     private sendError(event:LoginEvent, error:LoginEventStatus):boolean{
         event.password = event.username = "";
         event.status = error;
+
+        console.log(event);
+
         super.sendToClient(event);
         return true;
     }

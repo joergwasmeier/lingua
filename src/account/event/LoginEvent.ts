@@ -5,7 +5,6 @@ export default class LoginEvent extends FabaEvent{
   username:string;
   password:string;
 
-  @dontSend
   loginLocation:string;
 
   status:LoginEventStatus;
