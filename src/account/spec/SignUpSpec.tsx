@@ -4,9 +4,9 @@ import {mount} from "enzyme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import SignUp from "../view/SignUp";
-import FabaCore from "fabalous-core/core/FabaCore";
 import AccountMediator from "../AccountMediator";
 import {accountStore} from "../AccountStore";
+import FabaCore from "@fabalous/core/FabaCore";
 
 var TestUtils = require("react-addons-test-utils");
 
@@ -56,6 +56,7 @@ describe("SignUp View", function() {
 
     var dm = ReactDOM.findDOMNode(wrapper.find('.signUpButton').node);
     TestUtils.Simulate["touchTap"](dm);
+
     expect(accountStore.signUp.error).toBeFalsy();
   });
 });
