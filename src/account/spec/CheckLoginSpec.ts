@@ -7,7 +7,7 @@ import CheckLoginStatusEvent from "../event/CheckLoginStatusEvent";
 import FabaCore from "@fabalous/core/FabaCore";
 
 if (CLIENT) {
-    describe("CheckLogin Spec", function () {
+    xdescribe("CheckLogin Spec", function () {
         FabaCore.addMediator(AccountMediator);
         new InitAccountEvent().dispatch();
 
@@ -26,7 +26,7 @@ if (CLIENT) {
 }
 
 if (SERVER) {
-    describe("CheckLogin Spec", function () {
+    xdescribe("CheckLogin Spec", function () {
         FabaCore.addMediator(AccountMediator);
         new InitAccountEvent().dispatch();
 

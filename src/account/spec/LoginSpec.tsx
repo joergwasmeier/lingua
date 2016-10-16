@@ -11,7 +11,7 @@ import FabaModel from "@fabalous/core/FabaModel";
 
 var TestUtils = require("react-addons-test-utils");
 
-describe("Login View", function () {
+xdescribe("Login View", function () {
     var wrapper;
     var loginIns: Login;
 
