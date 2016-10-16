@@ -5,9 +5,9 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import Login from "../view/Login";
 import AccountMediator from "../AccountMediator";
-import FabaCore from "fabalous-core/core/FabaCore";
 import AccountStore, {accountStore} from "../AccountStore";
-import FabaModel from "fabalous-core/core/FabaModel";
+import FabaCore from "@fabalous/core/FabaCore";
+import FabaModel from "@fabalous/core/FabaModel";
 
 var TestUtils = require("react-addons-test-utils");
 
