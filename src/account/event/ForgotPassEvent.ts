@@ -1,7 +1,11 @@
-import FabaEvent from "fabalous-core/core/FabaEvent";
+import FabaEvent from "@fabalous/core/FabaEvent";
 
-export default class ForgotPassEvent extends FabaEvent{
-  constructor(){
-    super("ForgotPassEvent");
-  }
+export default class ForgotPassEvent extends FabaEvent {
+    username:string;
+
+    constructor(username:string) {
+        super("ForgotPassEvent");
+
+        this.username = username;
+    }
 }

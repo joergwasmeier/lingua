@@ -63,6 +63,6 @@ xdescribe("Login View", function () {
         var dm = ReactDOM.findDOMNode(wrapper.find('.loginButton').node);
         TestUtils.Simulate["touchTap"](dm);
 
-        expect(accountStore.login.errorCode).toEqual(2);
+        expect(accountStore.login.loggedIn).toBe(true);
     });
 });

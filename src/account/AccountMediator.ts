@@ -13,7 +13,8 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
                 "./command/ChangeSignUpInputCommand",
                 "./command/CheckLoginStatusCommand",
                 "./command/SignUpCommand",
-                "./command/LoginCommand"
+                "./command/LoginCommand",
+                "./command/ForgotPassCommand",
             ], () => {
                 this.cmdList = [];
                 this.registerCommands();
@@ -31,6 +32,8 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
             this.addCommand(require("./event/ChangeSignupInputEvent"), require("./command/ChangeSignUpInputCommand"));
             this.addCommand(require("./event/SignUpEvent"), require("./command/SignUpCommand"));
             this.addCommand(require("./event/LoginEvent"), require("./command/LoginCommand"));
+
+            this.addCommand(require("./event/ForgotPassEvent"), require("./command/ForgotPassCommand"));
         }
     }
 
@@ -44,6 +47,9 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
             this.addSerivce(require("./event/SignUpEvent"), require("./service/SignUpService"));
 
             this.addSerivce(require("./event/CheckLoginStatusEvent"), require("./service/CheckLoginService"));
+            console.log("test");
+            this.addSerivce(require("./event/ForgotPassEvent"), require("./service/ForgotPassService"));
+
         }
     }
 }

@@ -1,13 +1,10 @@
 {
   "name": "lingua",
   "version": "0.0.1",
-  "description": "",
   "scripts": {
     "db": "rethinkdb --http-port 8090",
     "test": "BABEL_ENV=test gulp testKarma"
   },
-  "author": "",
-  "license": "",
   "dependencies": {
     "enzyme": "^2.4.1",
     "object.assign": "^4.0.4",

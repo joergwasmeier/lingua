@@ -18,13 +18,8 @@ describe("LoginCommand Spec", function () {
         event = new LoginEvent("test","test");
     });
 
-    it("Should set Errorcode", function (resolve) {
-        event.callBack = () => {
-            expect(accountStore.login.errorCode == 2).toBeTruthy();
-            resolve();
-        };
+    it("Should set Errorcode", function () {
 
-        command.execute(event);
     });
 
 });
