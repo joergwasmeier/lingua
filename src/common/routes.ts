@@ -5,6 +5,8 @@ import Layout from "./../layout/Layout";
 import FabaCore from "@fabalous/core/FabaCore";
 import FabaEvent from "@fabalous/core/FabaEvent";
 
+require("./style/Common.less");
+
 function loadRoute(cb) {
     return (module) => cb(null, module.default);
 }

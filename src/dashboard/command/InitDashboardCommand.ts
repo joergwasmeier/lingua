@@ -14,8 +14,6 @@ export default class InitDashboardCommand extends FabaCommand implements IFabaCo
     }
 
     async execute(event: InitDashboardEvent) {
-        console.log(dashboardStore);
-
         event.view = React.createElement(Dashboard, {model:dashboardStore});
         event.callBack();
 

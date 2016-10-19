@@ -9,8 +9,7 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
         if (module.hot) {
             module.hot.accept([
                 "./command/InitAccountCommand",
-                "./command/ChangeLoginInputCommand",
-                "./command/ChangeSignUpInputCommand",
+                "./command/ChangeAccountInputCommand",
                 "./command/CheckLoginStatusCommand",
                 "./command/SignUpCommand",
                 "./command/LoginCommand",
@@ -28,8 +27,9 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
 
             this.addCommand(require("./event/InitAccountEvent"), require("./command/InitAccountCommand"));
             this.addCommand(require("./event/CheckLoginStatusEvent"), require("./command/CheckLoginStatusCommand"));
-            this.addCommand(require("./event/ChangeLoginInputEvent"), require("./command/ChangeLoginInputCommand"));
-            this.addCommand(require("./event/ChangeSignupInputEvent"), require("./command/ChangeSignUpInputCommand"));
+
+            this.addCommand(require("./event/ChangeAccountInputEvent"), require("./command/ChangeAccountInputCommand"));
+
             this.addCommand(require("./event/SignUpEvent"), require("./command/SignUpCommand"));
             this.addCommand(require("./event/LoginEvent"), require("./command/LoginCommand"));
 

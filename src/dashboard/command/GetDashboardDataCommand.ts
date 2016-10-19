@@ -20,6 +20,8 @@ export default class GetDashboardDataCommand extends FabaCommand {
             dashboardStore.data.recentCourses = event.data.recentCourses;
         }
 
+        dashboardStore.data.loading=false;
+
         event.callBack();
     }
 

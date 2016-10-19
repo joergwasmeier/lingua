@@ -4,9 +4,7 @@ import AccountStore from "../AccountStore";
 import ForgotPassVo from "../vo/ForgotPassVo";
 import {observer} from "mobx-react";
 import ForgotPassEvent from "../event/ForgotPassEvent";
-
-var classNames = require('classnames');
-require('./ForgotPass.less');
+import {ChangeAccountInputEventType, default as ChangeAccountInputEvent} from "../event/ChangeAccountInputEvent";
 
 interface IForgotPass {
     model: AccountStore;
@@ -14,8 +12,6 @@ interface IForgotPass {
 
 @observer
 export default class ForgotPass extends React.Component<{},{}> {
-    className: string = "SignUp";
-
     vo: ForgotPassVo;
     props: IForgotPass;
 
@@ -23,11 +19,15 @@ export default class ForgotPass extends React.Component<{},{}> {
         super(props);
         this.vo = this.props.model.forgotPass;
         this.forgotPassBtHandler = this.forgotPassBtHandler.bind(this);
+        this.userNameChange = this.userNameChange.bind(this);
     }
 
-    forgotPassBtHandler() {
-        console.log("forgotPassBtHandler");
-        new ForgotPassEvent("dsfdf").dispatch();
+    private forgotPassBtHandler() {
+        new ForgotPassEvent(this.vo.userName).dispatch();
+    }
+
+    private userNameChange(e) {
+        new ChangeAccountInputEvent(ChangeAccountInputEventType.FORGOT_USERNAME, e.currentTarget.value).dispatch();
     }
 
     render() {
@@ -35,45 +35,42 @@ export default class ForgotPass extends React.Component<{},{}> {
         if (this.vo.showSuccessMessage) return this.renderSuccess();
 
         return (
-            <div className={`center ${this.className}`}>
-                <div className="content">
-                    <p className="header">LINGUA</p>
+            <div>
+                <TextField
+                    className="textField"
+                    floatingLabelText="E-Mail"
+                    floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
+                    inputStyle={{color:"rgba(255,255,255,0.8)"}}
+                    value={this.vo.userName}
+                    onChange={this.userNameChange}
+                />
 
-                    <TextField
-                        className="email"
-                        floatingLabelText="E-Mail"
-                        floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
-                        inputStyle={{color:"rgba(255,255,255,0.8)"}}
-                        value={this.vo.userName}
-                    />
+                <FlatButton
+                    className="signUpButton"
+                    backgroundColor="#a4c639"
+                    onTouchTap={this.forgotPassBtHandler}>
+                    <p className="content">SENDEN</p>
 
-                    <FlatButton
-                        className="button"
-                        backgroundColor="#a4c639"
-                        onTouchTap={this.forgotPassBtHandler}>
-                        <p className="content">SENDEN 2</p>
+                    <div className="spinner"></div>
+                </FlatButton>
 
-                        <div className="spinner"></div>
-                    </FlatButton>
-
-                    <p className="signUp">
-                        <a href="#/login/">WAIT!! I khnow it go back!</a>
-                    </p>
-                </div>
+                <p className="signUp">
+                    <a href="#/login/">WAIT!! I khnow it go back!</a>
+                </p>
             </div>
         )
     }
 
-    renderSuccess() {
-        return(
+    private renderSuccess() {
+        return (
             <div className="success">
                 <p>Wir haben dir ein neues Passwort zugesendet, bitte checke emails!</p>
             </div>
         );
     }
 
-    renderError() {
-        return(
+    private renderError() {
+        return (
             <div className="error">
                 <p>Wir konnten dein Passwort nicht zurücksetzen!</p>
             </div>

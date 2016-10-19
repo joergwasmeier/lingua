@@ -1,5 +1,5 @@
 import * as React from "react";
-import {ListItem, List, Divider, Subheader, RaisedButton} from "material-ui";
+import {ListItem, List, Divider, Subheader, RaisedButton, LinearProgress} from "material-ui";
 import ActionInfo from "material-ui/svg-icons/action/info";
 import LinguaAppBar from "../../menu/view/AppBar";
 import {observer} from "mobx-react";
@@ -19,13 +19,12 @@ export default class Dashboard extends React.Component<IDashboardProps,{}> {
 
     vo:DashboardStore;
 
-    constructor() {
-        super();
+    constructor(props:IDashboardProps) {
+        super(props);
         this.vo = this.props.model;
-
     }
 
-    componentDidMount(): void {
+    private componentDidMount(): void {
         // Chart rerender
         window.addEventListener("resize", (e) => {
             super.forceUpdate();
@@ -96,13 +95,13 @@ export default class Dashboard extends React.Component<IDashboardProps,{}> {
     }
 
     private renderLoading() {
-        console.log('renderLoading');
-
-        this.vo.data.loading
+        if (!this.vo.data.loading) return;
 
         return(
-            <div className="dashboardContainer">
+            <div className="loading">
                 Loading
+                <LinearProgress />
+
             </div>
         )
     }

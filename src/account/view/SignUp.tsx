@@ -4,8 +4,8 @@ import {observer} from "mobx-react/index";
 import AccountStore from "../AccountStore";
 import SignUpVo from "../vo/SignUpVo";
 import SignUpEvent from "../event/SignUpEvent";
-import ChangeSignupInputEvent, {ChangeSignupInputEventTypes} from "../event/ChangeSignupInputEvent";
-require('./SignUp.less');
+import ChangeAccountInputEvent from "../event/ChangeAccountInputEvent";
+import {ChangeAccountInputEventType} from "../event/ChangeAccountInputEvent";
 
 interface ISignUpProps {
     model: AccountStore;
@@ -27,11 +27,11 @@ export default class SignUp extends React.Component<{},{}> {
     }
 
     private userNameChange(e): void {
-        this.vo.userName = e.currentTarget.value;
+        new ChangeAccountInputEvent(ChangeAccountInputEventType.SIGNUP_USERNAME, e.currentTarget.value).dispatch();
     }
 
     private passWordChange(e): void {
-        new ChangeSignupInputEvent(ChangeSignupInputEventTypes.PASSWORD, e.currentTarget.value).dispatch();
+        new ChangeAccountInputEvent(ChangeAccountInputEventType.SIGNUP_PASSWORD, e.currentTarget.value).dispatch();
     }
 
     private signUpBtHandler(): void {
@@ -40,43 +40,39 @@ export default class SignUp extends React.Component<{},{}> {
 
     render() {
         return (
-            <div className={`center ${this.className}`}>
-                <div className="content">
-                    <p className="header">LINGUA</p>
+            <div>
+                <TextField
+                    className="textField"
+                    floatingLabelText="E-Mail"
+                    floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
+                    inputStyle={{color:"rgba(255,255,255,0.8)"}}
+                    value={this.vo.userName}
+                    onChange={this.userNameChange}
+                />
 
-                    <TextField
-                        className="textField"
-                        floatingLabelText="E-Mail"
-                        floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
-                        inputStyle={{color:"rgba(255,255,255,0.8)"}}
-                        value={this.vo.userName}
-                        onChange={this.userNameChange}
-                    />
+                <TextField
+                    className="textField"
+                    floatingLabelText="Password"
+                    floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
+                    inputStyle={{color:"rgba(255,255,255,0.8)"}}
+                    type="password"
+                    value={this.vo.password}
+                    onChange={this.passWordChange}
 
-                    <TextField
-                        className="textField"
-                        floatingLabelText="Password"
-                        floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
-                        inputStyle={{color:"rgba(255,255,255,0.8)"}}
-                        type="password"
-                        value={this.vo.password}
-                        onChange={this.passWordChange}
+                />
 
-                    />
+                <FlatButton
+                    className="signUpButton"
+                    backgroundColor="#a4c639"
+                    onTouchTap={this.signUpBtHandler}>
+                    <p className="content">REGISTER</p>
 
-                    <FlatButton
-                        className="signUpButton"
-                        backgroundColor="#a4c639"
-                        onTouchTap={this.signUpBtHandler}>
-                        <p className="content">REGISTER</p>
+                    <div className="spinner"></div>
+                </FlatButton>
 
-                        <div className="spinner"></div>
-                    </FlatButton>
-
-                    <p className="signUp">
-                        <a href="#/login/">WAIT!! I have a account go back!</a>
-                    </p>
-                </div>
+                <p className="signUp">
+                    <a href="#/login/">WAIT!! I have a account go back!</a>
+                </p>
             </div>
         )
     }

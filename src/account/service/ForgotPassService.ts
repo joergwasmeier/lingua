@@ -5,10 +5,8 @@ import UserVo from "../vo/UserVo";
 
 export default class ForgotPassService extends FabaSerivce {
     async execute(event: ForgotPassEvent) {
-        console.log("ForgotPassService");
-
         var result:Array<UserVo> = await userTable.findUser(event.username);
-
+        console.log(result);
         super.sendToClient(event);
     }
 }
