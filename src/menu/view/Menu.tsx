@@ -12,26 +12,31 @@ interface IMenuProps {
     history: any;
 }
 
+require("./Menu.less");
+
 @observer
-export default class Menu extends React.Component<IMenuProps,{}> {
+export default class Menu extends React.Component<IMenuProps,{drawer:boolean}> {
     className: string = "Menu";
     props: IMenuProps;
 
+
     constructor(props) {
         super(props);
+
+        this.state = {drawer:false};
     }
 
-    menuClickHandler(url: string) {
+    private menuClickHandler(url: string) {
         this.props.history.push(url);
         new ToggleMenuEvent(false).dispatch();
     }
 
-    dockerWidth(): number {
+    private dockerWidth(): number {
         var calcWidth: number = window.innerWidth - 80;
         return (calcWidth > 400) ? 400 : calcWidth;
     }
 
-    renderCourses() {
+    private renderCourses() {
         var items: Array<any> = [];
         var id = 1;
 
@@ -43,7 +48,7 @@ export default class Menu extends React.Component<IMenuProps,{}> {
         return items;
     }
 
-    renderCreateCourses() {
+    private renderCreateCourses() {
         var items: Array<any> = [];
         var id = 1;
 
@@ -64,7 +69,7 @@ export default class Menu extends React.Component<IMenuProps,{}> {
                         width={this.dockerWidth()}
                         docked={false}
                         onRequestChange={(open:boolean) => new ToggleMenuEvent(open).dispatch()}
-                        className="drawer"
+                        className={classNames("drawer",{ 'active': this.state.drawer})}
                 >
                     <div className="menuHeader">
                         <div className="profil">

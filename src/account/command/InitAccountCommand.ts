@@ -9,6 +9,8 @@ import Account from "../view/Account";
 
 export default class InitAccountCommand extends FabaCommand {
     execute(event:InitAccountEvent) {
+        console.log("exec");
+        
         switch (event.viewName){
             case "forgotPass":
                 event.view = React.createElement(Account, {childs: React.createElement(ForgotPass, {model: accountStore})});

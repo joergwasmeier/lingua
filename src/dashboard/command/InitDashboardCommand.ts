@@ -7,6 +7,7 @@ import GetDashboardDataEvent from "../event/GetDashboardDataEvent";
 import {dashboardStore} from "../DashboardStore";
 import CheckLoginStatusEvent from "../../account/event/CheckLoginStatusEvent";
 import LoginEvent from "../../account/event/LoginEvent";
+import {accountStore} from "../../account/AccountStore";
 
 export default class InitDashboardCommand extends FabaCommand implements IFabaCommand {
     constructor() {
@@ -14,6 +15,8 @@ export default class InitDashboardCommand extends FabaCommand implements IFabaCo
     }
 
     async execute(event: InitDashboardEvent) {
+        dashboardStore.data.loading = true;
+
         event.view = React.createElement(Dashboard, {model:dashboardStore});
         event.callBack();
 

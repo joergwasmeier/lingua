@@ -23,6 +23,20 @@ export default class A_Web extends FabaRuntimeWeb {
     constructor() {
         super();
 
+        /*
+        var Immutable = require('immutable');
+        var map1 = Immutable.Map({a:1, b:2, c:3});
+        var map2 = map1.set('b', 50);
+
+        console.log(map1.get('b'));
+        console.log(map2.get('b'));
+
+        var Immutable = require('immutable');
+        var transit = require('transit-immutable-js');
+        var str = transit.toJSON(map2);
+        console.log(str);
+        */
+
         var host:string = window.location.host+"/api/";
         if (host == "192.168.0.31:8080/api/") host = "192.168.0.31:3120/";
         if (host == "localhost:8080/api/") host = "localhost:3120/";

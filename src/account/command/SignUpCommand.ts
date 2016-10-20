@@ -16,7 +16,7 @@ export default class SignUpCommand extends FabaCommand {
         FabaRuntimeWeb.sendToEndpoint(event, "");
     }
 
-    result(event: SignUpEvent): any {
+    async result(event: SignUpEvent) {
         var loginEvent = Object.assign(new LoginEvent("",""), event.loginEvent);
         loginEvent.dispatch(null,FabaEventResultType.RESULT);
 

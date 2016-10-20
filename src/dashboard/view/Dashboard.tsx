@@ -101,7 +101,6 @@ export default class Dashboard extends React.Component<IDashboardProps,{}> {
             <div className="loading">
                 Loading
                 <LinearProgress />
-
             </div>
         )
     }
