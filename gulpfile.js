@@ -16,3 +16,9 @@ gulp.task('testKarma', function(done) {
         configFile: __workDir+"/node_modules/@fabalous/test-karma/karma.conf.js"
     }, done).start();
 });
+
+gulp.task('t', function(done) {
+    new Server({
+        configFile: __workDir+"/karma-coverage.conf.js"
+    }, done).start();
+});

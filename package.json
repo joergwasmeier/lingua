@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "scripts": {
     "db": "rethinkdb --http-port 8090",
-    "test": "BABEL_ENV=test gulp testKarma"
+    "test": "BABEL_ENV=test gulp t",
+    "build": "BABEL_ENV=production NODE_ENV=production  gulp build"
+
   },
   "dependencies": {
     "enzyme": "^2.4.1",
@@ -18,9 +20,14 @@
     "@fabalous/core": "*",
     "@fabalous/runtime-web": "*",
     "@fabalous/test-karma": "*",
+    "babel-plugin-__coverage__": "^11.0.0",
+    "babel-plugin-istanbul": "^2.0.1",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-preset-es2015": "^6.16.0",
     "chart.js": "^2.3.0",
+    "istanbul-instrumenter-loader": "^1.0.0",
+    "karma-remap-istanbul": "^0.2.1",
+    "karma-typescript": "^2.0.6",
     "material-ui": "^0.16.0",
     "mobx": "^2.5.1",
     "mobx-react": "^3.5.6",
