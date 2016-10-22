@@ -5,10 +5,12 @@
     "db": "rethinkdb --http-port 8090",
     "test": "BABEL_ENV=test gulp t",
     "build": "BABEL_ENV=production NODE_ENV=production  gulp build"
-
   },
   "dependencies": {
+    "babel-polyfill": "^6.16.0",
     "enzyme": "^2.4.1",
+    "express": "^4.14.0",
+    "mobx": "^2.6.0",
     "object.assign": "^4.0.4",
     "passport": "^0.3.2",
     "passport-twitter": "^1.0.4",
