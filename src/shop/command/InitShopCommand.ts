@@ -12,7 +12,9 @@ export default class InitShopCommand extends FabaCommand {
 
     async execute(event: InitShopEvent) {
         if (!shopStore.viewInit){
+            console.log("get");
             await new GetShopItemsEvent().dispatch();
+            console.log("result");
             shopStore.view = event.view = React.createElement(Store, {});
         } else {
             event.view = shopStore.view;

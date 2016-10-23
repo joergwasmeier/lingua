@@ -10,14 +10,12 @@ export default class GetShopItemsCommand extends FabaCommand implements IFabaCom
         super();
     }
 
-    execute(event: GetShopItemsEvent): any {
+    async execute(event: GetShopItemsEvent) {
         FabaRuntimeWeb.sendToEndpoint(event, "");
     }
 
     result(event: GetShopItemsEvent): any {
-        console.log("r2ww2");
         shopStore.items = event.result;
-
         event.callBack();
     }
 

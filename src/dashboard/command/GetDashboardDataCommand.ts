@@ -9,7 +9,6 @@ import {dashboardStore} from "../DashboardStore";
 
 export default class GetDashboardDataCommand extends FabaCommand {
     execute(event: GetDashboardDataEvent) {
-
         FabaRuntimeWeb.sendToEndpoint(event, "");
     }
 

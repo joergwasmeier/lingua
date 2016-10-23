@@ -1,11 +1,13 @@
 import * as React from "react";
-import {ListItem, List, Divider, Subheader, RaisedButton, LinearProgress} from "material-ui";
+import {ListItem, List, Divider, Subheader, RaisedButton, LinearProgress, Paper} from "material-ui";
 import ActionInfo from "material-ui/svg-icons/action/info";
 import LinguaAppBar from "../../menu/view/AppBar";
 import {observer} from "mobx-react";
 import CourseVO from "../../course/vo/CourseVO";
 import ChangeUrlEvent from "../../common/event/ChangeUrlEvent";
 import DashboardStore from "../DashboardStore";
+import SwipeableViews from 'react-swipeable-views';
+
 var Chart = require('chart.js/src/chart.js');
 require("./Dashboard.less");
 
@@ -111,13 +113,36 @@ export default class Dashboard extends React.Component<IDashboardProps,{}> {
                 <h1>WHOOOT?!</h1>
                 <h2>Noch keine Daten? Na dann wirds aber zeit starte jetzt mit deinem Kurs und lerne eine Sprache.</h2>
 
-                <RaisedButton className="loadCourse" label="Kurs Herunterladen"
-                              secondary={false} onClick={this.showShop} fullWidth={true}/>
+                <Paper zDepth={1} className="card">
+                    <h1>Beliebte Kurse</h1>
+                    <SwipeableViews className="swipeView">
+                        <div className="courseCard" />
+                        <div className="courseCard" />
+                        <div className="courseCard" />
+                        <div className="courseCard" />
+                        <div className="courseCard" />
+                        <div className="courseCard" />
+                        <div className="courseCard" />
+                    </SwipeableViews>
+                </Paper>
+
+                <h2 className="sub">Nichts dabei? KeinProblem erstell deinen eigenen Kurs!</h2>
+
                 <RaisedButton className="createCourse" label="Kurs erstellen"
                               secondary={true} onClick={this.createCourses} fullWidth={true}/>
+
             </div>
         );
     }
+
+    /*
+
+     <RaisedButton className="loadCourse" label="Kurs Herunterladen"
+     secondary={false} onClick={this.showShop} fullWidth={true}/>
+     <RaisedButton className="createCourse" label="Kurs erstellen"
+     secondary={true} onClick={this.createCourses} fullWidth={true}/>
+
+     */
 
     private renderDashboard(){
         return(

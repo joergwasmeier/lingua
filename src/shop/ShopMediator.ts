@@ -24,7 +24,6 @@ export default class ShopMediator extends FabaMediator implements IFabaMediator 
 
     registerCommands(): void {
         if (CLIENT) {
-            console.log("test2d2s");
             super.registerCommands();
             this.addCommand(require("./event/InitShopEvent"), require("./command/InitShopCommand"));
             this.addCommand(require("./event/SelectShopItemEvent"), require("./command/SelectShopItemCommand"));

@@ -17,22 +17,37 @@ export default class InitDashboardCommand extends FabaCommand implements IFabaCo
     async execute(event: InitDashboardEvent) {
         dashboardStore.data.loading = true;
 
-        event.view = React.createElement(Dashboard, {model:dashboardStore});
-        event.callBack();
+        await new LoginEvent(
+            window.localStorage.getItem("username"),
+            window.localStorage.getItem("password")
+        ).dispatch();
 
-        var loginStatus:CheckLoginStatusEvent = await new CheckLoginStatusEvent().dispatch();
+        console.log("event");
+
+        var loginStatus:CheckLoginStatusEvent = await new CheckLoginStatusEvent().dispatch() as CheckLoginStatusEvent;
+        console.log("CheckLoginStatusEvent");
         if (loginStatus.loggedIn === false){
-            await new LoginEvent(
+            console.log("loginStatus");
+
+            var lg = await new LoginEvent(
                 window.localStorage.getItem("username"),
                 window.localStorage.getItem("password")
             ).dispatch();
-
-            return;
+            console.log(lg);
+            console.log("login");
         }
-        
+
+        event.view = React.createElement(Dashboard, {model:dashboardStore});
+        event.callBack();
+
         dashboardStore.initEvent = event;
 
+        new GetDashboardDataEvent().dispatch().then(()=>{
+           console.log("resolve");
+        });
+
         await new GetDashboardDataEvent().dispatch();
+        console.log("even");
     }
 
     result(event: InitDashboardEvent): any {

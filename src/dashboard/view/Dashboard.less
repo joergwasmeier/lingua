@@ -1,53 +1,77 @@
-.Dashboard{
- // padding-top: 64px;
+.Dashboard {
+  // padding-top: 64px;
   display: flex;
   flex-flow: column;
 }
 
-.loading{
+.card {
+  padding-bottom: 16px;
+
+  margin-left: 16px;
+  margin-right: 16px;
+
+  >h1 {
+    font-size: 20px;
+    color: #424242;
+    padding: 16px;
+  }
+
+  .courseCard {
+    background-color: #00B7FF;
+    min-height: 200px;
+    margin: 16px;
+  }
+}
+
+.loading {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255, 255, 255, 0.8);
   z-index: 40000;
   text-align: center;
 }
 
-.chartContainer{
+.chartContainer {
   position: relative;
   order: 1;
   max-width: 400px;
-  left:50%;
+  left: 50%;
   margin-left: -200px;
 }
 
-.list{
+.list {
   order: 1;
 }
 
-.lineChart{
+.lineChart {
 }
 
-.dashboardContainer{
+.dashboardContainer {
   display: flex;
   margin-top: 64px;
   flex-flow: column;
-  >h1{
-    order:1;
+  > h1 {
+    order: 1;
     font-size: 64px;
     text-align: center;
-    margin-top: 64px;
+    margin-top: 32px;
     margin-bottom: 16px;
   }
 
-  >h2{
-    order:2;
+  > h2 {
+    order: 2;
     font-size: 16px;
-    margin-left: 8px;
-    margin-right: 8px;
+    margin-left: 16px;
+    margin-right: 16px;
     margin-bottom: 32px;
+    text-align: center;
+
+    &.sub{
+      order: 3;
+    }
   }
-  >div{
+  > div {
     order: 3;
     margin-bottom: 16px;
   }

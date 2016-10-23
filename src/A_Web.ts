@@ -19,6 +19,8 @@ require("./assets/less/font.less");
 
 declare var module;
 
+
+
 export default class A_Web extends FabaRuntimeWeb {
     constructor() {
         super();

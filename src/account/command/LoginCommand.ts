@@ -14,17 +14,15 @@ export default class LoginCommand extends FabaCommand {
 
     async execute(event: LoginEvent) {
         accountStore.login.showLoginProgress();
-        
+
         if (event.checkUserPassLength()) {
             FabaRuntimeWeb.sendToEndpoint(event, "");
-            return;
         }
 
-        accountStore.login.showErrorMsg(2);
-        event.callBack();
+        //accountStore.login.showErrorMsg(2);
     }
 
-    async result(event: LoginEvent) {
+     result(event: LoginEvent) {
         switch (event.status) {
             case LoginEventStatus.ERROR:
                 accountStore.login.showErrorMsg(2);
@@ -35,16 +33,20 @@ export default class LoginCommand extends FabaCommand {
                 window.localStorage.setItem("password", event.password);
                 window.localStorage.setItem("sessionid", event.sessionId);
 
+                /*
                 if (event.loginLocation){
                     hashHistory.push(event.loginLocation);
                 } else {
                     hashHistory.push('/dashboard/');
                 }
+                */
 
                 break;
         }
-
+        console.log("callback");
         event.callBack();
+
+         console.log(event.cbs);
     }
 
     timeout(event: LoginEvent) {
