@@ -1,6 +1,7 @@
 {
   "globalDependencies": {
     "@fabalous/core": "npm:@fabalous/core/index.d.ts",
+    "lingua": "file:./src/lingua.d.ts",
     "systemjs": "registry:dt/systemjs#0.19.29+20160702105636"
   },
   "dependencies": {
