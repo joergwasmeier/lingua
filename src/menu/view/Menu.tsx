@@ -36,12 +36,21 @@ export default class Menu extends React.Component<IMenuProps,{drawer:boolean}> {
         return (calcWidth > 400) ? 400 : calcWidth;
     }
 
+    private openCourse(){
+        console.log("openCourse");
+
+    }
+    
     private renderCourses() {
         var items: Array<any> = [];
         var id = 1;
 
         for (var course in this.props.model.courses) {
-            items.push(<MenuItem key={"course"+id}>course.headLine</MenuItem>);
+            items.push(
+                <MenuItem key={"course"+id} onClick={()=>this.openCourse()}>
+                    course.headLine
+                </MenuItem>
+            );
             id++;
         }
 
@@ -83,7 +92,9 @@ export default class Menu extends React.Component<IMenuProps,{drawer:boolean}> {
                     <MenuItem onClick={() => this.menuClickHandler('/dashboard/')}>Dashboard</MenuItem>
                     <Divider/>
                     <Subheader>Heruntergeladene Kurse</Subheader>
-                    <ListItem primaryText="Italienisch für Anfänger" rightIcon={<ActionInfo />}></ListItem>
+                    <ListItem primaryText="Italienisch für Anfänger"
+                              onClick={(e)=>this.menuClickHandler('/course/')}
+                              rightIcon={<ActionInfo />}></ListItem>
                     {this.renderCourses()}
                     <Divider/>
                     <Subheader>Kurse erstellen</Subheader>

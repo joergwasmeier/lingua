@@ -10,6 +10,8 @@ import IconButton from "material-ui/IconButton";
 import HideShopItemEvent from "../event/HideShopItemEvent";
 import ItemList from "../../common/widgets/itemList/ItemList";
 
+import SwipeableViews from 'react-swipeable-views';
+
 require("./ShopItem.less");
 
 interface IShopItemProps {
@@ -48,7 +50,7 @@ export default class ShopItem extends React.Component<IShopItemProps,null> {
                 <LinguaAppBar
                     title={shopStore.selectedItem.name}
                     leftIcon={<IconButton onClick={()=>{new HideShopItemEvent().dispatch()}}><ArrowBack/></IconButton>}
-
+                    disableEvent="true"
                 />
 
                 <Tabs className="tabs">

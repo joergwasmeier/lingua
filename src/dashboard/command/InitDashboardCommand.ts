@@ -1,15 +1,14 @@
 import * as React from "react";
 import FabaCommand from "@fabalous/core/FabaCommand";
-import {IFabaCommand} from "@fabalous/core/IFabaCommand";
-import InitDashboardEvent from "../event/InitDashboardEvent";
 import Dashboard from "../view/Dashboard";
+import InitDashboardEvent from "../event/InitDashboardEvent";
 import GetDashboardDataEvent from "../event/GetDashboardDataEvent";
 import {dashboardStore} from "../DashboardStore";
 import CheckLoginStatusEvent from "../../account/event/CheckLoginStatusEvent";
 import LoginEvent from "../../account/event/LoginEvent";
 import {accountStore} from "../../account/AccountStore";
 
-export default class InitDashboardCommand extends FabaCommand implements IFabaCommand {
+export default class InitDashboardCommand extends FabaCommand  {
     constructor() {
         super();
     }
@@ -17,52 +16,25 @@ export default class InitDashboardCommand extends FabaCommand implements IFabaCo
     async execute(event: InitDashboardEvent) {
         dashboardStore.data.loading = true;
 
-        await new LoginEvent(
-            window.localStorage.getItem("username"),
-            window.localStorage.getItem("password")
-        ).dispatch();
-
-        console.log("event");
-
-        var loginStatus:CheckLoginStatusEvent = await new CheckLoginStatusEvent().dispatch() as CheckLoginStatusEvent;
-        console.log("CheckLoginStatusEvent");
-        if (loginStatus.loggedIn === false){
-            console.log("loginStatus");
-
-            var lg = await new LoginEvent(
-                window.localStorage.getItem("username"),
-                window.localStorage.getItem("password")
-            ).dispatch();
-            console.log(lg);
-            console.log("login");
-        }
-
         event.view = React.createElement(Dashboard, {model:dashboardStore});
         event.callBack();
 
-        dashboardStore.initEvent = event;
+        if (accountStore.login.loggedIn == false){
+            await new LoginEvent(
+                window.localStorage.getItem("username"),
+                window.localStorage.getItem("password")
+            ).dispatch();
 
-        new GetDashboardDataEvent().dispatch().then(()=>{
-           console.log("resolve");
-        });
+            var loginStatus:CheckLoginStatusEvent = await new CheckLoginStatusEvent().dispatch() as CheckLoginStatusEvent;
 
-        await new GetDashboardDataEvent().dispatch();
-        console.log("even");
-    }
+            if (loginStatus.loggedIn === false){
+                await new LoginEvent(
+                    window.localStorage.getItem("username"),
+                    window.localStorage.getItem("password")
+                ).dispatch();
+            }
+        }
 
-    result(event: InitDashboardEvent): any {
-        return null;
-    }
-
-    timeout(event: InitDashboardEvent): any {
-        return null;
-    }
-
-    error(event: InitDashboardEvent): any {
-        return null;
-    }
-
-    offline(event: InitDashboardEvent): any {
-        return null;
+        new GetDashboardDataEvent().dispatch();
     }
 }

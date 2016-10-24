@@ -8,7 +8,6 @@ export default class InitAccountEvent extends FabaEvent {
     view: any;
 
     constructor(name: string = "default") {
-        console.log("InitAccountEvent");
         super("InitAccountEvent");
         this.viewName = name;
     }

@@ -1,9 +1,9 @@
 {
   "short_name": "Lingua",
-  "name": "Lingua Test app",
+  "name": "Lingua - Get shit done",
   "start_url": "index.html",
-  "background_color": "#FAFAFA",
-  "theme_color": "#4527A0",
+  "background_color": "#ffffff",
+  "theme_color": "#00bcd4",
   "display": "standalone",
   "orientation": "portrait"
 }

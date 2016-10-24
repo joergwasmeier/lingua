@@ -2,23 +2,23 @@ import * as React from "react";
 import {observer} from "mobx-react";
 import LinguaAppBar from "../../menu/view/AppBar";
 import ItemList from "../../common/widgets/itemList/ItemList";
-import {shopStore} from "../ShopStore";
+import {shopStore, ShopStore} from "../ShopStore";
 import {FloatingActionButton} from "material-ui";
 import FilterList from "material-ui/svg-icons/content/filter-list";
 import ShopItem from "./ShopItem";
 import SelectShopItemEvent from "../event/SelectShopItemEvent";
 
-
-
 require("./Shop.less");
 
+
+interface IShopProps{
+    model:ShopStore
+}
+
 @observer
-export default class Shop extends React.Component<null,null> {
+export default class Shop extends React.Component<IShopProps,null> {
     className: string;
 
-    handleRefresh(){
-
-    }
 
     render() {
         if (shopStore.shopItemVisible){
@@ -35,7 +35,6 @@ export default class Shop extends React.Component<null,null> {
                 <FloatingActionButton
                     iconClassName={"FilterList"}
                     className="floatingActionButton" />
-
                 <ShopItem/>
             </div>
         );

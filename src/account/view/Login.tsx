@@ -33,7 +33,7 @@ export default class Login extends React.Component<ILoginProps,{}> {
     }
 
     private loginBtHandler(): void {
-        new LoginEvent(this.vo.userName, this.vo.password).dispatch();
+        new LoginEvent(this.vo.userName, this.vo.password, "/dashboard/").dispatch();
     }
 
     private renderError() {

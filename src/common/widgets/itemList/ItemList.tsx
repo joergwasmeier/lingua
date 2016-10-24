@@ -40,12 +40,18 @@ export default class ItemList extends React.Component<IItemListProps, null> {
 
     render() {
         return (
-            <ReactPullToRefresh onRefresh={this.handleRefresh} className={this.props.className}>
+            <div className={this.props.className}>
                 {this.renderItems()}
-            </ReactPullToRefresh>
+            </div>
         );
     }
 }
+
+/*
+ <ReactPullToRefresh onRefresh={this.handleRefresh} className={this.props.className}>
+ {this.renderItems()}
+ </ReactPullToRefresh>
+ */
 
 interface IItemListItemProps{
     item:any;

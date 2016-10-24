@@ -14,8 +14,8 @@ injectTapEventPlugin();
 //require("./common/manifest.json");
 require("./index.html");
 
-require("./assets/less/reset.less");
-require("./assets/less/font.less");
+require("./common/assets/less/reset.less");
+require("./common/assets/less/font.less");
 
 declare var module;
 

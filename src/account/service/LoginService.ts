@@ -14,12 +14,15 @@ export default class LoginService extends FabaSerivce {
     }
 
     async execute(event: LoginEvent) {
+        console.log("execute");
+
         if (await this.errorCheck(event) === true) return;
+
+        console.log("execute 2");
 
         event.status = LoginEventStatus.LOGGED_IN;
         event.sessionId = "sid" + Math.random();
 
-        console.log(event);
         return super.sendToClient(event);
     }
 

@@ -5,9 +5,7 @@ import FabaCommand from "@fabalous/core/FabaCommand";
 
 export default class CheckLoginStatusCommand extends FabaCommand {
 
-    execute(event:CheckLoginStatusEvent) {
-        console.log("execute");
-        console.log(event.callBack);
+    async execute(event:CheckLoginStatusEvent) {
         if (accountStore && accountStore.login && accountStore.login.loggedIn){
             event.loggedIn = true;
             event.callBack();

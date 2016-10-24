@@ -10,8 +10,6 @@ import InitDashboardEvent from "./event/InitDashboardEvent";
 
 export default class DashboardStore {
     data = new DashboardVo();
-    initEvent:InitDashboardEvent;
-
 
     view:ComponentElement<{} & { children?: ReactNode; }, Dashboard>;
 }

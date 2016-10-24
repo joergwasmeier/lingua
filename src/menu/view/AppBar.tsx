@@ -9,12 +9,14 @@ interface IAppBarProps{
     title:string;
     clickEvent?:any;
     leftIcon?:string;
+    disableEvent?:boolean;
 }
 
 export default class LinguaAppBar extends Component<IAppBarProps, {}>{
 
     private handleToggle(value:boolean){
-        console.log("handleToggle");
+        if(this.props.disableEvent) return;
+
         if (this.props.clickEvent){
             this.props.clickEvent.dispatch();
             return;

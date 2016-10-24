@@ -7,7 +7,7 @@
         "emitDecoratorMetadata": true,
         "declaration": false,
         "noImplicitAny": false,
-        "removeComments": false,
+        "removeComments": true,
         "noLib": false,
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
@@ -22,7 +22,5 @@
         "useCache":true,
         "skipDeclarationFilesCheck":false
     },
-    "exclude": ["test",
-        "node_modules"
-    ]
+    "exclude": ["node_modules"]
 }
