@@ -1,0 +1,9 @@
+{
+  "short_name": "Lingua",
+  "name": "Lingua - Get shit done",
+  "start_url": "index.html",
+  "background_color": "#ffffff",
+  "theme_color": "#00bcd4",
+  "display": "standalone",
+  "orientation": "portrait"
+}
