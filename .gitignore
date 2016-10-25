@@ -7,3 +7,5 @@ dist
 .git
 typings
 coverage
+yarn.lock
+.vscode
