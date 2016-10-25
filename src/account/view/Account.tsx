@@ -12,6 +12,8 @@ export default class Account extends React.Component<IAccountProps,{}> {
     className: string = "Account";
 
     constructor(props:IAccountProps){
+
+
         super(props)
     }
 
@@ -19,7 +21,7 @@ export default class Account extends React.Component<IAccountProps,{}> {
         return(
             <div className={`center ${this.className}`}>
                 <div className="content">
-                    <p className="header">LINGUA</p>
+                    <p className="header">LINGUA </p>
 
                     {this.props.childs}
                 </div>

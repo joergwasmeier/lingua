@@ -19,7 +19,6 @@ export default class ChangeAccountInputCommand extends FabaCommand {
                 accountStore.signUp.password = event.value;
                 break;
             case ChangeAccountInputEventType.FORGOT_USERNAME:
-
                 accountStore.forgotPass.userName = event.value;
                 break;
         }

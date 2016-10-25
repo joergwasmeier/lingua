@@ -8,7 +8,7 @@ import ChangeUrlEvent from "../../common/event/ChangeUrlEvent";
 import DashboardStore from "../DashboardStore";
 import SwipeableViews from 'react-swipeable-views';
 
-var Chart = require('chart.js/src/chart.js');
+//var Chart = require('chart.js/src/chart.js');
 require("./Dashboard.less");
 
 interface IDashboardProps {

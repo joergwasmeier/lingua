@@ -18,6 +18,7 @@ export default class ForgotPass extends React.Component<{},{}> {
     constructor(props) {
         super(props);
         this.vo = this.props.model.forgotPass;
+       
         this.forgotPassBtHandler = this.forgotPassBtHandler.bind(this);
         this.userNameChange = this.userNameChange.bind(this);
     }
