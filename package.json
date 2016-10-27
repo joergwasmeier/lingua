@@ -16,7 +16,7 @@
     "mobx": "^2.6.0",
     "object.assign": "^4.0.4",
     "passport": "^0.3.2",
-    "passport-twitter": "^1.0F.4",
+    "passport-twitter": "^1.0.4",
     "react-motion": "^0.4.5",
     "react-swipeable-views": "^0.7.10",
     "rethinkdb": "^2.3.3",
