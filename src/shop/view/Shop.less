@@ -1,11 +1,18 @@
 .Shop{
+  background-color: black;
+
+  .overview{
+    background-color: white;
+    transition:all 0.2s;
+    will-change: opacity, transform;
+  }
 
   &.fixedheight{
-    .itemList {
-      //height: ~"calc(100vh - 64px)";
-      //overflow: hidden;
-      //transform: translate(0,-200px);
+    .overview{
+      opacity: 0.8;
+      transform: scale3d(0.8,0.8,1);
     }
+
   }
 
   .itemList{
@@ -23,5 +30,20 @@
   .chaptersContainer{
     overflow: scroll;
     height: ~"calc(100vh - 64px)";
+  }
+
+  .filterModal{
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top:100vh;
+
+    will-change: top;
+    transition: top 0.4s;
+
+    &.active{
+      top:0vh;
+    }
   }
 }

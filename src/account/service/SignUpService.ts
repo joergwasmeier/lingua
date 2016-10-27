@@ -1,7 +1,7 @@
 import SignUpEvent from "../event/SignUpEvent";
 import FabaSerivce from "@fabalous/core/FabaService";
-import {userTable} from "../vo/UserTable";
 import LoginEvent from "../event/LoginEvent";
+import {userTable} from "../../common/tables/UserTable";
 
 export default class SignUpService extends FabaSerivce {
 

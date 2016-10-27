@@ -7,6 +7,7 @@ import {Connection} from 'rethinkdb';
 import {RDb} from "rethinkdb";
 import PrepareTablesEvent from "./common/event/PrepareTablesEvent";
 import ShopMediator from "./shop/ShopMediator";
+import CourseMediator from "./course/CourseMediator";
 
 require("babel-polyfill");
 
@@ -22,6 +23,9 @@ class A_Server extends FabaServer{
         FabaCore.addMediator(DashboardMediator);
         FabaCore.addMediator(AccountMediator);
         FabaCore.addMediator(ShopMediator);
+        FabaCore.addMediator(CourseMediator);
+        //FabaCore.addMediator(CourseOverviewMediator);
+
         super();
         console.log("Server start at: " + new Date(Date.now()).toLocaleString());
 

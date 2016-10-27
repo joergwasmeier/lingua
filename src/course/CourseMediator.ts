@@ -8,14 +8,20 @@ export default class CourseMediator extends FabaMediator implements IFabaMediato
     }
 
     registerCommands(): void {
-        super.registerCommands();
+        if (CLIENT) {
+            super.registerCommands();
 
-        this.addCommand(require("./event/InitCourseEvent"), require("./command/InitCourseCommand.ts"));
-        this.addCommand(require("./event/GetCourseDataEvent"), require("./command/GetCourseDataCommand.ts"));
+            this.addCommand(require("./event/InitCourseEvent"), require("./command/InitCourseCommand.ts"));
+            this.addCommand(require("./event/GetCourseDataEvent"), require("./command/GetCourseDataCommand.ts"));
+        }
     }
 
     registerServices(): void {
-        super.registerServices();
-        this.addSerivce(require("./event/GetCourseDataEvent"), require("./service/GetCourseDataService.ts"));
+        if (SERVER){
+            super.registerServices();
+
+            this.addSerivce(require("./event/GetCourseDataEvent"), require("./service/GetCourseDataService.ts"));
+            this.addSerivce(require("./../common/event/PrepareTablesEvent"), require("./service/PrepareTableService.ts"));
+        }
     }
 }

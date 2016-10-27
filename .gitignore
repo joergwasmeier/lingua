@@ -9,3 +9,4 @@ typings
 coverage
 yarn.lock
 .vscode
+npm-debug.log

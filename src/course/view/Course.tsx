@@ -2,6 +2,7 @@ import * as React from "react";
 import {RaisedButton, LinearProgress} from "material-ui";
 import LinguaAppBar from "../../menu/view/AppBar";
 import CourseStore from "../CourseStore";
+import {observer} from "mobx-react";
 
 require("./Course.less");
 
@@ -9,6 +10,7 @@ interface ICourseProps{
     model:CourseStore;
 }
 
+@observer
 export default class Course extends React.Component<ICourseProps,{}> {
     className: string = "Course";
 
@@ -21,6 +23,7 @@ export default class Course extends React.Component<ICourseProps,{}> {
             <div className={this.className}>
                 {this.renderLoading()}
 
+                {this.renderContent()}
             </div>
         );
     }
@@ -42,8 +45,9 @@ export default class Course extends React.Component<ICourseProps,{}> {
                 <LinguaAppBar title={this.props.model.data.title}/>
 
                 <div className="content">
-                    <h1>Lerne dich in einem italienischen Restaurant auszudrücken.</h1>
-                    <h3>Erstellt von Elisa</h3>
+                    <img />
+                    <h1>{this.props.model.data.title}</h1>
+                    <h3>{this.props.model.data.createBy}</h3>
 
                     <h4>Dein Fortschritt</h4>
 

@@ -12,6 +12,9 @@ export class ShopStore {
     @observable
     shopItemVisible:boolean;
 
+    @observable
+    shopFilterVisible:boolean;
+
     viewInit:boolean = false;
     view:any;
 }

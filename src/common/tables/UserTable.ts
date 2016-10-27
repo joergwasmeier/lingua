@@ -1,12 +1,12 @@
-import {RTable} from "rethinkdb";
 import {db, dbConnection} from "../../A_Server";
-import UserVo from "./UserVo";
 import {InsertResult} from "rethinkdb";
+import UserVo from "../../account/vo/UserVo";
+import BaseTable from "./BaseTable";
 
-class UserTable {
-    table: RTable<any>;
-
-    constructor() {
+class UserTable extends BaseTable{
+   async createTableIfNotExist(): Promise<any> {
+       var succ = await super.createTableIfNotExist("User");
+       return succ;
     }
 
     async getTable() {
@@ -36,6 +36,14 @@ class UserTable {
         nUser.password = password;
 
         return await this.table.insert(nUser).run(dbConnection);
+    }
+
+    async deleteUser(username:string){
+
+    }
+
+    async resetPassword(username:string){
+
     }
 }
 

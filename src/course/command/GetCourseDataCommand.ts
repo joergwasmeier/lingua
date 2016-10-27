@@ -1,14 +1,16 @@
 import FabaCommand from "@fabalous/core/FabaCommand";
 import GetCourseDataEvent from "../event/GetCourseDataEvent";
+import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
+import {courseStore} from "../CourseStore";
 
 export default class GetCourseDataCommand extends FabaCommand {
-    execute(event: GetCourseDataEvent) {
-        console.log("execute");
-        this.sendToEndpoint(event);
+    async execute(event: GetCourseDataEvent) {
+        FabaRuntimeWeb.sendToEndpoint(event, "");
     }
 
-    result(event: GetCourseDataEvent) {
+    async result(event: GetCourseDataEvent) {
         console.log("result");
+        courseStore.loading = false;
     }
 
     timeout(event: GetCourseDataEvent) {

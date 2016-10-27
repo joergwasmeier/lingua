@@ -2,7 +2,7 @@ import LoginEvent from "../event/LoginEvent";
 import FabaSerivce from "@fabalous/core/FabaService";
 import {LoginEventStatus} from "../event/LoginEvent";
 import UserVo from "../vo/UserVo";
-import {userTable} from "../vo/UserTable";
+import {userTable} from "../../common/tables/UserTable";
 
 export default class LoginService extends FabaSerivce {
     async delay(seconds: number) {

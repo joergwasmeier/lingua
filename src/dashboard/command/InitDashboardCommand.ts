@@ -19,20 +19,13 @@ export default class InitDashboardCommand extends FabaCommand  {
         event.view = React.createElement(Dashboard, {model:dashboardStore});
         event.callBack();
 
-        if (accountStore.login.loggedIn == false){
+        var loginStatus:CheckLoginStatusEvent = await new CheckLoginStatusEvent().dispatch() as CheckLoginStatusEvent;
+
+        if (loginStatus.loggedIn === false){
             await new LoginEvent(
                 window.localStorage.getItem("username"),
                 window.localStorage.getItem("password")
             ).dispatch();
-
-            var loginStatus:CheckLoginStatusEvent = await new CheckLoginStatusEvent().dispatch() as CheckLoginStatusEvent;
-
-            if (loginStatus.loggedIn === false){
-                await new LoginEvent(
-                    window.localStorage.getItem("username"),
-                    window.localStorage.getItem("password")
-                ).dispatch();
-            }
         }
 
         new GetDashboardDataEvent().dispatch();

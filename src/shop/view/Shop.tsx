@@ -7,6 +7,8 @@ import {FloatingActionButton} from "material-ui";
 import FilterList from "material-ui/svg-icons/content/filter-list";
 import ShopItem from "./ShopItem";
 import SelectShopItemEvent from "../event/SelectShopItemEvent";
+import ShowShopFilterEvent from "../event/ShowShopFilterEvent";
+import ShopFilter from "./ShopFilter";
 
 require("./Shop.less");
 
@@ -19,7 +21,6 @@ interface IShopProps{
 export default class Shop extends React.Component<IShopProps,null> {
     className: string;
 
-
     render() {
         if (shopStore.shopItemVisible){
             this.className = "Shop fixedheight";
@@ -29,13 +30,19 @@ export default class Shop extends React.Component<IShopProps,null> {
 
         return (
             <div className={this.className}>
-                <LinguaAppBar title="Shops"/>
+                <div className="overview">
+                    <LinguaAppBar title="Shops"/>
 
-                <ItemList className="itemList" items={shopStore.items} clickEvent={new SelectShopItemEvent}/>
-                <FloatingActionButton
-                    iconClassName={"FilterList"}
-                    className="floatingActionButton" />
+                    <ItemList className="itemList" items={shopStore.items} clickEvent={new SelectShopItemEvent}/>
+                    <FloatingActionButton
+                        iconClassName={"FilterList"}
+                        className="floatingActionButton"
+                        onClick={()=>new ShowShopFilterEvent().dispatch()}
+                    />
+                </div>
                 <ShopItem/>
+
+                <ShopFilter visible={shopStore.shopFilterVisible} />
             </div>
         );
     }

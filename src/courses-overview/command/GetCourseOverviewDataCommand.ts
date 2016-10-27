@@ -1,10 +1,9 @@
-import FabaCommand from "fabalous-core/core/FabaCommand";
 import GetCourseOverviewDataEvent from "../event/GetCourseOverviewDataEvent";
+import FabaCommand from "@fabalous/core/FabaCommand";
 
 export default class GetCourseOverviewDataCommand extends FabaCommand {
   execute(event:GetCourseOverviewDataEvent) {
     console.log("execute");
-    this.sendToEndpoint(event);
   }
 
   result(event:GetCourseOverviewDataEvent) {
