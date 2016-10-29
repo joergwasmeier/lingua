@@ -4,6 +4,15 @@ import {Router, browserHistory, hashHistory} from "react-router";
 import Layout from "./../layout/Layout";
 import FabaCore from "@fabalous/core/FabaCore";
 import FabaEvent from "@fabalous/core/FabaEvent";
+import {createMemoryHistory} from "react-router";
+
+const history = createMemoryHistory(location);
+declare var module;
+
+module.hot.accept('./routes', () => {
+    console.log("test");
+    renderRoutes();
+});
 
 require("./style/Common.less");
 

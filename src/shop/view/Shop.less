@@ -1,16 +1,26 @@
+body{
+  overflow-x: hidden;
+}
+
 .Shop{
   background-color: black;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
 
   .overview{
     background-color: white;
-    transition:all 0.2s;
+    transition:opacity 0.2s linear, transform 0.2s;
     will-change: opacity, transform;
+    transform: translate3d(0px,0px,0px);
+    backface-visibility: hidden;
+    opacity: 1;
   }
 
   &.fixedheight{
     .overview{
-      opacity: 0.8;
-      transform: scale3d(0.8,0.8,1);
+      opacity: 0.5;
+      transform: perspective(500px) translate3d(0px,0px,-50px);
     }
 
   }

@@ -21,7 +21,12 @@ interface IShopProps{
 export default class Shop extends React.Component<IShopProps,null> {
     className: string;
 
+    constructor(props){
+        super(props);
+    }
+
     render() {
+
         if (shopStore.shopItemVisible){
             this.className = "Shop fixedheight";
         } else {
@@ -41,9 +46,10 @@ export default class Shop extends React.Component<IShopProps,null> {
                     />
                 </div>
                 <ShopItem/>
-
-                <ShopFilter visible={shopStore.shopFilterVisible} />
             </div>
         );
     }
 }
+
+//<ShopFilter visible={shopStore.shopFilterVisible} />
+// <ShopItem/>

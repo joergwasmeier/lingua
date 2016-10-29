@@ -43,8 +43,12 @@ export default class A_Web extends FabaRuntimeWeb {
         if (host == "192.168.0.31:8080/api/") host = "192.168.0.31:3120/";
         if (host == "localhost:8080/api/") host = "localhost:3120/";
 
+        //host = "192.168.0.31:3120/";
 
         var protocol = window.location.protocol;
+        //protocol = "http://";
+
+
 
         FabaCore.addMediator(MenuMediator);
         FabaCore.addMediator(AccountMediator);
@@ -55,7 +59,7 @@ export default class A_Web extends FabaRuntimeWeb {
         renderRoutes();
 
         if (module.hot) {
-            module.hot.accept('./A_Web.ts', () => {
+            module.hot.accept('./../src/A_Web.ts', () => {
                 console.log("test");
                 renderRoutes();
             });
