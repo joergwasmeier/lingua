@@ -3,10 +3,11 @@ body{
 }
 
 .Shop{
-  background-color: black;
-  overflow: hidden;
-  width: 100vw;
+  display: flex;
+  flex-flow: column;
   height: 100vh;
+  overflow: scroll;
+  background-color: black;
 
   .overview{
     background-color: white;
@@ -39,7 +40,7 @@ body{
   .itemList{
     overflow: scroll;
     height: ~"calc(100vh - 64px)";
-    padding-top: 64px;
+    margin-top: 64px;
   }
 
   .floatingActionButton{
