@@ -12,15 +12,12 @@ require("babel-polyfill");
 let injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
-//require("./common/manifest.json");
 require("./index.html");
 
 require("./common/assets/less/reset.less");
 require("./common/assets/less/font.less");
 
 declare var module;
-
-
 
 export default class A_Web extends FabaRuntimeWeb {
     constructor() {

@@ -47,9 +47,7 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
             this.addSerivce(require("./event/SignUpEvent"), require("./service/SignUpService"));
 
             this.addSerivce(require("./event/CheckLoginStatusEvent"), require("./service/CheckLoginService"));
-            console.log("test");
             this.addSerivce(require("./event/ForgotPassEvent"), require("./service/ForgotPassService"));
-
         }
     }
 }
