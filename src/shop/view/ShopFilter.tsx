@@ -29,7 +29,7 @@ export default class ShopFilter extends React.Component<IShopFilter,null> {
                         floatingLabelText="Suchbegriff"
                     />
 
-                    <FlatButton secondary="true"
+                    <FlatButton
                                 onClick={()=>{new ShopFilterEvent(ShopFilterEventType.HIDE).dispatch()}}>
                         Anzeigen
                     </FlatButton>
