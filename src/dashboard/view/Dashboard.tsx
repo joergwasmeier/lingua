@@ -78,8 +78,6 @@ export default class Dashboard extends React.Component<IDashboardProps,{}> {
     render() {
         return (
             <div className={this.className}>
-                {this.renderLoading()}
-
                 <LinguaAppBar title="Dashboard" />
 
                 {this.renderContent()}
@@ -94,17 +92,6 @@ export default class Dashboard extends React.Component<IDashboardProps,{}> {
     private renderContent(){
         if (this.vo.data.pointsToday >= 2000) return this.renderDashboard();
         else return this.renderEmptyDashBoard();
-    }
-
-    private renderLoading() {
-        if (!this.vo.data.loading) return;
-
-        return(
-            <div className="loading">
-                Loading
-                <LinearProgress />
-            </div>
-        )
     }
 
     private renderEmptyDashBoard(){

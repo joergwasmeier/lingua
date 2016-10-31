@@ -4,6 +4,7 @@ import FabaApiConnection from "@fabalous/runtime-web/transport/FabaApiConnection
 import FabaCore from "@fabalous/core/FabaCore";
 import MenuMediator from "./menu/MenuMediator";
 import AccountMediator from "./account/AccountMediator";
+import LayoutMediator from "./layout/LayoutMediator";
 require("babel-polyfill");
 
 //require('offline-plugin/runtime').install();
@@ -52,6 +53,7 @@ export default class A_Web extends FabaRuntimeWeb {
 
         FabaCore.addMediator(MenuMediator);
         FabaCore.addMediator(AccountMediator);
+        FabaCore.addMediator(LayoutMediator);
 
 
         FabaRuntimeWeb.addServerEndPoint(new FabaApiConnection(protocol+"//"+host), "api");

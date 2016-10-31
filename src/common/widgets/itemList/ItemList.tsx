@@ -15,11 +15,11 @@ var ReactPullToRefresh = require("react-pull-to-refresh");
 export default class ItemList extends React.Component<IItemListProps, null> {
     className: string = "ItemList";
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
     }
 
-    private renderItems(): Array<any> {
+    renderItems(): Array<any> {
         var rows: Array<any> = [];
 
         if (this.props.items){

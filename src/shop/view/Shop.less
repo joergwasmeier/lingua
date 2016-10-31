@@ -17,13 +17,24 @@ body{
     opacity: 1;
   }
 
-  &.fixedheight{
+  &.fixedheight {
+    .overview {
+      opacity: 0.5;
+      transform: perspective(500px) translate3d(0px, 0px, -50px);
+    }
+  }
+
+  &.modal{
     .overview{
       opacity: 0.5;
       transform: perspective(500px) translate3d(0px,0px,-50px);
     }
 
+    .filterModal{
+      transform: translate3d(0px,-100vh,0px);
+    }
   }
+
 
   .itemList{
     overflow: scroll;
@@ -49,11 +60,7 @@ body{
     position: absolute;
     top:100vh;
 
-    will-change: top;
-    transition: top 0.4s;
-
-    &.active{
-      top:0vh;
-    }
+    will-change: transform;
+    transition: transform 0.3s;
   }
 }

@@ -2,6 +2,8 @@ import GetDashboardDataEvent from "../event/GetDashboardDataEvent";
 import FabaCommand from "@fabalous/core/FabaCommand";
 import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 import {dashboardStore} from "../DashboardStore";
+import PopUpEvent from "../../layout/event/PopUpEvent";
+import {PopUpEventType} from "../../layout/event/PopUpEvent";
 
 /**
  * Created by creativecode on 11.04.16.
@@ -19,7 +21,7 @@ export default class GetDashboardDataCommand extends FabaCommand {
             dashboardStore.data.recentCourses = event.data.recentCourses;
         }
 
-        dashboardStore.data.loading=false;
+        new PopUpEvent(PopUpEventType.HIDE).dispatch();
 
         event.callBack();
     }

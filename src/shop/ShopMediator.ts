@@ -29,8 +29,9 @@ export default class ShopMediator extends FabaMediator implements IFabaMediator 
             this.addCommand(require("./event/SelectShopItemEvent"), require("./command/SelectShopItemCommand"));
             this.addCommand(require("./event/GetShopItemsEvent"), require("./command/GetShopItemsCommand"));
             this.addCommand(require("./event/HideShopItemEvent"), require("./command/HideShopItemCommand"));
-            this.addCommand(require("./event/ShowShopFilterEvent"), require("./command/ShowShopFilterCommand"));
+            this.addCommand(require("./event/ShopFilterEvent"), require("./command/ShopFilterCommand"));
         }
+
     }
 
     registerServices(): void {

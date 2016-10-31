@@ -7,14 +7,12 @@ import {dashboardStore} from "../DashboardStore";
 import CheckLoginStatusEvent from "../../account/event/CheckLoginStatusEvent";
 import LoginEvent from "../../account/event/LoginEvent";
 import {accountStore} from "../../account/AccountStore";
+import PopUpEvent from "../../layout/event/PopUpEvent";
+import {PopUpEventType} from "../../layout/event/PopUpEvent";
 
 export default class InitDashboardCommand extends FabaCommand  {
-    constructor() {
-        super();
-    }
-
     async execute(event: InitDashboardEvent) {
-        dashboardStore.data.loading = true;
+        new PopUpEvent(PopUpEventType.SHOW).dispatch();
 
         event.view = React.createElement(Dashboard, {model:dashboardStore});
         event.callBack();
