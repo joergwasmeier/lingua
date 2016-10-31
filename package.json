@@ -1,6 +1,6 @@
 {
   "name": "lingua",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "db": "rethinkdb --http-port 8090",
     "frw": "gulp frontend-watch",
