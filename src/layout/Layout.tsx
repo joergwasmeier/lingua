@@ -1,7 +1,6 @@
 import * as React from "react";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import {AppBar} from "material-ui";
 import Menu from "../menu/view/Menu";
 import {menuStore} from "../menu/MenuStore";
 import {commonStore} from "../common/CommonStore";
@@ -46,17 +45,8 @@ export default class Layout extends React.Component<{},{}> {
     }
 
     updateMatches(){
-        if (this._mql.matches){
-            this.setState({landscape:true})
-        } else {
-            this.setState({landscape:false})
-        }
-
-        if (this._dql.matches){
-            this.setState({mobile:true})
-        } else {
-            this.setState({mobile:false})
-        }
+        layoutStore.landscape = this._mql.matches;
+        layoutStore.mobile = this._dql.matches;
     }
 
     render() {

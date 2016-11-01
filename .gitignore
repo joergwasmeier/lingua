@@ -3,6 +3,7 @@ node_modules
 rethinkdb_data
 .idea
 .awcache
+awcache
 dist
 .git
 typings

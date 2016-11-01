@@ -6,6 +6,9 @@ export default class LayoutStore {
     @observable
     showPopUp:boolean = false;
 
+    landscape:boolean;
+    mobile:boolean = true;
+
     showPopUpTimeStamp:number;
 }
 
