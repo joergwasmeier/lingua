@@ -10,7 +10,9 @@ import IconButton from "material-ui/IconButton";
 import HideShopItemEvent from "../event/HideShopItemEvent";
 import ItemList from "../../common/widgets/itemList/ItemList";
 
+
 import SwipeableViews from 'react-swipeable-views';
+import Checkbox from 'material-ui/Checkbox';
 
 require("./ShopItem.less");
 
@@ -19,13 +21,20 @@ interface IShopItemProps {
 }
 
 @observer
-export default class ShopItem extends React.Component<IShopItemProps,null> {
+export default class ShopItem extends React.Component<IShopItemProps,any> {
     className: string = "ShopItem";
 
     init: boolean = false;
 
+    constructor(props) {
+        super(props);
+
+        this.state = {index: 0}
+
+    }
+
     render() {
-        if (shopStore.shopItemVisible){
+        if (shopStore.shopItemVisible) {
             this.className = "ShopItem active";
         } else {
             this.className = "ShopItem";
@@ -38,8 +47,20 @@ export default class ShopItem extends React.Component<IShopItemProps,null> {
         );
     }
 
-    private buy(){
+    private buy() {
         console.log("buy");
+    }
+
+    handleChangeTabs = (value) => {
+        this.setState({
+            index: value,
+        });
+    };
+
+    handleChangeIndex = (index) => {
+        this.setState({
+            index,
+        });
     }
 
     renderContent() {
@@ -52,21 +73,34 @@ export default class ShopItem extends React.Component<IShopItemProps,null> {
                     leftIcon={<IconButton onClick={()=>{new HideShopItemEvent().dispatch()}}><ArrowBack/></IconButton>}
                     disableEvent="true"
                 />
+                <div className="tabs">
+                    <Tabs value={this.state.index}>
+                        <Tab label="tab n°1" value={0} onClick={this.handleChangeTabs.bind(null, 0)}/>
+                        <Tab label="tab n°2" value={1} onClick={this.handleChangeTabs.bind(null, 1)}/>
+                        <Tab label="tab n°3" value={2} onClick={this.handleChangeTabs.bind(null, 2)}/>
+                    </Tabs>
 
-                <Tabs className="tabs">
-                    <Tab label="Info" >
-                        {this.renderDetails()}
-                    </Tab>
-                    <Tab label="Lektionen" >
-                        {this.renderChapters()}
-                    </Tab>
-                </Tabs>
+                    <SwipeableViews index={this.state.index} onChangeIndex={this.handleChangeIndex}>
+                        <div>
+                            slide n°1
+                        </div>
+                        <div >
+                            slide n°2
+                            <br />
+                            <br />
+                            <Checkbox label="test event propagation"/>
+                        </div>
+                        <div>
+                            slide n°3
+                        </div>
+                    </SwipeableViews>
+                </div>
             </div>
         )
     }
 
-    private renderDetails(){
-        return(
+    private renderDetails() {
+        return (
             <div className="content">
                 <h1>{shopStore.selectedItem.name}</h1>
 
@@ -86,15 +120,20 @@ export default class ShopItem extends React.Component<IShopItemProps,null> {
         );
     }
 
-    private renderChapters(){
+    private renderChapters() {
         return (
             <div className="chaptersContainer">
-                <ItemList items={shopStore.items} ></ItemList>
+                <ItemList items={shopStore.items}></ItemList>
             </div>
         )
     }
 
-    private renderScores(){
+    private renderScores() {
         return null;
     }
 }
+
+/*
+
+
+ */

@@ -22,6 +22,7 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
     }
 
     registerCommands(): void {
+        console.log("command ");
         if (CLIENT) {
             super.registerCommands();
 

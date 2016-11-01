@@ -58,9 +58,9 @@ export default class A_Web extends FabaRuntimeWeb {
         renderRoutes();
 
         if (module.hot) {
-            module.hot.accept('./../src/A_Web.ts', () => {
-                console.log("test");
-                renderRoutes();
+
+            module.hot.dispose((data) => {
+                console.log("dispose");
             });
         }
 

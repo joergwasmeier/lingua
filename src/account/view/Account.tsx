@@ -16,40 +16,8 @@ require("./Account.less");
 export default class Account extends React.Component<IAccountProps,any> {
     className: string = "Account";
 
-    _mql;
-    _dql;
-
     constructor(props:IAccountProps){
         super(props);
-
-        this.state = {
-            'landscape':false,
-            'mobile':false
-        };
-
-        this._mql = matchMedia('only screen and (orientation:landscape)');
-        this._mql.addListener(this.updateMatches.bind(this));
-
-        this._dql = matchMedia('only screen and (max-width: 1024px)');
-        this._dql.addListener(this.updateMatches.bind(this));
-    }
-
-    componentDidMount(){
-        this.updateMatches();
-    }
-
-    updateMatches(){
-        if (this._mql.matches){
-            this.setState({landscape:true})
-        } else {
-            this.setState({landscape:false})
-        }
-
-        if (this._dql.matches){
-            this.setState({mobile:true})
-        } else {
-            this.setState({mobile:false})
-        }
     }
 
     render(){
