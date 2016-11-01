@@ -3,16 +3,18 @@ import LinguaAppBar from "../../menu/view/AppBar";
 import ShopItemVo from "../vo/ShopItemVo";
 import {observer} from "mobx-react";
 import {shopStore} from "../ShopStore";
-import {Tabs, Tab, RaisedButton} from "material-ui";
 
 import ArrowBack from "material-ui/svg-icons/navigation/arrow-back";
-import IconButton from "material-ui/IconButton";
+import {Tabs, Tab, RaisedButton, Checkbox, IconButton} from "material-ui";
+import {List, ListItem} from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
+import Toggle from 'material-ui/Toggle';
+
 import HideShopItemEvent from "../event/HideShopItemEvent";
 import ItemList from "../../common/widgets/itemList/ItemList";
 
 
 import SwipeableViews from 'react-swipeable-views';
-import Checkbox from 'material-ui/Checkbox';
 
 require("./ShopItem.less");
 
@@ -81,17 +83,64 @@ export default class ShopItem extends React.Component<IShopItemProps,any> {
                     </Tabs>
 
                     <SwipeableViews index={this.state.index} onChangeIndex={this.handleChangeIndex}>
-                        <div>
+                        <div className="slide">
                             slide n°1
                         </div>
-                        <div >
+                        <div className="slide">
                             slide n°2
                             <br />
                             <br />
                             <Checkbox label="test event propagation"/>
                         </div>
-                        <div>
-                            slide n°3
+                        <div className="slide">
+                            <List>
+                                <Subheader>Hangout Notifications</Subheader>
+                                <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
+                            </List>
+                            <List>
+                                <Subheader>Hangout Notifications</Subheader>
+                                <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
+                            </List>
+                            <List>
+                                <Subheader>Hangout Notifications</Subheader>
+                                <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
+                            </List>
+                            <List>
+                                <Subheader>Hangout Notifications</Subheader>
+                                <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
+                                <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
+                            </List>
                         </div>
                     </SwipeableViews>
                 </div>

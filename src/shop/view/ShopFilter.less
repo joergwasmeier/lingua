@@ -1,10 +1,11 @@
 .ShopFilter{
   height:100vh;
-  overflow: scroll;
+  overflow: hidden;
+
   .container{
     margin-top: 64px;
-    height:100vh;
     overflow: scroll;
+    height: ~"calc(100vh - 64px)";
 
     >*{
       display: block !important;
