@@ -20,7 +20,7 @@
         "forkCheckerSilent":true,
         "useBabel":false,
         "useCache":true,
-        "skipDeclarationFilesCheck":false
+        "skipDeclarationFilesCheck":true
     },
     "exclude": ["node_modules"]
 }

@@ -9,17 +9,40 @@ import Account from "../view/Account";
 
 export default class InitAccountCommand extends FabaCommand {
     execute(event:InitAccountEvent) {
+        if (!accountStore.view){
+            accountStore.view = React.createElement(Account);
+        }
+
+        event.view = accountStore.view;
+        var showLogin:boolean = false;
+
         switch (event.viewName){
-            case "forgotPass":
-                event.view = React.createElement(Account, {childs: React.createElement(ForgotPass, {model: accountStore})});
+            case "login":
+                event.view = accountStore.view = React.cloneElement(accountStore.view, {
+                    childs: React.createElement(Login, {model: accountStore}),
+                    showLogin:true
+                });
                 break;
 
-            case "signUp":
-                event.view = React.createElement(Account, {childs: React.createElement(SignUp, {model: accountStore})});
+            case "forgotpass":
+                event.view = accountStore.view = React.cloneElement(accountStore.view, {
+                    childs: React.createElement(ForgotPass, {model: accountStore}),
+                    showLogin:true
+                });
+                break;
+
+            case "signup":
+                event.view = accountStore.view = React.cloneElement(accountStore.view, {
+                    childs: React.createElement(SignUp, {model: accountStore}),
+                    showLogin:true
+                });
                 break;
 
             default:
-                event.view = React.createElement(Account, {childs: React.createElement(Login, {model: accountStore})});
+                event.view = accountStore.view = React.cloneElement(accountStore.view, {
+                    showLogin:false
+                });
+                break;
         }
 
         event.callBack();

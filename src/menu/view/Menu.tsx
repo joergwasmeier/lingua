@@ -4,6 +4,7 @@ import ActionInfo from "material-ui/svg-icons/action/info";
 import MenuStore from "../MenuStore";
 import {observer} from "mobx-react";
 import ToggleMenuEvent from "../event/ToggleMenuEvent";
+import {Routes} from "../../A_Web";
 
 var classNames = require('classnames');
 
@@ -27,7 +28,7 @@ export default class Menu extends React.Component<IMenuProps,{drawer:boolean}> {
     }
 
     private menuClickHandler(url: string) {
-        this.props.history.push(url);
+        window.location.assign(url);
         new ToggleMenuEvent(false).dispatch();
     }
 
@@ -38,7 +39,6 @@ export default class Menu extends React.Component<IMenuProps,{drawer:boolean}> {
 
     private openCourse(){
         console.log("openCourse");
-
     }
     
     private renderCourses() {
@@ -100,7 +100,7 @@ export default class Menu extends React.Component<IMenuProps,{drawer:boolean}> {
                     <Subheader>Kurse erstellen</Subheader>
                     {this.renderCreateCourses()}
                     <Divider/>
-                    <MenuItem onClick={() => this.menuClickHandler('/shop/')}>Kurse Store</MenuItem>
+                    <MenuItem onClick={() => this.menuClickHandler(Routes.STORE.route)}>Kurse Store</MenuItem>
                     <MenuItem>Einstellungen</MenuItem>
                     <MenuItem>Hilfe und Feedback</MenuItem>
                 </Drawer>

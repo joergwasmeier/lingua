@@ -11,6 +11,9 @@ import {observer} from "mobx-react";
 
 require('./Layout.less');
 
+import FabaEvent from "@fabalous/core/FabaEvent";
+import FabaCore from "@fabalous/core/FabaCore";
+
 interface IHistory {
     push;
 }
@@ -45,25 +48,57 @@ export default class Layout extends React.Component<{},{}> {
     }
 
     updateMatches(){
+        console.log("updateMatches");
         layoutStore.landscape = this._mql.matches;
         layoutStore.mobile = this._dql.matches;
+    }
+
+
+    loadRouteDash(cb, view?: string) {
+        return (module) => {
+            FabaCore.addMediator(module.mediator);
+            var t:FabaEvent = new module.initEvent(view);
+            t.dispatch().then((event)=>{
+                cb(null, ()=> {
+                    console.log(event.view);
+                    return event.view;
+                });
+
+            });
+        }
+    }
+
+    errorLoading(e) {
+        throw e;
     }
 
     render() {
         return (
             <MuiThemeProvider muiTheme={getMuiTheme()}>
                 <div className={`center ${this.className}`}>
-
                     <Menu model={menuStore} history={this.props.history}/>
                     <div className="content">
-                        {this.props.children}
+                        {commonStore.child}
                     </div>
 
                     <Dialog open={false} />
                     <PopUp open={layoutStore.showPopUp} />
-
                 </div>
             </MuiThemeProvider>
+        )
+    }
+}
+
+// component={(_, cb) => {}}
+
+class TestContainer extends React.Component<{},{}>{
+    constructor(props){
+        super(props);
+    }
+
+    render(){
+        return(
+            <div>Test</div>
         )
     }
 }

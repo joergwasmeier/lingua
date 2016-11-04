@@ -1,10 +1,10 @@
 import LoginEvent from "./../event/LoginEvent";
 import {accountStore} from "../AccountStore";
-import {hashHistory} from "react-router";
 import FabaCommand from "@fabalous/core/FabaCommand";
 import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 import GetMenuDataEvent from "../../menu/event/GetMenuDataEvent";
 import {LoginEventStatus} from "../event/LoginEvent";
+import {Routes} from "../../A_Web";
 
 /**
  * Created by creativecode on 11.04.16.
@@ -36,7 +36,7 @@ export default class LoginCommand extends FabaCommand {
                 window.localStorage.setItem("sessionid", event.sessionId);
 
                 if (event.loginLocation){
-                    hashHistory.push(event.loginLocation);
+                    window.location.assign(Routes.DASBOARD.route);
                 }
 
                 break;

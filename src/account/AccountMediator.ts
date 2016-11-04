@@ -38,6 +38,8 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
         }
     }
 
+
+
     registerServices(): void {
         if (SERVER) {
             super.registerServices();

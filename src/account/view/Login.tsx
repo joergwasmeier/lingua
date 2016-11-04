@@ -5,6 +5,7 @@ import {observer} from "mobx-react/index";
 import LoginVo from "../vo/LoginVo";
 import AccountStore from "../AccountStore";
 import {ChangeAccountInputEventType, default as ChangeAccountInputEvent} from "../event/ChangeAccountInputEvent";
+import {Routes} from "../../A_Web";
 
 var classNames = require('classnames');
 
@@ -79,11 +80,11 @@ export default class Login extends React.Component<ILoginProps,{}> {
                     <div className="spinner"></div>
                 </FlatButton>
 
-                <p className="signUp">
-                    <a href="#/signup/">Don´t have an account? Sign UP!</a>
+                <p className="linkSign">
+                    <a href={Routes.SIGN_UP.route}>Don´t have an account? Sign UP!</a>
                 </p>
-                <p className="forgot">
-                    <a href="#/forgotpass/">Forogt your password? Come to the Dark side!</a>
+                <p className="linkSign">
+                    <a href={Routes.FORGOT_PASS.route}>Forogt your password? Come to the Dark side!</a>
                 </p>
             </div>
         )

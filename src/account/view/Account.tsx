@@ -1,23 +1,22 @@
 import * as React from "react";
-import {observer} from "mobx-react";
-var MediaQuery = require('react-responsive');
-var matchMedia = require('matchmedia');
 
 import { AutoRotatingCarousel, Slide } from 'material-auto-rotating-carousel'
-import TestComp from "./TestComp";
+
 import {layoutStore} from "../../layout/LayoutStore";
 import Icon1 from 'material-ui/svg-icons/social/whatshot';
 import Icon2 from 'material-ui/svg-icons/file/cloud-download';
 import Icon3 from 'material-ui/svg-icons/social/share';
 
-interface IAccountProps {
-    childs:React.ReactElement<any>
+import {Routes} from "../../A_Web";
+
+export interface IAccountProps {
+    childs:React.ReactElement<any>,
+    showLogin:boolean
 }
 
 require("./Account.less");
 
-@observer
-export default class Account extends React.Component<IAccountProps,any> {
+export default class Account extends React.Component<IAccountProps, {}> {
     className: string = "Account";
 
     constructor(props:IAccountProps){
@@ -25,9 +24,17 @@ export default class Account extends React.Component<IAccountProps,any> {
     }
 
     render(){
+        if (this.props.showLogin){
+            this.className = "Account showLogin";
+        } else {
+            this.className = "Account";
+        }
+        
         return(
             <div className={`center ${this.className}`}>
-                {this.renderCarousel()}
+                <div className="intro">
+                    {this.renderCarousel()}
+                </div>
 
                 <div className="login">
                     <p className="header">LINGUA </p>
@@ -38,13 +45,14 @@ export default class Account extends React.Component<IAccountProps,any> {
     }
 
     start(){
-
+        window.location.assign(Routes.LOGIN.route);
     }
 
     renderCarousel(){
         return(
             <AutoRotatingCarousel
                 label="Einloggen und lernen"
+
                 open
                 interval={5000}
                 mobile={layoutStore.mobile}

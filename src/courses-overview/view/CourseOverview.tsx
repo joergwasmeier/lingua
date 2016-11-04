@@ -1,10 +1,4 @@
 import * as React from "react";
-import {AppModel} from "../../common/AppModel";
-import List from "material-ui/lib/lists/list";
-import ListItem from "material-ui/lib/lists/list-item";
-import Divider from "material-ui/lib/divider";
-import Avatar from "material-ui/lib/avatar";
-import Colors from "material-ui/lib/styles/colors";
 
 require("./CourseOverview.less");
 
@@ -16,9 +10,15 @@ export default class CourseOverview extends React.Component<{},{}> {
   }
 
   componentDidMount():void {
-    AppModel.getInstance().appBarTitle = "Heruntergeladene Kurse";
+    //AppModel.getInstance().appBarTitle = "Heruntergeladene Kurse";
   }
 
+  render(){
+    return(
+        <div></div>
+    );
+  }
+/*
   render() {
     return (
       <div className={this.className}>
@@ -88,4 +88,5 @@ export default class CourseOverview extends React.Component<{},{}> {
       </div>
     );
   }
+  */
 }
