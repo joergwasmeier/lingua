@@ -28,6 +28,7 @@ export default class Menu extends React.Component<IMenuProps,{drawer:boolean}> {
     }
 
     private menuClickHandler(url: string) {
+        console.log("menuClickHandler");
         window.location.assign(url);
         new ToggleMenuEvent(false).dispatch();
     }
@@ -89,7 +90,7 @@ export default class Menu extends React.Component<IMenuProps,{drawer:boolean}> {
                     </div>
 
 
-                    <MenuItem onClick={() => this.menuClickHandler('/dashboard/')}>Dashboard</MenuItem>
+                    <MenuItem onClick={() => this.menuClickHandler(Routes.DASBOARD.route)}>Dashboard</MenuItem>
                     <Divider/>
                     <Subheader>Heruntergeladene Kurse</Subheader>
                     <ListItem primaryText="Italienisch für Anfänger"

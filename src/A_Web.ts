@@ -23,6 +23,40 @@ require("./common/assets/less/font.less");
 
 declare var module;
 
+interface IRoutes{
+    route:string;
+    module:string;
+    view?:string;
+}
+
+export class Routes{
+    static INDEX:IRoutes = {route:"#/", module:"account"};
+    static LOGIN:IRoutes = {route:"#/login/", module:"account", view:"login"};
+    static FORGOT_PASS:IRoutes = {route:"#/forgotpass/", module:"account", view:"forgotpass"};
+    static SIGN_UP:IRoutes = {route:"#/signup/", module:"account", view:"signup"};
+    static DASBOARD:IRoutes = {route:"#/dashboard/", module:"dashboard"};
+
+    // Store
+    static STORE:IRoutes = {route:"#/shop/", module:"shop"};
+    static STORE_ITEM:IRoutes = {route:"#/shop/:id", module:"shop"};
+    static STORE_ITEM_TAB:IRoutes = {route:"#/shop/:id/:tab", module:"shop", view:"shopitem"};
+    static STORE_FILTER:IRoutes = {route:"#/shop/filter", module:"shop", view:"shopfilter"};
+
+    static getRoutes(){
+        var routes = [
+            Routes.INDEX,
+            Routes.LOGIN,
+            Routes.FORGOT_PASS,
+            Routes.SIGN_UP,
+            Routes.DASBOARD,
+            Routes.STORE,
+            Routes.STORE_ITEM
+        ];
+
+        return routes;
+    }
+}
+
 export default class A_Web extends FabaRuntimeWeb {
     constructor() {
         super();
@@ -58,27 +92,16 @@ export default class A_Web extends FabaRuntimeWeb {
     }
 
     handleRoutes(){
-        switch(window.location.hash){
-            case "#/login/":
-                this.loadModule("account", "login");
-                break;
-
-            case "#/forgotpass/":
-                this.loadModule("account", "forgotpass");
-                break;
-
-            case "#/signup/":
-                this.loadModule("account", "signup");
-                break;
-
-            case "#/dashboard/":
-                this.loadModule("dashboard");
-                break;
-
-            default:
-                this.loadModule("account");
-                break;
+        console.log(Routes.getRoutes());
+        for (var i = 0; i < Routes.getRoutes().length; i++) {
+            var obj = Routes.getRoutes()[i];
+            if (window.location.hash === obj.route){
+                this.loadModule(obj.module, obj.view);
+                return;
+            }
         }
+
+        this.loadModule(Routes.INDEX.module, Routes.INDEX.view);
     }
 
     async loadModule(path:string, view?:string){
@@ -93,22 +116,3 @@ export default class A_Web extends FabaRuntimeWeb {
 
 new A_Web();
 
-interface IRoutes{
-    route:string;
-    module:string;
-    view?:string;
-}
-
-export class Routes{
-    static INDEX:IRoutes = {route:"#/", module:"account"};
-    static LOGIN:IRoutes = {route:"#/login/", module:"account", view:"login"};
-    static FORGOT_PASS:IRoutes = {route:"#/forgotpass/", module:"account", view:"forgotpass"};
-    static SIGN_UP:IRoutes = {route:"#/signup/", module:"account", view:"signup"};
-    static DASBOARD:IRoutes = {route:"#/dashboard/", module:"dashboard"};
-
-    // Store
-    static STORE:IRoutes = {route:"#/shop/", module:"dashboard"};
-    static STORE_ITEM:IRoutes = {route:"#/shop/:id", module:"dashboard"};
-    static STORE_ITEM:IRoutes = {route:"#/shop/:id/:tab", module:"dashboard"};
-    static STORE_FILTER:IRoutes = {route:"#/shop/filter", module:"dashboard"};
-}
