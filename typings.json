@@ -8,5 +8,6 @@
     "history": "registry:npm/history#2.0.0+20160607172317",
     "material-ui": "registry:npm/material-ui#0.15.1+20160817172421",
     "rethinkdb": "registry:npm/rethinkdb#2.3.0+20160912203226"
+
   }
 }
