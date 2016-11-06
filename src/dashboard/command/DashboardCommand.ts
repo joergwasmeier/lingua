@@ -8,7 +8,6 @@ import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 
 export default class DashboardCommand extends FabaCommand {
   execute(event:GetDashboardDataEvent) {
-    console.log("execute");
     FabaRuntimeWeb.sendToEndpoint(event, "");
   }
 

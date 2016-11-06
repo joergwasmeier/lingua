@@ -5,6 +5,7 @@ import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 import GetMenuDataEvent from "../../menu/event/GetMenuDataEvent";
 import {LoginEventStatus} from "../event/LoginEvent";
 import {Routes} from "../../A_Web";
+import {commonStore} from "../../common/CommonStore";
 
 /**
  * Created by creativecode on 11.04.16.
@@ -36,7 +37,8 @@ export default class LoginCommand extends FabaCommand {
                 window.localStorage.setItem("sessionid", event.sessionId);
 
                 if (event.loginLocation){
-                    window.location.assign(Routes.DASBOARD.route);
+                    console.log("test4422");
+                    commonStore.history.push(Routes.DASBOARD.route);
                 }
 
                 break;

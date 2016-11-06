@@ -7,6 +7,7 @@ import CourseVO from "../../course/vo/CourseVO";
 import ChangeUrlEvent from "../../common/event/ChangeUrlEvent";
 import DashboardStore from "../DashboardStore";
 import SwipeableViews from 'react-swipeable-views';
+import CreateCourseEvent from "../event/CreateCourseEvent";
 
 //var Chart = require('chart.js/src/chart.js');
 require("./Dashboard.less");
@@ -86,7 +87,7 @@ export default class Dashboard extends React.Component<IDashboardProps,{}> {
     }
 
     private createCourses(){
-        console.log("createCourse");
+        new CreateCourseEvent().dispatch();
     }
 
     private renderContent(){

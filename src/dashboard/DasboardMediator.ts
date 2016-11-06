@@ -7,6 +7,7 @@ export default class DashboardMediator extends FabaMediator implements IFabaMedi
             this.addCommand(require("./event/InitDashboardEvent"), require("./command/InitDashboardCommand"));
             this.addCommand(require("./event/GetDashboardDataEvent"), require("./command/GetDashboardDataCommand"));
             this.addCommand(require("./event/InsertDashboardDataEvent"), require("./command/InsertDashboardDataCommand"));
+            this.addCommand(require("./event/CreateCourseEvent"), require("./command/CreateDashboardCourseCommand"))
         }
     }
 

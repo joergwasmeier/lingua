@@ -8,6 +8,7 @@ import Icon2 from 'material-ui/svg-icons/file/cloud-download';
 import Icon3 from 'material-ui/svg-icons/social/share';
 
 import {Routes} from "../../A_Web";
+import {commonStore} from "../../common/CommonStore";
 
 export interface IAccountProps {
     childs:React.ReactElement<any>,
@@ -45,7 +46,7 @@ export default class Account extends React.Component<IAccountProps, {}> {
     }
 
     start(){
-        window.location.assign(Routes.LOGIN.route);
+        commonStore.history.push(Routes.LOGIN.route);
     }
 
     renderCarousel(){

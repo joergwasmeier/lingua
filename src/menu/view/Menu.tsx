@@ -5,6 +5,7 @@ import MenuStore from "../MenuStore";
 import {observer} from "mobx-react";
 import ToggleMenuEvent from "../event/ToggleMenuEvent";
 import {Routes} from "../../A_Web";
+import {commonStore} from "../../common/CommonStore";
 
 var classNames = require('classnames');
 
@@ -29,7 +30,8 @@ export default class Menu extends React.Component<IMenuProps,{drawer:boolean}> {
 
     private menuClickHandler(url: string) {
         console.log("menuClickHandler");
-        window.location.assign(url);
+        commonStore.history.push(url);
+
         new ToggleMenuEvent(false).dispatch();
     }
 

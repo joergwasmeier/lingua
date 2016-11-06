@@ -13,7 +13,9 @@ export default class InitDashboardCommand extends FabaCommand  {
     async execute(event: InitDashboardEvent) {
         new PopUpEvent(PopUpEventType.SHOW).dispatch();
         console.log("1");
+
         var loginStatus:CheckLoginStatusEvent = await new CheckLoginStatusEvent().dispatch() as CheckLoginStatusEvent;
+
         console.log("2");
         if (loginStatus.loggedIn === false){
             console.log("3");

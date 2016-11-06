@@ -10,7 +10,7 @@ import {layoutStore} from "./LayoutStore";
 import {observer} from "mobx-react";
 
 require('./Layout.less');
-
+require('./../common/style/Common.less');
 import FabaEvent from "@fabalous/core/FabaEvent";
 import FabaCore from "@fabalous/core/FabaCore";
 
@@ -28,8 +28,6 @@ export default class Layout extends React.Component<{},{}> {
 
     constructor(props) {
         super(props);
-
-        commonStore.history = props.history;
 
         this.state = {
             'landscape':false,

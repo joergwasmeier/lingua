@@ -81,10 +81,10 @@ export default class Login extends React.Component<ILoginProps,{}> {
                 </FlatButton>
 
                 <p className="linkSign">
-                    <a href={Routes.SIGN_UP.route}>Don´t have an account? Sign UP!</a>
+                    <a href={'#!/' + Routes.SIGN_UP.route}>Don´t have an account? Sign UP!</a>
                 </p>
                 <p className="linkSign">
-                    <a href={Routes.FORGOT_PASS.route}>Forogt your password? Come to the Dark side!</a>
+                    <a href={'#!/' + Routes.FORGOT_PASS.route}>Forogt your password? Come to the Dark side!</a>
                 </p>
             </div>
         )
