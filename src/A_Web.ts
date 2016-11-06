@@ -57,7 +57,7 @@ export class Routes{
 }
 
 export default class A_Web extends FabaRuntimeWeb {
-    history = createHashHistory({hashType: 'hashbang'});
+    history = createHashHistory();
     listener:any;
 
     constructor() {
@@ -107,7 +107,7 @@ export default class A_Web extends FabaRuntimeWeb {
             console.log("handleRoutes", location.pathname);
         });
 
-        var str:string = window.location.hash.replace("#!",'');
+        var str:string = window.location.hash.replace("#",'');
         this.handleRoutes(str)
     }
 
