@@ -12,6 +12,10 @@ export default class CommonStore {
     child:any;
 
     appInit:boolean = false;
+    oldPath: string = "old";
+
+    activeModule: string;
+    activeView: string;
 
 }
 export var commonStore:CommonStore = FabaModel.getStore('commonStore', CommonStore);

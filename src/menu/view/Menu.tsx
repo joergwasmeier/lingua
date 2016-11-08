@@ -96,7 +96,7 @@ export default class Menu extends React.Component<IMenuProps,{drawer:boolean}> {
                     <Divider/>
                     <Subheader>Heruntergeladene Kurse</Subheader>
                     <ListItem primaryText="Italienisch für Anfänger"
-                              onClick={(e)=>this.menuClickHandler('/course/')}
+                              onClick={(e)=>this.menuClickHandler('/course/10001/')}
                               rightIcon={<ActionInfo />}></ListItem>
                     {this.renderCourses()}
                     <Divider/>

@@ -1,9 +1,9 @@
 import FabaCommand from "@fabalous/core/FabaCommand";
-import {IFabaCommand} from "@fabalous/core/IFabaCommand";
-import GetShopItemsEvent from "../event/GetShopItemsEvent";
-import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
-import {shopStore} from "../ShopStore";
 import SelectShopItemEvent from "../event/SelectShopItemEvent";
+import {Routes} from "../../A_Web";
+
+import {shopStore} from "../ShopStore";
+import {commonStore} from "../../common/CommonStore";
 
 export default class SelectShopItemCommand extends FabaCommand{
     constructor(){
@@ -12,6 +12,6 @@ export default class SelectShopItemCommand extends FabaCommand{
 
     execute(event: SelectShopItemEvent): any {
         shopStore.selectedItem = event.item;
-        shopStore.shopItemVisible = true;
+        commonStore.history.push(Routes.STORE_ITEM.route);
     }
 }

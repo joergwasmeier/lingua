@@ -17,6 +17,8 @@ export class ShopStore {
 
     viewInit:boolean = false;
     view:any;
+    item: any;
+    filter: any;
 }
 
 export var shopStore:ShopStore = FabaModel.getStore('shopStore', ShopStore);

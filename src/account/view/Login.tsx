@@ -6,6 +6,7 @@ import LoginVo from "../vo/LoginVo";
 import AccountStore from "../AccountStore";
 import {ChangeAccountInputEventType, default as ChangeAccountInputEvent} from "../event/ChangeAccountInputEvent";
 import {Routes} from "../../A_Web";
+import ButtonSpinner from "../../common/widgets/buttonSpinner/ButtonSpinner";
 
 var classNames = require('classnames');
 
@@ -71,20 +72,13 @@ export default class Login extends React.Component<ILoginProps,{}> {
 
                 {this.renderError()}
 
-                <FlatButton
-                    className={classNames('loginButton', { progress: this.vo.progress })}
-                    backgroundColor="#a4c639"
-                    onTouchTap={this.loginBtHandler}>
-                    <p className="content">LOGIN</p>
-
-                    <div className="spinner"></div>
-                </FlatButton>
+                <ButtonSpinner label="Login" touchTapHandler={this.loginBtHandler}/>
 
                 <p className="linkSign">
-                    <a href={'#!/' + Routes.SIGN_UP.route}>Don´t have an account? Sign UP!</a>
+                    <a href={'#' + Routes.SIGN_UP.route}>Don´t have an account? Sign UP!</a>
                 </p>
                 <p className="linkSign">
-                    <a href={'#!/' + Routes.FORGOT_PASS.route}>Forogt your password? Come to the Dark side!</a>
+                    <a href={'#' + Routes.FORGOT_PASS.route}>Forogt your password? Come to the Dark side!</a>
                 </p>
             </div>
         )

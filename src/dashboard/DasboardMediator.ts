@@ -1,6 +1,7 @@
 import {IFabaMediator} from "@fabalous/core/IFabaMediator";
 import FabaMediator from "@fabalous/core/FabaMediator";
 export default class DashboardMediator extends FabaMediator implements IFabaMediator {
+
     registerCommands(): void {
         if (CLIENT) {
             super.registerCommands();

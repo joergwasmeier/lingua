@@ -24,14 +24,14 @@ export default class GetShopItemsService extends FabaSerivce {
 
             var result: Array<any>;
 
-            result = await (await this.table.filter(query).orderBy("publishedData").limit(30).run(dbConnection)).toArray();
+            result = await (await this.table.filter(query).orderBy("publishedData").limit(5).run(dbConnection)).toArray();
 
             event.result = result;
         } catch (e) {
             console.log(e);
         }
 
-        for (var i = 0; i < 30; i++) {
+        for (var i = 0; i < 10; i++) {
             var test:ShopItemVo = new ShopItemVo();
             test.name = i + "dssdff" + Date.now().toString(10);
             test.id = i + "dfsdfdsf3423424";

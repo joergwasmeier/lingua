@@ -37,7 +37,6 @@ export default class LoginCommand extends FabaCommand {
                 window.localStorage.setItem("sessionid", event.sessionId);
 
                 if (event.loginLocation){
-                    console.log("test4422");
                     commonStore.history.push(Routes.DASBOARD.route);
                 }
 

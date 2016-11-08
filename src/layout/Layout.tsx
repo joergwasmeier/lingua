@@ -46,7 +46,6 @@ export default class Layout extends React.Component<{},{}> {
     }
 
     updateMatches(){
-        console.log("updateMatches");
         layoutStore.landscape = this._mql.matches;
         layoutStore.mobile = this._dql.matches;
     }
@@ -74,29 +73,15 @@ export default class Layout extends React.Component<{},{}> {
         return (
             <MuiThemeProvider muiTheme={getMuiTheme()}>
                 <div className={`center ${this.className}`}>
-                    <Menu model={menuStore} history={this.props.history}/>
+                    <Menu model={menuStore}/>
                     <div className="content">
-                        {commonStore.child}
+                        {this.props.childs}
                     </div>
 
                     <Dialog open={false} />
                     <PopUp open={layoutStore.showPopUp} />
                 </div>
             </MuiThemeProvider>
-        )
-    }
-}
-
-// component={(_, cb) => {}}
-
-class TestContainer extends React.Component<{},{}>{
-    constructor(props){
-        super(props);
-    }
-
-    render(){
-        return(
-            <div>Test</div>
         )
     }
 }

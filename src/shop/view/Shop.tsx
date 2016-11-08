@@ -1,59 +1,31 @@
 import * as React from "react";
-import {observer} from "mobx-react";
-import LinguaAppBar from "../../menu/view/AppBar";
-import {shopStore, ShopStore} from "../ShopStore";
-import {FloatingActionButton} from "material-ui";
-import Icon1 from "material-ui/svg-icons/content/filter-list";
-import ShopItem from "./ShopItem";
-import SelectShopItemEvent from "../event/SelectShopItemEvent";
-import ShopFilterEvent, {ShopFilterEventType} from "../event/ShopFilterEvent";
-import ShopFilter from "./ShopFilter";
-import CardList from "../../common/widgets/cardList/CardList";
+import {ShopStore} from "../ShopStore";
+import ShopOverview from "./ShopOverview";
 
 require("./Shop.less");
 
-
 interface IShopProps{
-    model:ShopStore
+    model: ShopStore,
+    childs: any
 }
 
-@observer
 export default class Shop extends React.Component<IShopProps,null> {
-    className: string;
+    className: string = "Shop";
 
     constructor(props){
         super(props);
     }
 
     render() {
-
-        if (shopStore.shopItemVisible){
-            this.className = "Shop fixedheight";
-        } else if(shopStore.shopFilterVisible) {
-            this.className = "Shop modal";
-        } else {
-            this.className = "Shop";
-        }
+        if (this.props.childs) this.className = "Shop child";
+        else this.className = "Shop";
 
         return (
             <div className={this.className}>
-                <div className="overview">
-                    <LinguaAppBar title="Shops"/>
+                <ShopOverview items={this.props.model.items}/>
 
-                    <CardList className="itemList" items={shopStore.items} clickEvent={new SelectShopItemEvent}></CardList>
-                    <FloatingActionButton
-                        className="floatingActionButton"
-                        onClick={()=>new ShopFilterEvent(ShopFilterEventType.SHOW).dispatch()}
-                    >
-                        <Icon1 color="#ffffff"/>
-                    </FloatingActionButton>
-                </div>
-                <ShopItem/>
-                <ShopFilter/>
+                {this.props.childs}
             </div>
         );
     }
 }
-
-//<ShopFilter visible={shopStore.shopFilterVisible} />
-// <ShopItem/>

@@ -5,12 +5,22 @@
   overflow: hidden;
   background-color: black;
 
+  &.child {
+    .overview {
+
+    }
+
+    .ShopItem {
+      transform: translate3D(100vw, 0, 0);
+    }
+  }
+
+
   .overview{
     background-color: white;
     transition:opacity 0.2s linear, transform 0.2s;
     will-change: opacity, transform;
     transform: translate3d(0px,0px,0px);
-    backface-visibility: hidden;
     opacity: 1;
   }
 
@@ -57,7 +67,7 @@
     width: 100vw;
     height: 100vh;
     position: absolute;
-    top:100vh;
+    //top:100vh;
     will-change: transform;
    // transition: opacity 0.1s linear;
     transition: transform 0.3s;

@@ -11,23 +11,19 @@ import {PopUpEventType} from "../../layout/event/PopUpEvent";
 
 export default class InitDashboardCommand extends FabaCommand  {
     async execute(event: InitDashboardEvent) {
-        new PopUpEvent(PopUpEventType.SHOW).dispatch();
-        console.log("1");
+        if (!dashboardStore.data) {
+            new PopUpEvent(PopUpEventType.SHOW).dispatch();
+            var loginStatus: CheckLoginStatusEvent = await new CheckLoginStatusEvent().dispatch() as CheckLoginStatusEvent;
 
-        var loginStatus:CheckLoginStatusEvent = await new CheckLoginStatusEvent().dispatch() as CheckLoginStatusEvent;
+            if (loginStatus.loggedIn === false) {
+                var loginStat = await new LoginEvent(
+                    window.localStorage.getItem("username"),
+                    window.localStorage.getItem("password")
+                ).dispatch();
 
-        console.log("2");
-        if (loginStatus.loggedIn === false){
-            console.log("3");
-           var loginStat = await new LoginEvent(
-                window.localStorage.getItem("username"),
-                window.localStorage.getItem("password")
-            ).dispatch();
-
-            console.log("4");
-            // TODO: Error Handling if wrong pass
+                // TODO: Error Handling if wrong pass
+            }
         }
-
 
         event.view = React.createElement(Dashboard, {model:dashboardStore});
         event.callBack();

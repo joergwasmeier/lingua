@@ -24,18 +24,6 @@ export default class ShopFilter extends React.Component<IShopFilter,null> {
         super(props);
     }
 
-    componentDidMount(){
-        this.refs.elm.addEventListener( 'webkitTransitionEnd', this.addAndRemoveTransition, false );
-    }
-
-    componentWillUnmount(){
-        this.refs.elm.addEventListener( 'webkitTransitionEnd', this.addAndRemoveTransition, false );
-    }
-
-    addAndRemoveTransition(){
-        //alert("hallo");
-    }
-
     render(){
         return (
             <div className="filterModal ShopFilter" ref="elm">
