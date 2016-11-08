@@ -40,7 +40,6 @@ export default class InitShopCommand extends FabaCommand {
                 console.timeEnd("shopItem");
                 return;
         }
-        ;
 
         shopStore.view = React.cloneElement(shopStore.view, {
             childs: null,

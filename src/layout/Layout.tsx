@@ -50,33 +50,13 @@ export default class Layout extends React.Component<{},{}> {
         layoutStore.mobile = this._dql.matches;
     }
 
-
-    loadRouteDash(cb, view?: string) {
-        return (module) => {
-            FabaCore.addMediator(module.mediator);
-            var t:FabaEvent = new module.initEvent(view);
-            t.dispatch().then((event)=>{
-                cb(null, ()=> {
-                    console.log(event.view);
-                    return event.view;
-                });
-
-            });
-        }
-    }
-
-    errorLoading(e) {
-        throw e;
-    }
-
     render() {
         return (
             <MuiThemeProvider muiTheme={getMuiTheme()}>
                 <div className={`center ${this.className}`}>
                     <Menu model={menuStore}/>
-                    <div className="content">
-                        {this.props.childs}
-                    </div>
+
+                    {this.props.childs}
 
                     <Dialog open={false} />
                     <PopUp open={layoutStore.showPopUp} />

@@ -1,6 +1,6 @@
 import FabaMediator from "@fabalous/core/FabaMediator";
 import {IFabaMediator} from "@fabalous/core/IFabaMediator";
-declare var module: any;
+declare const module: any;
 
 export default class AccountMediator extends FabaMediator implements IFabaMediator {
     registerCommands(): void {

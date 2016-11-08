@@ -1,18 +1,16 @@
 import * as React from "react";
-import LinguaAppBar from "../../menu/view/AppBar";
-import ShopItemVo from "../vo/ShopItemVo";
-import {observer} from "mobx-react";
-import {shopStore} from "../ShopStore";
 
-import ArrowBack from "material-ui/svg-icons/navigation/arrow-back";
 import {Tabs, Tab, RaisedButton, Checkbox, IconButton} from "material-ui";
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
-import Toggle from 'material-ui/Toggle';
+import ArrowBack from "material-ui/svg-icons/navigation/arrow-back";
+
+import LinguaAppBar from "../../menu/view/AppBar";
+import ShopItemVo from "../vo/ShopItemVo";
+import {shopStore} from "../ShopStore";
 
 import HideShopItemEvent from "../event/HideShopItemEvent";
 import ItemList from "../../common/widgets/itemList/ItemList";
-
 
 import SwipeableViews from 'react-swipeable-views';
 
@@ -24,14 +22,12 @@ interface IShopItemProps {
 
 export default class ShopItem extends React.Component<IShopItemProps,any> {
     className: string = "ShopItem";
-
     init: boolean = false;
 
     constructor(props) {
         super(props);
 
         this.state = {index: 0}
-
     }
 
     render() {
@@ -56,7 +52,7 @@ export default class ShopItem extends React.Component<IShopItemProps,any> {
         this.setState({
             index,
         });
-    }
+    };
 
     renderContent() {
         return (
@@ -137,8 +133,3 @@ export default class ShopItem extends React.Component<IShopItemProps,any> {
         return null;
     }
 }
-
-/*
-
-
- */

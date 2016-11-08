@@ -18,6 +18,14 @@ export default class ShopOverview extends Component<IShopOverview,{}> {
         super(props);
     }
 
+    shouldComponentUpdate(old: IShopOverview) {
+        if (this.props && this.props.items && old.items.length === this.props.items.length) {
+            return false;
+        }
+
+        return true;
+    }
+
     render() {
         return (
             <div className="overview">
