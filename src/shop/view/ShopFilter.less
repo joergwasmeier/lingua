@@ -1,6 +1,21 @@
 .ShopFilter{
   height:100vh;
   overflow: hidden;
+  opacity: 1;
+  transition: transform 0.3s;
+  transform: translate3D(0, 0, 0);
+  background-color: white;
+
+  &.leave {
+    transform: translate3D(0, 100vh, 0);
+  }
+
+  &.enter {
+    transform: translate3D(0, 100vh, 0);
+  }
+
+
+
 
   .container{
     margin-top: 64px;

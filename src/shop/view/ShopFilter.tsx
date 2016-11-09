@@ -38,6 +38,7 @@ export default class ShopFilter extends React.Component<IShopFilter,null> {
                     <TextField
                         className="textField"
                         floatingLabelText="Suchbegriff2"
+
                     />
 
                     <FlatButton

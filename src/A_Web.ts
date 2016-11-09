@@ -19,6 +19,7 @@ require("./common/assets/less/font.less");
 
 import {createHashHistory} from 'history'
 import AccountMediator from "./account/AccountMediator";
+import BaobaTest from "./BaobaTest";
 
 declare var module;
 
@@ -66,11 +67,12 @@ export default class A_Web extends FabaRuntimeWeb {
     constructor() {
         super();
 
+        new BaobaTest();
+
         if (module.hot) {
             module.hot.accept();
 
             module.hot.dispose((data) => {
-                console.log("hot");
                 FabaCore.mediators = [];
                 FabaCore.events = [];
                 this.listener();

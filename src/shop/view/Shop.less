@@ -1,3 +1,8 @@
+.animated-child {
+  position: absolute;
+}
+
+
 .Shop{
   display: flex;
   flex-flow: column;
@@ -7,11 +12,8 @@
 
   &.child {
     .overview {
-
-    }
-
-    .ShopItem {
-      transform: translate3D(100vw, 0, 0);
+      opacity: 0.5;
+      transform: perspective(500px) translate3d(0px, 0px, -50px);
     }
   }
 
@@ -36,12 +38,6 @@
       opacity: 0.5;
       transform: perspective(500px) translate3d(0px,0px,-50px);
     }
-
-    .filterModal{
-      //opacity: 1;
-      transform: translate3d(0px,-100vh,0px);
-      //top:0px;
-    }
   }
 
 
@@ -62,14 +58,4 @@
     height: ~"calc(100vh - 64px)";
   }
 
-  .filterModal{
-    background-color: white;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    //top:100vh;
-    will-change: transform;
-   // transition: opacity 0.1s linear;
-    transition: transform 0.3s;
-  }
 }

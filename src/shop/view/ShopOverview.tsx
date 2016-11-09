@@ -19,7 +19,8 @@ export default class ShopOverview extends Component<IShopOverview,{}> {
     }
 
     shouldComponentUpdate(old: IShopOverview) {
-        if (this.props && this.props.items && old.items.length === this.props.items.length) {
+        if (this.props && this.props.items &&
+            old.items.length === this.props.items.length) {
             return false;
         }
 

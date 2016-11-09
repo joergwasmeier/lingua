@@ -46,10 +46,18 @@ export default class InitShopCommand extends FabaCommand {
             model: shopStore
         });
 
+        if (!shopStore.init) {
+            event.view = shopStore.view;
+            event.callBack();
+            return;
+        }
+
         new PopUpEvent(PopUpEventType.SHOW).dispatch();
         event.view = shopStore.view;
         event.callBack();
         await new GetShopItemsEvent().dispatch();
         new PopUpEvent(PopUpEventType.HIDE).dispatch();
+
+        shopStore.init = false;
     }
 }

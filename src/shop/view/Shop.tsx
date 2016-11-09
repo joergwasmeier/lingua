@@ -1,6 +1,7 @@
 import * as React from "react";
 import {ShopStore} from "../ShopStore";
 import ShopOverview from "./ShopOverview";
+const ReactCSSTransitionGroup = require('react-addons-css-transition-group'); // ES5 with npm
 
 require("./Shop.less");
 
@@ -23,8 +24,19 @@ export default class Shop extends React.Component<IShopProps,null> {
         return (
             <div className={this.className}>
                 <ShopOverview items={this.props.model.items}/>
+                <ReactCSSTransitionGroup
+                    component="div"
+                    className="animated-child"
+                    transitionName={ {
+                        enter: 'enter',
+                        leave: 'leave',
+                        appear: 'appear'
+                      } }
+                    transitionEnterTimeout={100}
+                    transitionLeaveTimeout={100}>
+                    {this.props.childs}
+                </ReactCSSTransitionGroup>
 
-                {this.props.childs}
             </div>
         );
     }

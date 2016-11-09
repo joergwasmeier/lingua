@@ -8,7 +8,6 @@ export default class CardList extends ItemList{
         super(props)
     }
 
-
     renderItems(): Array<any> {
         var rows: Array<any> = [];
 
@@ -29,19 +28,22 @@ interface IItemCardItemProps{
 }
 
 class CardListItem extends React.Component<IItemCardItemProps,{}>{
-    private itemClick(item){
-        console.log(item);
-        this.props.clickEvent.item = item;
+    constructor(props) {
+        super(props);
+        this.itemClick = this.itemClick.bind(this);
+    }
+
+    private itemClick() {
+        this.props.clickEvent.item = this.props.item;
         this.props.clickEvent.dispatch();
     }
 
     render(){
         return(
-            <Card onClick={()=>{this.itemClick(this.props.item);}}>
+            <Card onClick={this.itemClick}>
                 <CardHeader
                     title="URL Avatar"
                     subtitle="Subtitle"
-
                 />
                 <CardTitle title="Card title" subtitle="Card subtitle"  />
                 <CardText>

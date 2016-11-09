@@ -11,12 +11,6 @@ import {observer} from "mobx-react";
 
 require('./Layout.less');
 require('./../common/style/Common.less');
-import FabaEvent from "@fabalous/core/FabaEvent";
-import FabaCore from "@fabalous/core/FabaCore";
-
-interface IHistory {
-    push;
-}
 
 @observer
 export default class Layout extends React.Component<{},{}> {
@@ -25,6 +19,8 @@ export default class Layout extends React.Component<{},{}> {
 
     _mql;
     _dql;
+
+    theme;
 
     constructor(props) {
         super(props);
@@ -39,6 +35,8 @@ export default class Layout extends React.Component<{},{}> {
 
         this._dql = matchMedia('only screen and (max-width: 1024px)');
         this._dql.addListener(this.updateMatches.bind(this));
+
+        this.theme = getMuiTheme()
     }
 
     componentDidMount(){
@@ -52,12 +50,10 @@ export default class Layout extends React.Component<{},{}> {
 
     render() {
         return (
-            <MuiThemeProvider muiTheme={getMuiTheme()}>
+            <MuiThemeProvider muiTheme={this.theme}>
                 <div className={`center ${this.className}`}>
                     <Menu model={menuStore}/>
-
                     {this.props.childs}
-
                     <Dialog open={false} />
                     <PopUp open={layoutStore.showPopUp} />
                 </div>
