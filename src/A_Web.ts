@@ -25,22 +25,22 @@ declare var module;
 
 interface IRoutes{
     route:string;
-    module:string;
+    module:any;
     view?:string;
 }
 
 export class Routes{
-    static INDEX:IRoutes = {route:"/", module:"account"};
-    static LOGIN:IRoutes = {route:"/login/", module:"account", view:"login"};
-    static FORGOT_PASS:IRoutes = {route:"/forgotpass/", module:"account", view:"forgotpass"};
-    static SIGN_UP:IRoutes = {route:"/signup/", module:"account", view:"signup"};
-    static DASBOARD:IRoutes = {route:"/dashboard/", module:"dashboard"};
+    static INDEX:IRoutes = {route:"/", module: async ()=>{return System.import("./account/index")}};
+    static LOGIN:IRoutes = {route:"/login/", module: async ()=>{return System.import("./account/index")}, view:"login"};
+    static FORGOT_PASS:IRoutes = {route:"/forgotpass/", module: async ()=>{return System.import("./account/index")}, view:"forgotpass"};
+    static SIGN_UP:IRoutes = {route:"/signup/", module:async ()=>{return System.import("./account/index")}, view:"signup"};
+    static DASBOARD:IRoutes = {route:"/dashboard/", module:async ()=>{return System.import("./dashboard/index")}};
 
     // Store
-    static STORE:IRoutes = {route:"/shop/", module:"shop"};
-    static STORE_ITEM: IRoutes = {route: "/shop/:id", module: "shop", view: "shopitem"};
-    static STORE_ITEM_TAB:IRoutes = {route:"/shop/:id/:tab", module:"shop", view:"shopitem"};
-    static STORE_FILTER: IRoutes = {route: "/shop/filter/", module: "shop", view: "shopfilter"};
+    static STORE:IRoutes = {route:"/shop/", module:async ()=>{return System.import("./shop/index")}};
+    static STORE_ITEM: IRoutes = {route: "/shop/:id", module:async ()=>{return System.import("./shop/index")}, view: "shopitem"};
+    static STORE_ITEM_TAB:IRoutes = {route:"/shop/:id/:tab", module:async ()=>{return System.import("./shop/index")}, view:"shopitem"};
+    static STORE_FILTER: IRoutes = {route: "/shop/filter/", module:async ()=>{return System.import("./shop/index")}, view: "shopfilter"};
 
     static getRoutes(){
         var routes = [
@@ -133,6 +133,7 @@ export default class A_Web extends FabaRuntimeWeb {
     // testitem is path (!:)
 
     handleRoutes(pathname:string){
+
         console.time("moduleFinish");
         console.time("loadModule");
 
@@ -158,16 +159,17 @@ export default class A_Web extends FabaRuntimeWeb {
     }
 
     // Timeing ( cahceing)
-    async loadModule(path:string, view?:string){
-        var comp = await System.import('./'+path+'/index');
+    async loadModule(loadfun:any, view?:string){
+
+        var comp = await loadfun();
         FabaCore.addMediator(comp.mediator);
 
-        if (commonStore.activeModule === path &&
-            commonStore.activeView === view) {
+        if (commonStore.activeModule === loadfun &&
+            commonStore.activeView === loadfun) {
             return;
         }
 
-        commonStore.activeModule = path;
+        commonStore.activeModule = loadfun;
         commonStore.activeView = view;
 
         var t:any = new comp.initEvent;
@@ -180,6 +182,7 @@ export default class A_Web extends FabaRuntimeWeb {
         this.render(k.view);
         console.timeEnd("renderTime");
         console.timeEnd("moduleFinish");
+
     }
 }
 

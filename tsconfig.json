@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
         "target": "es6",
-        "sourceMap": true,
+        "sourceMap": false,
         "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "declaration": false,
         "noImplicitAny": false,
-        "removeComments": true,
+        "removeComments": false,
         "noLib": false,
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
@@ -20,7 +20,7 @@
         "forkCheckerSilent":true,
         "useBabel":false,
         "useCache":true,
-        "skipDeclarationFilesCheck":true
+        "skipDeclarationFilesCheck":false
     },
     "exclude": ["node_modules"]
 }

@@ -30,7 +30,6 @@ export default class Account extends React.Component<IAccountProps, {}> {
         } else {
             this.className = "Account";
         }
-        
         return(
             <div className={`center ${this.className}`}>
                 <div className="intro">
@@ -52,8 +51,7 @@ export default class Account extends React.Component<IAccountProps, {}> {
     renderCarousel(){
         return(
             <AutoRotatingCarousel
-                label="Einloggen und lernen"
-
+                label="Einloggen und lernen 3"
                 open
                 interval={5000}
                 mobile={layoutStore.mobile}
