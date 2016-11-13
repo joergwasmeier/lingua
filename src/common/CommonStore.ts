@@ -5,6 +5,8 @@ import {History} from "history";
  * Created by creativecode on 21.07.16.
  */
 
+
+
 export default class CommonStore {
     history: History;
 

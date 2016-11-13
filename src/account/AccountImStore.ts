@@ -5,12 +5,11 @@ import {ILoginImVo, LoginImVo} from "./vo/LoginImVo";
  */
 
 export interface IAccountImStore {
-    moduleInit: boolean;
-    login: ILoginImVo;
-    signUp: any;
-    forgotPass: any;
-    view: any;
-    test: any;
+    readonly moduleInit: boolean;
+    readonly login: ILoginImVo;
+    readonly signUp: any;
+    readonly forgotPass: any;
+    readonly view: any;
 }
 
 export const accountImStore: IAccountImStore = {
@@ -18,8 +17,5 @@ export const accountImStore: IAccountImStore = {
     login: LoginImVo,
     signUp: true,
     forgotPass: true,
-    view: true,
-    test: function () {
-        console.log(this.login);
-    }
+    view: null
 };

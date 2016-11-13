@@ -3,17 +3,22 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Menu from "../menu/view/Menu";
 import {menuStore} from "../menu/MenuStore";
-import {commonStore} from "../common/CommonStore";
 import Dialog from "./view/Dialog";
 import PopUp from "./view/PopUp";
 import {layoutStore} from "./LayoutStore";
-import {observer} from "mobx-react";
+import {IcommonStore} from "../common/commonImStore";
+import shallowCompare from 'react-addons-shallow-compare';
+
 
 require('./Layout.less');
 require('./../common/style/Common.less');
 
-@observer
-export default class Layout extends React.Component<{},{}> {
+interface ILayoutProps {
+    model:IcommonStore;
+    childs:any;
+}
+
+export default class Layout extends React.Component<ILayoutProps,{}>{
     className: string = "App";
     props: any;
 
@@ -37,6 +42,10 @@ export default class Layout extends React.Component<{},{}> {
         this._dql.addListener(this.updateMatches.bind(this));
 
         this.theme = getMuiTheme()
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
     }
 
     componentDidMount(){

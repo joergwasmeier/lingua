@@ -7,21 +7,27 @@ import Icon1 from 'material-ui/svg-icons/social/whatshot';
 import Icon2 from 'material-ui/svg-icons/file/cloud-download';
 import Icon3 from 'material-ui/svg-icons/social/share';
 
-import {Routes} from "../../A_Web";
-import {commonStore} from "../../common/CommonStore";
+import {store} from "../../common/commonImStore";
+import shallowCompare from 'react-addons-shallow-compare';
 
 export interface IAccountProps {
-    childs:React.ReactElement<any>,
-    showLogin:boolean
+    childs?:React.ReactElement<any>,
+    showLogin?:boolean,
+    oldPath:string
 }
 
 require("./Account.less");
-
 export default class Account extends React.Component<IAccountProps, {}> {
     className: string = "Account";
 
     constructor(props:IAccountProps){
         super(props);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("shouldComponentUpdate");
+
+        return shallowCompare(this, nextProps, nextState);
     }
 
     render(){
@@ -45,13 +51,13 @@ export default class Account extends React.Component<IAccountProps, {}> {
     }
 
     start(){
-        commonStore.history.push(Routes.LOGIN.route);
+        store.set('oldPath', 'setter');
     }
 
     renderCarousel(){
         return(
             <AutoRotatingCarousel
-                label="Einloggen und lernen 3"
+                label="Einloggen und lernen"
                 open
                 interval={5000}
                 mobile={layoutStore.mobile}
@@ -62,8 +68,8 @@ export default class Account extends React.Component<IAccountProps, {}> {
                     media={<Icon1 className="homeIcons" color="#ffffff"/>}
                     mediaBackgroundStyle={{ backgroundColor: "#1abc9c" }}
                     contentStyle={{ backgroundColor: "#16a085" }}
-                    title="Lingua"
-                    subtitle="Vokabel lernen leicht gemacht"
+                    title={this.props.oldPath}
+                    subtitle="Vokabel lernen leicht gemacht "
                 />
                 <Slide
                     media={<Icon2 className="homeIcons" color="#ffffff"/>}

@@ -20,6 +20,8 @@ require("./common/assets/less/font.less");
 import {createHashHistory} from 'history'
 import AccountMediator from "./account/AccountMediator";
 import BaobaTest from "./BaobaTest";
+import {appStoreCourser} from "./common/commonImStore";
+import {store} from "./common/commonImStore";
 
 declare var module;
 
@@ -67,8 +69,6 @@ export default class A_Web extends FabaRuntimeWeb {
     constructor() {
         super();
 
-        new BaobaTest();
-
         if (module.hot) {
             module.hot.accept();
 
@@ -79,15 +79,13 @@ export default class A_Web extends FabaRuntimeWeb {
             });
         }
 
-        if (commonStore.appInit == true){
-            console.log("hot reload");
-        } else {
+        if (commonStore.appInit !== true){
             let injectTapEventPlugin = require("react-tap-event-plugin");
             injectTapEventPlugin();
         }
 
+        store.set('appInit', true);
         commonStore.appInit = true;
-        commonStore.history = this.history;
 
         let host: string = window.location.host + "/api/";
         if (host == "192.168.0.31:8080/api/") host = "192.168.0.31:3120/";
@@ -96,35 +94,44 @@ export default class A_Web extends FabaRuntimeWeb {
         const protocol = window.location.protocol;
 
         FabaCore.addMediator(MenuMediator);
-
         FabaCore.addMediator(LayoutMediator);
 
         FabaRuntimeWeb.addServerEndPoint(new FabaApiConnection(protocol+"//"+host), "api");
 
-        this.render();
+        //this.render();
 
         this.listener = this.history.listen((location) => {
             this.handleRoutes(location.pathname);
         });
 
         const str: string = window.location.hash.replace("#", '');
-        this.handleRoutes(str)
+        this.handleRoutes(str);
+
+        appStoreCourser.on('update', () =>{
+           // this.render();
+            this.loadModule(commonStore.activeModule, commonStore.activeView);
+        });
     }
 
     render(child?) {
+        console.time("renderTime");
+
         if (document.getElementById('container')) {
             if (this.layout) {
                 if (child) {
-                    this.layout = React.cloneElement(this.layout, {childs: child})
+                    this.layout = React.cloneElement(this.layout, {childs: child, model:store.appStore})
                 } else {
-                    this.layout = React.cloneElement(this.layout)
+                    this.layout = React.cloneElement(this.layout, {model:store.appStore})
                 }
             } else {
-                this.layout = React.createElement(Layout);
+                this.layout = React.createElement(Layout, {model:store.appStore});
             }
 
             ReactDOM.render(this.layout, document.getElementById('container'));
         }
+
+        console.timeEnd("renderTime");
+
     }
 
     // TODO: Split path and check for id from behind to forward( test/testitem/:id/:tab
@@ -164,10 +171,12 @@ export default class A_Web extends FabaRuntimeWeb {
         var comp = await loadfun();
         FabaCore.addMediator(comp.mediator);
 
+        /*
         if (commonStore.activeModule === loadfun &&
             commonStore.activeView === loadfun) {
             return;
         }
+        */
 
         commonStore.activeModule = loadfun;
         commonStore.activeView = view;
@@ -178,9 +187,7 @@ export default class A_Web extends FabaRuntimeWeb {
         console.time("dispatch");
         var k = await t.dispatch();
         console.timeEnd("dispatch");
-        console.time("renderTime");
         this.render(k.view);
-        console.timeEnd("renderTime");
         console.timeEnd("moduleFinish");
 
     }

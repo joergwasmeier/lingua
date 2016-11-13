@@ -3,7 +3,6 @@ declare module "react-swipeable-views"{
 }
 
 declare module "material-auto-rotating-carousel"{
-
     export class AutoRotatingCarousel{}
     export class Slide{}
 }

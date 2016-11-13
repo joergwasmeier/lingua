@@ -6,43 +6,41 @@ import ForgotPass from "../view/ForgotPass";
 import SignUp from "../view/SignUp";
 import FabaCommand from "@fabalous/core/FabaCommand";
 import Account from "../view/Account";
+import {accountImStore} from "../AccountImStore";
+import {store, appStoreCourser} from "../../common/commonImStore";
 
 export default class InitAccountCommand extends FabaCommand {
     execute(event:InitAccountEvent) {
-        if (!accountStore.view){
-            accountStore.view = React.createElement(Account);
-        }
-
-        event.view = accountStore.view;
-        var showLogin:boolean = false;
-
+        event.view = React.createElement(Account);
+        console.log("rerender");
         switch (event.viewName){
             case "login":
-                event.view = accountStore.view = React.cloneElement(accountStore.view, {
-                    childs: React.createElement(Login, {model: accountStore}),
-                    showLogin:true
+                event.view = React.createElement(Account, {
+                    childs: React.createElement(Login, {model: store.appStore.account.login}),
+                    showLogin:true,
+                    oldPath:store.appStore.oldPath
                 });
                 break;
 
             case "forgotpass":
-                event.view = accountStore.view = React.cloneElement(accountStore.view, {
+                event.view = React.createElement(Account, {
                     childs: React.createElement(ForgotPass, {model: accountStore}),
-                    showLogin:true
+                    showLogin:true,
+                    oldPath:store.appStore.oldPath
                 });
                 break;
 
             case "signup":
-                event.view = accountStore.view = React.cloneElement(accountStore.view, {
+                event.view = React.createElement(Account, {
                     childs: React.createElement(SignUp, {model: accountStore}),
-                    showLogin:true
+                    showLogin:true,
+                    oldPath:store.appStore.oldPath
                 });
                 break;
-
             default:
-                event.view = accountStore.view = React.cloneElement(accountStore.view, {
-                    showLogin:false
+                event.view = React.createElement(Account, {
+                    oldPath:store.appStore.oldPath
                 });
-                break;
         }
 
         event.callBack();

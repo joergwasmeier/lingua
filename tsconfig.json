@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "es6",
-        "sourceMap": false,
+        "sourceMap": true,
         "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
@@ -20,7 +20,7 @@
         "forkCheckerSilent":true,
         "useBabel":false,
         "useCache":true,
-        "skipDeclarationFilesCheck":false
+        "skipDeclarationFilesCheck":true
     },
     "exclude": ["node_modules"]
 }

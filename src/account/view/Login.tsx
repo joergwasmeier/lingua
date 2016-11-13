@@ -1,20 +1,17 @@
 import * as React from "react";
-import {FlatButton, TextField} from "material-ui";
+import {TextField} from "material-ui";
 import LoginEvent from "../event/LoginEvent";
-import {observer} from "mobx-react/index";
 import LoginVo from "../vo/LoginVo";
 import AccountStore from "../AccountStore";
 import {ChangeAccountInputEventType, default as ChangeAccountInputEvent} from "../event/ChangeAccountInputEvent";
 import {Routes} from "../../A_Web";
 import ButtonSpinner from "../../common/widgets/buttonSpinner/ButtonSpinner";
-
-var classNames = require('classnames');
+import shallowCompare from 'react-addons-shallow-compare';
 
 interface ILoginProps {
     model: AccountStore;
 }
 
-@observer
 export default class Login extends React.Component<ILoginProps,{}> {
     vo: LoginVo;
 
@@ -24,6 +21,10 @@ export default class Login extends React.Component<ILoginProps,{}> {
         this.loginBtHandler = this.loginBtHandler.bind(this);
         this.userNameChange = this.userNameChange.bind(this);
         this.passWordChange = this.passWordChange.bind(this);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
     }
 
     private userNameChange(e): void {
