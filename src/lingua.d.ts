@@ -10,6 +10,5 @@ declare module "material-auto-rotating-carousel" {
 }
 
 declare module "react-addons-shallow-compare" {
-    const shallowCompare;
-    export default shallowCompare;
+    export let shallowCompare;
 }

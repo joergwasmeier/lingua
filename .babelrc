@@ -10,6 +10,7 @@
       ]]
     },
     "production": {
+      "presets": ["react-optimize"],
       "plugins": ["transform-async-to-generator"]
     },
     "test": {

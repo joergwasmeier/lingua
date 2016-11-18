@@ -1,13 +1,10 @@
 import * as React from "react";
-import {AppBar, Drawer, MenuItem, Divider, Subheader, ListItem} from "material-ui";
+import {Drawer, MenuItem, Divider, Subheader, ListItem} from "material-ui";
 import ActionInfo from "material-ui/svg-icons/action/info";
-import MenuStore from "../MenuStore";
 import ToggleMenuEvent from "../event/ToggleMenuEvent";
 import {Routes} from "../../A_Web";
-import {commonStore} from "../../common/CommonStore";
-const classNames = require("classnames");
-import shallowCompare from "react-addons-shallow-compare";
 import {store} from "../../common/commonImStore";
+import shallowCompare from "react-addons-shallow-compare";
 
 interface IMenuProps {
     open: boolean;
