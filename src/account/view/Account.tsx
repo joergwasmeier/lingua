@@ -25,18 +25,7 @@ export default class Account extends FabaWebBaseComponent<IAccountProps> {
 
                 <div className="login">
                     <p className="header">LINGUA </p>
-                    <ReactCSSTransitionGroup
-                        component="div"
-                        className="animated-child"
-                        transitionName={{
-                            enter: "enter",
-                            leave: "leave",
-                            appear: "appear"
-                        }}
-                        transitionEnterTimeout={1000}
-                        transitionLeaveTimeout={1000}>
-                        {React.cloneElement(this.props.childs)}
-                    </ReactCSSTransitionGroup>
+                    {this.props.childs}
                 </div>
             </div>
         );
