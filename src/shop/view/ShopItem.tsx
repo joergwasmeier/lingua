@@ -30,6 +30,8 @@ export default class ShopItem extends React.Component<IShopItemProps, any> {
 
     constructor(props) {
         super(props);
+
+        this.state = {index:0};
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -75,7 +77,7 @@ export default class ShopItem extends React.Component<IShopItemProps, any> {
                         <Tab label="tab n°3" value={2} onClick={this.handleChangeTabs.bind(null, 2)}/>
                     </Tabs>
 
-                    <SwipeableViews index={this.props.index} onChangeIndex={this.handleChangeIndex}>
+                    <SwipeableViews index={this.state.index} onChangeIndex={this.handleChangeIndex}>
                         <Tab1 />
                         <Tab2 />
                         <Tab3 />
