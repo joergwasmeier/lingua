@@ -16,9 +16,11 @@
         "rootDir": "./"
     },
     "awesomeTypescriptLoaderOptions": {
+        "transpileModule":true,
+        "transpileOnly":true,
         "forkChecker":true,
         "forkCheckerSilent":true,
-      "useBabel": true,
+        "useBabel": false,
         "useCache":true,
         "skipDeclarationFilesCheck":true
     },

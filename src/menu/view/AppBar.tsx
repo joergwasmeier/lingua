@@ -1,8 +1,7 @@
 import * as React from "react";
-
 import ToggleMenuEvent from "../event/ToggleMenuEvent";
 import AppBar from "material-ui/AppBar";
-import shallowCompare from "react-addons-shallow-compare";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 interface IAppBarProps {
     title: string;
@@ -11,7 +10,7 @@ interface IAppBarProps {
     disableEvent?: boolean;
 }
 
-export default class LinguaAppBar extends React.Component<IAppBarProps, {}> {
+export default class LinguaAppBar extends FabaWebBaseComponent<IAppBarProps> {
     private handleToggle(value: boolean) {
         if (this.props.disableEvent) return;
 
@@ -21,10 +20,6 @@ export default class LinguaAppBar extends React.Component<IAppBarProps, {}> {
         }
 
         new ToggleMenuEvent().dispatch();
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     private dockerWidth(): number {

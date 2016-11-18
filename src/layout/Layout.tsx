@@ -6,7 +6,7 @@ import Dialog from "./view/Dialog";
 import PopUp from "./view/PopUp";
 import {layoutStore} from "./LayoutStore";
 import {IcommonStore} from "../common/commonImStore";
-import shallowCompare from "react-addons-shallow-compare";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 const ReactCSSTransitionGroup = require("react-addons-css-transition-group"); // ES5 with npm
 
@@ -17,8 +17,7 @@ interface ILayoutProps {
     model: IcommonStore;
     childs: any;
 }
-
-export default class Layout extends React.Component<ILayoutProps,{}> {
+export default class Layout extends FabaWebBaseComponent<ILayoutProps>{
     className: string = "App";
     props: any;
 
@@ -30,11 +29,6 @@ export default class Layout extends React.Component<ILayoutProps,{}> {
     constructor(props) {
         super(props);
 
-        this.state = {
-            "landscape": false,
-            "mobile": false
-        };
-
         this._mql = matchMedia("only screen and (orientation:landscape)");
         this._mql.addListener(this.updateMatches.bind(this));
 
@@ -42,10 +36,6 @@ export default class Layout extends React.Component<ILayoutProps,{}> {
         this._dql.addListener(this.updateMatches.bind(this));
 
         this.theme = getMuiTheme();
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     componentDidMount() {
@@ -63,19 +53,7 @@ export default class Layout extends React.Component<ILayoutProps,{}> {
                 <div className={`center ${this.className}`}>
                     <Menu open={this.props.model.menuOpen}/>
 
-                    <ReactCSSTransitionGroup
-                        component="div"
-                        className="animated-child"
-                        transitionName={{
-                        enter: "enter",
-                        leave: "leave",
-                        appear: "appear"
-                    }}
-                        transitionEnterTimeout={10000}
-                        transitionLeaveTimeout={10000}>
-                        {this.props.childs}
-                    </ReactCSSTransitionGroup>
-
+                    {this.props.childs}
 
                     <Dialog open={false}/>
                     <PopUp open={layoutStore.showPopUp}/>

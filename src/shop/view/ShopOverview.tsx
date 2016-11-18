@@ -1,4 +1,3 @@
-import {Component} from "react";
 import * as React from "react";
 
 import LinguaAppBar from "../../menu/view/AppBar";
@@ -8,20 +7,16 @@ import {FloatingActionButton} from "material-ui";
 import Icon1 from "material-ui/svg-icons/content/filter-list";
 import ShopItemVo from "../vo/ShopItemVo";
 import SelectShopItemEvent from "../event/SelectShopItemEvent";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
-import shallowCompare from "react-addons-shallow-compare";
 
 interface IShopOverview {
     items: Array<ShopItemVo>;
 }
 
-export default class ShopOverview extends Component<IShopOverview, {}> {
+export default class ShopOverview extends FabaWebBaseComponent<IShopOverview> {
     constructor(props) {
         super(props);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     clickHandler() {

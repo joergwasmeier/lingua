@@ -1,21 +1,17 @@
 import * as React from "react";
-import shallowCompare from "react-addons-shallow-compare";
 import {AutoRotatingCarousel, Slide} from "material-auto-rotating-carousel";
 import Icon1 from "material-ui/svg-icons/social/whatshot";
 import Icon2 from "material-ui/svg-icons/file/cloud-download";
 import Icon3 from "material-ui/svg-icons/social/share";
 import {Routes} from "../../A_Web";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 export interface IIntroProps {
 }
 
-export default class Intro extends React.Component<IIntroProps, {}> {
+export default class Intro extends FabaWebBaseComponent<IIntroProps> {
     constructor(props) {
         super(props);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     start() {

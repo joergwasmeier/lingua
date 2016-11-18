@@ -1,8 +1,8 @@
 import * as React from "react";
 import ShopOverview from "./ShopOverview";
 import {IShopStore} from "../ShopStore";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 const ReactCSSTransitionGroup = require("react-addons-css-transition-group"); // ES5 with npm
-import shallowCompare from "react-addons-shallow-compare";
 
 require("./Shop.less");
 
@@ -11,15 +11,11 @@ interface IShopProps {
     model: IShopStore;
 }
 
-export default class Shop extends React.Component<IShopProps, null> {
+export default class Shop extends FabaWebBaseComponent<IShopProps> {
     className: string = "Shop";
 
     constructor(props) {
         super(props);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     renderOverview() {

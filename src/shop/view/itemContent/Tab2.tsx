@@ -1,14 +1,10 @@
 import * as React from "react";
 import {Checkbox} from "material-ui";
-import shallowCompare from "react-addons-shallow-compare";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
-export default class Tab2 extends React.Component<{}, {}> {
+export default class Tab2 extends FabaWebBaseComponent<{}> {
     constructor(props) {
         super(props);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     render() {

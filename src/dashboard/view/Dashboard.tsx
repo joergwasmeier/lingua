@@ -4,23 +4,19 @@ import DashboardStore from "../DashboardStore";
 import EmptyDashboard from "./EmptyDashboard";
 import DashboardContent from "./DashboardContent";
 require("./Dashboard.less");
-import shallowCompare from "react-addons-shallow-compare";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 interface IDashboardProps {
     model: DashboardStore;
 }
 
-export default class Dashboard extends React.Component<IDashboardProps,{}> {
+export default class Dashboard extends FabaWebBaseComponent<IDashboardProps> {
     className: string = "Dashboard";
     vo: DashboardStore;
 
     constructor(props: IDashboardProps) {
         super(props);
         this.vo = this.props.model;
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     render() {

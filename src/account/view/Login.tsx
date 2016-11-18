@@ -4,23 +4,19 @@ import LoginEvent from "../event/LoginEvent";
 import {ChangeAccountInputEventType, default as ChangeAccountInputEvent} from "../event/ChangeAccountInputEvent";
 import {Routes} from "../../A_Web";
 import ButtonSpinner from "../../common/widgets/buttonSpinner/ButtonSpinner";
-import shallowCompare from "react-addons-shallow-compare";
 import {ILoginIm} from "../vo/LoginVo";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 interface ILoginProps {
     model: ILoginIm;
 }
 
-export default class Login extends React.Component<ILoginProps, {}> {
+export default class Login extends FabaWebBaseComponent<ILoginProps> {
     constructor(props) {
         super(props);
         this.loginBtHandler = this.loginBtHandler.bind(this);
         this.userNameChange = this.userNameChange.bind(this);
         this.passWordChange = this.passWordChange.bind(this);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     private userNameChange(e): void {
@@ -68,6 +64,7 @@ export default class Login extends React.Component<ILoginProps, {}> {
                 />
 
                 {this.renderError()}
+
                 <ButtonSpinner label="Login" touchTapHandler={this.loginBtHandler}
                                progress={this.props.model.progress}/>
 
@@ -75,6 +72,7 @@ export default class Login extends React.Component<ILoginProps, {}> {
                     {this.props.model.progress}
                     <a href={"#" + Routes.SIGN_UP.route}>Don´t have an account? Sign UP!</a>
                 </p>
+
                 <p className="linkSign">
                     <a href={"#" + Routes.FORGOT_PASS.route}>Forogt your password? Come to the Dark side!</a>
                 </p>

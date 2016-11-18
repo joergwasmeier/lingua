@@ -3,14 +3,14 @@ import {FlatButton, TextField} from "material-ui";
 import ForgotPassVo from "../vo/ForgotPassVo";
 import ForgotPassEvent from "../event/ForgotPassEvent";
 import {ChangeAccountInputEventType, default as ChangeAccountInputEvent} from "../event/ChangeAccountInputEvent";
-import shallowCompare from "react-addons-shallow-compare";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 interface IForgotPass {
     model: any;
 }
 
 
-export default class ForgotPass extends React.Component<{},{}> {
+export default class ForgotPass extends FabaWebBaseComponent<IForgotPass> {
     vo: ForgotPassVo;
     props: IForgotPass;
 
@@ -20,10 +20,6 @@ export default class ForgotPass extends React.Component<{},{}> {
 
         this.forgotPassBtHandler = this.forgotPassBtHandler.bind(this);
         this.userNameChange = this.userNameChange.bind(this);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     private forgotPassBtHandler() {

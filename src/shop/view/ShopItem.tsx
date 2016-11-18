@@ -1,23 +1,20 @@
 import * as React from "react";
 import {Tabs, Tab, RaisedButton, Checkbox, IconButton} from "material-ui";
-import {List, ListItem} from "material-ui/List";
-import Subheader from "material-ui/Subheader";
-import ArrowBack from "material-ui/svg-icons/navigation/arrow-back";
 
+import ArrowBack from "material-ui/svg-icons/navigation/arrow-back";
 import LinguaAppBar from "../../menu/view/AppBar";
 import ShopItemVo from "../vo/ShopItemVo";
 import HideShopItemEvent from "../event/HideShopItemEvent";
-import ItemList from "../../common/widgets/itemList/ItemList";
-
 import SwipeableViews from "react-swipeable-views";
+
 import {IShopStore} from "../ShopStore";
 
 require("./ShopItem.less");
 
-import shallowCompare from "react-addons-shallow-compare";
 import Tab1 from "./itemContent/Tab1";
 import Tab2 from "./itemContent/Tab2";
 import Tab3 from "./itemContent/Tab3";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 interface IShopItemProps {
     item: ShopItemVo;
@@ -25,17 +22,11 @@ interface IShopItemProps {
     index: number;
 }
 
-export default class ShopItem extends React.Component<IShopItemProps, any> {
+export default class ShopItem extends FabaWebBaseComponent<IShopItemProps> {
     className: string = "ShopItem";
 
     constructor(props) {
         super(props);
-
-        this.state = {index:0};
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     render() {
@@ -47,15 +38,11 @@ export default class ShopItem extends React.Component<IShopItemProps, any> {
     }
 
     handleChangeTabs = (value) => {
-        this.setState({
-            index: value,
-        });
+
     };
 
     handleChangeIndex = (index) => {
-        this.setState({
-            index
-        });
+
     };
 
     hideHandler() {
@@ -71,13 +58,13 @@ export default class ShopItem extends React.Component<IShopItemProps, any> {
                     disableEvent="true"
                 />
                 <div className="tabs">
-                    <Tabs value={this.state.index}>
+                    <Tabs value={0}>
                         <Tab label="tab n°1" value={0} onClick={this.handleChangeTabs.bind(null, 0)}/>
                         <Tab label="tab n°2" value={1} onClick={this.handleChangeTabs.bind(null, 1)}/>
                         <Tab label="tab n°3" value={2} onClick={this.handleChangeTabs.bind(null, 2)}/>
                     </Tabs>
 
-                    <SwipeableViews index={this.state.index} onChangeIndex={this.handleChangeIndex}>
+                    <SwipeableViews index={0} onChangeIndex={this.handleChangeIndex}>
                         <Tab1 />
                         <Tab2 />
                         <Tab3 />
@@ -85,39 +72,5 @@ export default class ShopItem extends React.Component<IShopItemProps, any> {
                 </div>
             </div>
         );
-    }
-
-    private renderDetails() {
-        return (
-            <div className="content">
-                <h1>{this.props.model.selectedItem.name}</h1>
-
-                <img src={this.props.model.selectedItem.imgSrc}/>
-
-                <p>{this.props.model.selectedItem.description}</p>
-
-                <div>
-                    <p>Veröffentlicht am: {this.props.model.selectedItem.publishedData}</p>
-                    <p>Veröffentlicht durch: {this.props.model.selectedItem.publisherName}</p>
-                </div>
-
-                <RaisedButton className="loadCourse" label="Kurs Herunterladen"
-                              secondary={false}
-                              fullWidth={true}/>
-
-            </div>
-        );
-    }
-
-    private renderChapters() {
-        return (
-            <div className="chaptersContainer">
-                <ItemList items={this.props.model.items}></ItemList>
-            </div>
-        );
-    }
-
-    private renderScores() {
-        return null;
     }
 }

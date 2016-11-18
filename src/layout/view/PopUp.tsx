@@ -1,23 +1,13 @@
 import * as React from "react";
-
 import {Dialog as MDialog, CircularProgress} from "material-ui";
-import shallowCompare from "react-addons-shallow-compare";
-
-
-/**
- * Created by creativecode on 07.10.16.
- */
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 export interface IPopUp {
     open: boolean;
     title: string;
 }
 
-export default class PopUp extends React.Component<IPopUp,{}> {
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
-    }
-
+export default class PopUp extends FabaWebBaseComponent<IPopUp> {
     render() {
         return (
             <MDialog

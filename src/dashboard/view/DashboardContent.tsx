@@ -1,16 +1,10 @@
 import * as React from "react";
-import {Component} from "react";
-
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 import {Subheader, List} from "material-ui";
-import shallowCompare from "react-addons-shallow-compare";
 
-export default class DashboardContent extends Component<{}, null> {
+export default class DashboardContent extends FabaWebBaseComponent<{}> {
     constructor(props) {
         super(props);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     render() {

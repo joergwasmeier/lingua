@@ -4,7 +4,7 @@ import ActionInfo from "material-ui/svg-icons/action/info";
 import ToggleMenuEvent from "../event/ToggleMenuEvent";
 import {Routes} from "../../A_Web";
 import {store} from "../../common/commonImStore";
-import shallowCompare from "react-addons-shallow-compare";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 interface IMenuProps {
     open: boolean;
@@ -13,18 +13,12 @@ interface IMenuProps {
 
 require("./Menu.less");
 
-export default class Menu extends React.Component<IMenuProps, {drawer: boolean}> {
+export default class Menu extends FabaWebBaseComponent<IMenuProps> {
     className: string = "Menu";
     props: IMenuProps;
 
     constructor(props) {
         super(props);
-
-        this.state = {drawer: false};
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     private menuClickHandler(url: string) {
@@ -75,9 +69,6 @@ export default class Menu extends React.Component<IMenuProps, {drawer: boolean}>
     }
 
     render() {
-        if (!store.appStore.account || !store.appStore.account.login ||
-            store.appStore.account.login.loggedIn === false) return null;
-
         return (
             <div className={`center ${this.className}`}>
                 <Drawer open={this.props.open}
@@ -102,7 +93,6 @@ export default class Menu extends React.Component<IMenuProps, {drawer: boolean}>
                     <MenuItem>Einstellungen</MenuItem>
                     <MenuItem>Hilfe und Feedback</MenuItem>
                 </Drawer>
-
             </div>
         );
     }

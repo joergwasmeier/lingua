@@ -1,6 +1,6 @@
 import * as React from "react";
 import {ListItem, Divider} from "material-ui";
-import FabaEvent from "@fabalous/core/FabaEvent";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 require("./ItemList.less");
 
@@ -9,10 +9,9 @@ interface IItemListProps{
     clickEvent:any;
     className?:string;
 }
-
 var ReactPullToRefresh = require("react-pull-to-refresh");
 
-export default class ItemList extends React.Component<IItemListProps, null> {
+export default class ItemList extends FabaWebBaseComponent<IItemListProps> {
     className: string = "ItemList";
 
     constructor(props) {

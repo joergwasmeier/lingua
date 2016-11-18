@@ -5,7 +5,6 @@ import ArrowDownWard from "material-ui/svg-icons/navigation/close";
 import ShopFilterEvent from "../event/ShopFilterEvent";
 import {ShopFilterEventType} from "../event/ShopFilterEvent";
 import {TextField, FlatButton} from "material-ui";
-import shallowCompare from "react-addons-shallow-compare";
 
 interface IShopFilter {
     visible: boolean;
@@ -17,16 +16,13 @@ import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 import Checkbox from 'material-ui/Checkbox';
 import Toggle from 'material-ui/Toggle';
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
-export default class ShopFilter extends React.Component<IShopFilter, null> {
+export default class ShopFilter extends FabaWebBaseComponent<IShopFilter> {
     refs: any;
 
     constructor(props) {
         super(props);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     clickHandler() {

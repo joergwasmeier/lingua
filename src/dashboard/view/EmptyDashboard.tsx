@@ -1,21 +1,16 @@
 import * as React from "react";
-import {Component} from "react";
 import {Paper, RaisedButton} from "material-ui";
 import SwipeableViews from "react-swipeable-views";
 import CreateCourseEvent from "../event/CreateCourseEvent";
-import shallowCompare from "react-addons-shallow-compare";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
-export default class EmptyDashboard extends Component<{}, null> {
+export default class EmptyDashboard extends FabaWebBaseComponent<{}> {
     constructor(props) {
         super(props);
     }
 
     private createCourses() {
         new CreateCourseEvent().dispatch();
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     render() {

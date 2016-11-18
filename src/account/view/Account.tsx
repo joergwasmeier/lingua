@@ -1,6 +1,6 @@
 import * as React from "react";
-import shallowCompare from "react-addons-shallow-compare";
 import Intro from "./Intro";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 export interface IAccountProps {
     childs?: React.ReactElement<any>;
@@ -10,16 +10,8 @@ export interface IAccountProps {
 const ReactCSSTransitionGroup = require("react-addons-css-transition-group"); // ES5 with npm
 
 require("./Account.less");
-export default class Account extends React.Component<IAccountProps, {}> {
+export default class Account extends FabaWebBaseComponent<IAccountProps> {
     className: string = "Account";
-
-    constructor(props: IAccountProps) {
-        super(props);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
-    }
 
     render() {
         if (this.props.showLogin) {
@@ -41,9 +33,9 @@ export default class Account extends React.Component<IAccountProps, {}> {
                             leave: "leave",
                             appear: "appear"
                         }}
-                        transitionEnterTimeout={50000}
-                        transitionLeaveTimeout={50000}>
-                        {this.props.childs}
+                        transitionEnterTimeout={1000}
+                        transitionLeaveTimeout={1000}>
+                        {React.cloneElement(this.props.childs)}
                     </ReactCSSTransitionGroup>
                 </div>
             </div>

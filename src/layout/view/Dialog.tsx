@@ -2,7 +2,7 @@ import * as React from "react";
 
 import {Dialog as MDialog} from "material-ui";
 import {IPopUp} from "./PopUp";
-import shallowCompare from "react-addons-shallow-compare";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 
 /**
@@ -12,11 +12,8 @@ import shallowCompare from "react-addons-shallow-compare";
 interface IDialog extends IPopUp {
 
 }
-export default class Dialog extends React.Component<IDialog, {}> {
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
-    }
 
+export default class Dialog extends FabaWebBaseComponent<IDialog> {
     render(){
         return (
             <MDialog

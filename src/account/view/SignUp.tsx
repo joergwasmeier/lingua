@@ -3,13 +3,13 @@ import {FlatButton, TextField} from "material-ui";
 import SignUpEvent from "../event/SignUpEvent";
 import ChangeAccountInputEvent from "../event/ChangeAccountInputEvent";
 import {ChangeAccountInputEventType} from "../event/ChangeAccountInputEvent";
-import shallowCompare from "react-addons-shallow-compare";
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 interface ISignUpProps {
     model: any;
 }
 
-export default class SignUp extends React.Component<{},{}> {
+export default class SignUp extends FabaWebBaseComponent<ISignUpProps>{
     className: string = "Home";
     props: ISignUpProps;
     vo: any;
@@ -22,10 +22,6 @@ export default class SignUp extends React.Component<{},{}> {
         this.signUpBtHandler = this.signUpBtHandler.bind(this);
         this.userNameChange = this.userNameChange.bind(this);
         this.passWordChange = this.passWordChange.bind(this);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     private userNameChange(e): void {
