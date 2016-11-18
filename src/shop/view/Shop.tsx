@@ -2,7 +2,7 @@ import * as React from "react";
 import ShopOverview from "./ShopOverview";
 import {IShopStore} from "../ShopStore";
 const ReactCSSTransitionGroup = require("react-addons-css-transition-group"); // ES5 with npm
-import {shallowCompare} from "react-addons-shallow-compare";
+import shallowCompare from "react-addons-shallow-compare";
 
 require("./Shop.less");
 

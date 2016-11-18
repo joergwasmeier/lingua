@@ -2,7 +2,7 @@ import * as React from "react";
 import {Component} from "react";
 
 import {Subheader, List} from "material-ui";
-import {shallowCompare} from "react-addons-shallow-compare";
+import shallowCompare from "react-addons-shallow-compare";
 
 export default class DashboardContent extends Component<{}, null> {
     constructor(props) {

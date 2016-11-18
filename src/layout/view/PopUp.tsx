@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import {Dialog as MDialog, CircularProgress} from "material-ui";
-import {shallowCompare} from "react-addons-shallow-compare";
+import shallowCompare from "react-addons-shallow-compare";
 
 
 /**

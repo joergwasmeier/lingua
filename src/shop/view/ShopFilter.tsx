@@ -5,7 +5,7 @@ import ArrowDownWard from "material-ui/svg-icons/navigation/close";
 import ShopFilterEvent from "../event/ShopFilterEvent";
 import {ShopFilterEventType} from "../event/ShopFilterEvent";
 import {TextField, FlatButton} from "material-ui";
-import {shallowCompare} from "react-addons-shallow-compare";
+import shallowCompare from "react-addons-shallow-compare";
 
 interface IShopFilter {
     visible: boolean;

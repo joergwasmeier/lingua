@@ -4,7 +4,7 @@ import ActionInfo from "material-ui/svg-icons/action/info";
 import ToggleMenuEvent from "../event/ToggleMenuEvent";
 import {Routes} from "../../A_Web";
 import {store} from "../../common/commonImStore";
-import {shallowCompare} from "react-addons-shallow-compare";
+import shallowCompare from "react-addons-shallow-compare";
 
 interface IMenuProps {
     open: boolean;

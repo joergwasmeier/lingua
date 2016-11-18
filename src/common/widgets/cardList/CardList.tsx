@@ -3,7 +3,7 @@ import ItemList from "../itemList/ItemList";
 import {Divider} from "material-ui";
 import {Card, CardHeader, CardMedia, CardTitle, CardText} from "material-ui";
 
-import {shallowCompare} from "react-addons-shallow-compare";
+import shallowCompare from "react-addons-shallow-compare";
 
 
 export default class CardList extends ItemList{

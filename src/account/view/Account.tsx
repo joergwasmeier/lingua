@@ -1,5 +1,5 @@
 import * as React from "react";
-import {shallowCompare} from "react-addons-shallow-compare";
+import shallowCompare from "react-addons-shallow-compare";
 import Intro from "./Intro";
 
 export interface IAccountProps {

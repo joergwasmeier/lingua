@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Checkbox} from "material-ui";
-import {shallowCompare} from "react-addons-shallow-compare";
+import shallowCompare from "react-addons-shallow-compare";
 
 export default class Tab2 extends React.Component<{}, {}> {
     constructor(props) {

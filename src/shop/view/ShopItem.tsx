@@ -14,7 +14,7 @@ import {IShopStore} from "../ShopStore";
 
 require("./ShopItem.less");
 
-import {shallowCompare} from "react-addons-shallow-compare";
+import shallowCompare from "react-addons-shallow-compare";
 import Tab1 from "./itemContent/Tab1";
 import Tab2 from "./itemContent/Tab2";
 import Tab3 from "./itemContent/Tab3";

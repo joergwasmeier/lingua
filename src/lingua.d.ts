@@ -9,6 +9,3 @@ declare module "material-auto-rotating-carousel" {
     }
 }
 
-declare module "react-addons-shallow-compare" {
-    export let shallowCompare;
-}

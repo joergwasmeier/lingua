@@ -3,7 +3,7 @@ import {FlatButton, TextField} from "material-ui";
 import SignUpEvent from "../event/SignUpEvent";
 import ChangeAccountInputEvent from "../event/ChangeAccountInputEvent";
 import {ChangeAccountInputEventType} from "../event/ChangeAccountInputEvent";
-import {shallowCompare} from "react-addons-shallow-compare";
+import shallowCompare from "react-addons-shallow-compare";
 
 interface ISignUpProps {
     model: any;

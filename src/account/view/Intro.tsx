@@ -1,5 +1,5 @@
 import * as React from "react";
-import {shallowCompare} from "react-addons-shallow-compare";
+import shallowCompare from "react-addons-shallow-compare";
 import {AutoRotatingCarousel, Slide} from "material-auto-rotating-carousel";
 import Icon1 from "material-ui/svg-icons/social/whatshot";
 import Icon2 from "material-ui/svg-icons/file/cloud-download";
