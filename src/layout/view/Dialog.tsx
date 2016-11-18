@@ -2,7 +2,7 @@ import * as React from "react";
 
 import {Dialog as MDialog} from "material-ui";
 import {IPopUp} from "./PopUp";
-import shallowCompare from "react-addons-shallow-compare";
+import {shallowCompare} from "react-addons-shallow-compare";
 
 
 /**

@@ -3,7 +3,7 @@ import {FlatButton, TextField} from "material-ui";
 import ForgotPassVo from "../vo/ForgotPassVo";
 import ForgotPassEvent from "../event/ForgotPassEvent";
 import {ChangeAccountInputEventType, default as ChangeAccountInputEvent} from "../event/ChangeAccountInputEvent";
-import shallowCompare from "react-addons-shallow-compare";
+import {shallowCompare} from "react-addons-shallow-compare";
 
 interface IForgotPass {
     model: any;

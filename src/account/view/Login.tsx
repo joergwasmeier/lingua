@@ -4,7 +4,7 @@ import LoginEvent from "../event/LoginEvent";
 import {ChangeAccountInputEventType, default as ChangeAccountInputEvent} from "../event/ChangeAccountInputEvent";
 import {Routes} from "../../A_Web";
 import ButtonSpinner from "../../common/widgets/buttonSpinner/ButtonSpinner";
-import shallowCompare from "react-addons-shallow-compare";
+import {shallowCompare} from "react-addons-shallow-compare";
 import {ILoginIm} from "../vo/LoginVo";
 
 interface ILoginProps {

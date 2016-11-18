@@ -9,7 +9,7 @@ import Icon1 from "material-ui/svg-icons/content/filter-list";
 import ShopItemVo from "../vo/ShopItemVo";
 import SelectShopItemEvent from "../event/SelectShopItemEvent";
 
-import shallowCompare from "react-addons-shallow-compare";
+import {shallowCompare} from "react-addons-shallow-compare";
 
 interface IShopOverview {
     items: Array<ShopItemVo>;

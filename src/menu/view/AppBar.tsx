@@ -2,7 +2,7 @@ import * as React from "react";
 
 import ToggleMenuEvent from "../event/ToggleMenuEvent";
 import AppBar from "material-ui/AppBar";
-import shallowCompare from "react-addons-shallow-compare";
+import {shallowCompare} from "react-addons-shallow-compare";
 
 interface IAppBarProps {
     title: string;

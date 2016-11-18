@@ -7,7 +7,7 @@ import Dialog from "./view/Dialog";
 import PopUp from "./view/PopUp";
 import {layoutStore} from "./LayoutStore";
 import {IcommonStore} from "../common/commonImStore";
-import shallowCompare from "react-addons-shallow-compare";
+import {shallowCompare} from "react-addons-shallow-compare";
 
 const ReactCSSTransitionGroup = require("react-addons-css-transition-group"); // ES5 with npm
 

@@ -4,7 +4,7 @@ import DashboardStore from "../DashboardStore";
 import EmptyDashboard from "./EmptyDashboard";
 import DashboardContent from "./DashboardContent";
 require("./Dashboard.less");
-import shallowCompare from "react-addons-shallow-compare";
+import {shallowCompare} from "react-addons-shallow-compare";
 
 interface IDashboardProps {
     model: DashboardStore;

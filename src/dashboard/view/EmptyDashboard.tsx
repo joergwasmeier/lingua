@@ -3,7 +3,7 @@ import {Component} from "react";
 import {Paper, RaisedButton} from "material-ui";
 import SwipeableViews from "react-swipeable-views";
 import CreateCourseEvent from "../event/CreateCourseEvent";
-import shallowCompare from "react-addons-shallow-compare";
+import {shallowCompare} from "react-addons-shallow-compare";
 
 export default class EmptyDashboard extends Component<{}, null> {
     constructor(props) {
