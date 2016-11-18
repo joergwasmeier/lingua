@@ -1,16 +1,21 @@
 import * as React from "react";
 import {Component} from "react";
 import {Paper, RaisedButton} from "material-ui";
-import SwipeableViews from 'react-swipeable-views';
+import SwipeableViews from "react-swipeable-views";
 import CreateCourseEvent from "../event/CreateCourseEvent";
+import shallowCompare from "react-addons-shallow-compare";
 
-export default class EmptyDashboard extends Component<{},{}> {
+export default class EmptyDashboard extends Component<{}, null> {
     constructor(props) {
         super(props);
     }
 
     private createCourses() {
         new CreateCourseEvent().dispatch();
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
     }
 
     render() {
@@ -22,10 +27,6 @@ export default class EmptyDashboard extends Component<{},{}> {
                 <Paper zDepth={1} className="card">
                     <h1>Beliebte Kurse</h1>
                     <SwipeableViews className="swipeView">
-                        <div className="courseCard"/>
-                        <div className="courseCard"/>
-                        <div className="courseCard"/>
-                        <div className="courseCard"/>
                         <div className="courseCard"/>
                         <div className="courseCard"/>
                         <div className="courseCard"/>

@@ -3,8 +3,8 @@ import {shopStore} from "../ShopStore";
 import {commonStore} from "../../common/CommonStore";
 import {Routes} from "../../A_Web";
 
-export default class HideShopItemCommand extends FabaCommand{
+export default class HideShopItemCommand extends FabaCommand {
     execute(event: HideShopItemCommand): any {
-        commonStore.history.push(Routes.STORE.route);
+        window.location.assign("#" + Routes.STORE.route);
     }
 }

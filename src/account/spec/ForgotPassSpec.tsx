@@ -5,7 +5,6 @@ import {mount} from "enzyme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import AccountMediator from "../AccountMediator";
-import {accountStore} from "../AccountStore";
 import ForgotPass from "../view/ForgotPass";
 import FabaCore from "@fabalous/core/FabaCore";
 import createSpy = jasmine.createSpy;
@@ -21,6 +20,7 @@ describe("ForgotPass View", function () {
     FabaCore.addMediator(AccountMediator);
 
     beforeEach(()=> {
+        /*
         wrapper = mount(
             <MuiThemeProvider muiTheme={getMuiTheme()}>
                 <ForgotPass model={accountStore}/>
@@ -28,6 +28,7 @@ describe("ForgotPass View", function () {
         );
 
         instance = wrapper.find(ForgotPass).get(0) as ForgotPass;
+         */
     });
 
     it("ForgotPass should be there", function () {
@@ -56,14 +57,14 @@ describe("ForgotPass View", function () {
      */
 
     it("success message should be visible", function () {
-        accountStore.forgotPass.showSuccessMessage = true;
+        //accountStore.forgotPass.showSuccessMessage = true;
 
         let success = ReactDOM.findDOMNode(wrapper.find('.success').node);
         expect(success).not.toBeNull();
     });
 
     it("error message should be visible", function () {
-        accountStore.forgotPass.showErrorMessage = true;
+        //accountStore.forgotPass.showErrorMessage = true;
         let error = ReactDOM.findDOMNode(wrapper.find('.error').node);
         expect(error).not.toBeNull();
     });

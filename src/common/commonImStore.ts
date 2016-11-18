@@ -1,5 +1,6 @@
-import {IAccountImStore} from "../account/AccountImStore";
-const baoba = require('baobab');
+import {IAccountStore} from "../account/AccountImStore";
+import {IShopStore} from "../shop/ShopStore";
+const baoba = require("baobab");
 
 export interface IcommonStore {
     readonly child: any;
@@ -8,9 +9,11 @@ export interface IcommonStore {
     readonly activeModule: string;
     readonly activeView: string;
 
-    readonly account: IAccountImStore;
-    readonly dashboard: IAccountImStore;
-    readonly shop: IAccountImStore;
+    readonly account: IAccountStore;
+    readonly dashboard: IAccountStore;
+    readonly shop: IShopStore;
+
+    readonly menuOpen: boolean;
 }
 
 const commonImStore: IcommonStore = {
@@ -21,18 +24,18 @@ const commonImStore: IcommonStore = {
     activeView: "",
     account: null,
     dashboard: null,
-    shop: null
+    shop: null,
+    menuOpen: false
 };
 
-export const appStoreCourser = new baoba(commonImStore).select();
-
+let tree = new baoba(commonImStore);
+export const appStoreCourser = tree.select();
 
 export class store {
     static appStore: IcommonStore = appStoreCourser.get();
 
-    static set(path: any, value: any, update: boolean = true) {
-        appStoreCourser.set(path, value);
-        if (update) store.appStore = appStoreCourser.get();
-        return appStoreCourser.get(path);
+    static set(path: string, value: any, update: boolean = true) {
+        let arrPath = path.split(".");
+        appStoreCourser.set(arrPath, value);
     }
 }

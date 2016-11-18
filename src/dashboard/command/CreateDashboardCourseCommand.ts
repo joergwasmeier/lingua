@@ -3,7 +3,7 @@ import CreateCourseEvent from "../event/CreateCourseEvent";
 
 export default class CreateDashboardCourseCommand extends FabaCommand {
     async execute(event: CreateCourseEvent) {
-        console.log("CreateDashboardCourseEvent 23");
+        console.log("CreateDashboardCourseEvent 2");
     }
 
     async result(event: CreateCourseEvent) {

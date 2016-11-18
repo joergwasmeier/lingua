@@ -1,21 +1,19 @@
 import * as React from "react";
 import {FlatButton, TextField} from "material-ui";
-import {observer} from "mobx-react/index";
-import AccountStore from "../AccountStore";
-import SignUpVo from "../vo/SignUpVo";
 import SignUpEvent from "../event/SignUpEvent";
 import ChangeAccountInputEvent from "../event/ChangeAccountInputEvent";
 import {ChangeAccountInputEventType} from "../event/ChangeAccountInputEvent";
+import shallowCompare from "react-addons-shallow-compare";
 
 interface ISignUpProps {
-    model: AccountStore;
+    model: any;
 }
 
-@observer
 export default class SignUp extends React.Component<{},{}> {
     className: string = "Home";
     props: ISignUpProps;
-    vo: SignUpVo;
+    vo: any;
+
 
     constructor(props) {
         super(props);
@@ -24,6 +22,10 @@ export default class SignUp extends React.Component<{},{}> {
         this.signUpBtHandler = this.signUpBtHandler.bind(this);
         this.userNameChange = this.userNameChange.bind(this);
         this.passWordChange = this.passWordChange.bind(this);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
     }
 
     private userNameChange(e): void {
@@ -40,7 +42,7 @@ export default class SignUp extends React.Component<{},{}> {
 
     render() {
         return (
-            <div>
+            <div className="childContent2">
                 <TextField
                     className="textField"
                     floatingLabelText="E-Mail"

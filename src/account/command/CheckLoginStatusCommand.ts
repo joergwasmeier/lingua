@@ -1,14 +1,12 @@
 import LoginEvent from "./../event/LoginEvent";
 import CheckLoginStatusEvent from "../event/CheckLoginStatusEvent";
-import {accountStore} from "../AccountStore";
 import FabaCommand from "@fabalous/core/FabaCommand";
+import {accountStore} from "../AccountImStore";
 
 export default class CheckLoginStatusCommand extends FabaCommand {
 
-    async execute(event:CheckLoginStatusEvent) {
-        console.log("execute");
-        
-        if (accountStore && accountStore.login && accountStore.login.loggedIn){
+    async execute(event: CheckLoginStatusEvent) {
+        if (accountStore.login && accountStore.login.loggedIn) {
             event.loggedIn = true;
             event.callBack();
         } else {
@@ -17,19 +15,19 @@ export default class CheckLoginStatusCommand extends FabaCommand {
         }
     }
 
-    result(event:LoginEvent) {
+    result(event: LoginEvent) {
         event.callBack();
     }
 
-    timeout(event:LoginEvent) {
+    timeout(event: LoginEvent) {
         console.log("Command timeout");
     }
 
-    error(event:LoginEvent) {
+    error(event: LoginEvent) {
         console.log("Command error");
     }
 
-    offline(event:LoginEvent) {
+    offline(event: LoginEvent) {
         console.log("Command offline");
     }
 }

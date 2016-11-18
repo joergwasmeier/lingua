@@ -1,11 +1,13 @@
 import LoginEvent from "./../event/LoginEvent";
-import {accountStore} from "../AccountStore";
 import FabaCommand from "@fabalous/core/FabaCommand";
 import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 import GetMenuDataEvent from "../../menu/event/GetMenuDataEvent";
 import {LoginEventStatus} from "../event/LoginEvent";
 import {Routes} from "../../A_Web";
-import {commonStore} from "../../common/CommonStore";
+import {accountStore} from "../AccountImStore";
+import AccountUiEvent from "../event/AccountUiEvent";
+import {AccountUiEventType} from "../event/AccountUiEvent";
+import {store} from "../../common/commonImStore";
 
 /**
  * Created by creativecode on 11.04.16.
@@ -14,31 +16,35 @@ import {commonStore} from "../../common/CommonStore";
 export default class LoginCommand extends FabaCommand {
 
     async execute(event: LoginEvent) {
-        accountStore.login.showLoginProgress();
+        new AccountUiEvent(AccountUiEventType.SHOW_LOGIN_PROGRESS).dispatch();
 
         if (event.checkUserPassLength()) {
             FabaRuntimeWeb.sendToEndpoint(event, "");
             return;
         }
 
-        accountStore.login.showErrorMsg(2);
+        new AccountUiEvent(AccountUiEventType.SHOW_LOGIN_ERROR).dispatch();
     }
 
      result(event: LoginEvent) {
         switch (event.status) {
             case LoginEventStatus.ERROR:
-                accountStore.login.showErrorMsg(2);
+                new AccountUiEvent(AccountUiEventType.SHOW_LOGIN_ERROR).dispatch();
                 break;
             case LoginEventStatus.LOGGED_IN:
+                store.set("account.login.loggedIn", true);
 
-                accountStore.login.loggedIn = true;
                 window.localStorage.setItem("username", event.username);
                 window.localStorage.setItem("password", event.password);
                 window.localStorage.setItem("sessionid", event.sessionId);
 
-                if (event.loginLocation){
-                    commonStore.history.push(Routes.DASBOARD.route);
+                if (event.loginLocation) {
+                    window.location.assign("#" + Routes.DASBOARD.route);
                 }
+
+                console.log("hide");
+
+                new AccountUiEvent(AccountUiEventType.HIDE_LOGIN_PROGRESS).dispatch();
 
                 break;
         }

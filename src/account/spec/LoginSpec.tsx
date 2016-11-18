@@ -1,3 +1,4 @@
+/*
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {mount} from "enzyme";
@@ -66,3 +67,4 @@ xdescribe("Login View", function () {
         expect(accountStore.login.loggedIn).toBe(true);
     });
 });
+ */

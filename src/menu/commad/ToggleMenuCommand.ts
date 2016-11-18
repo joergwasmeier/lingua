@@ -1,6 +1,6 @@
 import GetMenuDataEvent from "../event/GetMenuDataEvent";
 import FabaCommand from "@fabalous/core/FabaCommand";
-import {menuStore} from "../MenuStore";
+import {store} from "../../common/commonImStore";
 
 /**
  * Created by creativecode on 11.04.16.
@@ -8,6 +8,6 @@ import {menuStore} from "../MenuStore";
 
 export default class ToggleMenuCommand extends FabaCommand {
     execute(event: GetMenuDataEvent) {
-        menuStore.menuOpen = !menuStore.menuOpen;
+        store.set("menuOpen", !store.appStore.menuOpen);
     }
 }

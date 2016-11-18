@@ -3,7 +3,6 @@ import * as React from "react";
 import AccountMediator from "../AccountMediator";
 import LoginCommand from "../command/LoginCommand";
 import LoginEvent from "../event/LoginEvent";
-import {accountStore} from "../AccountStore";
 
 var TestUtils = require("react-addons-test-utils");
 

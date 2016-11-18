@@ -1,20 +1,33 @@
 import * as React from "react";
-import {ShopStore} from "../ShopStore";
 import ShopOverview from "./ShopOverview";
-const ReactCSSTransitionGroup = require('react-addons-css-transition-group'); // ES5 with npm
+import {IShopStore} from "../ShopStore";
+const ReactCSSTransitionGroup = require("react-addons-css-transition-group"); // ES5 with npm
+import shallowCompare from "react-addons-shallow-compare";
 
 require("./Shop.less");
 
-interface IShopProps{
-    model: ShopStore,
-    childs: any
+interface IShopProps {
+    childs: any;
+    model: IShopStore;
 }
 
-export default class Shop extends React.Component<IShopProps,null> {
+export default class Shop extends React.Component<IShopProps, null> {
     className: string = "Shop";
 
-    constructor(props){
+    constructor(props) {
         super(props);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
+    }
+
+    renderOverview() {
+        if (this.props && this.props.model && this.props.model.items) {
+            return <ShopOverview items={this.props.model.items}/>;
+        }
+
+        return null;
     }
 
     render() {
@@ -23,15 +36,15 @@ export default class Shop extends React.Component<IShopProps,null> {
 
         return (
             <div className={this.className}>
-                <ShopOverview items={this.props.model.items}/>
+                {this.renderOverview()}
                 <ReactCSSTransitionGroup
                     component="div"
                     className="animated-child"
-                    transitionName={ {
-                        enter: 'enter',
-                        leave: 'leave',
-                        appear: 'appear'
-                      } }
+                    transitionName={{
+                        enter: "enter",
+                        leave: "leave",
+                        appear: "appear"
+                    }}
                     transitionEnterTimeout={100}
                     transitionLeaveTimeout={100}>
                     {this.props.childs}

@@ -1,23 +1,21 @@
 import * as React from "react";
-import {Component} from "react";
 
 import ToggleMenuEvent from "../event/ToggleMenuEvent";
 import AppBar from "material-ui/AppBar";
+import shallowCompare from "react-addons-shallow-compare";
 
-
-interface IAppBarProps{
-    title:string;
-    clickEvent?:any;
-    leftIcon?:string;
-    disableEvent?:boolean;
+interface IAppBarProps {
+    title: string;
+    clickEvent?: any;
+    leftIcon?: string;
+    disableEvent?: boolean;
 }
 
-export default class LinguaAppBar extends Component<IAppBarProps, {}>{
+export default class LinguaAppBar extends React.Component<IAppBarProps, {}> {
+    private handleToggle(value: boolean) {
+        if (this.props.disableEvent) return;
 
-    private handleToggle(value:boolean){
-        if(this.props.disableEvent) return;
-
-        if (this.props.clickEvent){
+        if (this.props.clickEvent) {
             this.props.clickEvent.dispatch();
             return;
         }
@@ -25,12 +23,16 @@ export default class LinguaAppBar extends Component<IAppBarProps, {}>{
         new ToggleMenuEvent().dispatch();
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
+    }
+
     private dockerWidth(): number {
-        var calcWidth: number = window.innerWidth - 80;
+        let calcWidth: number = window.innerWidth - 80;
         return (calcWidth > 400) ? 400 : calcWidth;
     }
 
-    render(){
+    render() {
         return (
             <AppBar
                 title={this.props.title}

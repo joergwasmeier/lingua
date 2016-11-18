@@ -1,21 +1,23 @@
 import * as React from "react";
 
 import {Dialog as MDialog, CircularProgress} from "material-ui";
-import {observer} from "mobx-react";
+import shallowCompare from "react-addons-shallow-compare";
 
 
 /**
  * Created by creativecode on 07.10.16.
  */
 
-export interface IPopUp{
-    open:boolean;
-    title:string;
+export interface IPopUp {
+    open: boolean;
+    title: string;
 }
 
-
-@observer
 export default class PopUp extends React.Component<IPopUp,{}> {
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
+    }
+
     render() {
         return (
             <MDialog
@@ -23,18 +25,18 @@ export default class PopUp extends React.Component<IPopUp,{}> {
                 modal={true}
                 open={this.props.open}
             >
-            <div style={this.createStyle()}>
-                <CircularProgress/>
-            </div>
+                <div style={this.createStyle()}>
+                    <CircularProgress/>
+                </div>
 
             </MDialog>
         );
     }
 
-    createStyle(){
+    createStyle() {
         return {
-            textAlign:'center',
-            width:'100%'
+            textAlign: 'center',
+            width: '100%'
         }
     }
 }

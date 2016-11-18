@@ -1,26 +1,28 @@
-import FabaModel from "@fabalous/core/FabaModel";
 import ShopItemVo from "./vo/ShopItemVo";
-import {observable} from "mobx";
+import {store} from "../common/commonImStore";
 
-export class ShopStore {
-    @observable
-    items:Array<ShopItemVo>;
-
-    @observable
-    selectedItem:ShopItemVo;
-
-    @observable
-    shopItemVisible:boolean;
-
-    @observable
-    shopFilterVisible:boolean;
-
-    viewInit:boolean = false;
-    view:any;
+export interface IShopStore {
+    items: Array<ShopItemVo>;
+    selectedItem: ShopItemVo;
+    shopItemVisible: boolean;
+    shopFilterVisible: boolean;
+    viewInit: boolean;
+    view: any;
     item: any;
     filter: any;
-
-    init: boolean = true;
+    init: boolean;
 }
 
-export var shopStore:ShopStore = FabaModel.getStore('shopStore', ShopStore);
+export const shopImStore: IShopStore = {
+    items: [],
+    selectedItem: null,
+    shopItemVisible: false,
+    shopFilterVisible: false,
+    viewInit: false,
+    view: null,
+    item: null,
+    filter: null,
+    init: false
+};
+
+export var shopStore: IShopStore = store.appStore.shop;

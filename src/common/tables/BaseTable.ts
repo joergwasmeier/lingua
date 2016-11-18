@@ -4,14 +4,14 @@ import {RTable} from "rethinkdb";
  * Created by creativecode on 27.10.16.
  */
 
-export default class BaseTable{
+export default class BaseTable {
     table: RTable<any>;
 
-    constructor(){
+    constructor() {
 
     }
 
-    async createTableIfNotExist(tableName:string){
+    async createTableIfNotExist(tableName: string) {
         try {
             var tableList = await db.tableList().run(dbConnection);
 
@@ -21,10 +21,10 @@ export default class BaseTable{
                 if (item === tableName) found = true;
             }
 
-            if (!found){
+            if (!found) {
                 await db.tableCreate(tableName).run(dbConnection)
             }
-        } catch (e){
+        } catch (e) {
             console.error(e);
         }
     }

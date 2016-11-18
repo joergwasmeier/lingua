@@ -1,16 +1,15 @@
 import * as React from "react";
 import LinguaAppBar from "../../menu/view/AppBar";
-import {observer} from "mobx-react";
 import DashboardStore from "../DashboardStore";
 import EmptyDashboard from "./EmptyDashboard";
 import DashboardContent from "./DashboardContent";
 require("./Dashboard.less");
+import shallowCompare from "react-addons-shallow-compare";
 
 interface IDashboardProps {
     model: DashboardStore;
 }
 
-@observer
 export default class Dashboard extends React.Component<IDashboardProps,{}> {
     className: string = "Dashboard";
     vo: DashboardStore;
@@ -18,6 +17,10 @@ export default class Dashboard extends React.Component<IDashboardProps,{}> {
     constructor(props: IDashboardProps) {
         super(props);
         this.vo = this.props.model;
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
     }
 
     render() {

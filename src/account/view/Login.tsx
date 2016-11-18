@@ -1,23 +1,19 @@
 import * as React from "react";
 import {TextField} from "material-ui";
 import LoginEvent from "../event/LoginEvent";
-import LoginVo from "../vo/LoginVo";
-import AccountStore from "../AccountStore";
 import {ChangeAccountInputEventType, default as ChangeAccountInputEvent} from "../event/ChangeAccountInputEvent";
 import {Routes} from "../../A_Web";
 import ButtonSpinner from "../../common/widgets/buttonSpinner/ButtonSpinner";
-import shallowCompare from 'react-addons-shallow-compare';
+import shallowCompare from "react-addons-shallow-compare";
+import {ILoginIm} from "../vo/LoginVo";
 
 interface ILoginProps {
-    model: AccountStore;
+    model: ILoginIm;
 }
 
-export default class Login extends React.Component<ILoginProps,{}> {
-    vo: LoginVo;
-
+export default class Login extends React.Component<ILoginProps, {}> {
     constructor(props) {
         super(props);
-        this.vo = props.model.login;
         this.loginBtHandler = this.loginBtHandler.bind(this);
         this.userNameChange = this.userNameChange.bind(this);
         this.passWordChange = this.passWordChange.bind(this);
@@ -36,17 +32,17 @@ export default class Login extends React.Component<ILoginProps,{}> {
     }
 
     private loginBtHandler(): void {
-        new LoginEvent(this.vo.userName, this.vo.password, "/dashboard/").dispatch();
+        new LoginEvent(this.props.model.userName, this.props.model.password, "/dashboard/").dispatch();
     }
 
     private renderError() {
-        if (this.vo.errorCode <= 0) return null;
+        if (this.props.model.errorCode <= 0) return null;
 
         return (
             <div className="error">
                 This is an Error!
             </div>
-        )
+        );
     }
 
     render() {
@@ -57,7 +53,7 @@ export default class Login extends React.Component<ILoginProps,{}> {
                     floatingLabelText="Username"
                     floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
                     inputStyle={{color:"rgba(255,255,255,0.8)"}}
-                    value={this.vo.userName}
+                    value={this.props.model.userName}
                     onChange={this.userNameChange}
                 />
 
@@ -67,21 +63,22 @@ export default class Login extends React.Component<ILoginProps,{}> {
                     floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
                     inputStyle={{color:"rgba(255,255,255,0.8)"}}
                     type="password"
-                    value={this.vo.password}
+                    value={this.props.model.password}
                     onChange={this.passWordChange}
                 />
 
                 {this.renderError()}
-
-                <ButtonSpinner label="Login" touchTapHandler={this.loginBtHandler}/>
+                <ButtonSpinner label="Login" touchTapHandler={this.loginBtHandler}
+                               progress={this.props.model.progress}/>
 
                 <p className="linkSign">
-                    <a href={'#' + Routes.SIGN_UP.route}>Don´t have an account? Sign UP!</a>
+                    {this.props.model.progress}
+                    <a href={"#" + Routes.SIGN_UP.route}>Don´t have an account? Sign UP!</a>
                 </p>
                 <p className="linkSign">
-                    <a href={'#' + Routes.FORGOT_PASS.route}>Forogt your password? Come to the Dark side!</a>
+                    <a href={"#" + Routes.FORGOT_PASS.route}>Forogt your password? Come to the Dark side!</a>
                 </p>
             </div>
-        )
+        );
     }
 }

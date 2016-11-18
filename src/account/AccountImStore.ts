@@ -1,21 +1,32 @@
-import {ILoginImVo, LoginImVo} from "./vo/LoginImVo";
+import {ILoginIm, LoginIm} from "./vo/LoginVo";
+import {store} from "../common/commonImStore";
+import {UserVo, IUserVoIm} from "./vo/UserVo";
 
-/**
- * Created by creativecode on 20.04.16.
- */
-
-export interface IAccountImStore {
-    readonly moduleInit: boolean;
-    readonly login: ILoginImVo;
-    readonly signUp: any;
-    readonly forgotPass: any;
-    readonly view: any;
+export interface IAccountStore {
+    moduleInit: boolean;
+    login: ILoginIm;
+    signUp: any;
+    forgotPass: any;
+    view: any;
+    user: IUserVoIm;
+    loggedIn: boolean;
 }
 
-export const accountImStore: IAccountImStore = {
+export const accountImStore: IAccountStore = {
     moduleInit: false,
-    login: LoginImVo,
+    login: LoginIm,
     signUp: true,
     forgotPass: true,
-    view: null
+    view: null,
+    loggedIn: false,
+    user: UserVo.create()
+};
+
+store.set("account", accountImStore);
+
+export var accountStore: IAccountStore = store.appStore.account;
+
+export var viewCache = {
+    account: null,
+    login: null
 };

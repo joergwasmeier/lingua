@@ -19,5 +19,7 @@ export default class CommonStore {
     activeModule: string;
     activeView: string;
 
+    activeEvent: any;
+
 }
 export var commonStore:CommonStore = FabaModel.getStore('commonStore', CommonStore);

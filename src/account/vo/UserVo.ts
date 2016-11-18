@@ -1,21 +1,33 @@
-/**
- * Created by creativecode on 11.10.16.
- */
+export interface IUserVoIm {
+    id: string;
+    username: string;
+    password: string;
+    lastLogin: Date;
+    signedUp: Date;
+    emailValid: boolean;
+}
 
+export const UserIm: IUserVoIm = {
+    id: null,
+    username: null,
+    password: null,
+    lastLogin: null,
+    signedUp: null,
+    emailValid: null
+};
 
-export default class UserVo{
-    id:string;
-
-    username:string;
-    password:string;
-
-    lastLogin:Date;
-    signedUp:Date;
-
-    emailValid:boolean;
-
-
-    constructor(){
-
+export class UserVo {
+    static create() {
+        return {
+            id: null,
+            username: null,
+            password: null,
+            lastLogin: null,
+            signedUp: null,
+            emailValid: null
+        };
     }
 }
+
+
+

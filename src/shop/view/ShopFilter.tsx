@@ -5,31 +5,40 @@ import ArrowDownWard from "material-ui/svg-icons/navigation/close";
 import ShopFilterEvent from "../event/ShopFilterEvent";
 import {ShopFilterEventType} from "../event/ShopFilterEvent";
 import {TextField, FlatButton} from "material-ui";
+import shallowCompare from "react-addons-shallow-compare";
 
-interface IShopFilter{
-    visible:boolean
+interface IShopFilter {
+    visible: boolean;
 }
 
-require('./ShopFilter.less');
+require("./ShopFilter.less");
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 import Checkbox from 'material-ui/Checkbox';
 import Toggle from 'material-ui/Toggle';
 
-export default class ShopFilter extends React.Component<IShopFilter,null> {
-    refs:any;
+export default class ShopFilter extends React.Component<IShopFilter, null> {
+    refs: any;
 
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
-    render(){
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
+    }
+
+    clickHandler() {
+        new ShopFilterEvent(ShopFilterEventType.HIDE).dispatch();
+    }
+
+    render() {
         return (
-            <div className="filterModal ShopFilter" ref="elm">
+            <div className="filterModal ShopFilter">
                 <LinguaAppBar
                     title="Filter"
-                    leftIcon={<IconButton onClick={()=>{new ShopFilterEvent(ShopFilterEventType.HIDE).dispatch()}}>
+                    leftIcon={<IconButton onClick={this.clickHandler}>
                                 <ArrowDownWard/>
                               </IconButton>}
                     disableEvent="true"
@@ -42,7 +51,7 @@ export default class ShopFilter extends React.Component<IShopFilter,null> {
                     />
 
                     <FlatButton
-                                onClick={()=>{new ShopFilterEvent(ShopFilterEventType.HIDE).dispatch()}}>
+                        onClick={this.clickHandler}>
                         Anzeigen
                     </FlatButton>
 
@@ -56,22 +65,22 @@ export default class ShopFilter extends React.Component<IShopFilter,null> {
                     <Divider />
                     <List>
                         <Subheader>Priority Interruptions</Subheader>
-                        <ListItem primaryText="Events and reminders" rightToggle={<Toggle />} />
-                        <ListItem primaryText="Calls" rightToggle={<Toggle />} />
-                        <ListItem primaryText="Messages" rightToggle={<Toggle />} />
+                        <ListItem primaryText="Events and reminders" rightToggle={<Toggle />}/>
+                        <ListItem primaryText="Calls" rightToggle={<Toggle />}/>
+                        <ListItem primaryText="Messages" rightToggle={<Toggle />}/>
                     </List>
                     <Divider />
                     <List>
                         <Subheader>Hangout Notifications</Subheader>
-                        <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
-                        <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
-                        <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
-                        <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
-                        <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
-                        <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
-                        <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
-                        <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
-                        <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
+                        <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />}/>
+                        <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />}/>
+                        <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />}/>
+                        <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />}/>
+                        <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />}/>
+                        <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />}/>
+                        <ListItem primaryText="Notifications" leftCheckbox={<Checkbox />}/>
+                        <ListItem primaryText="Sounds" leftCheckbox={<Checkbox />}/>
+                        <ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />}/>
                     </List>
                 </div>
 

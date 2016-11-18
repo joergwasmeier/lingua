@@ -6,7 +6,7 @@
     "frw": "gulp frontend-watch",
     "baw": "gulp backend-watch",
     "test": "BABEL_ENV=test gulp t",
-    "build": "BABEL_ENV=production NODE_ENV=production  gulp build"
+    "build": "BABEL_ENV=production NODE_ENV=production gulp build"
   },
   "dependencies": {
     "babel-polyfill": "^6.16.0",

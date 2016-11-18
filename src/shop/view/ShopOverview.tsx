@@ -9,22 +9,23 @@ import Icon1 from "material-ui/svg-icons/content/filter-list";
 import ShopItemVo from "../vo/ShopItemVo";
 import SelectShopItemEvent from "../event/SelectShopItemEvent";
 
+import shallowCompare from "react-addons-shallow-compare";
+
 interface IShopOverview {
-    items: Array<ShopItemVo>
+    items: Array<ShopItemVo>;
 }
 
-export default class ShopOverview extends Component<IShopOverview,{}> {
+export default class ShopOverview extends Component<IShopOverview, {}> {
     constructor(props) {
         super(props);
     }
 
-    shouldComponentUpdate(old: IShopOverview) {
-        if (this.props && this.props.items &&
-            old.items.length === this.props.items.length) {
-            return false;
-        }
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
+    }
 
-        return true;
+    clickHandler() {
+        new ShopFilterEvent(ShopFilterEventType.SHOW).dispatch();
     }
 
     render() {
@@ -34,7 +35,7 @@ export default class ShopOverview extends Component<IShopOverview,{}> {
                 <CardList className="itemList" items={this.props.items} clickEvent={new SelectShopItemEvent}/>
                 <FloatingActionButton
                     className="floatingActionButton"
-                    onClick={()=>new ShopFilterEvent(ShopFilterEventType.SHOW).dispatch()}
+                    onClick={this.clickHandler}
                 >
                     <Icon1 color="#ffffff"/>
                 </FloatingActionButton>

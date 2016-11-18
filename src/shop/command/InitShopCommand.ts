@@ -2,62 +2,57 @@ import * as React from "react";
 import FabaCommand from "@fabalous/core/FabaCommand";
 import InitShopEvent from "../event/InitShopEvent";
 import GetShopItemsEvent from "../event/GetShopItemsEvent";
-import {shopStore} from "../ShopStore";
 import Shop from "../view/Shop";
-import {PopUpEventType, default as PopUpEvent} from "../../layout/event/PopUpEvent";
 import ShopFilter from "../view/ShopFilter";
 import ShopItem from "../view/ShopItem";
 import GetShopItemsDetailsEvent from "../event/GetShopItemsDetailsEvent";
+import {store} from "../../common/commonImStore";
 
 export default class InitShopCommand extends FabaCommand {
+
     async execute(event: InitShopEvent) {
-        console.time("InitShopCommand");
+        console.log("execute");
 
-        if (!shopStore.view) {
-            shopStore.view = React.createElement(Shop, {model: shopStore});
-        }
-
-        console.timeEnd("InitShopCommand");
         switch (event.viewName) {
             case "shopfilter":
-                event.view = React.cloneElement(shopStore.view, {
-                    childs: React.createElement(ShopFilter, {model: shopStore}),
-                    model: shopStore
+                event.view = React.createElement(Shop, {
+                    childs: React.createElement(ShopFilter, {model: store.appStore.shop}),
+                    model: store.appStore.shop
                 });
                 event.callBack();
                 return;
 
             case "shopitem":
-                console.time("shopItem");
-                await new GetShopItemsDetailsEvent("8dfsdfdsf3423424").dispatch();
+                if (!store.appStore.shop.selectedItem || store.appStore.shop.selectedItem.id !== "8dfsdfdsf3423424") {
+                    new GetShopItemsDetailsEvent("8dfsdfdsf3423424").dispatch();
 
-                event.view = React.cloneElement(shopStore.view, {
-                    childs: React.createElement(ShopItem, {model: shopStore}),
-                    model: shopStore
+                    return;
+                }
+
+                event.view = React.createElement(Shop, {
+                    childs: React.createElement(ShopItem, {model: store.appStore.shop}),
+                    model: store.appStore.shop
                 });
 
                 event.callBack();
-                console.timeEnd("shopItem");
                 return;
+            default:
+                event.view = React.createElement(Shop, {model: store.appStore.shop});
         }
 
-        shopStore.view = React.cloneElement(shopStore.view, {
-            childs: null,
-            model: shopStore
-        });
-
-        if (!shopStore.init) {
-            event.view = shopStore.view;
+        if (!store.appStore.shop) {
+            event.view = null;
             event.callBack();
             return;
         }
 
-        new PopUpEvent(PopUpEventType.SHOW).dispatch();
-        event.view = shopStore.view;
-        event.callBack();
-        await new GetShopItemsEvent().dispatch();
-        new PopUpEvent(PopUpEventType.HIDE).dispatch();
+        if (!store.appStore.shop.init) {
+            event.callBack();
+            new GetShopItemsEvent().dispatch();
+            store.set("shop.init", true);
+            return;
+        }
 
-        shopStore.init = false;
+        event.callBack();
     }
 }

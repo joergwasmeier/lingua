@@ -25,27 +25,63 @@ import {store} from "./common/commonImStore";
 
 declare var module;
 
-interface IRoutes{
-    route:string;
-    module:any;
-    view?:string;
+export interface IRoutes {
+    route: string;
+    module: any;
+    view?: string;
 }
 
-export class Routes{
-    static INDEX:IRoutes = {route:"/", module: async ()=>{return System.import("./account/index")}};
-    static LOGIN:IRoutes = {route:"/login/", module: async ()=>{return System.import("./account/index")}, view:"login"};
-    static FORGOT_PASS:IRoutes = {route:"/forgotpass/", module: async ()=>{return System.import("./account/index")}, view:"forgotpass"};
-    static SIGN_UP:IRoutes = {route:"/signup/", module:async ()=>{return System.import("./account/index")}, view:"signup"};
-    static DASBOARD:IRoutes = {route:"/dashboard/", module:async ()=>{return System.import("./dashboard/index")}};
+export class Routes {
+    static INDEX: IRoutes = {
+        route: "/", module: async() => {
+            return System.import("./account/index");
+        }
+    };
+    static LOGIN: IRoutes = {
+        route: "/login/", module: async() => {
+            return await Routes.INDEX.module();
+        }, view: "login"
+    };
+    static FORGOT_PASS: IRoutes = {
+        route: "/forgotpass/", module: async() => {
+            return await Routes.INDEX.module();
+        }, view: "forgotpass"
+    };
+    static SIGN_UP: IRoutes = {
+        route: "/signup/", module: async() => {
+            return await Routes.INDEX.module();
+        }, view: "signup"
+    };
+    static DASBOARD: IRoutes = {
+        route: "/dashboard/", module: async() => {
+            return System.import("./dashboard/index");
+        }
+    };
 
     // Store
-    static STORE:IRoutes = {route:"/shop/", module:async ()=>{return System.import("./shop/index")}};
-    static STORE_ITEM: IRoutes = {route: "/shop/:id", module:async ()=>{return System.import("./shop/index")}, view: "shopitem"};
-    static STORE_ITEM_TAB:IRoutes = {route:"/shop/:id/:tab", module:async ()=>{return System.import("./shop/index")}, view:"shopitem"};
-    static STORE_FILTER: IRoutes = {route: "/shop/filter/", module:async ()=>{return System.import("./shop/index")}, view: "shopfilter"};
+    static STORE: IRoutes = {
+        route: "/shop/", module: async() => {
+            return System.import("./shop/index");
+        }
+    };
+    static STORE_ITEM: IRoutes = {
+        route: "/shop/:id", module: async() => {
+            return await Routes.STORE.module();
+        }, view: "shopitem"
+    };
+    static STORE_ITEM_TAB: IRoutes = {
+        route: "/shop/:id/:tab", module: async() => {
+            return await Routes.STORE.module();
+        }, view: "shopitem"
+    };
+    static STORE_FILTER: IRoutes = {
+        route: "/shop/filter/", module: async() => {
+            return await Routes.STORE.module();
+        }, view: "shopfilter"
+    };
 
-    static getRoutes(){
-        var routes = [
+    static getRoutes() {
+        let routes = [
             Routes.INDEX,
             Routes.LOGIN,
             Routes.FORGOT_PASS,
@@ -63,7 +99,7 @@ export class Routes{
 
 export default class A_Web extends FabaRuntimeWeb {
     history = createHashHistory();
-    listener:any;
+    listener: any;
     layout: any;
 
     constructor() {
@@ -79,36 +115,35 @@ export default class A_Web extends FabaRuntimeWeb {
             });
         }
 
-        if (commonStore.appInit !== true){
+        if (store.appStore.appInit !== true) {
             let injectTapEventPlugin = require("react-tap-event-plugin");
             injectTapEventPlugin();
         }
 
-        store.set('appInit', true);
-        commonStore.appInit = true;
+        store.set("appInit", true);
 
         let host: string = window.location.host + "/api/";
-        if (host == "192.168.0.31:8080/api/") host = "192.168.0.31:3120/";
-        if (host == "localhost:8080/api/") host = "localhost:3120/";
+        if (host === "192.168.0.31:8080/api/") host = "192.168.0.31:3120/";
+        if (host === "localhost:8080/api/") host = "localhost:3120/";
 
         const protocol = window.location.protocol;
 
         FabaCore.addMediator(MenuMediator);
         FabaCore.addMediator(LayoutMediator);
 
-        FabaRuntimeWeb.addServerEndPoint(new FabaApiConnection(protocol+"//"+host), "api");
-
-        //this.render();
+        FabaRuntimeWeb.addServerEndPoint(new FabaApiConnection(protocol + "//" + host), "api");
 
         this.listener = this.history.listen((location) => {
             this.handleRoutes(location.pathname);
         });
 
-        const str: string = window.location.hash.replace("#", '');
+        const str: string = window.location.hash.replace("#", "");
         this.handleRoutes(str);
 
-        appStoreCourser.on('update', () =>{
-           // this.render();
+        appStoreCourser.on("update", (e) => {
+            store.appStore = e.data.currentData;
+//            console.log("update currentData", e.data.currentData);
+            //          console.log("update previousData", e.data.previousData);
             this.loadModule(commonStore.activeModule, commonStore.activeView);
         });
     }
@@ -116,22 +151,23 @@ export default class A_Web extends FabaRuntimeWeb {
     render(child?) {
         console.time("renderTime");
 
-        if (document.getElementById('container')) {
+        if (document.getElementById("container")) {
             if (this.layout) {
                 if (child) {
-                    this.layout = React.cloneElement(this.layout, {childs: child, model:store.appStore})
+                    this.layout = React.createElement(Layout, {childs: child, model: store.appStore});
                 } else {
-                    this.layout = React.cloneElement(this.layout, {model:store.appStore})
+                    this.layout = React.createElement(Layout, {model: store.appStore});
+                    return;
                 }
             } else {
-                this.layout = React.createElement(Layout, {model:store.appStore});
+                this.layout = React.createElement(Layout, {model: store.appStore});
+                return;
             }
 
-            ReactDOM.render(this.layout, document.getElementById('container'));
+            ReactDOM.render(this.layout, document.getElementById("container"));
         }
 
         console.timeEnd("renderTime");
-
     }
 
     // TODO: Split path and check for id from behind to forward( test/testitem/:id/:tab
@@ -139,24 +175,22 @@ export default class A_Web extends FabaRuntimeWeb {
     // :id is no path(:)
     // testitem is path (!:)
 
-    handleRoutes(pathname:string){
+    handleRoutes(pathname: string) {
 
         console.time("moduleFinish");
         console.time("loadModule");
 
         // Split path
-        var path = pathname.split("/");
+        let path = pathname.split("/");
 
         // Check if firstname fits
-
 
         // Check if secondname fits
 
         // Check if secondname is : placeholder
-        for (var i = 0; i < Routes.getRoutes().length; i++) {
-            var obj = Routes.getRoutes()[i];
-            if (pathname === obj.route){
-
+        for (let i = 0; i < Routes.getRoutes().length; i++) {
+            let obj = Routes.getRoutes()[i];
+            if (pathname === obj.route) {
                 this.loadModule(obj.module, obj.view);
                 return;
             }
@@ -165,33 +199,20 @@ export default class A_Web extends FabaRuntimeWeb {
         this.loadModule(Routes.INDEX.module, Routes.INDEX.view);
     }
 
-    // Timeing ( cahceing)
-    async loadModule(loadfun:any, view?:string){
-
-        var comp = await loadfun();
-        FabaCore.addMediator(comp.mediator);
-
-        /*
-        if (commonStore.activeModule === loadfun &&
-            commonStore.activeView === loadfun) {
-            return;
-        }
-        */
-
+    // Timeing (cacheing)
+    async loadModule(loadfun: any, view?: string) {
         commonStore.activeModule = loadfun;
         commonStore.activeView = view;
 
-        var t:any = new comp.initEvent;
-        t.viewName = view;
-        console.timeEnd("loadModule");
-        console.time("dispatch");
-        var k = await t.dispatch();
-        console.timeEnd("dispatch");
-        this.render(k.view);
-        console.timeEnd("moduleFinish");
+        if (!loadfun) return;
+        let comp = await loadfun();
+        FabaCore.addMediator(comp.mediator);
 
+        let t: any = commonStore.activeEvent = new comp.initEvent;
+        t.viewName = view;
+        let k = await t.dispatch();
+        this.render(k.view);
     }
 }
 
 new A_Web();
-

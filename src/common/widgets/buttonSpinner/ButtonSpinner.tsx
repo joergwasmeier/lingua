@@ -4,14 +4,14 @@ import {FlatButton} from "material-ui";
 var classNames = require('classnames');
 
 export interface IButtonSpinnerProps {
-    touchTapHandler: any,
-    progress: number,
-    label: string
+    touchTapHandler: any;
+    progress: number;
+    label: string;
 }
 
 export default class ButtonSpinner extends React.Component<IButtonSpinnerProps,null> {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     render() {

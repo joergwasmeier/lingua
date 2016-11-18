@@ -8,7 +8,7 @@ export default class PopUpCommand extends FabaCommand {
         switch (event.type){
             case PopUpEventType.SHOW:
                 layoutStore.showPopUpTimeStamp = Date.now();
-                layoutStore.showPopUp = true;
+
                 break;
 
             case PopUpEventType.HIDE:
@@ -19,7 +19,7 @@ export default class PopUpCommand extends FabaCommand {
                     return;
                 }
 
-                layoutStore.showPopUp = false;
+
                 break;
         }
     }

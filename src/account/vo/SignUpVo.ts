@@ -1,32 +1,38 @@
-import {observable} from "mobx/lib/mobx";
+export interface ISignUpIm {
+    readonly userName: string;
+    readonly password: string;
+    readonly errorCode: number;
+}
 
-export default class SignUpVo {
+export const SignUpIm: ISignUpIm = {
+    userName: "",
+    password: "",
+    errorCode: 0
+};
 
-  @observable
-  userName:string = "";
+export class SignUpVo {
+    data: ISignUpIm = SignUpIm;
 
-  @observable
-  password:string = "";
-
-  @observable
-  error:boolean = false;
-
-  userNameIsValid():boolean{
-    if (this.userName.length >= 8) return true;
-
-    return false;
-  }
-
-  passWordIsValid():boolean{
-    if (this.password.length >= 8) return true;
-
-    return false;
-  }
-
-  public createMockData(){
-    if(TEST){
-      this.userName = "info@joergwasmeier.de";
-      this.password = "test12345";
+    constructor(data: ISignUpIm) {
+        this.data = data;
     }
-  }
+
+    userNameIsValid(): boolean {
+        if (this.data.userName.length >= 8) return true;
+
+        return false;
+    }
+
+    passWordIsValid(): boolean {
+        if (this.data.password.length >= 8) return true;
+
+        return false;
+    }
+
+    public createMockData() {
+        if (TEST) {
+            // this.data.userName = "info@joergwasmeier.de";
+            // this.data.password = "test12345";
+        }
+    }
 }

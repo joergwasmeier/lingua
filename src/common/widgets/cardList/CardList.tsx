@@ -3,9 +3,16 @@ import ItemList from "../itemList/ItemList";
 import {Divider} from "material-ui";
 import {Card, CardHeader, CardMedia, CardTitle, CardText} from "material-ui";
 
+import shallowCompare from "react-addons-shallow-compare";
+
+
 export default class CardList extends ItemList{
     constructor(props){
-        super(props)
+        super(props);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
     }
 
     renderItems(): Array<any> {
@@ -36,6 +43,10 @@ class CardListItem extends React.Component<IItemCardItemProps,{}>{
     private itemClick() {
         this.props.clickEvent.item = this.props.item;
         this.props.clickEvent.dispatch();
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
     }
 
     render(){

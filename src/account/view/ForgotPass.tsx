@@ -1,16 +1,15 @@
 import * as React from "react";
 import {FlatButton, TextField} from "material-ui";
-import AccountStore from "../AccountStore";
 import ForgotPassVo from "../vo/ForgotPassVo";
-import {observer} from "mobx-react";
 import ForgotPassEvent from "../event/ForgotPassEvent";
 import {ChangeAccountInputEventType, default as ChangeAccountInputEvent} from "../event/ChangeAccountInputEvent";
+import shallowCompare from "react-addons-shallow-compare";
 
 interface IForgotPass {
-    model: AccountStore;
+    model: any;
 }
 
-@observer
+
 export default class ForgotPass extends React.Component<{},{}> {
     vo: ForgotPassVo;
     props: IForgotPass;
@@ -18,9 +17,13 @@ export default class ForgotPass extends React.Component<{},{}> {
     constructor(props) {
         super(props);
         this.vo = this.props.model.forgotPass;
-       
+
         this.forgotPassBtHandler = this.forgotPassBtHandler.bind(this);
         this.userNameChange = this.userNameChange.bind(this);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
     }
 
     private forgotPassBtHandler() {
@@ -59,7 +62,7 @@ export default class ForgotPass extends React.Component<{},{}> {
                     <a href="#/login/">WAIT!! I khnow it go back!</a>
                 </p>
             </div>
-        )
+        );
     }
 
     private renderSuccess() {
