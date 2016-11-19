@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Tabs, Tab, RaisedButton, Checkbox, IconButton} from "material-ui";
+import {Tabs, Tab, IconButton} from "material-ui";
 
 import ArrowBack from "material-ui/svg-icons/navigation/arrow-back";
 import LinguaAppBar from "../../menu/view/AppBar";
@@ -15,6 +15,9 @@ import Tab1 from "./itemContent/Tab1";
 import Tab2 from "./itemContent/Tab2";
 import Tab3 from "./itemContent/Tab3";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
+import ShopItemUiEvents from "../event/ShopItemUiEvents";
+import {ShopItemUiEventsTypes} from "../event/ShopItemUiEvents";
+import {store} from "../../common/commonImStore";
 
 interface IShopItemProps {
     item: ShopItemVo;
@@ -37,12 +40,12 @@ export default class ShopItem extends FabaWebBaseComponent<IShopItemProps> {
         );
     }
 
-    handleChangeTabs = (value) => {
-
+    handleChangeTabs = (value: number) => {
+        new ShopItemUiEvents(ShopItemUiEventsTypes.CHANGE_INDEX, value).dispatch();
     };
 
-    handleChangeIndex = (index) => {
-
+    handleChangeIndex = (index: number) => {
+        new ShopItemUiEvents(ShopItemUiEventsTypes.CHANGE_INDEX, (index)).dispatch();
     };
 
     hideHandler() {
@@ -58,13 +61,13 @@ export default class ShopItem extends FabaWebBaseComponent<IShopItemProps> {
                     disableEvent="true"
                 />
                 <div className="tabs">
-                    <Tabs value={0}>
+                    <Tabs value={store.appStore.shop.shopItemTabIndex}>
                         <Tab label="tab n°1" value={0} onClick={this.handleChangeTabs.bind(null, 0)}/>
                         <Tab label="tab n°2" value={1} onClick={this.handleChangeTabs.bind(null, 1)}/>
                         <Tab label="tab n°3" value={2} onClick={this.handleChangeTabs.bind(null, 2)}/>
                     </Tabs>
 
-                    <SwipeableViews index={0} onChangeIndex={this.handleChangeIndex}>
+                    <SwipeableViews index={store.appStore.shop.shopItemTabIndex} onChangeIndex={this.handleChangeIndex}>
                         <Tab1 />
                         <Tab2 />
                         <Tab3 />

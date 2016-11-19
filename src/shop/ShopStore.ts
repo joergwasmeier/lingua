@@ -7,6 +7,7 @@ export interface IShopStore {
     shopItemVisible: boolean;
     shopFilterVisible: boolean;
     viewInit: boolean;
+    shopItemTabIndex: number;
     view: any;
     item: any;
     filter: any;
@@ -18,6 +19,7 @@ export const shopImStore: IShopStore = {
     selectedItem: null,
     shopItemVisible: false,
     shopFilterVisible: false,
+    shopItemTabIndex: 0,
     viewInit: false,
     view: null,
     item: null,
