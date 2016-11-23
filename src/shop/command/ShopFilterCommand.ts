@@ -1,7 +1,7 @@
 import FabaCommand from "@fabalous/core/FabaCommand";
 import ShowShopFilterEvent from "../event/ShopFilterEvent";
 import {ShopFilterEventType} from "../event/ShopFilterEvent";
-import {Routes} from "../../A_Web";
+import Routes from "../../Routes";
 
 export default class ShowShopFilterCommand extends FabaCommand {
     async execute(event: ShowShopFilterEvent) {

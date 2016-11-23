@@ -7,7 +7,7 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
         if (CLIENT) {
             super.registerCommands();
 
-            this.addCommand(require("./event/InitAccountEvent"), require("./command/InitAccountCommand"));
+            this.addCommand(require("./event/InitAccountEvent"), require("./command/InitAccountCommand.tsx"));
             this.addCommand(require("./event/CheckLoginStatusEvent"), require("./command/CheckLoginStatusCommand"));
 
             this.addCommand(require("./event/ChangeAccountInputEvent"), require("./command/ChangeAccountInputCommand"));
@@ -16,7 +16,6 @@ export default class AccountMediator extends FabaMediator implements IFabaMediat
             this.addCommand(require("./event/LoginEvent"), require("./command/LoginCommand"));
 
             this.addCommand(require("./event/ForgotPassEvent"), require("./command/ForgotPassCommand"));
-
             this.addCommand(require("./event/AccountUiEvent"), require("./command/AccountUiCommand"));
         }
     }

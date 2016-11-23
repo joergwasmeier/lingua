@@ -4,7 +4,7 @@ import {IShopStore} from "../ShopStore";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 const ReactCSSTransitionGroup = require("react-addons-css-transition-group"); // ES5 with npm
 
-require("./Shop.less");
+//require("./Shop.less");
 
 interface IShopProps {
     childs: any;

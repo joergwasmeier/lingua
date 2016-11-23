@@ -1,0 +1,11 @@
+- Offline (Serviceworker / manifest)
+-- Kurse lokal speichern
+-- Kurse syncen mit server (serverid / lokaleid)
+
+- Less stylsheets zu js code
+- Serverrendering
+- Dll Webpack
+- Chunk size debuggen
+- Phonegap erstellen
+- Passport für login verwenden
+- Websocket anbindung

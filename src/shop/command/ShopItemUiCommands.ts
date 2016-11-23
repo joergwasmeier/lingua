@@ -8,8 +8,6 @@ export default class ShopItemUiCommands extends FabaCommand {
         switch (event.type) {
             case ShopItemUiEventsTypes.CHANGE_INDEX:
                 store.set("shop.shopItemTabIndex", event.index);
-
-                console.log(store.appStore);
                 break;
         }
     }

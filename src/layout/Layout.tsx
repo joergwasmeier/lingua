@@ -4,14 +4,15 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Menu from "../menu/view/Menu";
 import Dialog from "./view/Dialog";
 import PopUp from "./view/PopUp";
-import {layoutStore} from "./LayoutStore";
-import {IcommonStore} from "../common/commonImStore";
+import {IcommonStore, store} from "../common/commonImStore";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
+import ChangeMediaQueryEvent from "./event/ChangeMediaQueryEvent";
+import BottomMenu from "./view/BottomMenu";
 
 const ReactCSSTransitionGroup = require("react-addons-css-transition-group"); // ES5 with npm
 
-require("./Layout.less");
-require("./../common/style/Common.less");
+//require("./Layout.less");
+//require("./../common/style/Common.less");
 
 interface ILayoutProps {
     model: IcommonStore;
@@ -21,10 +22,10 @@ export default class Layout extends FabaWebBaseComponent<ILayoutProps>{
     className: string = "App";
     props: any;
 
-    _mql;
-    _dql;
+    _mql: any;
+    _dql: any;
 
-    theme;
+    theme: any;
 
     constructor(props) {
         super(props);
@@ -43,8 +44,8 @@ export default class Layout extends FabaWebBaseComponent<ILayoutProps>{
     }
 
     updateMatches() {
-        layoutStore.landscape = this._mql.matches;
-        layoutStore.mobile = this._dql.matches;
+        console.log("updateMatches");
+        new ChangeMediaQueryEvent(this._mql.matches, this._dql.matches).dispatch();
     }
 
     render() {
@@ -56,7 +57,9 @@ export default class Layout extends FabaWebBaseComponent<ILayoutProps>{
                     {this.props.childs}
 
                     <Dialog open={false}/>
-                    <PopUp open={layoutStore.showPopUp}/>
+                    <PopUp open={this.props.model.layout.showPopUp}/>
+
+                    <BottomMenu />
                 </div>
             </MuiThemeProvider>
         )

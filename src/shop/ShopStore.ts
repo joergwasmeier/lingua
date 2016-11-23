@@ -26,5 +26,3 @@ export const shopImStore: IShopStore = {
     filter: null,
     init: false
 };
-
-export var shopStore: IShopStore = store.appStore.shop;

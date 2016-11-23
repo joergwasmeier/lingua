@@ -3,7 +3,6 @@ import {IFabaCommand} from "@fabalous/core/IFabaCommand";
 import GetShopItemsEvent from "../event/GetShopItemsEvent";
 import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 import BuyShopItemEvent from "../event/BuyShopItemEvent";
-import {shopStore} from "../ShopStore";
 import {BuyShopItemEventResult} from "../event/BuyShopItemEvent";
 
 export default class BuyShopItemCommand extends FabaCommand implements IFabaCommand{

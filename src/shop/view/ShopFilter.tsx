@@ -10,7 +10,7 @@ interface IShopFilter {
     visible: boolean;
 }
 
-require("./ShopFilter.less");
+//require("./ShopFilter.less");
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
@@ -26,6 +26,7 @@ export default class ShopFilter extends FabaWebBaseComponent<IShopFilter> {
     }
 
     clickHandler() {
+        console.log("clickhandler");
         new ShopFilterEvent(ShopFilterEventType.HIDE).dispatch();
     }
 
@@ -41,9 +42,7 @@ export default class ShopFilter extends FabaWebBaseComponent<IShopFilter> {
                 />
                 <div className="container">
                     <TextField
-                        className="textField"
-                        floatingLabelText="Suchbegriff2"
-
+                        floatingLabelText="Suchbegriff"
                     />
 
                     <FlatButton

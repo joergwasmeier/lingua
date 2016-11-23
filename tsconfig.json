@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "es6",
-        "sourceMap": true,
+      "sourceMap": false,
         "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
@@ -21,8 +21,9 @@
         "forkChecker":true,
         "forkCheckerSilent":true,
         "useBabel": false,
-        "useCache":true,
-        "skipDeclarationFilesCheck":true
+      "useCache": true,
+      "skipDeclarationFilesCheck": true,
+      "useprecompiledfiles": true
     },
     "exclude": ["node_modules"]
 }

@@ -1,18 +1,13 @@
-import FabaModel from "@fabalous/core/FabaModel";
-import {observable} from "mobx";
-
-export default class LayoutStore {
-
-    @observable
-    showPopUp:boolean = false;
-
-    @observable
+export interface ILayoutSore {
+    showPopUp: boolean;
     landscape:boolean;
-
-    @observable
-    mobile:boolean = true;
-
+    mobile: boolean;
     showPopUpTimeStamp:number;
 }
 
-export var layoutStore:LayoutStore = FabaModel.getStore('layoutStore', LayoutStore);
+export const LayoutStore: ILayoutSore = {
+    showPopUp: false,
+    landscape: false,
+    mobile: true,
+    showPopUpTimeStamp: 0
+};

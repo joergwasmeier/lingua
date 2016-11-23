@@ -2,16 +2,15 @@ import * as React from "react";
 import {Drawer, MenuItem, Divider, Subheader, ListItem} from "material-ui";
 import ActionInfo from "material-ui/svg-icons/action/info";
 import ToggleMenuEvent from "../event/ToggleMenuEvent";
-import {Routes} from "../../A_Web";
-import {store} from "../../common/commonImStore";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
+import Routes from "../../Routes";
 
 interface IMenuProps {
     open: boolean;
     history: any;
 }
 
-require("./Menu.less");
+//require("./Menu.less");
 
 export default class Menu extends FabaWebBaseComponent<IMenuProps> {
     className: string = "Menu";

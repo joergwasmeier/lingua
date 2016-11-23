@@ -3,12 +3,12 @@ import FabaCommand from "@fabalous/core/FabaCommand";
 import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 import LoginEvent from "../event/LoginEvent";
 import {FabaEventResultType} from "@fabalous/core/FabaEvent";
-import {accountStore} from "../AccountImStore";
+import {store} from "../../common/commonImStore";
 
 export default class SignUpCommand extends FabaCommand {
     async execute(event: SignUpEvent) {
         if (!event.checkUserData()) {
-            accountStore.signUp.error = true;
+            store.set("account.signUp.errorCode", 0);
             return;
         }
 

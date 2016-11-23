@@ -2,10 +2,10 @@ import * as React from "react";
 import {TextField} from "material-ui";
 import LoginEvent from "../event/LoginEvent";
 import {ChangeAccountInputEventType, default as ChangeAccountInputEvent} from "../event/ChangeAccountInputEvent";
-import {Routes} from "../../A_Web";
 import ButtonSpinner from "../../common/widgets/buttonSpinner/ButtonSpinner";
 import {ILoginIm} from "../vo/LoginVo";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
+import Routes from "../../Routes";
 
 interface ILoginProps {
     model: ILoginIm;

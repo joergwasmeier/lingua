@@ -5,6 +5,8 @@ export default class LayoutMediator extends FabaMediator implements IFabaMediato
         if (CLIENT) {
             super.registerCommands();
             this.addCommand(require("./event/PopUpEvent"), require("./command/PopUpCommand"));
+            this.addCommand(require("./event/ChangeMediaQueryEvent"), require("./command/ChangeMediaQueryCommand"));
+
         }
     }
 }

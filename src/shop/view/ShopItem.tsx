@@ -6,10 +6,9 @@ import LinguaAppBar from "../../menu/view/AppBar";
 import ShopItemVo from "../vo/ShopItemVo";
 import HideShopItemEvent from "../event/HideShopItemEvent";
 import SwipeableViews from "react-swipeable-views";
-
 import {IShopStore} from "../ShopStore";
 
-require("./ShopItem.less");
+//require("./ShopItem.less");
 
 import Tab1 from "./itemContent/Tab1";
 import Tab2 from "./itemContent/Tab2";

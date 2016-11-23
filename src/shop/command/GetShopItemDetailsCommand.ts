@@ -6,7 +6,7 @@ import {store} from "../../common/commonImStore";
 export default class GetShopItemDetailsCommand extends FabaCommand {
     async execute(event: GetShopItemsDetailsEvent) {
         // Check if there is an itme in the list
-        if (!store.appStore.shop.items) {
+        if (store.appStore.shop.items.length === 0) {
             await new GetShopItemsEvent().dispatch();
         }
 

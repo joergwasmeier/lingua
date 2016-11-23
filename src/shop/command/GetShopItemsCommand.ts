@@ -6,12 +6,10 @@ import {store} from "../../common/commonImStore";
 
 export default class GetShopItemsCommand extends FabaCommand implements IFabaCommand {
     async execute(event: GetShopItemsEvent) {
-        console.log("execute");
         FabaRuntimeWeb.sendToEndpoint(event, "");
     }
 
     result(event: GetShopItemsEvent): any {
-        console.log("result GetShopItemsEvent");
         store.set("shop.items", event.result);
         event.callBack();
     }

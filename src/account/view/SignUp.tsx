@@ -4,20 +4,18 @@ import SignUpEvent from "../event/SignUpEvent";
 import ChangeAccountInputEvent from "../event/ChangeAccountInputEvent";
 import {ChangeAccountInputEventType} from "../event/ChangeAccountInputEvent";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
+import {ISignUpIm} from "../vo/SignUpVo";
 
 interface ISignUpProps {
-    model: any;
+    model: ISignUpIm;
 }
 
 export default class SignUp extends FabaWebBaseComponent<ISignUpProps>{
     className: string = "Home";
     props: ISignUpProps;
-    vo: any;
-
 
     constructor(props) {
         super(props);
-        this.vo = this.props.model.signUp;
 
         this.signUpBtHandler = this.signUpBtHandler.bind(this);
         this.userNameChange = this.userNameChange.bind(this);
@@ -33,7 +31,7 @@ export default class SignUp extends FabaWebBaseComponent<ISignUpProps>{
     }
 
     private signUpBtHandler(): void {
-        new SignUpEvent(this.vo.userName, this.vo.password).dispatch();
+        new SignUpEvent(this.props.model.userName, this.props.model.password).dispatch();
     }
 
     render() {
@@ -44,7 +42,7 @@ export default class SignUp extends FabaWebBaseComponent<ISignUpProps>{
                     floatingLabelText="E-Mail"
                     floatingLabelStyle={{color:"rgba(255,255,255,0.8)"}}
                     inputStyle={{color:"rgba(255,255,255,0.8)"}}
-                    value={this.vo.userName}
+                    value={this.props.model.userName}
                     onChange={this.userNameChange}
                 />
 
@@ -54,7 +52,7 @@ export default class SignUp extends FabaWebBaseComponent<ISignUpProps>{
                     floatingLabelStyle={{color:"rgba(255,255,255,0.7)"}}
                     inputStyle={{color:"rgba(255,255,255,0.8)"}}
                     type="password"
-                    value={this.vo.password}
+                    value={this.props.model.password}
                     onChange={this.passWordChange}
 
                 />

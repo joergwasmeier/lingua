@@ -3,7 +3,7 @@ import LinguaAppBar from "../../menu/view/AppBar";
 import DashboardStore from "../DashboardStore";
 import EmptyDashboard from "./EmptyDashboard";
 import DashboardContent from "./DashboardContent";
-require("./Dashboard.less");
+//require("./Dashboard.less");
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 interface IDashboardProps {

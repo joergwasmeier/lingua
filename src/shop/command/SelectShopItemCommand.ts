@@ -1,15 +1,14 @@
 import FabaCommand from "@fabalous/core/FabaCommand";
 import SelectShopItemEvent from "../event/SelectShopItemEvent";
-import {Routes} from "../../A_Web";
 import {store} from "../../common/commonImStore";
+import {ShopItemUiEventsTypes, default as ShopItemUiEvents} from "../event/ShopItemUiEvents";
+import Routes from "../../Routes";
 
 export default class SelectShopItemCommand extends FabaCommand{
-    constructor() {
-        super();
-    }
+    async execute(event: SelectShopItemEvent) {
+        new ShopItemUiEvents(ShopItemUiEventsTypes.CHANGE_INDEX, 0).dispatch();
 
-    execute(event: SelectShopItemEvent): any {
         store.set("shop.selectedItem", event.item);
-        window.location.assign("#" + Routes.STORE_ITEM.route);
+        window.location.assign("#" + Routes.STORE.route + "/" + event.item.id);
     }
 }

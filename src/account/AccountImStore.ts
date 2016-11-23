@@ -1,32 +1,31 @@
 import {ILoginIm, LoginIm} from "./vo/LoginVo";
-import {store} from "../common/commonImStore";
+import {ISignUpIm, SignUpIm} from "./vo/SignUpVo";
 import {UserVo, IUserVoIm} from "./vo/UserVo";
 
 export interface IAccountStore {
     moduleInit: boolean;
     login: ILoginIm;
-    signUp: any;
+    signUp: ISignUpIm;
     forgotPass: any;
     view: any;
     user: IUserVoIm;
     loggedIn: boolean;
+    viewIndex: number;
 }
 
 export const accountImStore: IAccountStore = {
     moduleInit: false,
     login: LoginIm,
-    signUp: true,
+    signUp: SignUpIm,
     forgotPass: true,
     view: null,
     loggedIn: false,
-    user: UserVo.create()
+    user: UserVo.create(),
+    viewIndex: 0
 };
-
-store.set("account", accountImStore);
-
-export var accountStore: IAccountStore = store.appStore.account;
 
 export var viewCache = {
     account: null,
-    login: null
+    login: null,
+    child: null
 };
