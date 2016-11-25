@@ -1,23 +1,9 @@
 {
   "env": {
     "development": {
-      "presets": [
-        "react-optimize",
-        "react",
-        [
-          "latest",
-          {
-            "es2015": {
-              "modules": false
-            }
-          }
-        ]
-      ],
+      "presets": ["react-optimize"],
       "plugins": [
-        "transform-runtime",
-        "transform-async-to-generator",
-        [
-          "react-transform",
+        [ "react-transform",
         {"transforms": [
           {"transform": "react-transform-hmr", "imports": ["react"],"locals": ["module"]},
           {"transform": "react-transform-catch-errors", "imports": ["react","redbox-react"]}
@@ -26,18 +12,8 @@
     },
     "production": {
       "presets": [
-        "react-optimize",
-        "react",
-        [
-          "latest",
-          {
-            "es2015": {
-              "modules": false
-            }
-          }
-        ]
-      ],
-      "plugins": ["transform-async-to-generator"]
+        "react-optimize"
+      ]
     },
     "test": {
       "plugins": ["transform-async-to-generator"]

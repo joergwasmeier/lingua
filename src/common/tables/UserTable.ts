@@ -13,7 +13,7 @@ class UserTable extends BaseTable {
         return succ;
     }
 
-    async getTable() {
+    async getTable() : Promise<void> {
         this.table = await db.table("User");
     }
 

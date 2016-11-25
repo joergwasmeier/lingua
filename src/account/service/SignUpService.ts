@@ -5,7 +5,7 @@ import {userTable} from "../../common/tables/UserTable";
 
 export default class SignUpService extends FabaSerivce {
 
-    async execute(event: SignUpEvent) {
+    async execute(event: SignUpEvent) : Promise<void> {
         if (!event.checkUserData()) {
             return this.sendErrorEvent(event, "error");
         }

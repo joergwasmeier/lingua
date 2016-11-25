@@ -14,11 +14,11 @@ export default class GetDashboardDataService extends FabaSerivce{
         super();
     }
 
-    async getTable(){
+    async getTable() : Promise<void>{
         this.table = await db.table("Dashboard");
     }
     
-    async execute(event:GetDashboardDataEvent) {
+    async execute(event:GetDashboardDataEvent) : Promise<void> {
         await this.getTable();
         // Check if table exist
         var query:DashboardVo = new DashboardVo();

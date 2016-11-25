@@ -9,7 +9,7 @@ import GetShopItemsDetailsEvent from "../event/GetShopItemsDetailsEvent";
 import {store} from "../../common/commonImStore";
 
 export default class InitShopCommand extends FabaCommand {
-    async execute(event: InitShopEvent) {
+    async execute(event: InitShopEvent) : Promise<void> {
         if (event.args[1]) {
             switch (event.args[1]) {
                 case "filter":

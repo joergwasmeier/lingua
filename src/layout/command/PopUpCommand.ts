@@ -4,7 +4,7 @@ import {PopUpEventType} from "../event/PopUpEvent";
 import {store} from "../../common/commonImStore";
 
 export default class PopUpCommand extends FabaCommand {
-    async execute(event: PopUpEvent) {
+    async execute(event: PopUpEvent) : Promise<void> {
         switch (event.type){
             case PopUpEventType.SHOW:
                 store.set("layout.showPopUpTimeStamp", Date.now());

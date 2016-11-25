@@ -5,7 +5,7 @@ import {userTable} from "../../common/tables/UserTable";
 import {IUserVoIm} from "../vo/UserVo";
 
 export default class LoginService extends FabaSerivce {
-    async delay(seconds: number) {
+    async delay(seconds: number) : Promise<any> {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve();
@@ -13,7 +13,7 @@ export default class LoginService extends FabaSerivce {
         });
     }
 
-    async execute(event: LoginEvent) {
+    async execute(event: LoginEvent) : Promise<void> {
         console.log("execute");
 
         if (await this.errorCheck(event) === true) return;

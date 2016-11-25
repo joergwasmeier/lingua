@@ -5,7 +5,7 @@ import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 import {store} from "../../common/commonImStore";
 
 export default class GetShopItemsCommand extends FabaCommand implements IFabaCommand {
-    async execute(event: GetShopItemsEvent) {
+    async execute(event: GetShopItemsEvent) : Promise<void> {
         FabaRuntimeWeb.sendToEndpoint(event, "");
     }
 

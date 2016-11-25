@@ -6,14 +6,14 @@ export default class PrepareTablesService extends FabaSerivce{
         super();
     }
 
-    async execute(event:PrepareTablesService) {
+    async execute(event:PrepareTablesService): Promise<void> {
         console.log("Course PrepareTablesService");
 
         this.createTableIfNotExist("Course");
         this.createTableIfNotExist("UserCourseProgress");
     }
 
-    async createTableIfNotExist(tableName:string) {
+    async createTableIfNotExist(tableName:string): Promise<void> {
         var tableList = await db.tableList().run(dbConnection);
 
         let found = false;

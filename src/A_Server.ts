@@ -1,3 +1,4 @@
+
 import AccountMediator from "./account/AccountMediator";
 import DashboardMediator from "./dashboard/DasboardMediator";
 import FabaServer from "@fabalous/core/FabaServer";
@@ -8,8 +9,6 @@ import {RDb} from "rethinkdb";
 import PrepareTablesEvent from "./common/event/PrepareTablesEvent";
 import ShopMediator from "./shop/ShopMediator";
 import CourseMediator from "./course/CourseMediator";
-
-require("babel-polyfill");
 
 /**
  * Created by joerg on 07.04.2016.
@@ -32,7 +31,7 @@ class A_Server extends FabaServer{
         this.createDbConnection();
     }
 
-   async createDbConnection(){
+   async createDbConnection() : Promise<void>{
         r.connect({host:'localhost', port:28015},(err,conn)=>{
             if (err) throw err;
             dbConnection = conn;

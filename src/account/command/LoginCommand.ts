@@ -13,7 +13,7 @@ import Routes from "../../Routes";
 
 export default class LoginCommand extends FabaCommand {
 
-    async execute(event: LoginEvent) {
+    async execute(event: LoginEvent) : Promise<void> {
         new AccountUiEvent(AccountUiEventType.SHOW_LOGIN_PROGRESS).dispatch();
 
         if (event.checkUserPassLength()) {

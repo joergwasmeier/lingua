@@ -6,7 +6,7 @@ import {FabaEventResultType} from "@fabalous/core/FabaEvent";
 import {store} from "../../common/commonImStore";
 
 export default class SignUpCommand extends FabaCommand {
-    async execute(event: SignUpEvent) {
+    async execute(event: SignUpEvent) : Promise<void> {
         if (!event.checkUserData()) {
             store.set("account.signUp.errorCode", 0);
             return;
@@ -15,9 +15,9 @@ export default class SignUpCommand extends FabaCommand {
         FabaRuntimeWeb.sendToEndpoint(event, "");
     }
 
-    async result(event: SignUpEvent) {
-        var loginEvent = Object.assign(new LoginEvent("",""), event.loginEvent);
-        loginEvent.dispatch(null,FabaEventResultType.RESULT);
+    async result(event: SignUpEvent) : Promise<void> {
+      //  var loginEvent = Object.assign(new LoginEvent("",""), event.loginEvent);
+      //  loginEvent.dispatch(null,FabaEventResultType.RESULT);
 
         return null;
     }

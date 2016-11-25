@@ -1,6 +1,8 @@
 {
   "globalDependencies": {
     "@fabalous/core": "npm:@fabalous/core/index.d.ts",
+    "es6-collections": "registry:dt/es6-collections#0.5.1+20160316155526",
+    "es6-promise": "registry:dt/es6-promise#0.0.0+20160614011821",
     "systemjs": "registry:dt/systemjs#0.19.29+20160702105636"
   },
   "dependencies": {

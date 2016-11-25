@@ -12,7 +12,7 @@ export default class GetShopItemsService extends FabaSerivce {
         super();
     }
 
-    async getTable() {
+    async getTable() : Promise<void> {
         this.table = await db.table("Shop");
     }
 

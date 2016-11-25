@@ -14,7 +14,7 @@ export default class InsertDashboardDataService extends FabaSerivce{
         super();
     }
 
-    async getTable(){
+    async getTable() : Promise<void>{
         this.table = await db.table("Dashboard");
     }
     
