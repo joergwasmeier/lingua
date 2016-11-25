@@ -15,7 +15,7 @@ interface IShopOverview {
 }
 
 export default class ShopOverview extends FabaWebBaseComponent<IShopOverview> {
-    constructor(props) {
+    constructor(props: IShopOverview) {
         super(props);
     }
 

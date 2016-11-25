@@ -5,9 +5,6 @@ import CreateCourseEvent from "../event/CreateCourseEvent";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 export default class EmptyDashboard extends FabaWebBaseComponent<{}> {
-    constructor(props) {
-        super(props);
-    }
 
     private createCourses() {
         new CreateCourseEvent().dispatch();

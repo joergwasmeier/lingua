@@ -8,6 +8,10 @@ export interface IPopUp {
 }
 
 export default class PopUp extends FabaWebBaseComponent<IPopUp> {
+    constructor(props) {
+        super(props)
+    }
+
     render() {
         return (
             <MDialog

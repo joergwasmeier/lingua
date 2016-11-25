@@ -3,6 +3,9 @@
 -- Kurse syncen mit server (serverid / lokaleid)
 
 - Less stylsheets zu js code
+XX TypeStyleshhet verwenden
+-- Less Styles refactoren
+
 - Serverrendering
 - Dll Webpack
 - Chunk size debuggen

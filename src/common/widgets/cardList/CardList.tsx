@@ -5,10 +5,6 @@ import {Card, CardHeader, CardMedia, CardTitle, CardText} from "material-ui";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 export default class CardList extends ItemList{
-    constructor(props){
-        super(props);
-    }
-
     renderItems(): Array<any> {
         var rows: Array<any> = [];
 

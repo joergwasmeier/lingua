@@ -57,8 +57,8 @@ interface IItemListItemProps{
     clickEvent:any;
 }
 
-class ItemListItem extends React.Component<IItemListItemProps,{}>{
-    private itemClick(item){
+class ItemListItem extends FabaWebBaseComponent<IItemListItemProps> {
+    private itemClick = (item) => {
         this.props.clickEvent.item = item;
         this.props.clickEvent.dispatch();
     }
@@ -68,7 +68,7 @@ class ItemListItem extends React.Component<IItemListItemProps,{}>{
             <ListItem
                 primaryText={this.props.item.name}
                 secondaryText={this.props.item.publishedData}
-                onClick={()=>{this.itemClick(this.props.item);}}
+                onClick={this.itemClick(this.props.item)}
             />
         )
     }

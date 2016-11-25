@@ -5,10 +5,6 @@ import Subheader from "material-ui/Subheader";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 
 export default class Tab3 extends FabaWebBaseComponent<{}> {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="slide">

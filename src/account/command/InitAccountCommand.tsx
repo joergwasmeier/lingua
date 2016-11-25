@@ -38,6 +38,7 @@ export default class InitAccountCommand extends FabaCommand {
                 landscape={store.appStore.layout.landscape}
                 showLogin={login}
                 viewIndex={viewIndex}
+                model={store.appStore.account}
             />
         );
     }

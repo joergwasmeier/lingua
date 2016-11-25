@@ -1,3 +1,4 @@
+import {resetStyle} from "./layout/style/reset";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
@@ -7,7 +8,8 @@ import FabaCore from "@fabalous/core/FabaCore";
 import MenuMediator from "./menu/MenuMediator";
 import LayoutMediator from "./layout/LayoutMediator";
 import Layout from "./layout/Layout";
-require("babel-polyfill");
+
+document.getElementsByTagName("html").item(0).className = resetStyle;
 
 //require('offline-plugin/runtime').install();
 

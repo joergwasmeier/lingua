@@ -11,6 +11,10 @@ interface IAppBarProps {
 }
 
 export default class LinguaAppBar extends FabaWebBaseComponent<IAppBarProps> {
+    constructor(props) {
+        super(props);
+    }
+
     private handleToggle(value: boolean) {
         if (this.props.disableEvent) return;
 

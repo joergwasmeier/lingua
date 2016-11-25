@@ -14,6 +14,10 @@ interface IDialog extends IPopUp {
 }
 
 export default class Dialog extends FabaWebBaseComponent<IDialog> {
+    constructor(props) {
+        super(props)
+    }
+
     render(){
         return (
             <MDialog
