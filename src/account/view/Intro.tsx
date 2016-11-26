@@ -18,6 +18,7 @@ export default class Intro extends FabaWebBaseComponent<IIntroProps> {
         height: "256px !important"
     });
 
+
     start() {
         window.location.assign("#" + Routes.LOGIN.route);
     }
