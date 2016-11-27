@@ -2,7 +2,6 @@ import * as React from "react";
 import {RaisedButton, LinearProgress} from "material-ui";
 import LinguaAppBar from "../../menu/view/AppBar";
 import CourseStore from "../CourseStore";
-import {observer} from "mobx-react";
 
 require("./Course.less");
 
@@ -10,7 +9,6 @@ interface ICourseProps{
     model:CourseStore;
 }
 
-@observer
 export default class Course extends React.Component<ICourseProps,{}> {
     className: string = "Course";
 

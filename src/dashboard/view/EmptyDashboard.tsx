@@ -3,6 +3,7 @@ import {Paper, RaisedButton} from "material-ui";
 import SwipeableViews from "react-swipeable-views";
 import CreateCourseEvent from "../event/CreateCourseEvent";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
+import {DashboardStyle} from "./DashboardStyle";
 
 export default class EmptyDashboard extends FabaWebBaseComponent<{}> {
 
@@ -12,9 +13,10 @@ export default class EmptyDashboard extends FabaWebBaseComponent<{}> {
 
     render() {
         return (
-            <div className="dashboardContainer">
-                <h1>WHOOOT?!</h1>
-                <h2>Noch keine Daten? Na dann wirds aber zeit starte jetzt mit deinem Kurs und lerne eine Sprache.</h2>
+            <div className={DashboardStyle.container}>
+                <h1 className={DashboardStyle.h1}>WHOOOT?!</h1>
+                <h2 className={DashboardStyle.h2}>
+                    Noch keine Daten? Na dann wirds aber zeit starte jetzt mit deinem Kurs und lerne eine Sprache.</h2>
 
                 <Paper zDepth={1} className="card">
                     <h1>Beliebte Kurse</h1>

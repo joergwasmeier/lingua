@@ -5,6 +5,9 @@ import ChangeAccountInputEvent from "../event/ChangeAccountInputEvent";
 import {ChangeAccountInputEventType} from "../event/ChangeAccountInputEvent";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 import {ISignUpIm} from "../vo/SignUpVo";
+import {loginStyle, linkStyle} from "./AccountStyles";
+import ButtonSpinner from "../../common/widgets/buttonSpinner/ButtonSpinner";
+import Routes from "../../Routes";
 
 interface ISignUpProps {
     model: ISignUpIm;
@@ -36,7 +39,7 @@ export default class SignUp extends FabaWebBaseComponent<ISignUpProps>{
 
     render() {
         return (
-            <div className="childContent2">
+            <div className={loginStyle}>
                 <TextField
                     className="textField"
                     floatingLabelText="E-Mail"
@@ -54,20 +57,12 @@ export default class SignUp extends FabaWebBaseComponent<ISignUpProps>{
                     type="password"
                     value={this.props.model.password}
                     onChange={this.passWordChange}
-
                 />
 
-                <FlatButton
-                    className="signUpButton"
-                    backgroundColor="#a4c639"
-                    onTouchTap={this.signUpBtHandler}>
-                    <p className="content">REGISTER</p>
+                <ButtonSpinner label="Register" touchTapHandler={this.signUpBtHandler}/>
 
-                    <div className="spinner"></div>
-                </FlatButton>
-
-                <p className="signUp">
-                    <a href="#/login/">WAIT!! I have a account go back!</a>
+                <p className={linkStyle}>
+                    <a href={"#" + Routes.LOGIN.route}>WAIT!! I have a account go back!</a>
                 </p>
             </div>
         )

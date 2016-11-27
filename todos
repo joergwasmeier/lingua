@@ -2,13 +2,17 @@
 -- Kurse lokal speichern
 -- Kurse syncen mit server (serverid / lokaleid)
 
-- Less stylsheets zu js code
-XX TypeStyleshhet verwenden
--- Less Styles refactoren
-
 - Serverrendering
-- Dll Webpack
+
+- Passport für login verwenden
+
+- Websocket anbindung
+
 - Chunk size debuggen
 - Phonegap erstellen
-- Passport für login verwenden
-- Websocket anbindung
+- Dll Webpack
+
+
+X Less stylsheets zu js code
+XX TypeStyleshhet verwenden
+XX Less Styles refactoren

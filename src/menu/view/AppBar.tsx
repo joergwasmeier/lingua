@@ -35,11 +35,9 @@ export default class LinguaAppBar extends FabaWebBaseComponent<IAppBarProps> {
         return (
             <AppBar
                 title={this.props.title}
-                iconElementLeft={this.props.leftIcon}
                 onTitleTouchTap={() => this.handleToggle(true)}
-                style={{position:"fixed"}}
-                className="appBar"
                 onLeftIconButtonTouchTap={() => this.handleToggle(true)}
+                showMenuIconButton={false}
             />
         );
     }

@@ -7,6 +7,8 @@ import {ILoginIm} from "../vo/LoginVo";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 import Routes from "../../Routes";
 import {style} from "typestyle";
+import {white} from "typestyle/lib/csx";
+import {loginStyle, linkStyle} from "./AccountStyles";
 
 interface ILoginProps {
     model: ILoginIm;
@@ -18,17 +20,6 @@ export default class Login extends FabaWebBaseComponent<ILoginProps> {
         this.loginBtHandler = this.loginBtHandler.bind(this);
         this.userNameChange = this.userNameChange.bind(this);
         this.passWordChange = this.passWordChange.bind(this);
-    }
-
-    loginStyle = () =>{
-        return style({
-            '@media (min-width: 440px)': {
-                position: "relative",
-                maxWidth: "440px",
-                left: "50%",
-                marginLeft: "-220px"
-            }
-        });
     }
 
     private userNameChange(e): void {
@@ -55,7 +46,7 @@ export default class Login extends FabaWebBaseComponent<ILoginProps> {
 
     render() {
         return (
-            <div className={this.loginStyle()}>
+            <div className={loginStyle}>
                 <TextField
                     className="textField"
                     floatingLabelText="Username"
@@ -80,13 +71,12 @@ export default class Login extends FabaWebBaseComponent<ILoginProps> {
                 <ButtonSpinner label="Login" touchTapHandler={this.loginBtHandler}
                                progress={this.props.model.progress}/>
 
-                <p className="linkSign">
-                    {this.props.model.progress}
+                <p className={linkStyle}>
                     <a href={"#" + Routes.SIGN_UP.route}>Don´t have an account? Sign UP!</a>
                 </p>
 
-                <p className="linkSign">
-                    <a href={"#" + Routes.FORGOT_PASS.route}>Forogt your password? Come to the Dark side!</a>
+                <p className={linkStyle}>
+                    <a href={"#" + Routes.FORGOT_PASS.route}>Forogt your password?</a>
                 </p>
             </div>
         );

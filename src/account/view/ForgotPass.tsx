@@ -4,6 +4,9 @@ import ForgotPassEvent from "../event/ForgotPassEvent";
 import {ChangeAccountInputEventType, default as ChangeAccountInputEvent} from "../event/ChangeAccountInputEvent";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 import {IForgotPassIm} from "../vo/ForgotPassVo";
+import {loginStyle, linkStyle} from "./AccountStyles";
+import ButtonSpinner from "../../common/widgets/buttonSpinner/ButtonSpinner";
+import Routes from "../../Routes";
 
 interface IForgotPass {
     model: IForgotPassIm;
@@ -33,7 +36,7 @@ export default class ForgotPass extends FabaWebBaseComponent<IForgotPass> {
         if (this.props.model.showSuccessMessage) return this.renderSuccess();
 
         return (
-            <div>
+            <div className={loginStyle}>
                 <TextField
                     className="textField"
                     floatingLabelText="E-Mail"
@@ -43,18 +46,12 @@ export default class ForgotPass extends FabaWebBaseComponent<IForgotPass> {
                     onChange={this.userNameChange}
                 />
 
-                <FlatButton
-                    className="signUpButton"
-                    backgroundColor="#a4c639"
-                    onTouchTap={this.forgotPassBtHandler}>
-                    <p className="content">SENDEN</p>
+                <ButtonSpinner label="Senden" touchTapHandler={this.forgotPassBtHandler}/>
 
-                    <div className="spinner"></div>
-                </FlatButton>
-
-                <p className="signUp">
-                    <a href="#/login/">WAIT!! I khnow it go back!</a>
+                <p className={linkStyle}>
+                    <a href={"#" + Routes.LOGIN.route}>WAIT!! I khnow it go back!</a>
                 </p>
+
             </div>
         );
     }

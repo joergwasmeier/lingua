@@ -11,13 +11,11 @@ import BottomMenu from "./view/BottomMenu";
 
 const ReactCSSTransitionGroup = require("react-addons-css-transition-group"); // ES5 with npm
 
-//require("./Layout.less");
-//require("./../common/style/Common.less");
-
 interface ILayoutProps {
     model: IcommonStore;
     childs: any;
 }
+
 export default class Layout extends FabaWebBaseComponent<ILayoutProps>{
     className: string = "App";
     props: any;
@@ -44,7 +42,6 @@ export default class Layout extends FabaWebBaseComponent<ILayoutProps>{
     }
 
     updateMatches() {
-        console.log("updateMatches");
         new ChangeMediaQueryEvent(this._mql.matches, this._dql.matches).dispatch();
     }
 
@@ -52,16 +49,15 @@ export default class Layout extends FabaWebBaseComponent<ILayoutProps>{
         return (
             <MuiThemeProvider muiTheme={this.theme}>
                 <div className={`center ${this.className}`}>
-                    <Menu open={this.props.model.menuOpen}/>
+                    <BottomMenu />
 
                     {this.props.childs}
 
                     <Dialog open={false}/>
                     <PopUp open={this.props.model.layout.showPopUp}/>
-
-                    <BottomMenu />
                 </div>
             </MuiThemeProvider>
         )
     }
 }
+//<Menu open={this.props.model.menuOpen}/>

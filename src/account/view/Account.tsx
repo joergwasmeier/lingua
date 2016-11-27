@@ -30,7 +30,14 @@ export default class Account extends FabaWebBaseComponent<IAccountProps> {
         backgroundPosition: "center, center"
     });
 
-    loginClass(show: boolean) {
+    headerStyle = style({
+        fontSize: 48,
+        color: "#ffffff",
+        marginTop: 36 * 2,
+        marginBottom: 32
+    });
+
+    private loginClass(show: boolean) {
         const hwt = (show) ? "0vh" : "100vh";
 
         return style({
@@ -56,13 +63,12 @@ export default class Account extends FabaWebBaseComponent<IAccountProps> {
                 <Intro mobile={this.props.mobile} landscape={this.props.landscape}/>
 
                 <div className={this.loginClass(this.props.showLogin)}>
-                    <p className="header">LINGUA </p>
+                    <p className={this.headerStyle}>LINGUA </p>
                     <SwipeableViews index={this.props.viewIndex} onChangeIndex={this.handleChangeIndex}>
                         <Login model={this.props.model.login}/>
                         <ForgotPass model={this.props.model.forgotPass}/>
                         <SignUp model={this.props.model.signUp}/>
                     </SwipeableViews>
-
                 </div>
             </div>
         );

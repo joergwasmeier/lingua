@@ -1,4 +1,3 @@
-import {resetStyle} from "./layout/style/reset";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
@@ -8,20 +7,14 @@ import FabaCore from "@fabalous/core/FabaCore";
 import MenuMediator from "./menu/MenuMediator";
 import LayoutMediator from "./layout/LayoutMediator";
 import Layout from "./layout/Layout";
-
-document.getElementsByTagName("html").item(0).className = resetStyle;
-
-//require('offline-plugin/runtime').install();
-
-require("./index.html");
-//require("./common/assets/less/reset.less");
-//require("./common/assets/less/font.less");
-
 import {createHashHistory} from 'history'
 import {appStoreCourser, tree} from "./common/commonImStore";
 import {store} from "./common/commonImStore";
 import {IRoutes, default as Routes} from "./Routes";
 import {commonStore} from "./common/CommonStore";
+
+require("./layout/style/reset");
+require("./index.html");
 
 declare var module;
 
@@ -50,14 +43,15 @@ export default class A_Web extends FabaRuntimeWeb {
         if (module.hot) {
             module.hot.accept();
 
-            module.hot.dispose((data) => {
+            module.hot.dispose(() => {
                 this.activeModule = null;
                 this.activeArgs = null;
                 this.activeEvent = null;
                 FabaCore.mediators = [];
                 FabaCore.events = [];
                 commonStore.hot = true;
-                appStoreCourser.on("update", null);
+                appStoreCourser.on("update", (e) => {
+                });
             });
         }
 
@@ -77,13 +71,13 @@ export default class A_Web extends FabaRuntimeWeb {
                 this.handleRoutes(location.pathname);
             });
 
-            this.handleRoutes();
-
             //clear on hot update
             appStoreCourser.on("update", (e) => {
                 store.appStore = e.data.currentData;
                 this.loadModule(this.activeModule, this.activeArgs);
             });
+
+            this.handleRoutes();
         } else {
             this.handleRoutes();
         }
@@ -91,10 +85,10 @@ export default class A_Web extends FabaRuntimeWeb {
 
     render(child?) {
         if (document.getElementById("container") && child) {
-            console.time("renderTime");
+            // console.time("renderTime");
             this.layout = React.createElement(Layout, {childs: child, model: store.appStore});
             ReactDOM.render(this.layout, document.getElementById("container"));
-            console.timeEnd("renderTime");
+            // console.timeEnd("renderTime");
         }
     }
 

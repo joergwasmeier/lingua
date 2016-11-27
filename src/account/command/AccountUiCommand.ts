@@ -6,6 +6,8 @@ import Routes from "../../Routes";
 
 export default class AccountUiCommand extends FabaCommand {
     async execute(event: AccountUiEvent) {
+        let model: store = this.store as store;
+
         switch (event.type) {
             case AccountUiEventType.SHOW_LOGIN_PROGRESS:
                 store.set("account.login.progress", true);

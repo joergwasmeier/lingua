@@ -1,4 +1,3 @@
-import {observable} from "mobx/lib/mobx";
 import FabaValueObject from "@fabalous/core/FabaValueObject";
 
 export interface IForgotPassIm {
