@@ -1,12 +1,7 @@
 import * as React from "react";
 import InitAccountEvent from "../event/InitAccountEvent";
-import Login from "../view/Login";
-import ForgotPass from "../view/ForgotPass";
-import SignUp from "../view/SignUp";
 import FabaCommand from "@fabalous/core/FabaCommand";
 import Account from "../view/Account";
-import {store} from "../../common/commonImStore";
-import {viewCache} from "../AccountImStore";
 
 export default class InitAccountCommand extends FabaCommand {
     execute(event: InitAccountEvent) {
@@ -33,12 +28,12 @@ export default class InitAccountCommand extends FabaCommand {
     private createAccount(login: boolean, viewIndex: number) {
         return (
             <Account
-                oldPath={store.appStore.oldPath}
-                mobile={store.appStore.layout.mobile}
-                landscape={store.appStore.layout.landscape}
+                oldPath={this.store.appStore.oldPath}
+                mobile={this.store.appStore.layout.mobile}
+                landscape={this.store.appStore.layout.landscape}
                 showLogin={login}
                 viewIndex={viewIndex}
-                model={store.appStore.account}
+                model={this.store.appStore.account}
             />
         );
     }

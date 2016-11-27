@@ -18,23 +18,23 @@ export default class EmptyDashboard extends FabaWebBaseComponent<{}> {
                 <h2 className={DashboardStyle.h2}>
                     Noch keine Daten? Na dann wirds aber zeit starte jetzt mit deinem Kurs und lerne eine Sprache.</h2>
 
-                <Paper zDepth={1} className="card">
+                <Paper zDepth={1} className={DashboardStyle.card}>
                     <h1>Beliebte Kurse</h1>
                     <SwipeableViews className="swipeView">
-                        <div className="courseCard"/>
-                        <div className="courseCard"/>
-                        <div className="courseCard"/>
+                        <div className={DashboardStyle.courseCard}/>
+                        <div className={DashboardStyle.courseCard}/>
+                        <div className={DashboardStyle.courseCard}/>
                     </SwipeableViews>
                 </Paper>
 
-                <h2 className="sub">Nichts dabei? KeinProblem erstell deinen eigenen Kurs!</h2>
+                <h2 className={DashboardStyle.h2Sub}>Nichts dabei? KeinProblem erstell deinen eigenen Kurs!</h2>
 
-                <RaisedButton className="createCourse"
+                <RaisedButton className={DashboardStyle.createButton}
                               label="Kurs erstellen"
                               secondary={true}
                               onClick={this.createCourses}
-                />
 
+                />
             </div>
         );
     }

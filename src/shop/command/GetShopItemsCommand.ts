@@ -10,7 +10,7 @@ export default class GetShopItemsCommand extends FabaCommand implements IFabaCom
     }
 
     result(event: GetShopItemsEvent): any {
-        store.set("shop.items", event.result);
+        this.store.set("shop.items", event.result);
         event.callBack();
     }
 

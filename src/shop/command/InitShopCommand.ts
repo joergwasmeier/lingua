@@ -14,34 +14,34 @@ export default class InitShopCommand extends FabaCommand {
             switch (event.args[1]) {
                 case "filter":
                     event.view = React.createElement(Shop, {
-                        childs: React.createElement(ShopFilter, {model: store.appStore.shop}),
-                        model: store.appStore.shop
+                        childs: React.createElement(ShopFilter, {model: this.store.appStore.shop}),
+                        model: this.store.appStore.shop
                     });
                     event.callBack();
                     return;
 
                 default:
-                    if (!store.appStore.shop.selectedItem || store.appStore.shop.selectedItem.id !== event.args[1]) {
+                    if (!this.store.appStore.shop.selectedItem || this.store.appStore.shop.selectedItem.id !== event.args[1]) {
                         new GetShopItemsDetailsEvent(event.args[1]).dispatch();
                         return;
                     }
 
                     event.view = React.createElement(Shop, {
-                        childs: React.createElement(ShopItem, {model: store.appStore.shop}),
-                        model: store.appStore.shop
+                        childs: React.createElement(ShopItem, {model: this.store.appStore.shop}),
+                        model: this.store.appStore.shop
                     });
 
                     event.callBack();
                     return;
             }
         } else {
-            event.view = React.createElement(Shop, {model: store.appStore.shop});
+            event.view = React.createElement(Shop, {model: this.store.appStore.shop});
         }
 
-        if (!store.appStore.shop.init) {
+        if (!this.store.appStore.shop.init) {
             event.callBack();
             new GetShopItemsEvent().dispatch();
-            store.set("shop.init", true);
+            this.store.set("shop.init", true);
             return;
         }
 

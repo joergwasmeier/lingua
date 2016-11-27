@@ -8,8 +8,7 @@ import MenuMediator from "./menu/MenuMediator";
 import LayoutMediator from "./layout/LayoutMediator";
 import Layout from "./layout/Layout";
 import {createHashHistory} from 'history'
-import {appStoreCourser, tree} from "./common/commonImStore";
-import {store} from "./common/commonImStore";
+import {appStoreCourser, store} from "./common/commonImStore";
 import {IRoutes, default as Routes} from "./Routes";
 import {commonStore} from "./common/CommonStore";
 
@@ -27,8 +26,11 @@ export default class A_Web extends FabaRuntimeWeb {
     activeArgs: Array<string>;
     activeEvent: any;
 
+
     constructor() {
         super();
+
+        FabaCore.store = new store();
 
         if (FabaCore.mediators.length === 0) {
             try {
@@ -37,7 +39,6 @@ export default class A_Web extends FabaRuntimeWeb {
             } catch (e) {
                 console.log("inject error");
             }
-
         }
 
         if (module.hot) {
@@ -73,7 +74,7 @@ export default class A_Web extends FabaRuntimeWeb {
 
             //clear on hot update
             appStoreCourser.on("update", (e) => {
-                store.appStore = e.data.currentData;
+                FabaCore.store.appStore = e.data.currentData;
                 this.loadModule(this.activeModule, this.activeArgs);
             });
 
@@ -86,7 +87,7 @@ export default class A_Web extends FabaRuntimeWeb {
     render(child?) {
         if (document.getElementById("container") && child) {
             // console.time("renderTime");
-            this.layout = React.createElement(Layout, {childs: child, model: store.appStore});
+            this.layout = React.createElement(Layout, {childs: child, model: FabaCore.store.appStore});
             ReactDOM.render(this.layout, document.getElementById("container"));
             // console.timeEnd("renderTime");
         }

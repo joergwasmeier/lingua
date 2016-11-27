@@ -7,7 +7,7 @@ export default class ShopItemUiCommands extends FabaCommand {
     async execute(event: ShopItemUiEvents) {
         switch (event.type) {
             case ShopItemUiEventsTypes.CHANGE_INDEX:
-                store.set("shop.shopItemTabIndex", event.index);
+                this.store.set("shop.shopItemTabIndex", event.index);
                 break;
         }
     }

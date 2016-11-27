@@ -60,13 +60,13 @@ export default class ShopItem extends FabaWebBaseComponent<IShopItemProps> {
                     disableEvent="true"
                 />
                 <div className="tabs">
-                    <Tabs value={store.appStore.shop.shopItemTabIndex}>
+                    <Tabs value={0}>
                         <Tab label="tab n°1" value={0} onClick={this.handleChangeTabs.bind(null, 0)}/>
                         <Tab label="tab n°2" value={1} onClick={this.handleChangeTabs.bind(null, 1)}/>
                         <Tab label="tab n°3" value={2} onClick={this.handleChangeTabs.bind(null, 2)}/>
                     </Tabs>
 
-                    <SwipeableViews index={store.appStore.shop.shopItemTabIndex} onChangeIndex={this.handleChangeIndex}>
+                    <SwipeableViews index={0} onChangeIndex={this.handleChangeIndex}>
                         <Tab1 />
                         <Tab2 />
                         <Tab3 />

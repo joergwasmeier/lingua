@@ -7,11 +7,7 @@ import {store} from "../../common/commonImStore";
  */
 
 export default class ToggleMenuCommand extends FabaCommand {
-    constructor() {
-        super();
-    }
-
     execute(event: GetMenuDataEvent) {
-        store.set("menuOpen", !store.appStore.menuOpen);
+        this.store.set("menuOpen", !this.store.appStore.menuOpen);
     }
 }

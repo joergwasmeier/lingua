@@ -30,7 +30,7 @@ export default class LoginCommand extends FabaCommand {
                 new AccountUiEvent(AccountUiEventType.SHOW_LOGIN_ERROR).dispatch();
                 break;
             case LoginEventStatus.LOGGED_IN:
-                store.set("account.login.loggedIn", true);
+                this.store.set("account.login.loggedIn", true);
 
                 window.localStorage.setItem("username", event.username);
                 window.localStorage.setItem("password", event.password);

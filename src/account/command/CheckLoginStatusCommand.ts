@@ -6,7 +6,7 @@ import {store} from "../../common/commonImStore";
 export default class CheckLoginStatusCommand extends FabaCommand {
 
     async execute(event: CheckLoginStatusEvent) {
-        if (store.appStore.account.login && store.appStore.account.login.loggedIn) {
+        if (this.store.appStore.account.login && this.store.appStore.account.login.loggedIn) {
             event.loggedIn = true;
             event.callBack();
         } else {

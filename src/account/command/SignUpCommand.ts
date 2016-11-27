@@ -8,7 +8,7 @@ import {store} from "../../common/commonImStore";
 export default class SignUpCommand extends FabaCommand {
     async execute(event: SignUpEvent) : Promise<void> {
         if (!event.checkUserData()) {
-            store.set("account.signUp.errorCode", 0);
+            this.store.set("account.signUp.errorCode", 0);
             return;
         }
 

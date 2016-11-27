@@ -35,14 +35,14 @@ export let tree = new baoba(commonImStore);
 export let appStoreCourser = tree.select();
 
 export class store {
-    static appStore: IcommonStore = appStoreCourser.get();
+    appStore: IcommonStore = appStoreCourser.get();
 
-    static relase() {
+    relase() {
         tree.release();
         appStoreCourser = tree.select();
     }
 
-    static set(path: string, value: any, update: boolean = true) {
+    set(path: string, value: any, update: boolean = true) {
         let arrPath = path.split(".");
         appStoreCourser.set(arrPath, value);
     }

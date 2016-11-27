@@ -8,7 +8,7 @@ export default class SelectShopItemCommand extends FabaCommand{
     async execute(event: SelectShopItemEvent) {
         new ShopItemUiEvents(ShopItemUiEventsTypes.CHANGE_INDEX, 0).dispatch();
 
-        store.set("shop.selectedItem", event.item);
+        this.store.set("shop.selectedItem", event.item);
         window.location.assign("#" + Routes.STORE.route + "/" + event.item.id);
     }
 }

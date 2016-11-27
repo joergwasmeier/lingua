@@ -6,7 +6,7 @@ import {store} from "../../common/commonImStore";
 export default class ForgotPassCommand extends FabaCommand {
     async execute(event: ForgotPassEvent) {
         if (event.username) {
-            store.appStore.account.forgotPass.showSuccessMessage = true;
+            this.store.appStore.account.forgotPass.showSuccessMessage = true;
            FabaRuntimeWeb.sendToEndpoint(event, "");
        }
    }

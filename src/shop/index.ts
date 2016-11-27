@@ -7,6 +7,3 @@ module.exports = {
     mediator: ShopMediator,
     initEvent: InitShopEvent
 };
-
-console.log("index");
-store.set("shop", shopImStore);

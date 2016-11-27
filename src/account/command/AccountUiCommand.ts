@@ -1,23 +1,24 @@
 import FabaCommand from "@fabalous/core/FabaCommand";
 import AccountUiEvent from "../event/AccountUiEvent";
 import {AccountUiEventType} from "../event/AccountUiEvent";
-import {store, appStoreCourser} from "../../common/commonImStore";
+import {store} from "../../common/commonImStore";
 import Routes from "../../Routes";
 
 export default class AccountUiCommand extends FabaCommand {
     async execute(event: AccountUiEvent) {
-        let model: store = this.store as store;
+        let model : store = this.store;
 
         switch (event.type) {
             case AccountUiEventType.SHOW_LOGIN_PROGRESS:
-                store.set("account.login.progress", true);
+                model.set("account.login.progress", true);
                 break;
+
             case AccountUiEventType.HIDE_LOGIN_PROGRESS:
-                store.set("account.login.progress", false);
+                model.set("account.login.progress", false);
                 break;
 
             case AccountUiEventType.CHANGE_CONTAINER_INDEX:
-                store.set("account.viewIndex", event.data);
+                model.set("account.viewIndex", event.data);
                 switch (event.data) {
                     case 0:
                         window.location.assign("#" + Routes.LOGIN.route);
@@ -29,8 +30,6 @@ export default class AccountUiCommand extends FabaCommand {
                         window.location.assign("#" + Routes.SIGN_UP.route);
                         break;
                 }
-            default:
-
         }
     }
 
