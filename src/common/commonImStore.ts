@@ -18,7 +18,7 @@ export interface IcommonStore {
     readonly menuOpen: boolean;
 }
 
-const commonImStore: IcommonStore = {
+export const commonImStore: IcommonStore = {
     child: null,
     appInit: false,
     oldPath: "test",
@@ -30,20 +30,3 @@ const commonImStore: IcommonStore = {
     menuOpen: false,
     layout: LayoutStore
 };
-
-export let tree = new baoba(commonImStore);
-export let appStoreCourser = tree.select();
-
-export class store {
-    appStore: IcommonStore = appStoreCourser.get();
-
-    relase() {
-        tree.release();
-        appStoreCourser = tree.select();
-    }
-
-    set(path: string, value: any, update: boolean = true) {
-        let arrPath = path.split(".");
-        appStoreCourser.set(arrPath, value);
-    }
-}
