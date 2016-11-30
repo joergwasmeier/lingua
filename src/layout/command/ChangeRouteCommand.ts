@@ -1,10 +1,11 @@
 import FabaCommand from "@fabalous/core/FabaCommand";
 import ChangeRouteEvent from "../event/ChangeRouteEvent";
 import {store} from "../../common/commonImStore";
+import FabaCore from "@fabalous/core/FabaCore";
 
 export default class ChangeRouteCommand extends FabaCommand {
     async execute(event: ChangeRouteEvent) {
-        this.store.set("route", event.route);
+        console.log("update");
     }
 
     async result(event: ChangeRouteEvent) {

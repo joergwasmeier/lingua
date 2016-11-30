@@ -8,6 +8,7 @@ import {IcommonStore, commonImStore} from "./common/commonImStore";
 import {commonStore} from "./common/CommonStore";
 import FabaStore from "@fabalous/core/FabaStore";
 import Routes from "./Routes";
+import Layout from "./layout/Layout";
 
 require("./layout/style/reset");
 require("./index.html");
@@ -22,6 +23,9 @@ export default class A_Web extends FabaRuntimeWeb {
     constructor(store:IStore) {
         super(store);
         this.routes = Routes;
+        console.log(store);
+        FabaCore.store = store;
+        this.rootComponent = Layout;
 
         if (FabaCore.mediators.length === 0) {
             try {
@@ -65,5 +69,5 @@ export default class A_Web extends FabaRuntimeWeb {
     }
 }
 
-interface IStore extends FabaStore<IcommonStore>{}
+export interface IStore extends FabaStore<IcommonStore>{}
 new A_Web(new FabaStore<IcommonStore>(commonImStore));
