@@ -8,8 +8,9 @@ import CheckLoginStatusEvent from "../../account/event/CheckLoginStatusEvent";
 import LoginEvent from "../../account/event/LoginEvent";
 import PopUpEvent from "../../layout/event/PopUpEvent";
 import {PopUpEventType} from "../../layout/event/PopUpEvent";
+import {IStore} from "../../common/commonImStore";
 
-export default class InitDashboardCommand extends FabaCommand  {
+export default class InitDashboardCommand extends FabaCommand<IStore> {
     async execute(event: InitDashboardEvent) {
         if (!dashboardStore.data) {
             new PopUpEvent(PopUpEventType.SHOW).dispatch();

@@ -23,17 +23,13 @@ export default class A_Web extends FabaRuntimeWeb {
     constructor(store:IStore) {
         super(store);
         this.routes = Routes;
-        console.log(store);
-        FabaCore.store = store;
-        this.rootComponent = Layout;
+        FabaRuntimeWeb.rootComponent = Layout;
 
-        if (FabaCore.mediators.length === 0) {
-            try {
-                let injectTapEventPlugin = require("react-tap-event-plugin");
-                injectTapEventPlugin();
-            } catch (e) {
-                console.log("inject error");
-            }
+        try {
+            let injectTapEventPlugin = require("react-tap-event-plugin");
+            injectTapEventPlugin();
+        } catch (e) {
+            console.log("inject error");
         }
 
         if (module.hot) {
@@ -59,8 +55,6 @@ export default class A_Web extends FabaRuntimeWeb {
             this.listener = this.history.listen((location) => {
                 this.handleRoutes(location.pathname);
             });
-            
-            console.log("this handle routes");
 
             this.handleRoutes();
         } else {

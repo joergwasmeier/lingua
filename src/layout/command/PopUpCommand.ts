@@ -1,9 +1,9 @@
 import FabaCommand from "@fabalous/core/FabaCommand";
 import PopUpEvent from "../event/PopUpEvent";
 import {PopUpEventType} from "../event/PopUpEvent";
-import {store} from "../../common/commonImStore";
+import {store, IStore} from "../../common/commonImStore";
 
-export default class PopUpCommand extends FabaCommand {
+export default class PopUpCommand extends FabaCommand<IStore> {
     async execute(event: PopUpEvent) : Promise<void> {
         switch (event.type){
             case PopUpEventType.SHOW:

@@ -2,23 +2,27 @@ import * as React from "react";
 import {RaisedButton, LinearProgress} from "material-ui";
 import LinguaAppBar from "../../menu/view/AppBar";
 import CourseStore from "../CourseStore";
-
-require("./Course.less");
+import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
+import {style} from "typestyle";
 
 interface ICourseProps{
     model:CourseStore;
 }
 
-export default class Course extends React.Component<ICourseProps,{}> {
-    className: string = "Course";
+export default class Course extends FabaWebBaseComponent<ICourseProps> {
+    courseStyle = style({
+        "content": {
+            paddingTop: 88,
 
-    constructor(props) {
-        super(props);
-    }
+        },
+        ">h1": {
+            textAlign: "center"
+        }
+    });
 
     render() {
         return (
-            <div className={this.className}>
+            <div className={this.courseStyle}>
                 {this.renderLoading()}
 
                 {this.renderContent()}
@@ -30,7 +34,7 @@ export default class Course extends React.Component<ICourseProps,{}> {
         if (!this.props.model.loading) return;
 
         return(
-            <div className="loading">
+            <div>
                 Loading
                 <LinearProgress />
             </div>
@@ -42,7 +46,7 @@ export default class Course extends React.Component<ICourseProps,{}> {
             <div>
                 <LinguaAppBar title={this.props.model.data.title}/>
 
-                <div className="content">
+                <div>
                     <img />
                     <h1>{this.props.model.data.title}</h1>
                     <h3>{this.props.model.data.createBy}</h3>

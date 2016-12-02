@@ -4,12 +4,13 @@ import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 import {dashboardStore} from "../DashboardStore";
 import PopUpEvent from "../../layout/event/PopUpEvent";
 import {PopUpEventType} from "../../layout/event/PopUpEvent";
+import {IStore} from "../../common/commonImStore";
 
 /**
  * Created by creativecode on 11.04.16.
  */
 
-export default class GetDashboardDataCommand extends FabaCommand {
+export default class GetDashboardDataCommand extends FabaCommand<IStore> {
     execute(event: GetDashboardDataEvent) {
         FabaRuntimeWeb.sendToEndpoint(event, "");
     }

@@ -2,8 +2,9 @@ import FabaCommand from "@fabalous/core/FabaCommand";
 import ShowShopFilterEvent from "../event/ShopFilterEvent";
 import {ShopFilterEventType} from "../event/ShopFilterEvent";
 import Routes from "../../Routes";
+import {IStore} from "../../common/commonImStore";
 
-export default class ShowShopFilterCommand extends FabaCommand {
+export default class ShowShopFilterCommand extends FabaCommand<IStore> {
     async execute(event: ShowShopFilterEvent) {
         switch (event.type) {
             case ShopFilterEventType.SHOW:

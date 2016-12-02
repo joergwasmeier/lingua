@@ -6,6 +6,9 @@ import {IStore} from "../../A_Web";
 
 export default class InitAccountCommand extends FabaCommand<IStore> {
     execute(event: InitAccountEvent) {
+        console.log(this.store.data);
+        console.log(this.store.bData);
+        
         switch (event.args[0]) {
             case "login":
                 event.view = this.createAccount(true, 0);

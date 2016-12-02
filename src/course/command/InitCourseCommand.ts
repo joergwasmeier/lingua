@@ -5,8 +5,9 @@ import InitCourseEvent from "../event/InitCourseEvent";
 import Course from "../view/Course";
 import {courseStore} from "../CourseStore";
 import GetCourseDataEvent from "../event/GetCourseDataEvent";
+import {IStore} from "../../common/commonImStore";
 
-export default class InitCourseCommand extends FabaCommand {
+export default class InitCourseCommand extends FabaCommand<IStore> {
     async execute(event:InitCourseEvent) {
         courseStore.loading = true;
         event.view = React.createElement(Course, {model:courseStore});

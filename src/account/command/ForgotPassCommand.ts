@@ -1,9 +1,9 @@
 import FabaCommand from "@fabalous/core/FabaCommand";
 import ForgotPassEvent from "../event/ForgotPassEvent";
 import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
-import {store} from "../../common/commonImStore";
+import {store, IStore} from "../../common/commonImStore";
 
-export default class ForgotPassCommand extends FabaCommand {
+export default class ForgotPassCommand extends FabaCommand<IStore> {
     async execute(event: ForgotPassEvent) {
         if (event.username) {
             this.store.appStore.account.forgotPass.showSuccessMessage = true;

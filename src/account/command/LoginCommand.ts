@@ -4,14 +4,14 @@ import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 import {LoginEventStatus} from "../event/LoginEvent";
 import AccountUiEvent from "../event/AccountUiEvent";
 import {AccountUiEventType} from "../event/AccountUiEvent";
-import {store} from "../../common/commonImStore";
+import {store, IStore} from "../../common/commonImStore";
 import Routes from "../../Routes";
 
 /**
  * Created by creativecode on 11.04.16.
  */
 
-export default class LoginCommand extends FabaCommand {
+export default class LoginCommand extends FabaCommand<IStore> {
 
     async execute(event: LoginEvent) : Promise<void> {
         new AccountUiEvent(AccountUiEventType.SHOW_LOGIN_PROGRESS).dispatch();

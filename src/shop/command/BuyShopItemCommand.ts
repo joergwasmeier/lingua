@@ -4,12 +4,9 @@ import GetShopItemsEvent from "../event/GetShopItemsEvent";
 import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 import BuyShopItemEvent from "../event/BuyShopItemEvent";
 import {BuyShopItemEventResult} from "../event/BuyShopItemEvent";
+import {IStore} from "../../common/commonImStore";
 
-export default class BuyShopItemCommand extends FabaCommand implements IFabaCommand{
-    constructor(){
-        super();
-    }
-
+export default class BuyShopItemCommand extends FabaCommand<IStore> implements IFabaCommand {
     execute(event: BuyShopItemEvent): any {
         // Show PopUp // Modal
 

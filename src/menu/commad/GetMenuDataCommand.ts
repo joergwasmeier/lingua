@@ -1,11 +1,12 @@
 import GetMenuDataEvent from "../event/GetMenuDataEvent";
 import FabaCommand from "@fabalous/core/FabaCommand";
+import {IStore} from "../../common/commonImStore";
 
 /**
  * Created by creativecode on 11.04.16.
  */
 
-export default class GetMenuDataCommand extends FabaCommand {
+export default class GetMenuDataCommand extends FabaCommand<IStore> {
   execute(event:GetMenuDataEvent) {
     console.log("GetMenuDataCommand");
 

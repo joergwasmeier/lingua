@@ -1,9 +1,9 @@
 import FabaCommand from "@fabalous/core/FabaCommand";
 import ShopItemUiEvents from "../event/ShopItemUiEvents";
 import {ShopItemUiEventsTypes} from "../event/ShopItemUiEvents";
-import {store} from "../../common/commonImStore";
+import {store, IStore} from "../../common/commonImStore";
 
-export default class ShopItemUiCommands extends FabaCommand {
+export default class ShopItemUiCommands extends FabaCommand<IStore> {
     async execute(event: ShopItemUiEvents) {
         switch (event.type) {
             case ShopItemUiEventsTypes.CHANGE_INDEX:

@@ -1,17 +1,30 @@
+///////FABALOUS - CLI- crowdly
+- Create Project
+- Create Module
+- Create Event / Command / Service ( Pack and single )
+- Create Snippets for VS
+
+///////FABALOUS
+H A_Web aufräumen
+H Tests (E2E // Karma and Spec // Jest?!)
+H Serverrendering
+M Chunk size debuggen
+L Phonegap erstellen
+L Dll Webpack
+
+///////FABALOUS Debugger (Chrome extension)
+- Debug graph for app flow (Event -> Mediator -> Command -> Endpoint
+                            -> Event -> Mediator -> Serivce -> AND BACK AS GRAPH)
+
+///////LINGUA
 - Offline (Serviceworker / manifest)
 -- Kurse lokal speichern
 -- Kurse syncen mit server (serverid / lokaleid)
 
-- Serverrendering
-
 - Passport für login verwenden
-
 - Websocket anbindung
 
-- Chunk size debuggen
-- Phonegap erstellen
-- Dll Webpack
-
+X Store nur in commands verfügbar
 
 X Less stylsheets zu js code
 XX TypeStyleshhet verwenden

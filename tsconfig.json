@@ -1,28 +1,35 @@
 {
-    "compilerOptions": {
-      "target": "es5",
-      "sourceMap": true,
-        "jsx": "react",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "declaration": false,
-        "noImplicitAny": false,
-        "removeComments": false,
-        "noLib": false,
-        "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": true,
-        "moduleResolution": "node",
-        "outDir": "./dist/",
-        "rootDir": "./"
-    },
-    "awesomeTypescriptLoaderOptions": {
-        "transpileModule":true,
-        "transpileOnly":true,
-        "forkChecker":true,
-        "forkCheckerSilent":true,
-        "useBabel": false,
-      "useCache": true,
-      "skipDeclarationFilesCheck": true
-    },
-    "exclude": ["node_modules"]
+  "compilerOptions": {
+    "target": "es5",
+    "sourceMap": true,
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "module": "es6",
+    "moduleResolution": "node",
+    "outDir": "./dist/",
+    "rootDir": "./",
+    "lib": [
+      "es6",
+      "dom"
+    ]
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "transpileModule": true,
+    "transpileOnly": true,
+    "forkChecker": true,
+    "forkCheckerSilent": true,
+    "useBabel": false,
+    "useCache": true,
+    "skipDeclarationFilesCheck": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

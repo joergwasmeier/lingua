@@ -1,9 +1,9 @@
 import FabaCommand from "@fabalous/core/FabaCommand";
 import GetShopItemsDetailsEvent from "../event/GetShopItemsDetailsEvent";
 import GetShopItemsEvent from "../event/GetShopItemsEvent";
-import {store} from "../../common/commonImStore";
+import {store, IStore} from "../../common/commonImStore";
 
-export default class GetShopItemDetailsCommand extends FabaCommand {
+export default class GetShopItemDetailsCommand extends FabaCommand<IStore> {
     async execute(event: GetShopItemsDetailsEvent) {
         // Check if there is an itme in the list
         if (this.store.appStore.shop.items.length === 0) {

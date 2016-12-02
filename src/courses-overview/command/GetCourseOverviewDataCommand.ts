@@ -1,7 +1,8 @@
 import GetCourseOverviewDataEvent from "../event/GetCourseOverviewDataEvent";
 import FabaCommand from "@fabalous/core/FabaCommand";
+import {IStore} from "../../common/commonImStore";
 
-export default class GetCourseOverviewDataCommand extends FabaCommand {
+export default class GetCourseOverviewDataCommand extends FabaCommand<IStore> {
   execute(event:GetCourseOverviewDataEvent) {
     console.log("execute");
   }
