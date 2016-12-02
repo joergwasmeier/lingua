@@ -70,7 +70,12 @@ export default class Account extends FabaWebBaseComponent<IAccountProps> {
                         <SignUp model={this.props.model.signUp}/>
                     </SwipeableViews>
                 </div>
+
             </div>
         );
     }
 }
+
+/*
+
+ */

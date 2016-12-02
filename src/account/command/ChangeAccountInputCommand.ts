@@ -7,7 +7,6 @@ export default class ChangeAccountInputCommand extends FabaCommand<IStore> {
     async execute(event: ChangeAccountInputEvent) {
         switch (event.type) {
             case ChangeAccountInputEventType.LOGIN_USERNAME:
-                console.log("store");
                 this.store.set("account.login.userName", event.value);
                 break;
             case ChangeAccountInputEventType.LOGIN_PASSWORD:
