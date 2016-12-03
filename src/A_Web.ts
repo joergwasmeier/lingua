@@ -7,27 +7,17 @@ import FabaStore from "@fabalous/core/FabaStore";
 
 import MenuMediator from "./menu/MenuMediator";
 import LayoutMediator from "./layout/LayoutMediator";
-import {createHashHistory} from 'history'
 import {IcommonStore, commonImStore, IStore} from "./common/commonImStore";
 import Routes from "./Routes";
 import Layout from "./layout/Layout";
 import "./layout/style/reset";
 
 declare var module:any;
-declare var __webpack_hash__:any;
 
 export default class A_Web extends FabaRuntimeWeb {
-    history = createHashHistory();
-    listener: any;
-    layout: any;
-    
     constructor(store:IStore) {
-        super(store);
-        console.log(__webpack_hash__());
-        super.enableHotReload(module);
+        super(store, Routes, Layout, module);
         ReactPerf.start();
-        this.routes = Routes;
-        FabaRuntimeWeb.rootComponent = Layout;
 
         try {
             let injectTapEventPlugin = require("react-tap-event-plugin");
@@ -42,15 +32,7 @@ export default class A_Web extends FabaRuntimeWeb {
         FabaCore.addMediator(MenuMediator);
         FabaCore.addMediator(LayoutMediator);
 
-        FabaRuntimeWeb.servers = new Array<any>();
         FabaRuntimeWeb.addServerEndPoint(new FabaApiConnection(window.location.protocol + "//" + host), "api");
-
-        if (this.listener) this.listener();
-        this.listener = this.history.listen((location) => {
-            this.handleRoutes(location.pathname);
-        });
-
-        this.handleRoutes();
     }
 }
 
