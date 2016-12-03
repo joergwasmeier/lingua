@@ -7,8 +7,10 @@ import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 import ChangeMediaQueryEvent from "./event/ChangeMediaQueryEvent";
 import BottomMenu from "./view/BottomMenu";
 import {IcommonStore} from "../common/commonImStore";
+import {style} from "typestyle";
 
 const ReactCSSTransitionGroup = require("react-addons-css-transition-group"); // ES5 with npm
+declare var __webpack_hash__:any;
 
 interface ILayoutProps {
     model: IcommonStore;
@@ -23,6 +25,17 @@ export default class Layout extends FabaWebBaseComponent<ILayoutProps>{
     _dql: any;
 
     theme: any;
+
+    versionClass = style({
+        position: "fixed",
+        top:0,
+        right:10,
+        color:"white",
+        zIndex:8000,
+        fontSize:8,
+        opacity:0.7
+    });
+
 
     constructor(props) {
         super(props);
@@ -54,7 +67,10 @@ export default class Layout extends FabaWebBaseComponent<ILayoutProps>{
 
                     <Dialog open={false}/>
                     <PopUp open={this.props.model.layout.showPopUp}/>
+                    <div className={this.versionClass}>{__webpack_hash__}</div>
+
                 </div>
+
             </MuiThemeProvider>
         )
     }
