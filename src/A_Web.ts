@@ -1,17 +1,19 @@
+import * as ReactPerf from 'react-addons-perf'
+
 import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 import FabaApiConnection from "@fabalous/runtime-web/transport/FabaApiConnection";
 import FabaCore from "@fabalous/core/FabaCore";
+import FabaStore from "@fabalous/core/FabaStore";
+
 import MenuMediator from "./menu/MenuMediator";
 import LayoutMediator from "./layout/LayoutMediator";
 import {createHashHistory} from 'history'
 import {IcommonStore, commonImStore, IStore} from "./common/commonImStore";
-import FabaStore from "@fabalous/core/FabaStore";
 import Routes from "./Routes";
 import Layout from "./layout/Layout";
-import ReactPerf from 'react-addons-perf' // ES6
-require("./layout/style/reset");
+import "./layout/style/reset";
 
-declare var module;
+declare var module:any;
 
 export default class A_Web extends FabaRuntimeWeb {
     history = createHashHistory();
@@ -21,8 +23,8 @@ export default class A_Web extends FabaRuntimeWeb {
     constructor(store:IStore) {
         super(store);
 
+        super.enableHotReload(module);
         ReactPerf.start();
-
         this.routes = Routes;
         FabaRuntimeWeb.rootComponent = Layout;
 
@@ -31,13 +33,6 @@ export default class A_Web extends FabaRuntimeWeb {
             injectTapEventPlugin();
         } catch (e) {}
 
-        if (module.hot) {
-            module.hot.accept();
-
-            module.hot.dispose(() => {
-                FabaCore.reset();
-            });
-        }
 
         let host: string = window.location.host + "/api/";
         if (host === "192.168.0.31:8080/api/") host = "192.168.0.31:3120/";

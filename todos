@@ -1,11 +1,11 @@
-///////FABALOUS - CLI- crowdly
+///////FABALOUS - CLI
 - Create Project
 - Create Module
 - Create Event / Command / Service ( Pack and single )
 - Create Snippets for VS
 
 ///////FABALOUS
-H A_Web aufräumen
+XX A_Web aufräumen
 H Tests (E2E // Karma and Spec // Jest?!)
 H Serverrendering
 M Chunk size debuggen
@@ -24,8 +24,8 @@ L Dll Webpack
 - Passport für login verwenden
 - Websocket anbindung
 
-X Store nur in commands verfügbar
 
+X Store nur in commands verfügbar
 X Less stylsheets zu js code
 XX TypeStyleshhet verwenden
 XX Less Styles refactoren

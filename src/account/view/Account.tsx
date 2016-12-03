@@ -75,7 +75,3 @@ export default class Account extends FabaWebBaseComponent<IAccountProps> {
         );
     }
 }
-
-/*
-
- */
