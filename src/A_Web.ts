@@ -14,6 +14,7 @@ import Layout from "./layout/Layout";
 import "./layout/style/reset";
 
 declare var module:any;
+declare var __webpack_hash__:any;
 
 export default class A_Web extends FabaRuntimeWeb {
     history = createHashHistory();
@@ -22,7 +23,7 @@ export default class A_Web extends FabaRuntimeWeb {
     
     constructor(store:IStore) {
         super(store);
-
+        console.log(__webpack_hash__());
         super.enableHotReload(module);
         ReactPerf.start();
         this.routes = Routes;
