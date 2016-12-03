@@ -16,7 +16,6 @@ import Tab3 from "./itemContent/Tab3";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 import ShopItemUiEvents from "../event/ShopItemUiEvents";
 import {ShopItemUiEventsTypes} from "../event/ShopItemUiEvents";
-import {store} from "../../common/commonImStore";
 
 interface IShopItemProps {
     item: ShopItemVo;

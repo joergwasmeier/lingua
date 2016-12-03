@@ -2,7 +2,7 @@ import * as React from "react";
 import InitAccountEvent from "../event/InitAccountEvent";
 import FabaCommand from "@fabalous/core/FabaCommand";
 import Account from "../view/Account";
-import {IStore} from "../../A_Web";
+import {IStore} from "../../common/commonImStore";
 
 export default class InitAccountCommand extends FabaCommand<IStore> {
     execute(event: InitAccountEvent) {

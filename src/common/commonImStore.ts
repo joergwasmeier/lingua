@@ -1,7 +1,7 @@
 import {IAccountStore, accountImStore} from "../account/AccountImStore";
 import {IShopStore, shopImStore} from "../shop/ShopStore";
 import {ILayoutSore, LayoutStore} from "../layout/LayoutStore";
-const baoba = require("baobab");
+import FabaStore from "@fabalous/core/FabaStore";
 
 export interface IcommonStore {
     readonly child: any;
@@ -30,3 +30,5 @@ export const commonImStore: IcommonStore = {
     menuOpen: false,
     layout: LayoutStore
 };
+
+export interface IStore extends FabaStore<IcommonStore>{}

@@ -2,7 +2,7 @@ import FabaCommand from "@fabalous/core/FabaCommand";
 import {IFabaCommand} from "@fabalous/core/IFabaCommand";
 import GetShopItemsEvent from "../event/GetShopItemsEvent";
 import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
-import {store, IStore} from "../../common/commonImStore";
+import {IStore} from "../../common/commonImStore";
 
 export default class GetShopItemsCommand extends FabaCommand<IStore> implements IFabaCommand {
     async execute(event: GetShopItemsEvent) : Promise<void> {

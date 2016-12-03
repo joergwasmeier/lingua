@@ -1,5 +1,4 @@
 import ShopItemVo from "./vo/ShopItemVo";
-import {store} from "../common/commonImStore";
 
 export interface IShopStore {
     items: Array<ShopItemVo>;

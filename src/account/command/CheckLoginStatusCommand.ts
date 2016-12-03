@@ -1,12 +1,12 @@
 import LoginEvent from "./../event/LoginEvent";
 import CheckLoginStatusEvent from "../event/CheckLoginStatusEvent";
 import FabaCommand from "@fabalous/core/FabaCommand";
-import {store, IStore} from "../../common/commonImStore";
+import {IStore} from "../../common/commonImStore";
 
 export default class CheckLoginStatusCommand extends FabaCommand<IStore> {
 
     async execute(event: CheckLoginStatusEvent) {
-        if (this.store.appStore.account.login && this.store.appStore.account.login.loggedIn) {
+        if (this.store.data.account.login && this.store.data.account.login.loggedIn) {
             event.loggedIn = true;
             event.callBack();
         } else {

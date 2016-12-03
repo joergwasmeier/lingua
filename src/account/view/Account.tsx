@@ -63,7 +63,7 @@ export default class Account extends FabaWebBaseComponent<IAccountProps> {
                 <Intro mobile={this.props.mobile} landscape={this.props.landscape}/>
 
                 <div className={this.loginClass(this.props.showLogin)}>
-                    <p className={this.headerStyle}>LINGUA </p>
+                    <p className={this.headerStyle}>LINGUA</p>
                     <SwipeableViews index={this.props.viewIndex} onChangeIndex={this.handleChangeIndex}>
                         <Login model={this.props.model.login}/>
                         <ForgotPass model={this.props.model.forgotPass}/>

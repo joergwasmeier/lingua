@@ -1,14 +1,12 @@
 import * as React from "react";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import Menu from "../menu/view/Menu";
 import Dialog from "./view/Dialog";
 import PopUp from "./view/PopUp";
-import {IcommonStore, store} from "../common/commonImStore";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 import ChangeMediaQueryEvent from "./event/ChangeMediaQueryEvent";
 import BottomMenu from "./view/BottomMenu";
-import FabaCore from "@fabalous/core/FabaCore";
+import {IcommonStore} from "../common/commonImStore";
 
 const ReactCSSTransitionGroup = require("react-addons-css-transition-group"); // ES5 with npm
 
@@ -50,10 +48,9 @@ export default class Layout extends FabaWebBaseComponent<ILayoutProps>{
         return (
             <MuiThemeProvider muiTheme={this.theme}>
                 <div className={`center ${this.className}`}>
-
-
                     {this.props.childs}
                     <BottomMenu />
+
 
                     <Dialog open={false}/>
                     <PopUp open={this.props.model.layout.showPopUp}/>

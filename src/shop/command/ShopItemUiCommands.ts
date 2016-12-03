@@ -1,7 +1,7 @@
 import FabaCommand from "@fabalous/core/FabaCommand";
 import ShopItemUiEvents from "../event/ShopItemUiEvents";
 import {ShopItemUiEventsTypes} from "../event/ShopItemUiEvents";
-import {store, IStore} from "../../common/commonImStore";
+import {IStore} from "../../common/commonImStore";
 
 export default class ShopItemUiCommands extends FabaCommand<IStore> {
     async execute(event: ShopItemUiEvents) {

@@ -1,7 +1,7 @@
 import FabaCommand from "@fabalous/core/FabaCommand";
 import PopUpEvent from "../event/PopUpEvent";
 import {PopUpEventType} from "../event/PopUpEvent";
-import {IStore} from "../../A_Web";
+import {IStore} from "../../common/commonImStore";
 
 export default class PopUpCommand extends FabaCommand<IStore> {
     async execute(event: PopUpEvent) : Promise<void> {

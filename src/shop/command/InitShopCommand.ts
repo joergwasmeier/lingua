@@ -6,7 +6,7 @@ import Shop from "../view/Shop";
 import ShopFilter from "../view/ShopFilter";
 import ShopItem from "../view/ShopItem";
 import GetShopItemsDetailsEvent from "../event/GetShopItemsDetailsEvent";
-import {store, IStore} from "../../common/commonImStore";
+import {IStore} from "../../common/commonImStore";
 
 export default class InitShopCommand extends FabaCommand<IStore> {
     async execute(event: InitShopEvent) : Promise<void> {
@@ -14,31 +14,31 @@ export default class InitShopCommand extends FabaCommand<IStore> {
             switch (event.args[1]) {
                 case "filter":
                     event.view = React.createElement(Shop, {
-                        childs: React.createElement(ShopFilter, {model: this.store.appStore.shop}),
-                        model: this.store.appStore.shop
+                        childs: React.createElement(ShopFilter, {model: this.store.data.shop}),
+                        model: this.store.data.shop
                     });
                     event.callBack();
                     return;
 
                 default:
-                    if (!this.store.appStore.shop.selectedItem || this.store.appStore.shop.selectedItem.id !== event.args[1]) {
+                    if (!this.store.data.shop.selectedItem || this.store.data.shop.selectedItem.id !== event.args[1]) {
                         new GetShopItemsDetailsEvent(event.args[1]).dispatch();
                         return;
                     }
 
                     event.view = React.createElement(Shop, {
-                        childs: React.createElement(ShopItem, {model: this.store.appStore.shop}),
-                        model: this.store.appStore.shop
+                        childs: React.createElement(ShopItem, {model: this.store.data.shop}),
+                        model: this.store.data.shop
                     });
 
                     event.callBack();
                     return;
             }
         } else {
-            event.view = React.createElement(Shop, {model: this.store.appStore.shop});
+            event.view = React.createElement(Shop, {model: this.store.data.shop});
         }
 
-        if (!this.store.appStore.shop.init) {
+        if (!this.store.data.shop.init) {
             event.callBack();
             new GetShopItemsEvent().dispatch();
             this.store.set("shop.init", true);

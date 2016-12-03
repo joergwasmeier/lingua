@@ -4,8 +4,8 @@ import FabaRuntimeWeb from "@fabalous/runtime-web/FabaRuntimeWeb";
 import {LoginEventStatus} from "../event/LoginEvent";
 import AccountUiEvent from "../event/AccountUiEvent";
 import {AccountUiEventType} from "../event/AccountUiEvent";
-import {store, IStore} from "../../common/commonImStore";
 import Routes from "../../Routes";
+import {IStore} from "../../common/commonImStore";
 
 /**
  * Created by creativecode on 11.04.16.

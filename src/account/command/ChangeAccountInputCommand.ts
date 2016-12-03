@@ -1,7 +1,7 @@
 import FabaCommand from "@fabalous/core/FabaCommand";
 import ChangeAccountInputEvent from "../event/ChangeAccountInputEvent";
 import {ChangeAccountInputEventType} from "../event/ChangeAccountInputEvent";
-import {IStore} from "../../A_Web";
+import {IStore} from "../../common/commonImStore";
 
 export default class ChangeAccountInputCommand extends FabaCommand<IStore> {
     async execute(event: ChangeAccountInputEvent) {

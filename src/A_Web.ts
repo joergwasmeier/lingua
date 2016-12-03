@@ -4,14 +4,12 @@ import FabaCore from "@fabalous/core/FabaCore";
 import MenuMediator from "./menu/MenuMediator";
 import LayoutMediator from "./layout/LayoutMediator";
 import {createHashHistory} from 'history'
-import {IcommonStore, commonImStore} from "./common/commonImStore";
-import {commonStore} from "./common/CommonStore";
+import {IcommonStore, commonImStore, IStore} from "./common/commonImStore";
 import FabaStore from "@fabalous/core/FabaStore";
 import Routes from "./Routes";
 import Layout from "./layout/Layout";
-
+import ReactPerf from 'react-addons-perf' // ES6
 require("./layout/style/reset");
-require("./index.html");
 
 declare var module;
 
@@ -22,15 +20,16 @@ export default class A_Web extends FabaRuntimeWeb {
     
     constructor(store:IStore) {
         super(store);
+
+        ReactPerf.start();
+
         this.routes = Routes;
         FabaRuntimeWeb.rootComponent = Layout;
 
         try {
             let injectTapEventPlugin = require("react-tap-event-plugin");
             injectTapEventPlugin();
-        } catch (e) {
-            console.log("inject error");
-        }
+        } catch (e) {}
 
         if (module.hot) {
             module.hot.accept();
@@ -44,24 +43,19 @@ export default class A_Web extends FabaRuntimeWeb {
         if (host === "192.168.0.31:8080/api/") host = "192.168.0.31:3120/";
         if (host === "localhost:8080/api/") host = "localhost:3120/";
 
-        const protocol = window.location.protocol;
-
         FabaCore.addMediator(MenuMediator);
         FabaCore.addMediator(LayoutMediator);
 
-        if (!commonStore.hot) {
-            FabaRuntimeWeb.addServerEndPoint(new FabaApiConnection(protocol + "//" + host), "api");
+        FabaRuntimeWeb.servers = new Array<any>();
+        FabaRuntimeWeb.addServerEndPoint(new FabaApiConnection(window.location.protocol + "//" + host), "api");
 
-            this.listener = this.history.listen((location) => {
-                this.handleRoutes(location.pathname);
-            });
+        if (this.listener) this.listener();
+        this.listener = this.history.listen((location) => {
+            this.handleRoutes(location.pathname);
+        });
 
-            this.handleRoutes();
-        } else {
-            this.handleRoutes();
-        }
+        this.handleRoutes();
     }
 }
 
-export interface IStore extends FabaStore<IcommonStore>{}
 new A_Web(new FabaStore<IcommonStore>(commonImStore));
