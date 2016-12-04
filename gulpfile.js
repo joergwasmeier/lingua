@@ -22,3 +22,31 @@ gulp.task('t', function(done) {
         configFile: __workDir+"/karma-coverage.conf.js"
     }, done).start();
 });
+var jest = require('jest-cli');
+var jestConfig = {
+    "globals": {
+        "__TS_CONFIG__": "tsconfig_jest.json",
+        "CLIENT": true,
+        "SERVER": false,
+        "TEST": false
+    },
+    "transform": {
+        ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": ".*\\Spec.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+        "ts",
+        "tsx",
+        "js"
+    ]
+};
+
+gulp.task('test', function(done) {
+    jest.runCLI({ config : jestConfig }, ".", function() {
+        done();
+    });
+});
+
+gulp.task('tdd', function(done) {
+    gulp.watch([ "src/**/*.ts", "src/**/*.tsx" ], [ 'test' ]);
+});

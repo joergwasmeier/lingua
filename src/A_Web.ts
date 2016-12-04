@@ -35,5 +35,4 @@ export default class A_Web extends FabaRuntimeWeb {
         FabaRuntimeWeb.addServerEndPoint(new FabaApiConnection(window.location.protocol + "//" + host), "api");
     }
 }
-
 new A_Web(new FabaStore<IcommonStore>(commonImStore));
