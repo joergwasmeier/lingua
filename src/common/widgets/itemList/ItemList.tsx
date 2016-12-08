@@ -1,18 +1,22 @@
 import * as React from "react";
 import {ListItem, Divider} from "material-ui";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
-
-require("./ItemList.less");
+import {style} from "typestyle";
 
 interface IItemListProps{
     items:Array<any>;
     clickEvent:any;
     className?:string;
 }
+
 var ReactPullToRefresh = require("react-pull-to-refresh");
 
 export default class ItemList extends FabaWebBaseComponent<IItemListProps> {
-    className: string = "ItemList";
+    private style = style({
+        overflow: "scroll",
+        "-webkit-overflow-scrolling": "touch",
+        height: "100%"
+    });
 
     constructor(props) {
         super(props);
@@ -39,7 +43,7 @@ export default class ItemList extends FabaWebBaseComponent<IItemListProps> {
 
     render() {
         return (
-            <div className={this.props.className}>
+            <div className={this.style}>
                 {this.renderItems()}
             </div>
         );

@@ -58,21 +58,17 @@ export default class Layout extends FabaWebBaseComponent<ILayoutProps>{
     }
 
     render() {
+        if (!__webpack_hash__) __webpack_hash__ = 0
         return (
             <MuiThemeProvider muiTheme={this.theme}>
                 <div className={`center ${this.className}`}>
                     {this.props.childs}
-                    <BottomMenu />
-
-
                     <Dialog open={false}/>
                     <PopUp open={this.props.model.layout.showPopUp}/>
                     <div className={this.versionClass}>{__webpack_hash__}</div>
-
                 </div>
 
             </MuiThemeProvider>
         )
     }
 }
-//<Menu open={this.props.model.menuOpen}/>

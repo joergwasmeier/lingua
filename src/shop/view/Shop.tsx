@@ -2,7 +2,7 @@ import * as React from "react";
 import ShopOverview from "./ShopOverview";
 import {IShopStore} from "../ShopStore";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
-import {style} from "typestyle";
+import {ShopStyle} from "./ShopStyle";
 const ReactCSSTransitionGroup = require("react-addons-css-transition-group"); // ES5 with npm
 
 interface IShopProps {
@@ -11,14 +11,6 @@ interface IShopProps {
 }
 
 export default class Shop extends FabaWebBaseComponent<IShopProps> {
-    shopStyle = style({
-        display: "flex",
-        flexFlow: "column",
-        height: "100vh",
-        overflow: "hidden",
-        backgroundColor: "black"
-    });
-
     renderOverview() {
         if (this.props && this.props.model && this.props.model.items) {
             return <ShopOverview items={this.props.model.items}/>;
@@ -28,25 +20,21 @@ export default class Shop extends FabaWebBaseComponent<IShopProps> {
     }
 
     render() {
-        //if (this.props.childs) this.className = "Shop child";
-        //else this.className = "Shop";
-
         return (
-            <div className={this.shopStyle}>
+            <div className={ShopStyle.Shop}>
                 {this.renderOverview()}
                 <ReactCSSTransitionGroup
                     component="div"
-                    className="animated-child"
+                    className={ShopStyle.AnimatedChild}
                     transitionName={{
                         enter: "enter",
                         leave: "leave",
                         appear: "appear"
                     }}
-                    transitionEnterTimeout={100}
-                    transitionLeaveTimeout={100}>
+                    transitionEnterTimeout={1}
+                    transitionLeaveTimeout={300}>
                     {this.props.childs}
                 </ReactCSSTransitionGroup>
-
             </div>
         );
     }

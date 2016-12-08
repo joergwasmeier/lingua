@@ -8,14 +8,14 @@ import HideShopItemEvent from "../event/HideShopItemEvent";
 import SwipeableViews from "react-swipeable-views";
 import {IShopStore} from "../ShopStore";
 
-//require("./ShopItem.less");
-
 import Tab1 from "./itemContent/Tab1";
 import Tab2 from "./itemContent/Tab2";
 import Tab3 from "./itemContent/Tab3";
+
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 import ShopItemUiEvents from "../event/ShopItemUiEvents";
 import {ShopItemUiEventsTypes} from "../event/ShopItemUiEvents";
+import {style} from "typestyle";
 
 interface IShopItemProps {
     item: ShopItemVo;
@@ -24,7 +24,12 @@ interface IShopItemProps {
 }
 
 export default class ShopItem extends FabaWebBaseComponent<IShopItemProps> {
-    className: string = "ShopItem";
+    private style = style({
+        backgroundColor: "#ffffff",
+        overflow: "scroll",
+        height: "100vh",
+    });
+
 
     constructor(props) {
         super(props);
@@ -32,7 +37,7 @@ export default class ShopItem extends FabaWebBaseComponent<IShopItemProps> {
 
     render() {
         return (
-            <div className={this.className}>
+            <div className={this.style}>
                 {this.renderContent()}
             </div>
         );
@@ -58,6 +63,7 @@ export default class ShopItem extends FabaWebBaseComponent<IShopItemProps> {
                     leftIcon={<IconButton onClick={this.hideHandler}><ArrowBack/></IconButton>}
                     disableEvent="true"
                 />
+
                 <div className="tabs">
                     <Tabs value={0}>
                         <Tab label="tab n°1" value={0} onClick={this.handleChangeTabs.bind(null, 0)}/>

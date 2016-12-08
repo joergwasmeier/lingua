@@ -6,8 +6,10 @@
 
 ///////FABALOUS
 XX A_Web aufräumen
-H Tests (E2E // Karma and Spec // Jest?!)
+XX Jest
+H Tests (E2E // Karma)
 H Serverrendering
+M Websocket tests
 M Chunk size debuggen
 L Phonegap erstellen
 L Dll Webpack

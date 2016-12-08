@@ -16,14 +16,14 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/**/*Spec.ts',
-      'src/**/*Spec.tsx'
+        'src/**/*E2E.ts',
+        'src/**/*E2E.tsx'
     ],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      '**/*Spec.ts*': ['webpack', 'sourcemap']
+        '**/*E2E.ts*': ['webpack', 'sourcemap']
     },
 
     webpack: webpackConfig,
@@ -33,7 +33,7 @@ module.exports = function(config) {
     },
 
     frameworks: ['jasmine'],
-    reporters: ['progress','coverage'],
+      reporters: ['progress'],
 
     // enable / disable colors in the output (reporters and logs)
     colors: true,

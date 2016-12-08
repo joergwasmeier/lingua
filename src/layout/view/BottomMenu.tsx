@@ -1,58 +1,63 @@
 import * as React from "react";
 import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
-import ActionInfo from "material-ui/svg-icons/action/info";
 import {BottomNavigation, BottomNavigationItem} from "material-ui/BottomNavigation";
-import Routes from "../../Routes";
-import FontIcon from 'material-ui/FontIcon';
-import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
+import ActionHome from 'material-ui/svg-icons/action/home';
+import BottomMenuEvent from "../event/BottomMenuEvent";
+import {BottomMenuEventType} from "../event/BottomMenuEvent";
+import {style} from "typestyle";
 
-const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
-const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
-const nearbyIcon = <IconLocationOn />;
+const favoritesIcon = <ActionHome>restore</ActionHome>;
 
 export interface IBottomMenuProps {
     selectedIndex: number;
+    hide: boolean;
 }
 
-export default class BottomMenu extends FabaWebBaseComponent<{}> {
+export default class BottomMenu extends FabaWebBaseComponent<IBottomMenuProps> {
+    bottomStyle = (hide: boolean = false) => {
+        return style({
+            position: "fixed !important",
+            bottom: 0
+        })
+    };
 
     showHome = () => {
-        window.location.assign("#" + Routes.DASBOARD.route);
+        new BottomMenuEvent(BottomMenuEventType.HOME).dispatch();
     };
 
     showCourses = () => {
-        window.location.assign("#" + Routes.STORE.route);
+        new BottomMenuEvent(BottomMenuEventType.COURSE).dispatch();
     };
 
     showShop = () => {
-        window.location.assign("#" + Routes.STORE.route);
+        new BottomMenuEvent(BottomMenuEventType.SHOP).dispatch();
     };
 
     showOther = () => {
-        window.location.assign("#" + Routes.STORE.route);
+        new BottomMenuEvent(BottomMenuEventType.OTHER).dispatch();
     };
 
     render() {
         return (
-            <BottomNavigation selectedIndex={0} style={{"position":"fixed", "bottom":"0px"}}>
+            <BottomNavigation className={this.bottomStyle(this.props.hide)} selectedIndex={this.props.selectedIndex}>
                 <BottomNavigationItem
-                    label="Home"
-                    icon={recentsIcon}
+                    label="Dashboard"
+                    icon={favoritesIcon}
                     onTouchTap={this.showHome}
                 />
                 <BottomNavigationItem
-                    label="My Courses"
+                    label="Courses"
                     icon={favoritesIcon}
                     onTouchTap={this.showCourses}
                 />
                 <BottomNavigationItem
                     label="Shop"
-                    icon={recentsIcon}
+                    icon={favoritesIcon}
                     onTouchTap={this.showShop}
                 />
                 <BottomNavigationItem
                     label="Other"
-                    icon={recentsIcon}
+                    icon={favoritesIcon}
                     onTouchTap={this.showOther}
                 />
             </BottomNavigation>

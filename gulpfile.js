@@ -17,18 +17,13 @@ gulp.task('testKarma', function(done) {
     }, done).start();
 });
 
-gulp.task('t', function(done) {
-    new Server({
-        configFile: __workDir+"/karma-coverage.conf.js"
-    }, done).start();
-});
 var jest = require('jest-cli');
 var jestConfig = {
     "globals": {
         "__TS_CONFIG__": "tsconfig_jest.json",
         "CLIENT": true,
-        "SERVER": false,
-        "TEST": false
+        "TEST": true,
+        "SERVER": false
     },
     "transform": {
         ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
@@ -42,11 +37,15 @@ var jestConfig = {
 };
 
 gulp.task('test', function(done) {
+    TEST = true;
+
     jest.runCLI({ config : jestConfig }, ".", function() {
         done();
     });
 });
 
-gulp.task('tdd', function(done) {
-    gulp.watch([ "src/**/*.ts", "src/**/*.tsx" ], [ 'test' ]);
+gulp.task('test-watch', function (done) {
+    gulp.watch(["src/**/*.ts", "src/**/*.tsx"]);
 });
+
+gulp.task('tdd', ['test', 'test-watch']);

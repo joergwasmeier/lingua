@@ -6,13 +6,14 @@ import FabaWebBaseComponent from "@fabalous/runtime-web/FabaWebBaseComponent";
 interface IAppBarProps {
     title: string;
     clickEvent?: any;
-    leftIcon?: string;
+    leftIcon?: any;
     disableEvent?: boolean;
 }
 
 export default class LinguaAppBar extends FabaWebBaseComponent<IAppBarProps> {
     constructor(props) {
         super(props);
+
     }
 
     private handleToggle(value: boolean) {
@@ -37,7 +38,8 @@ export default class LinguaAppBar extends FabaWebBaseComponent<IAppBarProps> {
                 title={this.props.title}
                 onTitleTouchTap={() => this.handleToggle(true)}
                 onLeftIconButtonTouchTap={() => this.handleToggle(true)}
-                showMenuIconButton={false}
+                showMenuIconButton={!!(this.props.leftIcon)}
+                iconElementLeft={this.props.leftIcon}
             />
         );
     }

@@ -2,6 +2,7 @@ import {IAccountStore, accountImStore} from "../account/AccountImStore";
 import {IShopStore, shopImStore} from "../shop/ShopStore";
 import {ILayoutSore, LayoutStore} from "../layout/LayoutStore";
 import FabaStore from "@fabalous/core/FabaStore";
+import {IDashboardStore, dashboardImStore} from "../dashboard/DashboardStore";
 
 export interface IcommonStore {
     readonly child: any;
@@ -11,7 +12,7 @@ export interface IcommonStore {
     readonly activeView: string;
 
     readonly account: IAccountStore;
-    readonly dashboard: IAccountStore;
+    readonly dashboard: IDashboardStore;
     readonly shop: IShopStore;
     readonly layout: ILayoutSore;
 
@@ -25,7 +26,7 @@ export const commonImStore: IcommonStore = {
     activeModule: "",
     activeView: "",
     account: accountImStore,
-    dashboard: null,
+    dashboard: dashboardImStore,
     shop: shopImStore,
     menuOpen: false,
     layout: LayoutStore

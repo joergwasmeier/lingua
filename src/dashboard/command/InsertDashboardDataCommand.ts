@@ -9,7 +9,6 @@ import {IStore} from "../../common/commonImStore";
 
 export default class InsertDashboardDataCommand extends FabaCommand<IStore> {
   execute(event:InsertDashboardDataCommand) {
-    console.log("execute");
     FabaRuntimeWeb.sendToEndpoint(event, "");
   }
 

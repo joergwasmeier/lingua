@@ -9,7 +9,7 @@ import Routes from "../../Routes";
 import {style} from "typestyle";
 import {loginStyle, linkStyle} from "./AccountStyles";
 
-interface ILoginProps {
+export interface ILoginProps {
     model: ILoginIm;
 }
 
@@ -42,6 +42,7 @@ export default class Login extends FabaWebBaseComponent<ILoginProps> {
             </div>
         );
     }
+
 
     render() {
         return (

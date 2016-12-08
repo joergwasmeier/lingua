@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import {mount} from "enzyme";
 import AccountMediator from "../AccountMediator";
 import CheckLoginStatusEvent from "../event/CheckLoginStatusEvent";
@@ -10,12 +9,7 @@ import Login from "../view/Login";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 
-
-const store = new FabaStore<IcommonStore>(commonImStore);
-FabaCore.store = store;
-FabaCore.addMediator(AccountMediator);
-
-describe("Login View", ()=>{
+describe("Login View", () => {
     let wrapper;
     let loginIns: any;
 
@@ -23,6 +17,11 @@ describe("Login View", ()=>{
     injectTapEventPlugin();
 
     beforeEach(()=> {
+        TEST = true;
+        const store = new FabaStore<IcommonStore>(commonImStore);
+        FabaCore.setTestStore(store);
+        FabaCore.addMediator(AccountMediator);
+        /*
         wrapper = mount(
             <MuiThemeProvider muiTheme={getMuiTheme()}>
                 <Login model={store.data.account.login}/>
@@ -30,6 +29,7 @@ describe("Login View", ()=>{
         );
 
         loginIns = wrapper.find(Login).get(0);
+         */
     });
 
     it("CheckLogin should be there", function () {

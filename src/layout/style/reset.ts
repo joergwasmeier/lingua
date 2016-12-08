@@ -2,7 +2,7 @@ import {style, cssRule} from "typestyle";
 import {rgba} from "typestyle/lib/csx";
 
 const fontPath = require("./../../common/assets/fonts/roboto_regular_macroman/Roboto-Regular-webfont.woff");
-const cssP = "url('" + fontPath + "')";
+const cssP: string = "url('" + fontPath + "')";
 
 cssRule('@font-face', {
     fontFamily: 'robotoregular',

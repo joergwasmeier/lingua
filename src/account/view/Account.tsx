@@ -25,8 +25,8 @@ export default class Account extends FabaWebBaseComponent<IAccountProps> {
         height: "100vh",
         minHeight: "500px",
         textAlign: "center",
-        backgroundSize: "cover",
-        backgroundClip: "content-box",
+        //backgroundSize: "cover",
+        //backgroundClip: "content-box",
         backgroundPosition: "center, center"
     });
 

@@ -4,7 +4,7 @@ export namespace DashboardStyle {
     export const container = style({
         display: "flex",
         flexFlow: "column",
-        height: "100vh",
+        height: "calc(100vh - 60px)",
         overflow: "scroll"
     });
 
