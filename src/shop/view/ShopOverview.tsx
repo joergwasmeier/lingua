@@ -13,11 +13,12 @@ import {style} from "typestyle";
 
 interface IShopOverview {
     items: Array<ShopItemVo>;
+    child:boolean;
 }
 
 export default class ShopOverview extends FabaWebBaseComponent<IShopOverview> {
     style = style({
-        position: "fixed"
+        position: "fixed",
     });
 
     clickHandler() {
@@ -26,7 +27,7 @@ export default class ShopOverview extends FabaWebBaseComponent<IShopOverview> {
 
     render() {
         return (
-            <div className={ShopStyle.overview}>
+            <div className={ShopStyle.overview(this.props.child)}>
                 <LinguaAppBar title="Shops" className={this.style}/>
                 <div className={ShopStyle.container}>
 

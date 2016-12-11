@@ -15,7 +15,7 @@ export default class ItemList extends FabaWebBaseComponent<IItemListProps> {
     private style = style({
         overflow: "scroll",
         "-webkit-overflow-scrolling": "touch",
-        height: "100%"
+        height:"92vh"
     });
 
     constructor(props) {

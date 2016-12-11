@@ -28,6 +28,15 @@ export default class ShopItem extends FabaWebBaseComponent<IShopItemProps> {
         backgroundColor: "#ffffff",
         overflow: "scroll",
         height: "100vh",
+        transition: "transform 0.3s",
+        transform: "translate3D(0, 0, 0)",
+        width:"100vw",
+        "&.leave": {
+            transform: "translate3D(100vw, 0, 0)"
+        },
+        "&.enter": {
+            transform: "translate3D(100vw, 0, 0)"
+        }
     });
 
 

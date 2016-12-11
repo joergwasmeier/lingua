@@ -12,8 +12,10 @@ interface IShopProps {
 
 export default class Shop extends FabaWebBaseComponent<IShopProps> {
     renderOverview() {
+        console.log(!!this.props.childs);
         if (this.props && this.props.model && this.props.model.items) {
-            return <ShopOverview items={this.props.model.items}/>;
+            
+            return <ShopOverview items={this.props.model.items} child={!!this.props.childs}/>;
         }
 
         return null;
