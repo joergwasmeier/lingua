@@ -9,7 +9,9 @@ require('@fabalous/runtime-web/config/gulp/RuntimeWeb.config')(gulp);
 //require('@fabalous/test-karma/config/gulp/TestKarma.config.js')(gulp);
 
 gulp.task('develop', ['backend-watch', 'runtime-web-watch']);
-gulp.task('build', ['backend-build', 'runtime-web-build']);
+gulp.task('build', ['backend-build', 'runtime-web-build'], function() {
+    process.exit(0);
+});
 
 gulp.task('testKarma', function(done) {
     new Server({

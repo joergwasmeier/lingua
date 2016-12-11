@@ -1,6 +1,6 @@
-import {style} from "typestyle";
+import {style, css} from "typestyle";
 
-export const loginStyle = style({
+export const loginStyle = css({
     '@media (min-width: 440px)': {
         position: "relative",
         maxWidth: 375,

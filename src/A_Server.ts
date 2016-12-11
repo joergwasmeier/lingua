@@ -38,7 +38,7 @@ class A_Server extends FabaServer {
         //this.isomorphrendering();
         this.createDbConnection();
     }
-
+/*
     isomorphrendering() {
         const store = new FabaStore<IcommonStore>(commonImStore);
 
@@ -55,7 +55,7 @@ class A_Server extends FabaServer {
 
         console.log(testHtml);
     }
-
+*/
     async createDbConnection(): Promise<void> {
         r.connect({host: 'localhost', port: 28015}, (err, conn) => {
             if (err) throw err;
