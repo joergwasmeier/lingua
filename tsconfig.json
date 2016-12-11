@@ -14,7 +14,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "moduleResolution": "node",
     "outDir": "./dist/",
-    "rootDir": "./",
+    "rootDir": "./src/",
     "lib": [
       "es6",
       "dom"

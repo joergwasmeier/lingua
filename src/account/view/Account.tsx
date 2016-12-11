@@ -59,7 +59,7 @@ export default class Account extends FabaWebBaseComponent<IAccountProps> {
 
     render() {
         return (
-            <div className={this.accountClass}>
+            <div className={this.accountClass}> 
                 <Intro mobile={this.props.mobile} landscape={this.props.landscape}/>
 
                 <div className={this.loginClass(this.props.showLogin)}>
